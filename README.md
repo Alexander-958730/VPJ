@@ -35,6 +35,10 @@ La aplicación conecta directamente a **productores agrícolas de la provincia d
 | **Productor** | nancy | nancy123 | Publica productos, vende, balance |
 | **ONPECO (Regulador)** | onpeco_regulador | regulador123 | Supervisa, gestiona denuncias, backups |
 | **Centro de Acopio** | centro_acopio | acopio123 | Gestiona pedidos y pagos |
+> **Nota sobre el rol Suplidor:**  
+> El código del rol **Suplidor** está implementado en el sistema, pero fue **desactivado** por decisión de ONPECO. La organización prefirió probar primero el modelo de venta directa (Productor → Consumidor) antes de incorporar intermediarios.  
+>  
+> Si en el futuro la logística lo requiere, el rol Suplidor puede ser **reactivado** fácilmente, ya que todo el código y la lógica de trazabilidad de precios están funcionando.
 
 ---
 
