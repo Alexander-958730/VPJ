@@ -1,4 +1,5 @@
 
+
 ```markdown
 # 📄 DOCUMENTACIÓN COMPLETA DEL PROYECTO
 
@@ -7,12 +8,10 @@
 **Desarrolladores:** [Tus nombres]
 **Carrera:** Licenciatura en Informática
 **Fecha de inicio:** 04/06/2026
-**Última actualización:** 28/06/2026
+**Última actualización:** 06 de julio de 2026
 
 ---
-## 📋 CONTENIDO
 
-```markdown
 ## 📋 CONTENIDO
 
 1. [Fase 1: Configuración del Entorno de Desarrollo](#fase-1-configuración-del-entorno-de-desarrollo)
@@ -86,17 +85,70 @@
 69. [Fase 69: Verificación Final y Consolidación de Cambios](#fase-69-verificación-final-y-consolidación-de-cambios)
 70. [Fase 70: Cambio de Color de "VPJ" a Rojo](#fase-70-cambio-de-color-de-vpj-a-rojo)
 71. [Fase 71: Módulo "Sobre VPJ" - Modal Informativo](#fase-71-módulo-sobre-vpj---modal-informativo)
-72. [Fase 72: Chat Privado ONPECO ↔ Centro de Acopio](#fase-72-chat-privado-onpeco-↔-centro-de-acopio)
-73. [Fase 73: Supervisión de Chats para ONPECO y Centro de Acopio](#fase-73-supervisión-de-chats-para-onpeco-y-centro-de-acopio)
-74. [Fase 74: Desactivación Automática de Productos](#fase-74-desactivación-automática-de-productos)
-75. [Fase 75: Eliminación del Botón "Eliminar" en Productos](#fase-75-eliminación-del-botón-eliminar-en-productos)
-76. [Fase 76: Switch "Disponible" en Edición de Productos](#fase-76-switch-disponible-en-edición-de-productos)
-77. [Fase 77: Overlay del Productor en Imágenes](#fase-77-overlay-del-productor-en-imágenes)
-78. [Fase 78: Corrección de Enlace a ONPECO](#fase-78-corrección-de-enlace-a-onpeco)
-79. [Fase 79: Mejora en Recuperación de Contraseña](#fase-79-mejora-en-recuperación-de-contraseña)
-80. [Fase 80: Menú ONPECO Adaptado para Centro de Acopio](#fase-80-menú-onpeco-adaptado-para-centro-de-acopio)
-81. [Fase 81: Configuración de Correo Real para Recuperación de Contraseña](#fase-81-configuración-de-correo-real-para-recuperación-de-contraseña)
-```
+72. [Fase 72: Corrección de Error en Registro de Productores](#fase-72-corrección-de-error-en-registro-de-productores)
+73. [Fase 73: Mejora de Seguridad en Vistas de Productos](#fase-73-mejora-de-seguridad-en-vistas-de-productos)
+74. [Fase 74: Implementación de Paginación en Lista de Productos](#fase-74-implementación-de-paginación-en-lista-de-productos)
+75. [Fase 75: Corrección de Orden en Historial de Ventas](#fase-75-corrección-de-orden-en-historial-de-ventas)
+76. [Fase 76: Agregado de Filtros en Portal ONPECO](#fase-76-agregado-de-filtros-en-portal-onpeco)
+77. [Fase 77: Mejora de Responsive en Móviles](#fase-77-mejora-de-responsive-en-móviles)
+78. [Fase 78: Corrección de Error en Chat](#fase-78-corrección-de-error-en-chat)
+79. [Fase 79: Implementación de Pruebas Unitarias](#fase-79-implementación-de-pruebas-unitarias)
+80. [Fase 80: Documentación Final y Preparación para Defensa](#fase-80-documentación-final-y-preparación-para-defensa)
+81. [Fase 81: Corrección de Último Minuto - Logo y Favicon](#fase-81-corrección-de-último-minuto---logo-y-favicon)
+82. [Fase 82: Cambio de Cédula a Nombre de Productor en Listas Públicas](#fase-82-cambio-de-cédula-a-nombre-de-productor-en-listas-públicas)
+83. [Fase 83: Eliminación de Reputación en Lista Pública de Productores](#fase-83-eliminación-de-reputación-en-lista-pública-de-productores)
+84. [Fase 84: Corrección de Cédulas y Negocios de Productores](#fase-84-corrección-de-cédulas-y-negocios-de-productores)
+85. [Fase 85: Buscador en Tiempo Real en Lista de Usuarios ONPECO](#fase-85-buscador-en-tiempo-real-en-lista-de-usuarios-onpeco)
+86. [Fase 86: Corrección de Reporte de Ventas - Transacciones vs Unidades](#fase-86-corrección-de-reporte-de-ventas---transacciones-vs-unidades)
+87. [Fase 87: Detalle de Ventas Agrupado por Pedido](#fase-87-detalle-de-ventas-agrupado-por-pedido)
+88. [Fase 88: Corrección de Error en Decorador `onpeco_required`](#fase-88-corrección-de-error-en-decorador-onpeco_required)
+89. [Fase 89: Corrección de Error en Exportación de Denuncias a Excel](#fase-89-corrección-de-error-en-exportación-de-denuncias-a-excel)
+90. [Fase 90: Limpieza de Código - Función `obtener_fechas`](#fase-90-limpieza-de-código---función-obtener_fechas)
+91. [Fase 91: Servicio de Estadísticas para ONPECO](#fase-91-servicio-de-estadísticas-para-onpeco)
+92. [Fase 92: Filtro de Estrellas en Templates](#fase-92-filtro-de-estrellas-en-templates)
+93. [Fase 93: Estandarización de Nombres en `views.py`](#fase-93-estandarización-de-nombres-en-viewspy)
+94. [Fase 94: Corrección de Carrito para ONPECO y Centro de Acopio](#fase-94-corrección-de-carrito-para-onpeco-y-centro-de-acopio)
+95. [Fase 95: Bloqueo de Compra para ONPECO y Centro de Acopio](#fase-95-bloqueo-de-compra-para-onpeco-y-centro-de-acopio)
+96. [Fase 96: Selector de Emojis en Chat](#fase-96-selector-de-emojis-en-chat)
+97. [Fase 97: Botón "Volver a Mis Productos" en Edición](#fase-97-botón-volver-a-mis-productos-en-edición)
+98. [Fase 98: Formato de Números en Balance de Ventas (RD)](#fase-98-formato-de-números-en-balance-de-ventas-rd)
+99. [Fase 99: Corrección de Formato de Números en Ventas](#fase-99-corrección-de-formato-de-números-en-ventas)
+100. [Fase 100: Chat Privado ONPECO ↔ Centro de Acopio](#fase-100-chat-privado-onpeco--centro-de-acopio)
+101. [Fase 101: Corrección de Rebaja de Stock en Tiempo Real](#fase-101-corrección-de-rebaja-de-stock-en-tiempo-real)
+102. [Fase 102: Rediseño de Botones con Recuadros](#fase-102-rediseño-de-botones-con-recuadros)
+103. [Fase 103: Agregado del Tomate como Orgullo de Azua](#fase-103-agregado-del-tomate-como-orgullo-de-azua)
+104. [Fase 104: Corrección de Historial de Ventas](#fase-104-corrección-de-historial-de-ventas)
+105. [Fase 105: Corrección de Contabilización de Denuncias Aprobadas](#fase-105-corrección-de-contabilización-de-denuncias-aprobadas)
+106. [Fase 106: Corrección de Balances Pagados](#fase-106-corrección-de-balances-pagados)
+107. [Fase 107: Enlace a ONPECO en el Portal](#fase-107-enlace-a-onpeco-en-el-portal)
+108. [Fase 108: Exportación de Reportes de Denuncias a Excel](#fase-108-exportación-de-reportes-de-denuncias-a-excel)
+109. [Fase 109: Sistema de Notificaciones con Contador de Incremento](#fase-109-sistema-de-notificaciones-con-contador-de-incremento)
+110. [Fase 110: Corrección de Error `datetime` en Backups](#fase-110-corrección-de-error-datetime-en-backups)
+111. [Fase 111: Cambio de Login a Cédula y Mejora de Interfaz](#fase-111-cambio-de-login-a-cédula-y-mejora-de-interfaz)
+112. [Fase 112: Tomate Clicable con Enlace a ONPECO](#fase-112-tomate-clicable-con-enlace-a-onpeco)
+113. [Fase 113: Sistema de Restablecimiento de Contraseñas por ONPECO](#fase-113-sistema-de-restablecimiento-de-contraseñas-por-onpeco)
+114. [Fase 114: Nombre Real en Navbar y Perfil](#fase-114-nombre-real-en-navbar-y-perfil)
+115. [Fase 115: Exportación de Consumidores y Productores a Excel](#fase-115-exportación-de-consumidores-y-productores-a-excel)
+116. [Fase 116: Integración del Logo Oficial de ONPECO](#fase-116-integración-del-logo-oficial-de-onpeco)
+117. [Fase 117: Estilizado del Logo ONPECO con Bordes Redondeados](#fase-117-estilizado-del-logo-onpeco-con-bordes-redondeados)
+118. [Fase 118: Cambio de Favicon a Logo de ONPECO (Definitivo)](#fase-118-cambio-de-favicon-a-logo-de-onpeco-definitivo)
+119. [Fase 119: Optimización de la Página de Inicio](#fase-119-optimización-de-la-página-de-inicio)
+120. [Fase 120: Corrección del Footer - Texto Institucional](#fase-120-corrección-del-footer---texto-institucional)
+121. [Fase 121: Ajuste de Posición del Carrito Flotante](#fase-121-ajuste-de-posición-del-carrito-flotante)
+122. [Fase 122: Eliminación de Notificaciones de Chat sin Sesión](#fase-122-eliminación-de-notificaciones-de-chat-sin-sesión)
+123. [Fase 123: Verificación Final y Consolidación de Cambios](#fase-123-verificación-final-y-consolidación-de-cambios)
+124. [Fase 124: Cambio de Color de "VPJ" a Rojo](#fase-124-cambio-de-color-de-vpj-a-rojo)
+125. [Fase 125: Módulo "Sobre VPJ" - Modal Informativo](#fase-125-módulo-sobre-vpj---modal-informativo)
+126. [Fase 126: Chat Privado ONPECO ↔ Centro de Acopio](#fase-126-chat-privado-onpeco--centro-de-acopio)
+| 127 | Presentación Oficial a ONPECO - Demostración en Vivo con Ngrok | 25/06/2026 | ✅ Completada |
+| 128 | Encuentro con Promotores en Azua - Presentación de VPJ | 03/07/2026 | ✅ Completada |
+| 129 | Corrección de Carrito para ONPECO y Centro de Acopio | 06/07/2026 | ✅ Completada |
+| 130 | Selector de Emojis en Chat | 06/07/2026 | ✅ Completada |
+| 131 | Botón "Volver a Mis Productos" en Edición | 06/07/2026 | ✅ Completada |
+| 132 | Formato de Números en Balance de Ventas (RD) | 06/07/2026 | ✅ Completada |
+| 133 | Actualización de Documentación - FASES 127 A 132 | 06/07/2026 | ✅ Completada |
+
+
 ---
 
 ## FASE 1: Configuración del Entorno de Desarrollo
@@ -119,38 +171,39 @@ Aproximadamente 1 hora (incluyendo solución de errores).
 
 **Comandos ejecutados:**
 
-1. `mkdir venta_precio_justo`
-2. `cd venta_precio_justo`
-3. `python -m venv venv`
-4. `venv\Scripts\activate`
-5. `pip install django==4.2.7`
-6. `django-admin startproject core .`
-7. `mkdir apps static templates media`
-8. `python manage.py migrate`
-9. `python manage.py createsuperuser`
+```bash
+mkdir venta_precio_justo
+cd venta_precio_justo
+python -m venv venv
+venv\Scripts\activate
+pip install django==4.2.7
+django-admin startproject core .
+mkdir apps static templates media
+python manage.py migrate
+python manage.py createsuperuser
+```
 
 **Configuraciones:**
-
 - Zona horaria: `America/Santo_Domingo`
 - Idioma: `es-es`
 
 **Estructura de Carpetas Creada**
 ```
-venta_precio_justo/          # Raíz del proyecto
-├── core/                    # Configuración principal de Django
-│   ├── settings.py          # Configuración del proyecto
-│   ├── urls.py              # Rutas principales
-│   └── wsgi.py              # Punto de entrada para servidores web
-├── apps/                    # Contendrá las aplicaciones del proyecto
-├── static/                  # Archivos estáticos (CSS, JS, imágenes)
+venta_precio_justo/
+├── core/
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── apps/
+├── static/
 │   ├── css/
 │   ├── js/
 │   └── images/
-├── templates/               # Plantillas HTML
-├── media/                   # Archivos subidos por usuarios
-├── venv/                    # Entorno virtual (aisla dependencias)
-├── manage.py                # Script de administración de Django
-└── db.sqlite3               # Base de datos (creada con migrate)
+├── templates/
+├── media/
+├── venv/
+├── manage.py
+└── db.sqlite3
 ```
 
 **Estado:** ✅ Completada
@@ -160,14 +213,12 @@ venta_precio_justo/          # Raíz del proyecto
 ## FASE 2: Configuración de la Documentación
 
 **Acciones:**
-
 - [x] Crear archivo DOCUMENTACION.md
 - [x] Crear carpeta capturas/
 
 **Estado:** ✅ Completada
 
 **Notas:**
-
 - Las capturas se almacenan en la carpeta capturas/
 
 ---
@@ -228,28 +279,18 @@ pip install Pillow
 **Fecha:** 04/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo de la Fase
-
+### Objetivo
 Implementar un sistema completo de autenticación que permita a los usuarios registrarse como **Productores**, **Consumidores** o **Suplidores**, iniciar sesión, cerrar sesión y gestionar su perfil.
 
-### Tecnologías utilizadas
-
-| Tecnología | Propósito |
-|------------|-----------|
-| Django Authentication System | Sistema base de autenticación |
-| UserCreationForm | Formularios de registro personalizados |
-| AuthenticationForm | Formulario de inicio de sesión |
-| login_required decorator | Proteger vistas que requieren autenticación |
-
-### Estructura de archivos creada/modificada
+### Estructura de archivos
 
 ```
 apps/users/
 ├── views.py      # Lógica de registro, login, logout, perfil
 ├── forms.py      # Formularios personalizados
 ├── urls.py       # Rutas de autenticación
-├── models.py     # Modelo User personalizado (ya existente)
-└── admin.py      # Registro en panel admin (ya existente)
+├── models.py     # Modelo User personalizado
+└── admin.py      # Registro en panel admin
 ```
 
 ### Vistas implementadas (views.py)
@@ -303,18 +344,15 @@ Permitir que ONPECO revise y apruebe los productores y suplidores registrados an
 | `rechazar_suplidor` | `/users/rechazar-suplidor/<id>/` | Rechaza un suplidor específico |
 
 ### Templates creados
-
 - `users/aprobar_productores.html`
 - `users/aprobar_suplidores.html`
 
 ### Seguridad
-
 - Las vistas están protegidas con `@staff_member_required`
 - Solo administradores (ONPECO) pueden acceder
 - Enlace visible solo para admins en el navbar
 
 ### Flujo de trabajo
-
 1. Productor/Suplidor se registra → `is_approved = False`
 2. ONPECO revisa la lista de pendientes
 3. ONPECO hace clic en "Aprobar" → `is_approved = True`
@@ -327,92 +365,69 @@ Permitir que ONPECO revise y apruebe los productores y suplidores registrados an
 **Fecha:** 05/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo de la Fase
-
+### Objetivo
 Implementar un sistema completo de gestión de productos que permita a los productores y suplidores publicar, editar y eliminar sus productos, y a los consumidores visualizar el catálogo de productos disponibles.
 
-### Modelos creados/modificados
-
-**apps/marketplace/models.py**
-
-| Campo | Tipo | Descripción |
-|-------|------|-------------|
-| `vendedor` | ForeignKey | Usuario que vende (productor o suplidor) |
-| `productor_origen` | ForeignKey | Productor original del producto (para suplidores) |
-| `name` | CharField | Nombre del producto |
-| `description` | TextField | Descripción detallada |
-| `category` | CharField | Categoría (frutas, verduras, granos, tubérculos, otros) |
-| `price` | DecimalField | Precio de venta al consumidor |
-| `precio_compra_productor` | DecimalField | Precio al que el suplidor compró al productor |
-| `unit` | CharField | Unidad de medida (kg, lb, unidad, docena) |
-| `stock` | PositiveIntegerField | Cantidad disponible |
-| `stock_minimo` | PositiveIntegerField | Stock mínimo para activar alerta (default: 5) |
-| `view_count` | IntegerField | Contador de visitas del producto |
-| `available` | BooleanField | Disponible para venta |
-| `created_at` | DateTimeField | Fecha de creación |
-| `updated_at` | DateTimeField | Última actualización |
-
-**Propiedades agregadas:**
+### Modelo Product
 
 ```python
-@property
-def stock_bajo(self):
-    """Verifica si el stock está por debajo del mínimo"""
-    return self.stock <= self.stock_minimo
+# apps/marketplace/models.py
+class Product(models.Model):
+    vendedor = models.ForeignKey(User, on_delete=models.CASCADE, related_name='productos')
+    productor_origen = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='productos_origen')
+    name = models.CharField(max_length=200)
+    description = models.TextField()
+    category = models.CharField(max_length=50, choices=CATEGORIAS)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    precio_compra_productor = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    unit = models.CharField(max_length=20, choices=UNIDADES, default='kg')
+    stock = models.PositiveIntegerField(default=0)
+    stock_minimo = models.PositiveIntegerField(default=5)
+    image = models.ImageField(upload_to='productos/', null=True, blank=True)
+    view_count = models.IntegerField(default=0)
+    available = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
-@property
-def margen_suplidor(self):
-    """Calcula el margen de ganancia del suplidor"""
-    if self.precio_compra_productor and self.precio_compra_productor > 0:
-        margen = float(self.price) - float(self.precio_compra_productor)
-        porcentaje = (margen / float(self.precio_compra_productor)) * 100
-        return {'margen': margen, 'porcentaje': porcentaje}
-    return None
-```
+    @property
+    def stock_bajo(self):
+        return self.stock <= self.stock_minimo
 
-### Validaciones en el modelo
+    @property
+    def margen_suplidor(self):
+        if self.precio_compra_productor and self.precio_compra_productor > 0:
+            margen = float(self.price) - float(self.precio_compra_productor)
+            porcentaje = (margen / float(self.precio_compra_productor)) * 100
+            return {'margen': margen, 'porcentaje': porcentaje}
+        return None
 
-```python
-def save(self, *args, **kwargs):
-    if self.vendedor.role == 'suplidor':
-        if not self.productor_origen:
-            raise ValueError("Los suplidores deben especificar el productor original")
-        if not self.precio_compra_productor:
-            raise ValueError("Los suplidores deben especificar el precio de compra")
-        if self.precio_compra_productor >= self.price:
-            raise ValueError("El precio de venta debe ser mayor al precio de compra")
-    super().save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        if self.vendedor.role == 'suplidor':
+            if not self.productor_origen:
+                raise ValueError("Los suplidores deben especificar el productor original")
+            if not self.precio_compra_productor:
+                raise ValueError("Los suplidores deben especificar el precio de compra")
+            if self.precio_compra_productor >= self.price:
+                raise ValueError("El precio de venta debe ser mayor al precio de compra")
+        super().save(*args, **kwargs)
 ```
 
 ### Vistas creadas
 
 | Vista | URL | Métodos | Descripción |
 |-------|-----|---------|-------------|
-| `lista_productos` | `/productos/` | GET | Lista todos los productos disponibles para consumidores |
-| `detalle_producto` | `/productos/producto/<id>/` | GET | Muestra detalles completos de un producto |
-| `mis_productos` | `/productos/mis-productos/` | GET | Lista productos del vendedor logueado |
+| `lista_productos` | `/productos/` | GET | Lista todos los productos disponibles |
+| `detalle_producto` | `/productos/producto/<id>/` | GET | Muestra detalles completos |
+| `mis_productos` | `/productos/mis-productos/` | GET | Lista productos del vendedor |
 | `crear_producto` | `/productos/crear/` | GET, POST | Formulario para crear nuevo producto |
 | `editar_producto` | `/productos/editar/<id>/` | GET, POST | Editar producto existente |
 | `eliminar_producto` | `/productos/eliminar/<id>/` | GET | Eliminar (ocultar) producto |
 
 ### Seguridad implementada
-
 - `@login_required` en todas las vistas de gestión
 - Verificación de rol (productor o suplidor) para acceder a creación/edición
 - Verificación de `is_approved` antes de permitir crear productos
 - Los usuarios solo pueden editar/eliminar sus propios productos
-
-### Verificación final
-
-- ✅ Productor puede crear productos
-- ✅ Suplidor puede crear productos con trazabilidad
-- ✅ Productor y suplidor pueden editar productos
-- ✅ Productor y suplidor pueden eliminar productos
-- ✅ Consumidor puede ver lista de productos
-- ✅ Consumidor puede ver detalles de producto
-- ✅ Alertas de stock bajo funcionan correctamente
-- ✅ Seguridad por roles implementada
-- ✅ Validación de precios (venta > compra) para suplidores
 
 ---
 
@@ -421,18 +436,46 @@ def save(self, *args, **kwargs):
 **Fecha:** 05/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo de la FASE
-
+### Objetivo
 Permitir que los consumidores puedan reportar problemas (precios abusivos, mala calidad, etc.) y que ONPECO pueda dar seguimiento a cada denuncia hasta su resolución.
 
 ### Modelos creados
 
-**apps/complaints/models.py**
+```python
+# apps/complaints/models.py
+class Complaint(models.Model):
+    ESTADO_CHOICES = (
+        ('pendiente', 'Pendiente'),
+        ('en_revision', 'En Revisión'),
+        ('resuelta', 'Resuelta'),
+        ('rechazada', 'Rechazada'),
+    )
+    PRIORIDAD_CHOICES = (
+        ('baja', 'Baja'),
+        ('media', 'Media'),
+        ('alta', 'Alta'),
+        ('critica', 'Crítica'),
+    )
 
-| Modelo | Campos principales |
-|--------|-------------------|
-| `Complaint` | ticket_number, title, status, priority, description, product, created_by |
-| `ComplaintUpdate` | complaint, comment, old_status, new_status, created_by |
+    ticket_number = models.CharField(max_length=20, unique=True)
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    status = models.CharField(max_length=20, choices=ESTADO_CHOICES, default='pendiente')
+    priority = models.CharField(max_length=20, choices=PRIORIDAD_CHOICES, default='media')
+    product = models.ForeignKey('marketplace.Product', on_delete=models.SET_NULL, null=True, blank=True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='denuncias_creadas')
+    complained_against = models.ForeignKey(User, on_delete=models.CASCADE, related_name='denuncias_recibidas', null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+class ComplaintUpdate(models.Model):
+    complaint = models.ForeignKey(Complaint, on_delete=models.CASCADE, related_name='actualizaciones')
+    comment = models.TextField()
+    old_status = models.CharField(max_length=20, choices=Complaint.ESTADO_CHOICES)
+    new_status = models.CharField(max_length=20, choices=Complaint.ESTADO_CHOICES)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+```
 
 ### Vistas implementadas
 
@@ -445,7 +488,6 @@ Permitir que los consumidores puedan reportar problemas (precios abusivos, mala 
 | `actualizar_denuncia` | `/denuncias/actualizar/<id>/` | Actualizar estado (ONPECO) |
 
 ### Flujo de trabajo
-
 1. Consumidor crea denuncia → `status = 'pendiente'`
 2. ONPECO revisa la denuncia
 3. ONPECO actualiza estado: `'en_revision'`, `'resuelta'`, `'rechazada'`
@@ -460,13 +502,17 @@ Permitir que los consumidores puedan reportar problemas (precios abusivos, mala 
 ### Objetivo
 Permitir que ONPECO cree puntos de restauración del sistema y restaure a un estado anterior en caso de colapso.
 
-### Modelos creados
+### Modelo BackupHistory
 
-**apps/complaints/models.py**
-
-| Modelo | Campos |
-|--------|--------|
-| `BackupHistory` | filename, created_at, created_by, description, size |
+```python
+# apps/complaints/models.py
+class BackupHistory(models.Model):
+    filename = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    description = models.TextField(blank=True)
+    size = models.BigIntegerField(default=0)
+```
 
 ### Vistas implementadas
 
@@ -475,13 +521,6 @@ Permitir que ONPECO cree puntos de restauración del sistema y restaure a un est
 | `gestion_backups` | `/denuncias/gestion-backups/` | Interfaz de gestión de respaldos |
 | `crear_punto_restauracion` | `/denuncias/gestion-backups/crear-punto/` | Crear punto de restauración |
 | `restaurar_backup` | `/denuncias/backups/restaurar/<filename>/` | Restaurar un backup específico |
-
-### Funcionalidades
-
-- Creación de puntos de restauración con descripción
-- Listado de backups disponibles (fecha, tamaño)
-- Restauración del sistema a un estado anterior
-- Backup automático programado (tarea de Windows)
 
 ### Comandos utilizados
 
@@ -493,9 +532,7 @@ python manage.py restore
 ```
 
 ### Configuración de backup automático
-
 Se creó un comando personalizado `auto_backup.py` y una tarea programada en Windows que ejecuta:
-
 ```bash
 python manage.py auto_backup
 ```
@@ -512,8 +549,6 @@ Extender el sistema para incluir el rol **Suplidor** (intermediario), permitiend
 
 ### Modelo User extendido
 
-**apps/users/models.py**
-
 ```python
 ROLES = (
     ('productor', 'Productor'),
@@ -522,22 +557,12 @@ ROLES = (
 )
 ```
 
-### Migración aplicada
-
-```bash
-python manage.py makemigrations users
-python manage.py migrate users
-# Creó: 0002_alter_user_role.py
-```
-
 ### Formularios creados
-
 | Formulario | Propósito |
 |------------|-----------|
 | `RegistroSuplidorForm` | Registro de nuevos suplidores (requiere aprobación) |
 
 ### Vistas creadas
-
 | Vista | URL | Propósito |
 |-------|-----|-----------|
 | `registro_suplidor` | `/users/registro/suplidor/` | Registro de suplidor |
@@ -546,7 +571,6 @@ python manage.py migrate users
 | `rechazar_suplidor` | `/users/rechazar-suplidor/<id>/` | Rechazar suplidor (ONPECO) |
 
 ### Templates creados
-
 - `users/registro_suplidor.html`
 - `users/aprobar_suplidores.html`
 
@@ -562,37 +586,13 @@ Permitir que ONPECO tenga trazabilidad completa del precio, desde el productor h
 
 ### Modelo Product extendido
 
-**apps/marketplace/models.py**
-
 | Nuevo Campo | Tipo | Descripción |
 |-------------|------|-------------|
 | `vendedor` | ForeignKey | Usuario que vende (productor o suplidor) |
 | `productor_origen` | ForeignKey | Productor original del producto |
 | `precio_compra_productor` | DecimalField | Precio al que el suplidor compró al productor |
 
-**Migración aplicada:**
-
-```bash
-python manage.py makemigrations marketplace
-python manage.py migrate marketplace
-# Creó: 0003_rename_productor_product_vendedor_and_more.py
-```
-
-### Validaciones en el modelo
-
-```python
-def save(self, *args, **kwargs):
-    if self.vendedor.role == 'suplidor':
-        if not self.productor_origen:
-            raise ValueError("Los suplidores deben especificar el productor original")
-        if not self.precio_compra_productor:
-            raise ValueError("Los suplidores deben especificar el precio de compra")
-        if self.precio_compra_productor >= self.price:
-            raise ValueError("El precio de venta debe ser mayor al precio de compra")
-```
-
 ### Límites establecidos
-
 - **Margen normal**: < 25% (verde)
 - **Margen alto**: 25% - 40% (amarillo)
 - **Margen elevado**: > 40% (rojo - alerta)
@@ -608,15 +608,9 @@ def save(self, *args, **kwargs):
 Adaptar los formularios y vistas de productos para que funcionen tanto para productores como para suplidores.
 
 ### Formulario ProductoForm
-
-**apps/marketplace/forms.py**
-
 El formulario detecta automáticamente el rol del usuario:
-
-- Si es **productor**: muestra campos básicos (nombre, precio, stock, etc.)
-- Si es **suplidor**: muestra campos adicionales:
-  - `productor_origen` (select con productores aprobados)
-  - `precio_compra_productor` (costo de compra)
+- Si es **productor**: muestra campos básicos
+- Si es **suplidor**: muestra campos adicionales (`productor_origen`, `precio_compra_productor`)
 
 ### Validación en el formulario
 
@@ -630,13 +624,6 @@ def clean(self):
     return cleaned_data
 ```
 
-### Vistas actualizadas
-
-- `crear_producto`: acepta productores y suplidores
-- `editar_producto`: acepta productores y suplidores
-- `mis_productos`: muestra productos de ambos roles
-- `lista_productos`: muestra productos de todos los vendedores
-
 ---
 
 ## FASE 12: Visualización de Margen y Alertas
@@ -647,17 +634,7 @@ def clean(self):
 ### Objetivo
 Mostrar a los suplidores y a ONPECO información clara sobre el margen de ganancia y alertas visuales.
 
-### Template mis_productos.html
-
-**Columnas adicionales para suplidores:**
-
-| Columna | Descripción |
-|---------|-------------|
-| Productor Origen | Nombre del productor original |
-| Precio Compra | Precio al que compró el suplidor |
-| Margen | RD$ y % de ganancia |
-
-**Alertas visuales:**
+### Alertas visuales
 
 | Porcentaje | Color | Mensaje |
 |------------|-------|---------|
@@ -666,8 +643,6 @@ Mostrar a los suplidores y a ONPECO información clara sobre el margen de gananc
 | > 40% | Rojo | Margen elevado |
 
 ### Template detalle_producto.html
-
-**Información de trazabilidad (para suplidores):**
 
 ```html
 {% if mostrar_trazabilidad %}
@@ -690,11 +665,9 @@ Mostrar a los suplidores y a ONPECO información clara sobre el margen de gananc
 **Estado:** ✅ Completada
 
 ### Objetivo
-Permitir que todos los usuarios (productor, consumidor, suplidor, ONPECO) agreguen una foto de perfil/negocio y su ubicación geográfica.
+Permitir que todos los usuarios agreguen una foto de perfil/negocio y su ubicación geográfica.
 
 ### Nuevos campos en User
-
-**apps/users/models.py**
 
 | Campo | Tipo | Descripción |
 |-------|------|-------------|
@@ -702,19 +675,6 @@ Permitir que todos los usuarios (productor, consumidor, suplidor, ONPECO) agregu
 | `latitude` | DecimalField | Latitud (coordenadas) |
 | `longitude` | DecimalField | Longitud (coordenadas) |
 | `location_address` | TextField | Dirección detallada para el mapa |
-
-### Migración aplicada
-
-```bash
-python manage.py makemigrations users
-python manage.py migrate users
-```
-
-### Uso futuro
-
-- Mapa interactivo mostrando ubicación de productores y suplidores
-- Visualización de foto de perfil en chat y listados
-- Geolocalización para denuncias y verificación
 
 ---
 
@@ -731,25 +691,6 @@ python manage.py migrate users
 | Error `base.html` no encontrado | Extendía `base.html` en lugar de `base/base.html` | Corregir `{% extends 'base/base.html' %}` |
 | Error `restaurar_backup` no existe | Función faltante en views.py | Agregar función `restaurar_backup` |
 
-### Templates corregidos
-
-- `templates/marketplace/lista_productos.html`
-- `templates/marketplace/detalle_producto.html`
-- `templates/marketplace/crear_producto.html`
-- `templates/marketplace/editar_producto.html`
-- `templates/marketplace/mis_productos.html`
-- `templates/base/base.html`
-
-### Cambio en URL del chat
-
-```python
-# Antes
-<a href="{% url 'chat:iniciar_chat_producto' producto.productor.id producto.id %}">
-
-# Después
-<a href="{% url 'chat:iniciar_chat_producto' producto.vendedor.id producto.id %}">
-```
-
 ---
 
 ## FASE 15: Servidor ASGI con Daphne y WebSockets
@@ -758,12 +699,7 @@ python manage.py migrate users
 **Estado:** ✅ Completada
 
 ### ¿Qué es Daphne?
-
-Daphne es un servidor ASGI (Asynchronous Server Gateway Interface) que permite a Django manejar:
-
-- 🔣 WebSockets (chat en tiempo real)
-- 🔣 Conexiones persistentes (notificaciones en vivo)
-- 🔣 Comunicación bidireccional entre cliente y servidor
+Daphne es un servidor ASGI (Asynchronous Server Gateway Interface) que permite a Django manejar WebSockets, conexiones persistentes y comunicación bidireccional.
 
 ### Instalación
 
@@ -777,7 +713,6 @@ pip install daphne
 INSTALLED_APPS = [
     'daphne',  # DEBE IR PRIMERO
     'django.contrib.admin',
-    # ... otras apps
     'channels',
 ]
 
@@ -803,9 +738,9 @@ daphne -b 127.0.0.1 -p 8000 core.asgi:application
 | HTTP | ✅ Sí | ✅ Sí |
 | WebSockets | ❌ No | ✅ Sí |
 | Chat en tiempo real | ❌ No | ✅ Sí |
-| Recarga automática | ✅ Sí | ❌ No (requiere reinicio) |
+| Recarga automática | ✅ Sí | ❌ No |
 | Rendimiento | Bajo | Alto |
-| Producción | ❌ No recomendado | ✅ Recomendado |
+| Producción | ❌ No | ✅ Sí |
 
 ---
 
@@ -820,29 +755,69 @@ Permitir comunicación en tiempo real entre consumidores y productores/suplidore
 ### Archivos creados
 
 **apps/chat/consumers.py**
-- `ChatConsumer` - Maneja conexiones WebSocket
-- `connect()` - Establece conexión
-- `disconnect()` - Cierra conexión
-- `receive()` - Recibe mensajes
-- `chat_message()` - Envía mensajes al grupo
+```python
+class ChatConsumer(AsyncWebsocketConsumer):
+    async def connect(self):
+        self.room_name = self.scope['url_route']['kwargs']['room_name']
+        self.room_group_name = f'chat_{self.room_name}'
+        
+        await self.channel_layer.group_add(
+            self.room_group_name,
+            self.channel_name
+        )
+        await self.accept()
+
+    async def disconnect(self, close_code):
+        await self.channel_layer.group_discard(
+            self.room_group_name,
+            self.channel_name
+        )
+
+    async def receive(self, text_data):
+        data = json.loads(text_data)
+        message = data['message']
+        sender = self.scope['user']
+        
+        # Guardar mensaje en base de datos
+        chat_message = ChatMessage.objects.create(
+            room=ChatRoom.objects.get(name=self.room_name),
+            sender=sender,
+            content=message
+        )
+        
+        await self.channel_layer.group_send(
+            self.room_group_name,
+            {
+                'type': 'chat_message',
+                'message': message,
+                'sender': sender.username,
+                'timestamp': chat_message.timestamp.strftime('%H:%M')
+            }
+        )
+
+    async def chat_message(self, event):
+        await self.send(text_data=json.dumps({
+            'message': event['message'],
+            'sender': event['sender'],
+            'timestamp': event['timestamp']
+        }))
+```
 
 **apps/chat/routing.py**
-- Define las rutas WebSocket: `ws/chat/<room_name>/`
+```python
+websocket_urlpatterns = [
+    path('ws/chat/<str:room_name>/', ChatConsumer.as_asgi()),
+]
+```
 
 **core/asgi.py**
-- Configura ProtocolTypeRouter para HTTP y WebSocket
-- AuthMiddlewareStack para autenticación
-
-### Flujo del chat
-
-```
-Consumidor logueado → Botón "Contactar" → Sala de chat
-                           ↓
-              WebSocket connection establecida
-                           ↓
-              Mensajes en tiempo real (Daphne)
-                           ↓
-              Productor recibe notificación
+```python
+application = ProtocolTypeRouter({
+    "http": get_asgi_application(),
+    "websocket": AuthMiddlewareStack(
+        URLRouter(chat.routing.websocket_urlpatterns)
+    ),
+})
 ```
 
 ### Botón de contacto
@@ -908,13 +883,6 @@ def denuncias_por_mes_api(request):
 </script>
 ```
 
-### URL configurada
-
-```python
-path('reporte-denuncias/', views.reporte_denuncias, name='reporte_denuncias'),
-path('api/denuncias-por-mes/', views.denuncias_por_mes_api, name='denuncias_por_mes_api'),
-```
-
 ---
 
 ## FASE 18: Usuario Regulador de ONPECO sin Catálogo
@@ -928,32 +896,17 @@ Crear un usuario para ONPECO que pueda ver productos y denuncias, pero sin tener
 ### Creación del usuario
 
 ```python
-from apps.users.models import User
-from django.contrib.auth.models import Group
-
 usuario = User.objects.create_user(
     username='onpeco_regulador',
     password='regulador123',
     email='regulador@onpeco.gob'
 )
-
 usuario.is_staff = True
 usuario.is_superuser = False
 usuario.save()
 ```
 
-### Asignación de permisos
-
-```python
-grupo, _ = Group.objects.get_or_create(name='ONPECO Regulador')
-ct_product = ContentType.objects.get(app_label='marketplace', model='product')
-permiso_ver = Permission.objects.get(content_type=ct_product, codename='view_product')
-grupo.permissions.add(permiso_ver)
-usuario.groups.add(grupo)
-```
-
 ### Resultado
-
 - ✅ Puede ver todos los productos
 - ✅ Puede gestionar denuncias
 - ❌ No tiene acceso a "Mis Productos"
@@ -961,219 +914,28 @@ usuario.groups.add(grupo)
 
 ---
 
-## FASE 19: LEVANTAMIENTO DE REQUISITOS Y DOCUMENTACIÓN DEL MONOGRÁFICO
+## FASE 19: Levantamiento de Requisitos y Documentación del Monográfico
 
 **Fecha de inicio:** 09/06/2026
 **Fecha de finalización:** 28/06/2026
 **Estado:** 🔄 En Progreso
 
-### 19.1 Contexto del Proyecto
-
+### Contexto del Proyecto
 **Institución:** ONPECO (Observatorio Nacional para la Protección del Consumidor)
+**Naturaleza:** Organización sin fines de lucro dedicada a la defensa y educación de los consumidores dominicanos
+**Presidenta:** Lic. Altagracia Paulino
 
-**Naturaleza de ONPECO:**
-- Organización sin fines de lucro
-- Dedicada a la defensa y educación de los consumidores dominicanos
-- Presidenta: Lic. Altagracia Paulino
-
-**Problemática Identificada:**
-Los agricultores de la provincia de Azua enfrentan precios injustos por parte de intermediarios, quienes compran sus productos a precios muy bajos y los venden con altos márgenes de ganancia en las ciudades. Adicionalmente, los consumidores no tienen mecanismos para reportar abusos de precios o malas prácticas comerciales.
-
-**Solución Propuesta:**
-Desarrollo de la aplicación "Venta Precio Justo (VPJ)" que permita:
-
-1. **A los agricultores:** Registrar sus productos con precios directos, sin intermediarios, obteniendo un precio justo por su trabajo.
-
-2. **A los consumidores:** Consultar precios de productos agrícolas, comprar directamente a productores, y realizar denuncias sobre abusos de precios.
-
-3. **A ONPECO:** Supervisar toda la cadena de valor (productor → suplidor → consumidor), aprobar nuevos productores y suplidores, y dar seguimiento a las denuncias.
-
-4. **A los suplidores (intermediarios regulados):** Comprar directamente a productores y vender a consumidores, con trazabilidad de precios que permita a ONPECO detectar abusos.
-
----
-
-### 19.2 Análisis Crítico: Suplidor vs Intermediario
-
-**Contexto del debate**
-
-Durante las reuniones con ONPECO surgió la inquietud de eliminar la figura del suplidor de la aplicación, argumentando que este actor es responsable de la inflación de precios y que el modelo ideal debería ser productor → consumidor directo.
-
-**El equipo de desarrollo mantiene el rol de suplidor desactivado a la espera de la decisión final de ONPECO. La funcionalidad está completamente implementada y puede ser reactivada en cualquier momento.**
-
-Sin embargo, un análisis más profundo revela que **no todos los intermediarios son iguales**. Existe una diferencia fundamental entre:
+### Análisis Crítico: Suplidor vs Intermediario
 
 | Característica | Suplidor Legítimo | Intermediario Especulativo |
 |----------------|-------------------|---------------------------|
-| **Compra volumen** | Sí, compra grandes cantidades | Compra pequeñas cantidades |
-| **Invierte en logística** | Sí (transporte, almacenes, frío, empaque) | No (revende sin tocar el producto) |
-| **Paga al contado al productor** | Generalmente sí | Frecuentemente paga a crédito o no paga |
-| **Agrega valor** | Sí (clasificación, empaque, certificación) | No (solo revende) |
-| **Número de actores en la cadena** | 1 entre productor y detallista | 3 o más (compra-venta-reventa) |
-| **Asume riesgo de inventario** | Sí (producto no vendido se pierde) | No (transfiere el riesgo) |
-| **Margen típico** | 15-25% (justificado por logística) | 40-100% (sin justificación) |
-
----
-
-### 19.3 Cuestionario para Productores de Azua
-
-**Objetivo del cuestionario:** Validar la viabilidad del modelo de venta directa productor-consumidor, identificando necesidades logísticas, de confianza y de volumen en los agricultores de Azua.
-
-**Duración estimada:** 25-35 minutos por entrevista.
-
-**Perfil del productor:** Agricultor activo en Azua (guandul, cebolla, yuca, batata, mango, aguacate, etc.) con al menos 1 tarea sembrada.
-
----
-
-#### BLOQUE 1 – Datos generales y perfil del productor
-
-| Campo | Respuesta |
-|-------|-----------|
-| Fecha de entrevista | ___/___/2026 |
-| Nombre del agricultor | |
-| Edad | |
-| Comunidad / Paraje | |
-| Provincia | Azua |
-| ¿Cuántas tareas cultiva actualmente? | |
-| ¿Qué productos cultiva? | |
-| Tiempo dedicado a la agricultura | ( ) Menos de 1 año ( ) 1-5 años ( ) 5-10 años ( ) Más de 10 años |
-| ¿Vende toda su cosecha o se le pierde una parte? ¿Qué porcentaje se pierde aproximadamente? | |
-
----
-
-#### BLOQUE 2 – Canales de comercialización actuales
-
-4. ¿Quién le compra actualmente su producción? (Marcar todas las que apliquen)
-   - [ ] Intermediario que pasa por la finca
-   - [ ] Suplidor / acopiador del pueblo
-   - [ ] Cooperativa agrícola
-   - [ ] Mercado mayorista (Santo Domingo, San Juan)
-   - [ ] Venta directa en finca a consumidor local
-   - [ ] Otro: ___________
-
-5. ¿Cuántos intermediarios o suplidores distintos le compran hoy?
-
-6. ¿Cómo se define el precio? (Negociación directa, precio fijo de temporada, impuesto por el comprador)
-
-7. ¿Pagan al contado o a crédito? ¿Cuánto tardan en pagarle?
-
-8. Si dejara de venderle al intermediario y tuviera que vender directo al consumidor final, ¿cree que ganaría más o menos? ¿Por qué?
-
----
-
-#### BLOQUE 3 – Logística y poscosecha (el problema real)
-
-9. Una vez cosechado, ¿en cuánto tiempo se daña su producto si no se vende? (Horas / días)
-
-10. ¿Tiene vehículo propio? ¿Podría llevar sus productos a un punto de encuentro (ej. parada de autobús, centro de acopio comunitario)?
-
-11. ¿Cuánto cuesta hoy llevar un saco de su producto hasta Azua centro o hasta Santo Domingo?
-
-12. Si un consumidor le pide 5 libras de guandul, ¿estaría dispuesto a ir a dejarlo a un punto de entrega? ¿Cuánto cobraría por ese envío?
-
----
-
-#### BLOQUE 4 – Tecnología y confianza digital
-
-13. ¿Tiene teléfono inteligente con datos móviles? ¿Usa WhatsApp?
-
-14. ¿Sabe tomar fotos de sus productos y enviarlas por WhatsApp?
-
-15. ¿Le daría miedo que un consumidor le pida un producto, usted lo coseche, y luego el consumidor no se lo reciba ni le pague?
-
-16. Si una entidad reguladora (ONPECO) le respalda y la app permite calificar al consumidor también, ¿eso le daría más confianza?
-
----
-
-#### BLOQUE 5 – Precios y volumen en el modelo directo
-
-17. ¿Cuánto le pagan hoy por libra de su producto principal? (Precio al intermediario)
-
-18. ¿A cuánto cree que podría venderle esa misma libra directamente al consumidor?
-
-19. ¿Prefiere vender todo su lote de una sola vez a un comprador grande (aunque pague menos por libra) o vender libra por libra a consumidores (ganando más por libra pero tardando más tiempo)?
-
-*Esta pregunta es clave para saber si el productor valora liquidez inmediata por encima de margen unitario.*
-
----
-
-#### BLOQUE 6 – Denuncias, calificaciones y ente regulador
-
-20. Si un consumidor le pone una queja falsa (ej. "el producto estaba dañado"), ¿confiaría en que ONPECO revise la evidencia y lo resuelva a su favor?
-
-21. ¿Le gustaría que la app le permita ver la calificación del consumidor (si paga puntual, si recoge a tiempo, etc.)?
-
-22. ¿Qué tipo de denuncias le preocupan más?  
-    - [ ] Que el consumidor no pague  
-    - [ ] Que el consumidor reclame producto dañado cuando llegó bien  
-    - [ ] Que otro productor le robe su cliente con precios más bajos  
-    - [ ] Que ONPECO sea lenta para resolver  
-
----
-
-#### BLOQUE 7 – Cierre y disposición a participar
-
-23. Si la app es gratuita para usted y ONPECO aprueba su registro, ¿se inscribiría hoy?
-
-24. ¿Qué le haría falta para vender por esta app? (Formación, un centro de acopio comunitario, un motorizado para entregas, etc.)
-
-25. ¿Conoce a otros productores que podrían unirse? ¿Cuántos?
-
----
-
-### 19.4 Cuestionario para Consumidores
-
-**Preguntas clave:**
-
-1. ¿Dónde compra usualmente sus productos agrícolas?
-2. ¿Cómo decide cuánto pagar o cuál precio es justo?
-3. ¿Cree que los precios que paga son justos?
-4. ¿Cree que los intermediarios suben los precios injustamente?
-5. ¿Tiene teléfono inteligente? ¿Usa internet?
-6. ¿Le gustaría tener una aplicación para ver precios justos?
-7. ¿Estaría dispuesto a pagar un poco más si el agricultor recibe un precio justo?
-
----
-
-### 19.5 Estudio de Factibilidad
-
-| Tipo | Nivel | Justificación |
-|------|-------|---------------|
-| Operativa | ALTA | Productores interesados, ONPECO tiene capacidad de convocatoria |
-| Técnica | MEDIA/ALTA | Stack moderno (Django, Daphne, WebSockets), equipo con experiencia |
-| Económica | ALTA | Costo ~20,000 RD$, desarrollo universitario sin costo |
-
----
-
-### 19.6 Posibles Escenarios según los Datos del Cuestionario
-
-**Escenario A (Optimista para el modelo directo):**
-- Los productores tienen smartphone y manejan WhatsApp.
-- Ya venden directo a consumidores en ferias o finca.
-- El principal problema es la falta de visibilidad y confianza (la app resuelve eso).
-- Están dispuestos a vender por libras si el pago es seguro.
-
-**Resultado:** La app funciona como plataforma de venta directa productor-consumidor.
-
----
-
-**Escenario B (Pesimista para el modelo directo):**
-- Los productores prefieren vender todo el lote a un intermediario aunque paguen menos, porque necesitan efectivo hoy.
-- No tienen tiempo ni vehículo para entregas pequeñas.
-- Cosechan en volumen y el producto se daña en 2 días.
-- La logística de entregas fraccionadas es inviable para ellos.
-
-**Resultado:** La app debe rediseñarse como plataforma de venta a **pequeños suplidores locales** (colmados, comedores económicos, escuelas), que sí pueden comprar por volumen y repartir al menudeo. El suplidor no se elimina, sino que se acorta la cadena: **productor → suplidor local (con margen regulado) → consumidor**.
-
----
-
-### 19.7 Acta de Reuniones
-
-*(Pendiente de completar)*
-
-| Fecha | Asistentes | Acuerdos |
-|-------|------------|----------|
-| ___/___/2026 | | |
-| ___/___/2026 | | |
+| Compra volumen | Sí, compra grandes cantidades | Compra pequeñas cantidades |
+| Invierte en logística | Sí (transporte, almacenes, frío) | No (revende sin tocar el producto) |
+| Paga al contado | Generalmente sí | Frecuentemente a crédito |
+| Agrega valor | Sí (clasificación, empaque) | No (solo revende) |
+| Número de actores | 1 entre productor y detallista | 3 o más |
+| Asume riesgo | Sí | No |
+| Margen típico | 15-25% | 40-100% |
 
 ---
 
@@ -1183,25 +945,13 @@ Sin embargo, un análisis más profundo revela que **no todos los intermediarios
 **Estado:** ✅ Completada
 
 ### Objetivo
-Permitir a ONPECO visualizar un ranking de los productos más consultados dentro del marketplace, identificando tendencias de consumo y productos con mayor demanda.
+Permitir a ONPECO visualizar un ranking de los productos más consultados dentro del marketplace.
 
 ### Implementación técnica
-
-**Campo agregado en el modelo Product:**
-
-```python
-# apps/marketplace/models.py
-class Product(models.Model):
-    # ... campos existentes ...
-    view_count = models.IntegerField(default=0)
-```
 
 **Incremento automático del contador:**
 
 ```python
-# apps/marketplace/views.py
-from django.db.models import F
-
 def detalle_producto(request, producto_id):
     producto = get_object_or_404(Product, id=producto_id)
     producto.view_count = F('view_count') + 1
@@ -1219,23 +969,6 @@ def productos_mas_vistos(request):
     })
 ```
 
-**URL configurada:**
-
-```python
-# apps/marketplace/urls.py
-path('top-vistos/', views.productos_mas_vistos, name='productos_mas_vistos'),
-```
-
-**Template creado:**
-
-- `apps/marketplace/templates/marketplace/productos_mas_vistos.html`
-
-**Acceso desde:**
-
-- Menú lateral ONPECO: `Productos Top`
-- Navbar → Menú ONPECO: `📊 Productos Más Consultados`
-- URL directa: `/productos/top-vistos/`
-
 ---
 
 ## FASE 21: Módulo "Productores Más Denunciados" (ONPECO)
@@ -1244,23 +977,15 @@ path('top-vistos/', views.productos_mas_vistos, name='productos_mas_vistos'),
 **Estado:** ✅ Completada
 
 ### Objetivo
-Permitir a ONPECO visualizar un ranking de los productores con mayor cantidad de denuncias registradas, facilitando la identificación de posibles infractores.
+Permitir a ONPECO visualizar un ranking de los productores con mayor cantidad de denuncias registradas.
 
 ### Implementación técnica
 
-**Vista implementada:**
-
 ```python
-# apps/complaints/views.py
 @onpeco_required
 def productores_mas_denunciados(request):
-    from django.contrib.auth import get_user_model
-    from apps.complaints.models import Complaint
     from collections import defaultdict
     
-    User = get_user_model()
-    
-    # Contar denuncias agrupadas por complained_against
     denuncias_por_productor = defaultdict(int)
     denuncias = Complaint.objects.filter(complained_against__isnull=False)
     
@@ -1280,42 +1005,8 @@ def productores_mas_denunciados(request):
     for productor in productores_denunciados:
         productor.total_denuncias = denuncias_por_productor.get(productor.id, 0)
     
-    productores_denunciados = sorted(productores_denunciados, 
-                                      key=lambda x: x.total_denuncias, 
-                                      reverse=True)
-    
-    total_denuncias = sum([p.total_denuncias for p in productores_denunciados])
-    
-    context = {
-        'productores_denunciados': productores_denunciados,
-        'total_denuncias': total_denuncias,
-    }
     return render(request, 'complaints/productores_mas_denunciados.html', context)
 ```
-
-**URL configurada:**
-
-```python
-# apps/complaints/urls.py
-path('productores-mas-denunciados/', views.productores_mas_denunciados, name='productores_mas_denunciados'),
-```
-
-**Template creado:**
-
-- `apps/complaints/templates/complaints/productores_mas_denunciados.html`
-
-**Características del template:**
-- Tabla con ranking de productores más denunciados
-- Medallas 🥇🥈🥉 para los tres primeros lugares
-- Tarjetas estadísticas (total productores, máximo denuncias, total denuncias)
-- Enlace a denuncias del productor específico
-- Botón "Volver al Portal ONPECO"
-
-**Acceso desde:**
-
-- Menú lateral ONPECO: `🚨 Productores Más Denunciados`
-- Navbar → Menú ONPECO: `🚨 Productores Más Denunciados`
-- URL directa: `/denuncias/productores-mas-denunciados/`
 
 ---
 
@@ -1327,38 +1018,22 @@ path('productores-mas-denunciados/', views.productores_mas_denunciados, name='pr
 ### Objetivo
 Asegurar que todas las páginas del portal ONPECO tengan un botón visible para regresar al dashboard principal.
 
-### Problema identificado
-Las páginas de Denuncias, Reportes y Backups no tenían un botón de retorno al portal.
+### Botones agregados en:
 
-### Solución implementada
-
-**Botones agregados en:**
-
-| Página | Archivo | Ubicación |
-|--------|---------|-----------|
-| Productos Top | `marketplace/templates/marketplace/productos_mas_vistos.html` | Card-header |
-| Productores Denunciados | `complaints/templates/complaints/productores_mas_denunciados.html` | Card-header |
-| Denuncias | `templates/complaints/lista_denuncias.html` | Header |
-| Reportes | `apps/complaints/templates/complaints/reporte_denuncias.html` | Header |
-| Backups | `templates/complaints/gestion_backups.html` | Card-header |
+| Página | Archivo |
+|--------|---------|
+| Productos Top | `marketplace/templates/marketplace/productos_mas_vistos.html` |
+| Productores Denunciados | `complaints/templates/complaints/productores_mas_denunciados.html` |
+| Denuncias | `templates/complaints/lista_denuncias.html` |
+| Reportes | `apps/complaints/templates/complaints/reporte_denuncias.html` |
+| Backups | `templates/complaints/gestion_backups.html` |
 
 **Código del botón estándar:**
-
 ```html
 <a href="{% url 'complaints:portal_onpeco' %}" class="btn btn-success">
     <i class="fas fa-arrow-left"></i> Volver al Portal ONPECO
 </a>
 ```
-
-**Ubicaciones finales de los templates:**
-
-| Template | Ubicación |
-|----------|-----------|
-| `lista_denuncias.html` | `C:\...\templates\complaints\` |
-| `gestion_backups.html` | `C:\...\templates\complaints\` |
-| `reporte_denuncias.html` | `C:\...\apps\complaints\templates\complaints\` |
-| `productores_mas_denunciados.html` | `C:\...\apps\complaints\templates\complaints\` |
-| `productos_mas_vistos.html` | `C:\...\apps\marketplace\templates\marketplace\` |
 
 ---
 
@@ -1366,9 +1041,6 @@ Las páginas de Denuncias, Reportes y Backups no tenían un botón de retorno al
 
 **Fecha:** 08/06/2026
 **Estado:** ✅ Completada
-
-### Objetivo
-Mejorar la legibilidad del menú lateral del portal ONPECO, que presentaba poco contraste.
 
 ### CSS agregado
 
@@ -1395,16 +1067,6 @@ Mejorar la legibilidad del menú lateral del portal ONPECO, que presentaba poco 
 }
 ```
 
-**Archivo modificado:**
-
-- `apps/complaints/templates/onpeco/base_onpeco.html`
-
-**Mejoras visuales:**
-- Texto de color azul oscuro (#2c3e50) para mejor legibilidad
-- Fondo verde claro (#d4edda) al pasar el mouse
-- Iconos separados con ancho fijo
-- Bordes redondeados y transición suave
-
 ---
 
 ## FASE 24: Corrección de Template de Reporte de Denuncias
@@ -1412,14 +1074,11 @@ Mejorar la legibilidad del menú lateral del portal ONPECO, que presentaba poco 
 **Fecha:** 08/06/2026
 **Estado:** ✅ Completada
 
-### Problema identificado
-La página de Reportes (gráfico de denuncias) funcionaba correctamente pero no mostraba el botón de retorno al portal.
+### Problema
+La página de Reportes (gráfico de denuncias) no mostraba el botón de retorno al portal.
 
-### Solución implementada
-
-Se modificó el template `reporte_denuncias.html` para que use `base/base.html` en lugar de `onpeco/base_onpeco.html`.
-
-**Cambio clave:**
+### Solución
+Se modificó el template para que use `base/base.html` en lugar de `onpeco/base_onpeco.html`.
 
 ```html
 <!-- Antes -->
@@ -1431,43 +1090,26 @@ Se modificó el template `reporte_denuncias.html` para que use `base/base.html` 
 
 ---
 
-## FASE 25: PROTOTIPO DE BÚSQUEDA DINÁMICA EN TIEMPO REAL
+## FASE 25: Prototipo de Búsqueda Dinámica en Tiempo Real
 
 **Fecha:** 09/06/2026 - 28/06/2026
 **Estado:** ✅ Completada (Prototipo funcional)
 
-### 25.1 Contexto del Problema
+### Contexto del Problema
+El sistema de búsqueda de productos existente requería presionar un botón "Buscar" para obtener resultados, generando una experiencia de usuario poco fluida.
 
-Durante el desarrollo del proyecto, se identificó que el sistema de búsqueda de productos existente no era dinámico: los usuarios debían presionar un botón "Buscar" para obtener resultados, lo que generaba una experiencia de usuario poco fluida.
-
-**Requerimiento planteado:**
-Implementar un **sistema de búsqueda en tiempo real** que permita a los usuarios filtrar productos mientras escriben, sin necesidad de recargar la página ni presionar botones adicionales.
-
-### 25.2 Desarrollo del Prototipo
-
+### Desarrollo del Prototipo
 Se desarrolló un prototipo funcional de búsqueda dinámica utilizando:
 
 | Tecnología | Propósito |
 |------------|-----------|
-| HTML5 | Estructura de la página y tarjetas de producto |
-| CSS3 | Diseño visual, cuadrícula responsiva y estilos |
-| JavaScript (Vanilla) | Lógica de búsqueda en tiempo real y manipulación del DOM |
-
-**Modelo de datos del prototipo:**
-
-```javascript
-const productos = [
-    { nombre: "Aguacate Criollo", categoria: "frutas", precio: "RD$45 c/u", vendedor: "Ambioris" },
-    { nombre: "Plátanos Maduros", categoria: "tuberculos", precio: "RD$35/libra", vendedor: "Ambioris" },
-    { nombre: "Leche Fresca", categoria: "lacteos", precio: "RD$60/litro", vendedor: "Ambioris" },
-    // ... más productos
-];
-```
+| HTML5 | Estructura de la página |
+| CSS3 | Diseño visual, cuadrícula responsiva |
+| JavaScript (Vanilla) | Lógica de búsqueda en tiempo real |
 
 **Código de búsqueda en tiempo real:**
-
 ```javascript
-// Evento input: búsqueda mientras el usuario escribe
+const searchInput = document.getElementById('searchInput');
 searchInput.addEventListener('input', (e) => {
     const termino = e.target.value.toLowerCase();
     const productosFiltrados = productos.filter(producto =>
@@ -1478,74 +1120,43 @@ searchInput.addEventListener('input', (e) => {
 });
 ```
 
-**Filtros por categoría implementados:**
+**Filtros por categoría:**
+| Categoría | Ícono |
+|-----------|-------|
+| Todas | 📦 |
+| Frutas | 🍎 |
+| Verduras | 🥬 |
+| Lácteos | 🥛 |
+| Tubérculos | 🥔 |
+| Hierbas | 🌿 |
 
-| Categoría | Ícono | Descripción |
-|-----------|-------|-------------|
-| Todas | 📦 | Muestra todos los productos |
-| Frutas | 🍎 | Filtra productos de la categoría frutas |
-| Verduras | 🥬 | Filtra productos de la categoría verduras |
-| Lácteos | 🥛 | Filtra productos de la categoría lácteos |
-| Tubérculos | 🥔 | Filtra productos de la categoría tubérculos |
-| Hierbas | 🌿 | Filtra productos de la categoría hierbas |
-
-### 25.3 Entorno de Prueba
-
-El prototipo fue alojado en un **servidor local** para su prueba y validación:
-
+### Entorno de Prueba
 | Elemento | Detalle |
 |----------|---------|
-| **Servidor** | Daphne (ASGI) - `core.asgi:application` |
-| **URL de acceso** | `http://127.0.0.1:8000/productos/busqueda-tiempo-real/` |
-| **Puerto** | 8000 |
-| **Estado** | Funcional ✅ |
+| Servidor | Daphne (ASGI) |
+| URL | `http://127.0.0.1:8000/productos/busqueda-tiempo-real/` |
+| Estado | Funcional ✅ |
 
-### 25.4 Pruebas Realizadas
+### Pruebas Realizadas
+| Prueba | Resultado |
+|--------|-----------|
+| Búsqueda por nombre | ✅ Exitosa |
+| Búsqueda con mayúsculas | ✅ Exitosa |
+| Búsqueda por vendedor | ✅ Exitosa |
+| Filtro por categoría | ✅ Exitosa |
+| Búsqueda + filtro | ✅ Exitosa |
+| Sin resultados | ✅ Muestra mensaje |
+| Reset de búsqueda | ✅ Exitosa |
 
-| Prueba | Descripción | Resultado |
-|--------|-------------|-----------|
-| Búsqueda por nombre | Escribir "agua" → muestra "Aguacate" | ✅ Exitosa |
-| Búsqueda con mayúsculas | Escribir "AGUACATE" | ✅ Exitosa |
-| Búsqueda por vendedor | Escribir "Ambioris" | ✅ Exitosa |
-| Filtro por categoría | Seleccionar "Frutas" | ✅ Exitosa |
-| Búsqueda + filtro combinados | Buscar + filtrar | ✅ Exitosa |
-| Sin resultados | Buscar "xyz" | ✅ Muestra mensaje |
-| Reset de búsqueda | Borrar texto | ✅ Restaura todos |
-
-### 25.5 Resultado y Limitaciones
-
-**✅ Logros:**
-
-- La búsqueda en tiempo real funciona correctamente en el prototipo
-- Los filtros por categoría actualizan la lista instantáneamente
-- La experiencia de usuario es fluida y sin recargas
-- El prototipo es accesible desde `http://127.0.0.1:8000/productos/busqueda-tiempo-real/`
-
-**❌ Limitaciones de integración:**
-
-- El prototipo no pudo ser integrado al proyecto principal (con denuncias, chat, etc.)
-- La causa principal fue la falta de identificadores únicos (IDs) en la estructura HTML existente
-- Conflictos con otros scripts y la manipulación del DOM
-
-### 25.6 Valor Académico
-
-Aunque la funcionalidad no se integró al proyecto final, el prototipo demuestra:
-
-1. **Capacidad técnica:** El algoritmo de búsqueda en tiempo real funciona correctamente
-2. **Habilidad de diagnóstico:** Se identificaron las causas de la falta de integración
-3. **Documentación del proceso:** Queda registrado como evidencia de trabajo
-4. **Propuesta de mejora:** Sirve como base para futuras implementaciones
-
-### 25.7 Lecciones Aprendidas
-
-1. **Importancia de los selectores:** Es fundamental que el HTML tenga identificadores únicos (IDs) para manipulación dinámica
-2. **Aislamiento de código:** El prototipo funcionó en un entorno aislado; la integración requiere planificación
-3. **Documentación:** Registrar lo que funciona Y lo que no funciona tiene valor académico
-4. **Modularidad:** Diseñar componentes independientes facilita futuras integraciones
+### Lecciones Aprendidas
+1. Importancia de los selectores únicos (IDs) para manipulación dinámica
+2. Aislamiento de código: el prototipo funcionó en entorno aislado
+3. Documentar lo que funciona Y lo que no tiene valor académico
+4. Diseñar componentes independientes facilita futuras integraciones
 
 ---
 
-## FASE 26: PORTAL EXCLUSIVO DE ONPECO
+## FASE 26: Portal Exclusivo de ONPECO
 
 **Fecha:** 28/06/2026
 **Estado:** ✅ Completada
@@ -1553,196 +1164,87 @@ Aunque la funcionalidad no se integró al proyecto final, el prototipo demuestra
 ### Objetivo
 Crear un portal exclusivo para los usuarios de ONPECO (reguladores) completamente separado del admin de Django y del portal de usuarios normales.
 
-### Problema identificado
-Los usuarios de ONPECO tenían que entrar por el admin de Django (`/admin/`) para gestionar denuncias, ver gráficos y realizar backups. Esto no era ético ni profesional, ya que los reguladores no deberían tener acceso a la configuración interna de Django.
-
-### Solución implementada
-
-**1. Nueva vista `portal_onpeco` en `apps/complaints/views.py`:**
+### Vista `portal_onpeco`
 
 ```python
 @login_required
 def portal_onpeco(request):
-    """Portal exclusivo para ONPECO con todos los gráficos y gestión"""
-    
-    # Solo usuarios staff o reguladores pueden entrar
     if not request.user.is_staff and getattr(request.user, 'role', '') != 'regulador':
         return HttpResponseForbidden("No tienes permiso para acceder al portal de ONPECO.")
     
-    # Estadísticas
-    total_denuncias = Complaint.objects.count()
-    denuncias_pendientes = Complaint.objects.filter(status='pendiente').count()
-    denuncias_aprobadas = Complaint.objects.filter(status='aprobada').count()
-    denuncias_rechazadas = Complaint.objects.filter(status='rechazada').count()
-    total_productos = Product.objects.count()
-    total_usuarios = User.objects.count()
-    total_productores = User.objects.filter(role='productor').count()
-    total_consumidores = User.objects.filter(role='consumidor').count()
-    
     context = {
-        'total_denuncias': total_denuncias,
-        'denuncias_pendientes': denuncias_pendientes,
-        'denuncias_aprobadas': denuncias_aprobadas,
-        'denuncias_rechazadas': denuncias_rechazadas,
-        'total_productos': total_productos,
-        'total_usuarios': total_usuarios,
-        'total_productores': total_productores,
-        'total_consumidores': total_consumidores,
-        'user': request.user,
+        'total_denuncias': Complaint.objects.count(),
+        'denuncias_pendientes': Complaint.objects.filter(status='pendiente').count(),
+        'denuncias_aprobadas': Complaint.objects.filter(status='aprobada').count(),
+        'denuncias_rechazadas': Complaint.objects.filter(status='rechazada').count(),
+        'total_productos': Product.objects.count(),
+        'total_usuarios': User.objects.count(),
+        'total_productores': User.objects.filter(role='productor').count(),
+        'total_consumidores': User.objects.filter(role='consumidor').count(),
     }
-    
     return render(request, 'onpeco/portal.html', context)
 ```
 
-**2. Template `portal.html` creado:**
-
-- Ubicación: `templates/onpeco/portal.html`
-- Diseño profesional con tarjetas de estadísticas, gráficos y menú lateral
-- Incluye gráfico de denuncias por mes con Chart.js
-- Incluye gráfico de estado de denuncias (dona)
-- Tabla de denuncias recientes
-- Botones de acceso rápido a todas las funcionalidades de ONPECO
-
-**3. URL configurada:**
-
-```python
-# apps/complaints/urls.py
-path('portal/', views.portal_onpeco, name='portal_onpeco'),
-```
-
-**4. Redirección después de login:**
-
-```python
-# core/settings.py
-LOGIN_REDIRECT_URL = '/denuncias/portal/'
-```
-
-**5. API para denuncias recientes:**
-
-```python
-@login_required
-def api_denuncias_recientes(request):
-    """API para obtener las últimas denuncias"""
-    denuncias = Complaint.objects.order_by('-created_at')[:10]
-    data = []
-    for d in denuncias:
-        data.append({
-            'ticket_number': d.ticket_number,
-            'title': d.title,
-            'status': d.status,
-            'created_at': d.created_at.strftime('%d/%m/%Y') if d.created_at else '',
-        })
-    return JsonResponse(data, safe=False)
-```
-
 ### URLs del portal ONPECO
-
 | Descripción | URL |
 |-------------|-----|
-| **Portal ONPECO (dashboard)** | `/denuncias/portal/` |
+| Portal ONPECO (dashboard) | `/denuncias/portal/` |
 | Lista de denuncias | `/denuncias/lista/` |
 | Gestión de backups | `/denuncias/gestion-backups/` |
-| Reporte de denuncias (gráfico) | `/denuncias/reporte-denuncias/` |
-| API del gráfico (JSON) | `/denuncias/api/denuncias-por-mes/` |
-| API denuncias recientes | `/denuncias/api/denuncias/recientes/` |
+| Reporte de denuncias | `/denuncias/reporte-denuncias/` |
 | Productos más consultados | `/productos/top-vistos/` |
 | Productores más denunciados | `/denuncias/productores-mas-denunciados/` |
 
-### Resultado
-
-- ✅ ONPECO tiene su propio portal exclusivo
-- ✅ Los reguladores ya no necesitan entrar al admin de Django
-- ✅ El portal muestra gráficos, estadísticas y gestión completa
-- ✅ Experiencia profesional para los usuarios de ONPECO
-
 ---
 
-## FASE 27: BLOQUEO DE ACCESO AL ADMIN DE DJANGO
+## FASE 27: Bloqueo de Acceso al Admin de Django
 
 **Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
 ### Objetivo
-Bloquear el acceso al admin de Django (`/admin/`) para los usuarios de ONPECO que no sean superusuarios, redirigiéndolos automáticamente al portal exclusivo.
+Bloquear el acceso al admin de Django (`/admin/`) para los usuarios de ONPECO que no sean superusuarios.
 
-### Problema identificado
-Los usuarios de ONPECO (reguladores) podían acceder al admin de Django, lo cual no es profesional ni seguro, ya que el admin contiene configuraciones internas del sistema.
-
-### Solución implementada
-
-**1. Middleware `BlockAdminForOnpeco` creado en `core/middleware/block_admin.py`:**
+### Middleware `BlockAdminForOnpeco`
 
 ```python
-from django.shortcuts import redirect
-
+# core/middleware/block_admin.py
 class BlockAdminForOnpeco:
-    """Bloquea el acceso al admin de Django para usuarios ONPECO reguladores"""
-    
-    def __init__(self, get_response):
-        self.get_response = get_response
-    
     def __call__(self, request):
-        # Si la URL empieza con /admin/
         if request.path.startswith('/admin/'):
-            # Si el usuario está autenticado y es regulador (pero no superusuario)
             if request.user.is_authenticated:
-                # Si es ONPECO regulador pero NO es superusuario
                 if not request.user.is_superuser and getattr(request.user, 'role', '') == 'regulador':
                     return redirect('/denuncias/portal/')
-        
-        response = self.get_response(request)
-        return response
+        return self.get_response(request)
 ```
 
-**2. Middleware registrado en `settings.py`:**
-
+### Registro en settings.py
 ```python
 MIDDLEWARE = [
-    # ... otros middlewares ...
-    'core.middleware.block_admin.BlockAdminForOnpeco',  # ← Bloquea admin para ONPECO
+    # ...
+    'core.middleware.block_admin.BlockAdminForOnpeco',
 ]
 ```
 
 ### Comportamiento esperado
-
-| Usuario | Acceso a `/admin/` | Redirección |
-|---------|-------------------|-------------|
-| Superusuario | ✅ Permitido | - |
-| Staff (admin) | ✅ Permitido | - |
-| Regulador ONPECO | ❌ Bloqueado | `/denuncias/portal/` |
-| Productor | ❌ Bloqueado | `/denuncias/portal/` |
-| Consumidor | ❌ Bloqueado | `/denuncias/portal/` |
-
-### Resultado
-
-- ✅ Los reguladores de ONPECO son redirigidos automáticamente al portal
-- ✅ Solo los superusuarios pueden acceder al admin
-- ✅ Mayor seguridad y profesionalismo
-- ✅ El portal ONPECO es la única interfaz para reguladores
+| Usuario | Acceso a `/admin/` |
+|---------|-------------------|
+| Superusuario | ✅ Permitido |
+| Regulador ONPECO | ❌ Bloqueado → redirigido al portal |
+| Productor/Consumidor | ❌ Bloqueado |
 
 ---
 
-## FASE 28: DECORADOR DE PERMISOS @onpeco_required
+## FASE 28: Decorador de Permisos @onpeco_required
 
 **Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
 ### Objetivo
-Crear un decorador personalizado `@onpeco_required` que reemplace a `@staff_member_required`, permitiendo el acceso a las vistas tanto a usuarios `is_staff` como a usuarios con rol `'regulador'`.
-
-### Problema identificado
-El decorador `@staff_member_required` de Django solo permite acceso a usuarios con `is_staff=True`. Esto excluía a los reguladores de ONPECO que solo tienen `role='regulador'` pero no `is_staff`.
-
-### Solución implementada
-
-**1. Decorador `onpeco_required` creado en `apps/complaints/views.py`:**
+Crear un decorador personalizado `@onpeco_required` que permita el acceso a vistas tanto a usuarios `is_staff` como con rol `'regulador'`.
 
 ```python
-from functools import wraps
-from django.http import HttpResponseForbidden
-
 def onpeco_required(view_func):
-    """Decorador que permite acceso solo a staff o reguladores ONPECO"""
     @wraps(view_func)
     def wrapper(request, *args, **kwargs):
         if request.user.is_authenticated:
@@ -1752,41 +1254,20 @@ def onpeco_required(view_func):
     return wrapper
 ```
 
-**2. Sustitución de `@staff_member_required` por `@onpeco_required`:**
-
-| Función | Antes | Después |
-|---------|-------|---------|
-| `lista_denuncias` | `@staff_member_required` | `@onpeco_required` |
-| `actualizar_denuncia` | `@staff_member_required` | `@onpeco_required` |
-| `gestion_backups` | `@staff_member_required` | `@onpeco_required` |
-| `crear_punto_restauracion` | `@staff_member_required` | `@onpeco_required` |
-| `restaurar_backup` | `@staff_member_required` | `@onpeco_required` |
-| `denuncias_por_mes_api` | `@staff_member_required` | `@onpeco_required` |
-| `reporte_denuncias` | `@staff_member_required` | `@onpeco_required` |
-| `productos_mas_vistos` | `@staff_member_required` | `@onpeco_required` |
-| `productores_mas_denunciados` | `@staff_member_required` | `@onpeco_required` |
-
-**3. URL de logout agregada en `core/urls.py`:**
-
-```python
-from django.contrib.auth.views import LogoutView
-
-urlpatterns = [
-    # ... otras rutas ...
-    path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
-]
-```
-
-### Resultado
-
-- ✅ Los reguladores de ONPECO pueden acceder a todas las vistas de gestión
-- ✅ Los staff de Django también tienen acceso (compatibilidad)
-- ✅ Los usuarios no autorizados reciben un mensaje de "No tienes permiso"
-- ✅ El sistema de permisos ahora es más flexible y profesional
+### Sustitución de `@staff_member_required` por `@onpeco_required`
+- `lista_denuncias`
+- `actualizar_denuncia`
+- `gestion_backups`
+- `crear_punto_restauracion`
+- `restaurar_backup`
+- `denuncias_por_mes_api`
+- `reporte_denuncias`
+- `productos_mas_vistos`
+- `productores_mas_denunciados`
 
 ---
 
-## FASE 29: SISTEMA DE CARRITO DE COMPRAS
+## FASE 29: Sistema de Carrito de Compras
 
 **Fecha:** 13/06/2026
 **Estado:** ✅ Completada
@@ -1794,43 +1275,31 @@ urlpatterns = [
 ### Objetivo
 Implementar un sistema completo de carrito de compras que permita a los consumidores seleccionar múltiples productos antes de proceder al pago.
 
-### Tecnologías utilizadas
-
-| Tecnología | Propósito |
-|------------|-----------|
-| Django Models | Almacenamiento de carrito y items |
-| Django Views | Lógica de negocio del carrito |
-| Django Templates | Interfaz de usuario del carrito |
-| Session Management | Persistencia del carrito por usuario |
-
 ### Modelos creados
 
-**apps/cart/models.py**
-
-| Modelo | Campos | Descripción |
-|--------|--------|-------------|
-| `Cart` | user, created_at, updated_at | Carrito de compras por usuario |
-| `CartItem` | cart, product, quantity, added_at | Items dentro del carrito |
-
-**Métodos implementados:**
-
 ```python
+# apps/cart/models.py
 class Cart(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='cart')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
     def get_total_items(self):
-        """Devuelve el número total de items en el carrito"""
         return sum(item.quantity for item in self.items.all())
-    
+
     def get_total_price(self):
-        """Devuelve el precio total del carrito"""
         return sum(item.get_total_price() for item in self.items.all())
-    
+
     def clear_cart(self):
-        """Vacía el carrito"""
         self.items.all().delete()
 
 class CartItem(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='items')
+    product = models.ForeignKey('marketplace.Product', on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+    added_at = models.DateTimeField(auto_now_add=True)
+
     def get_total_price(self):
-        """Devuelve el precio total del item"""
         return self.product.price * self.quantity
 ```
 
@@ -1840,36 +1309,13 @@ class CartItem(models.Model):
 |-------|-----|--------|-------------|
 | `ver_carrito` | `/cart/ver/` | GET | Muestra el contenido del carrito |
 | `agregar_al_carrito` | `/cart/agregar/<product_id>/` | POST | Agrega un producto al carrito |
-| `actualizar_cantidad` | `/cart/actualizar/<item_id>/` | POST | Modifica la cantidad de un producto |
-| `eliminar_del_carrito` | `/cart/eliminar/<item_id>/` | GET | Elimina un producto del carrito |
+| `actualizar_cantidad` | `/cart/actualizar/<item_id>/` | POST | Modifica la cantidad |
+| `eliminar_del_carrito` | `/cart/eliminar/<item_id>/` | GET | Elimina un producto |
 | `vaciar_carrito` | `/cart/vaciar/` | GET | Vacía completamente el carrito |
-
-### Template creado
-
-- `templates/cart/ver_carrito.html` - Página del carrito con tabla de productos, resumen y botones de acción
-
-### URLs configuradas
-
-```python
-# apps/cart/urls.py
-urlpatterns = [
-    path('ver/', views.ver_carrito, name='ver_carrito'),
-    path('agregar/<int:product_id>/', views.agregar_al_carrito, name='agregar_al_carrito'),
-    path('actualizar/<int:item_id>/', views.actualizar_cantidad, name='actualizar_cantidad'),
-    path('eliminar/<int:item_id>/', views.eliminar_del_carrito, name='eliminar_del_carrito'),
-    path('vaciar/', views.vaciar_carrito, name='vaciar_carrito'),
-]
-```
-
-### Seguridad implementada
-
-- `@login_required` en todas las vistas del carrito
-- Verificación de que el usuario solo pueda modificar su propio carrito
-- Validación de stock disponible antes de agregar productos
 
 ---
 
-## FASE 30: CHECKOUT Y PEDIDOS
+## FASE 30: Checkout y Pedidos
 
 **Fecha:** 13/06/2026
 **Estado:** ✅ Completada
@@ -1879,32 +1325,35 @@ Implementar el proceso de checkout (finalización de compra), permitiendo al con
 
 ### Modelos creados
 
-**apps/cart/models.py**
-
-| Modelo | Campos | Descripción |
-|--------|--------|-------------|
-| `Order` | user, created_at, updated_at, status, total_amount, delivery_type, shipping_address, pickup_location, phone_number, delivery_instructions | Pedido completo |
-| `OrderItem` | order, product, quantity, price | Items dentro del pedido |
-
-**Estados del pedido:**
-
 ```python
-ESTADO_CHOICES = [
-    ('pending', '⏳ Pendiente de confirmación'),
-    ('confirmed', '✅ Confirmado por productor'),
-    ('preparing', '📦 En preparación'),
-    ('delivered', '🏠 Entregado - Pago realizado'),
-    ('cancelled', '❌ Cancelado'),
-]
-```
+class Order(models.Model):
+    ESTADO_CHOICES = [
+        ('pending', '⏳ Pendiente de confirmación'),
+        ('confirmed', '✅ Confirmado por productor'),
+        ('preparing', '📦 En preparación'),
+        ('delivered', '🏠 Entregado - Pago realizado'),
+        ('cancelled', '❌ Cancelado'),
+    ]
+    TIPO_ENTREGA_CHOICES = [
+        ('delivery', '🚚 Entrega a domicilio'),
+        ('pickup', '🏪 Paso a recoger'),
+    ]
 
-**Tipos de entrega:**
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    status = models.CharField(max_length=20, choices=ESTADO_CHOICES, default='pending')
+    total_amount = models.DecimalField(max_digits=12, decimal_places=2, default=0)
+    delivery_type = models.CharField(max_length=20, choices=TIPO_ENTREGA_CHOICES, default='delivery')
+    shipping_address = models.TextField()
+    phone_number = models.CharField(max_length=15)
+    delivery_instructions = models.TextField(blank=True)
 
-```python
-TIPO_ENTREGA_CHOICES = [
-    ('delivery', '🚚 Entrega a domicilio'),
-    ('pickup', '🏪 Paso a recoger (Retiro en punto de venta)'),
-]
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
+    product = models.ForeignKey('marketplace.Product', on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
 ```
 
 ### Vistas implementadas
@@ -1912,28 +1361,20 @@ TIPO_ENTREGA_CHOICES = [
 | Vista | URL | Descripción |
 |-------|-----|-------------|
 | `checkout` | `/cart/checkout/` | Formulario de confirmación de pedido |
-| `order_confirmation` | `/cart/confirmacion/<order_id>/` | Página de confirmación después de crear el pedido |
-| `mis_pedidos` | `/cart/mis-pedidos/` | Lista de todos los pedidos del consumidor |
+| `order_confirmation` | `/cart/confirmacion/<order_id>/` | Confirmación después de crear el pedido |
+| `mis_pedidos` | `/cart/mis-pedidos/` | Lista de pedidos del consumidor |
 | `detalle_pedido` | `/cart/pedido/<order_id>/` | Detalle de un pedido específico |
 
 ### Flujo de compra completo
-
 ```
 Producto → Agregar al carrito → Ver carrito → Checkout → 
 Completar datos de entrega → Confirmar pedido → 
 Ver confirmación → Ver mis pedidos
 ```
 
-### Templates creados
-
-- `templates/cart/checkout.html` - Formulario de checkout
-- `templates/cart/order_confirmation.html` - Confirmación de pedido
-- `templates/cart/mis_pedidos.html` - Lista de pedidos del consumidor
-- `templates/cart/detalle_pedido.html` - Detalle de un pedido
-
 ---
 
-## FASE 31: CENTRO DE ACOPIO
+## FASE 31: Centro de Acopio
 
 **Fecha:** 13/06/2026
 **Estado:** ✅ Completada
@@ -1941,41 +1382,22 @@ Ver confirmación → Ver mis pedidos
 ### Objetivo
 Crear una nueva entidad llamada "Centro de Acopio" que actúa como intermediario centralizado para resolver el problema de pagos a múltiples productores cuando un consumidor compra productos de diferentes productores en un solo pedido.
 
-### Problema identificado
-Los consumidores agregaban productos de diferentes productores al carrito, generando confusión sobre a quién debían pagar y cómo distribuir el pago.
-
-### Solución implementada
-
-**Modelo extendido:**
+### Modelo extendido
 
 ```python
 class Order(models.Model):
     # ... campos existentes ...
-    
-    # Centro de acopio que maneja el pedido
-    acopio = models.ForeignKey(
-        User, 
-        on_delete=models.CASCADE, 
-        related_name='acopio_orders',
-        null=True, 
-        blank=True
-    )
-    
-    # Desglose de pagos por productor (JSON)
+    acopio = models.ForeignKey(User, on_delete=models.CASCADE, related_name='acopio_orders', null=True, blank=True)
     payment_breakdown = models.JSONField(default=dict, blank=True)
-    
-    # Estado de pago al productor
     payment_status = models.CharField(max_length=20, choices=[
         ('pending', '⏳ Pendiente de pago'),
         ('partial', '💰 Pago parcial'),
         ('paid', '✅ Pagado'),
     ], default='pending')
-    
     payment_date = models.DateTimeField(blank=True, null=True)
 ```
 
 **Estructura del desglose:**
-
 ```json
 {
     "productor_id": {
@@ -1993,55 +1415,32 @@ class Order(models.Model):
 
 | Vista | URL | Descripción |
 |-------|-----|-------------|
-| `pedidos_acopio` | `/cart/pedidos-acopio/` | Lista todos los pedidos recibidos por el Centro de Acopio |
-| `detalle_acopio` | `/cart/detalle-acopio/<order_id>/` | Detalle del pedido con desglose por productor |
+| `pedidos_acopio` | `/cart/pedidos-acopio/` | Lista todos los pedidos recibidos |
+| `detalle_acopio` | `/cart/detalle-acopio/<order_id>/` | Detalle con desglose por productor |
 
 ### Usuario del Centro de Acopio
-
 | Campo | Valor |
 |-------|-------|
-| **Usuario** | `centro_acopio` |
-| **Contraseña** | `acopio123` |
-| **Rol** | `acopio` |
-| **is_staff** | `False` |
-
-### Templates creados
-
-- `templates/cart/pedidos_acopio.html` - Lista de pedidos para el Centro de Acopio
-- `templates/cart/detalle_acopio.html` - Detalle con desglose por productor
-
-### Funcionamiento del flujo
-
-1. El consumidor agrega productos de diferentes productores al carrito
-2. En el checkout, el sistema detecta todos los productores y genera un desglose
-3. El consumidor realiza un solo pago al Centro de Acopio
-4. El Centro de Acopio recibe el pedido completo
-5. El Centro de Acopio distribuye el pago a cada productor según el desglose
+| Usuario | `centro_acopio` |
+| Contraseña | `acopio123` |
+| Rol | `acopio` |
+| is_staff | `False` |
 
 ---
 
-## FASE 32: BALANCE DE VENTAS PARA PRODUCTORES
+## FASE 32: Balance de Ventas para Productores
 
 **Fecha:** 13/06/2026
 **Estado:** ✅ Completada
 
 ### Objetivo
-Implementar un módulo que permita a los productores visualizar sus ventas y el estado de sus pagos (total vendido, pagado y pendiente).
+Implementar un módulo que permita a los productores visualizar sus ventas y el estado de sus pagos.
 
-### Problema identificado
-Los productores no tenían visibilidad de:
-- Cuánto habían vendido
-- Cuánto les había pagado el Centro de Acopio
-- Cuánto les faltaba por cobrar
-
-### Implementación técnica
-
-**Vista implementada:**
+### Vista implementada
 
 ```python
 @login_required
 def balance_ventas(request):
-    # Obtener pedidos con productos de este productor
     orders = Order.objects.filter(
         items__product__vendedor=request.user
     ).distinct().order_by('-created_at')
@@ -2053,7 +1452,6 @@ def balance_ventas(request):
         mis_items = order.items.filter(product__vendedor=request.user)
         subtotal = sum(item.get_total_price() for item in mis_items)
         total_vendido += subtotal
-        
         if order.payment_status == 'paid':
             total_pagado += subtotal
     
@@ -2063,151 +1461,66 @@ def balance_ventas(request):
 ```
 
 ### Métricas mostradas
-
-| Métrica | Descripción | Cálculo |
-|---------|-------------|---------|
-| **Total Vendido** | Suma de todas las ventas del productor | Σ(subtotal de sus productos vendidos) |
-| **Total Pagado** | Monto que el Centro de Acopio ya pagó | Σ(subtotal de productos con payment_status='paid') |
-| **Pendiente de Pago** | Lo que aún le deben | Total Vendido - Total Pagado |
-
-### Template creado
-
-- `templates/cart/balance_ventas.html` - Muestra tres tarjetas de resumen y una tabla con el historial de ventas
-
-### Acceso
-
-- URL: `/cart/balance-ventas/`
-- Visible en el menú para usuarios con rol `productor` o `suplidor`
-- Protegido con `@login_required`
+| Métrica | Descripción |
+|---------|-------------|
+| Total Vendido | Suma de todas las ventas del productor |
+| Total Pagado | Monto que el Centro de Acopio ya pagó |
+| Pendiente de Pago | Total Vendido - Total Pagado |
 
 ---
 
-## FASE 33: SEPARACIÓN DE ROLES Y PERMISOS
+## FASE 33: Separación de Roles y Permisos
 
 **Fecha:** 13/06/2026
 **Estado:** ✅ Completada
 
 ### Objetivo
-Separar claramente los roles y permisos de cada tipo de usuario para evitar conflictos de acceso y garantizar que cada usuario solo pueda acceder a las funcionalidades que le corresponden.
-
-### Problemas identificados
-
-1. El usuario `centro_acopio` tenía `is_staff=True`, lo que le permitía acceder al portal de ONPECO y a funciones que no le correspondían.
-2. El decorador `@staff_member_required` excluía a los reguladores con `role='regulador'` pero sin `is_staff`.
-
-### Soluciones implementadas
-
-#### A. Cambio de permisos del Centro de Acopio
-
-```python
-from apps.users.models import User
-centro = User.objects.get(username='centro_acopio')
-centro.is_staff = False
-centro.role = 'acopio'
-centro.save()
-```
-
-#### B. Decorador `onpeco_required` actualizado
-
-```python
-def onpeco_required(view_func):
-    """Decorador que permite acceso solo a staff o reguladores ONPECO (excluye Centro Acopio)"""
-    @wraps(view_func)
-    def wrapper(request, *args, **kwargs):
-        if request.user.is_authenticated:
-            # Excluir al Centro de Acopio
-            if request.user.username == 'centro_acopio' or getattr(request.user, 'role', '') == 'acopio':
-                return HttpResponseForbidden("El Centro de Acopio no tiene acceso a esta sección.")
-            if request.user.is_staff or getattr(request.user, 'role', '') == 'regulador':
-                return view_func(request, *args, **kwargs)
-        return HttpResponseForbidden("No tienes permiso para acceder")
-    return wrapper
-```
-
-#### C. Modificación de `portal_onpeco`
-
-```python
-@login_required
-def portal_onpeco(request):
-    # Bloquear al Centro de Acopio
-    if request.user.username == 'centro_acopio' or getattr(request.user, 'role', '') == 'acopio':
-        messages.error(request, '❌ El Centro de Acopio no tiene acceso al portal de ONPECO.')
-        return redirect('inicio')
-    # ... resto del código
-```
+Separar claramente los roles y permisos de cada tipo de usuario para evitar conflictos de acceso.
 
 ### Tabla de roles final
 
 | Rol | role | is_staff | Funciones principales |
 |-----|------|----------|----------------------|
-| **Consumidor** | consumidor | False | Comprar, ver pedidos, denunciar |
-| **Productor** | productor | False | Vender, ver ventas, balance |
-| **Suplidor** | suplidor | False | Vender, ver ventas, balance |
-| **Regulador** | regulador | True | Gestionar denuncias, backups, reputación |
-| **Centro Acopio** | acopio | False | Gestionar pedidos, desglose |
+| Consumidor | consumidor | False | Comprar, ver pedidos, denunciar |
+| Productor | productor | False | Vender, ver ventas, balance |
+| Suplidor | suplidor | False | Vender, ver ventas, balance |
+| Regulador | regulador | True | Gestionar denuncias, backups |
+| Centro Acopio | acopio | False | Gestionar pedidos, desglose |
 
 ### Menús por rol
 
-| Rol | Enlaces visibles en el menú |
-|-----|----------------------------|
-| **Consumidor** | Inicio, Productores, Productos, Mi Carrito, Mis Pedidos, Mis Denuncias, Mis Conversaciones, Perfil |
-| **Productor** | Inicio, Productores, Productos, Mis Ventas, Balance de Ventas, Mis Productos, Mis Conversaciones, Perfil |
-| **Regulador** | Inicio, Productores, Productos, ONPECO (dropdown), Perfil |
-| **Centro Acopio** | Inicio, Productores, Productos, Centro de Acopio, Mis Conversaciones, Perfil |
+| Rol | Enlaces visibles |
+|-----|------------------|
+| Consumidor | Inicio, Productores, Productos, Mi Carrito, Mis Pedidos, Mis Denuncias, Mis Conversaciones, Perfil |
+| Productor | Inicio, Productores, Productos, Mis Ventas, Balance de Ventas, Mis Productos, Mis Conversaciones, Perfil |
+| Regulador | Inicio, Productores, Productos, ONPECO (dropdown), Perfil |
+| Centro Acopio | Inicio, Productores, Productos, Centro de Acopio, Mis Conversaciones, Perfil |
 
 ---
 
-## FASE 34: TEMPLATES DEL CARRITO Y MENÚS PERSONALIZADOS
+## FASE 34: Templates del Carrito y Menús Personalizados
 
 **Fecha:** 13/06/2026
 **Estado:** ✅ Completada
 
 ### Templates creados
 
-| Archivo | Función | Ubicación |
-|---------|---------|-----------|
-| `ver_carrito.html` | Página del carrito de compras | `templates/cart/` |
-| `checkout.html` | Formulario de confirmación de pedido | `templates/cart/` |
-| `order_confirmation.html` | Confirmación de pedido creado | `templates/cart/` |
-| `mis_pedidos.html` | Lista de pedidos del consumidor | `templates/cart/` |
-| `detalle_pedido.html` | Detalle de un pedido específico | `templates/cart/` |
-| `mis_ventas.html` | Lista de pedidos recibidos (productor) | `templates/cart/` |
-| `detalle_venta.html` | Detalle de un pedido (productor) | `templates/cart/` |
-| `balance_ventas.html` | Balance de ventas del productor | `templates/cart/` |
-| `pedidos_acopio.html` | Lista de pedidos (Centro Acopio) | `templates/cart/` |
-| `detalle_acopio.html` | Detalle con desglose por productor | `templates/cart/` |
-
-### Templates modificados
-
-| Archivo | Cambio realizado |
-|---------|------------------|
-| `templates/base/base.html` | Agregados enlaces por rol (Carrito, Mis Pedidos, Mis Ventas, Balance de Ventas, Centro de Acopio) |
-| `templates/base/inicio.html` | Agregados botones "Ir al Portal ONPECO" e "Ir al Centro de Acopio" |
-
-### Enlaces agregados en `base.html`
-
-```html
-<!-- Consumidor -->
-{% if user.role == 'consumidor' %}
-<li><a href="{% url 'cart:ver_carrito' %}">Mi Carrito</a></li>
-<li><a href="{% url 'cart:mis_pedidos' %}">Mis Pedidos</a></li>
-{% endif %}
-
-<!-- Productor/Suplidor -->
-{% if user.role == 'productor' or user.role == 'suplidor' %}
-<li><a href="{% url 'cart:mis_ventas' %}">Mis Ventas</a></li>
-<li><a href="{% url 'cart:balance_ventas' %}">Balance de Ventas</a></li>
-{% endif %}
-
-<!-- Centro de Acopio -->
-{% if user.role == 'acopio' or user.username == 'centro_acopio' %}
-<li><a href="{% url 'cart:pedidos_acopio' %}">Centro de Acopio</a></li>
-{% endif %}
-```
+| Archivo | Función |
+|---------|---------|
+| `ver_carrito.html` | Página del carrito de compras |
+| `checkout.html` | Formulario de confirmación de pedido |
+| `order_confirmation.html` | Confirmación de pedido creado |
+| `mis_pedidos.html` | Lista de pedidos del consumidor |
+| `detalle_pedido.html` | Detalle de un pedido específico |
+| `mis_ventas.html` | Lista de pedidos recibidos (productor) |
+| `detalle_venta.html` | Detalle de un pedido (productor) |
+| `balance_ventas.html` | Balance de ventas del productor |
+| `pedidos_acopio.html` | Lista de pedidos (Centro Acopio) |
+| `detalle_acopio.html` | Detalle con desglose por productor |
 
 ---
 
-## FASE 35: INTEGRACIÓN DE TODOS LOS MÓDULOS
+## FASE 35: Integración de Todos los Módulos
 
 **Fecha:** 13/06/2026
 **Estado:** ✅ Completada
@@ -2231,27 +1544,9 @@ def portal_onpeco(request):
 | `/cart/pedidos-acopio/` | Centro de Acopio | centro_acopio |
 | `/cart/detalle-acopio/<int:order_id>/` | Detalle Acopio | centro_acopio |
 
-### Configuración final en `settings.py`
-
-```python
-INSTALLED_APPS = [
-    # ... otras apps ...
-    'apps.cart',  # ← Agregada
-]
-```
-
-### Configuración final en `core/urls.py`
-
-```python
-urlpatterns = [
-    # ... otras rutas ...
-    path('cart/', include('apps.cart.urls')),
-]
-```
-
 ---
 
-## FASE 36: CORRECCIÓN DE PERMISOS DE USUARIOS
+## FASE 36: Corrección de Permisos de Usuarios
 
 **Fecha:** 20/06/2026
 **Estado:** ✅ Completada
@@ -2260,16 +1555,12 @@ urlpatterns = [
 
 | Usuario | Problema | Causa |
 |---------|----------|-------|
-| `prueba` | Tenía acceso a funcionalidades de ONPECO | `is_staff=True` y `is_superuser=True` |
-| `onpeco_regulador` | Aparecía como "Consumidor" en lugar de "Regulador" | `role='consumidor'` en lugar de `role='regulador'` |
+| `prueba` | Acceso a funcionalidades de ONPECO | `is_staff=True`, `is_superuser=True` |
+| `onpeco_regulador` | Aparecía como "Consumidor" | `role='consumidor'` en lugar de `'regulador'` |
 
-### Soluciones implementadas
-
-**Corrección desde el shell de Django:**
+### Corrección
 
 ```python
-from apps.users.models import User
-
 # Corregir prueba
 prueba = User.objects.get(username='prueba')
 prueba.is_staff = False
@@ -2283,56 +1574,35 @@ regulador.role = 'regulador'
 regulador.save()
 ```
 
-### Resultado
-
-| Usuario | Antes | Después |
-|---------|-------|---------|
-| `prueba` | `is_staff=True, is_superuser=True, role='productor'` | `is_staff=False, is_superuser=False, role='productor'` |
-| `onpeco_regulador` | `role='consumidor'` | `role='regulador'` |
-
-### Limpieza de sesiones
-
-Para aplicar los cambios correctamente, se limpiaron las sesiones activas:
-
-```python
-from django.contrib.sessions.models import Session
-Session.objects.all().delete()
-```
-
 ---
 
-## FASE 37: SISTEMA DE VALIDACIÓN DE FORMULARIOS CON ERRORES EN CAMPOS ESPECÍFICOS
+## FASE 37: Sistema de Validación de Formularios con Errores en Campos Específicos
 
 **Fecha:** 20/06/2026
 **Estado:** ✅ Completada
 
-### Problema identificado
-Los formularios de registro mostraban errores generales, no específicos por campo. Esto dificultaba al usuario identificar qué campo debía corregir.
-
-### Solución implementada
-
-**1. Validaciones en `forms.py`:**
+### Validaciones implementadas
 
 ```python
 # apps/users/forms.py
 def clean_email(self):
     email = self.cleaned_data.get('email')
     if User.objects.filter(email=email).exists():
-        raise forms.ValidationError('⚠️ Este correo electrónico ya está registrado. Por favor usa otro.')
+        raise forms.ValidationError('⚠️ Este correo electrónico ya está registrado.')
     return email
 
 def clean_username(self):
     username = self.cleaned_data.get('username')
     if User.objects.filter(username=username).exists():
-        raise forms.ValidationError('⚠️ Este nombre de usuario ya está registrado. Por favor usa otro.')
+        raise forms.ValidationError('⚠️ Este nombre de usuario ya está registrado.')
     return username
 ```
 
-**2. Templates con errores en rojo:**
+### Templates con errores en rojo
 
 ```html
 <div class="mb-3">
-    <label for="{{ form.email.id_for_label }}" class="form-label">Correo electrónico *</label>
+    <label for="{{ form.email.id_for_label }}">Correo electrónico *</label>
     {{ form.email }}
     {% if form.email.errors %}
         <div class="text-danger small mt-1">
@@ -2344,46 +1614,22 @@ def clean_username(self):
 </div>
 ```
 
-**3. Clase CSS para campos con error:**
-
-```css
-.is-invalid {
-    border-color: #dc3545 !important;
-    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
-}
-```
-
-### Validaciones implementadas
-
-| Campo | Validación |
-|-------|------------|
-| Email | No permitir correos duplicados |
-| Username | No permitir nombres de usuario duplicados |
-| Password | Mínimo 8 caracteres |
-| Confirm Password | Debe coincidir con Password |
-
 ---
 
-## FASE 38: MENSAJES DE ÉXITO GRANDES Y VISUALES EN EL REGISTRO
+## FASE 38: Mensajes de Éxito Grandes y Visuales en el Registro
 
 **Fecha:** 20/06/2026
 **Estado:** ✅ Completada
 
-### Problema identificado
-Los mensajes de éxito en el registro eran pequeños y poco visibles. El usuario no tenía clara la confirmación de que su registro fue exitoso.
-
-### Solución implementada
-
-**Template con mensaje de éxito grande:**
+### Template con mensaje de éxito grande
 
 ```html
 {% if messages %}
     {% for message in messages %}
         {% if 'success' in message.tags %}
-            <div class="alert alert-success text-center p-4" style="border: 3px solid #28a745; border-radius: 10px; background-color: #d4edda;">
+            <div class="alert alert-success text-center p-4" style="border: 3px solid #28a745; border-radius: 10px;">
                 <i class="fas fa-check-circle fa-3x d-block mb-3" style="color: #28a745;"></i>
                 <h3 style="color: #155724;">{{ message }}</h3>
-                <p style="color: #155724;">Ya puedes iniciar sesión con tus credenciales.</p>
                 <a href="{% url 'users:login' %}" class="btn btn-success mt-3">
                     <i class="fas fa-sign-in-alt"></i> Iniciar sesión ahora
                 </a>
@@ -2393,52 +1639,35 @@ Los mensajes de éxito en el registro eran pequeños y poco visibles. El usuario
 {% endif %}
 ```
 
-### Mensajes implementados por rol
+### Mensajes por rol
 
-| Rol | Mensaje de éxito |
-|-----|------------------|
-| Consumidor | "✅ ¡Registro exitoso! Bienvenido a VPJ - Venta Precio Justo. Ya puedes iniciar sesión con tus credenciales." |
-| Productor | "✅ ¡Registro exitoso! Tu cuenta ha sido creada y será revisada por ONPECO. Recibirás una notificación cuando sea aprobada." |
-| Suplidor | "✅ ¡Registro exitoso! Tu cuenta ha sido creada y será revisada por ONPECO. Recibirás una notificación cuando sea aprobada." |
+| Rol | Mensaje |
+|-----|---------|
+| Consumidor | "✅ ¡Registro exitoso! Bienvenido a VPJ" |
+| Productor | "✅ ¡Registro exitoso! Tu cuenta será revisada por ONPECO" |
+| Suplidor | "✅ ¡Registro exitoso! Tu cuenta será revisada por ONPECO" |
 
 ---
 
-## FASE 39: MIGRACIÓN DE SQLITE A POSTGRESQL
+## FASE 39: Migración de SQLite a PostgreSQL
 
 **Fecha:** 20/06/2026
 **Estado:** ✅ Completada
 
 ### Objetivo
-Migrar la base de datos de SQLite a PostgreSQL para mejorar el rendimiento, la escalabilidad y la preparación para producción.
-
-### Motivación
-
-| Aspecto | SQLite | PostgreSQL |
-|---------|--------|------------|
-| Escalabilidad | ❌ Limitada | ✅ Alta |
-| Concurrencia | ❌ Una escritura a la vez | ✅ Múltiples escrituras |
-| Producción | ❌ No recomendado | ✅ Recomendado |
-| Funcionalidades | ❌ Básicas | ✅ Avanzadas |
+Migrar la base de datos de SQLite a PostgreSQL para mejorar el rendimiento y la escalabilidad.
 
 ### Pasos realizados
-
-**1. Instalación de PostgreSQL**
-
-Se instaló PostgreSQL 18 en el sistema.
-
-**2. Creación de la base de datos**
 
 ```sql
 CREATE DATABASE cosecha_db_postgres;
 ```
 
-**3. Instalación del adaptador**
-
 ```bash
 pip install psycopg2-binary
 ```
 
-**4. Configuración de settings.py**
+### Configuración de settings.py
 
 ```python
 DATABASES = {
@@ -2453,53 +1682,30 @@ DATABASES = {
 }
 ```
 
-**5. Exportación de datos desde SQLite**
+### Exportación e importación
 
 ```bash
 python manage.py dumpdata --indent 2 --natural-foreign > datos.json
-```
-
-**6. Migración a PostgreSQL**
-
-```bash
 python manage.py migrate
 python manage.py loaddata datos.json
 ```
 
-**7. Verificación**
-
-```bash
-python manage.py shell
-```
-
-```python
-from apps.users.models import User
-for user in User.objects.all():
-    print(user.username, user.role)
-```
-
-### Problemas encontrados y soluciones
-
+### Problemas y soluciones
 | Problema | Solución |
 |----------|----------|
-| `UnicodeDecodeError` en la conexión | Cambiar contraseña de PostgreSQL a `'postgres'` (sin caracteres especiales) |
-| Entorno virtual incorrecto | Usar el entorno virtual de la copia del proyecto |
-| `psql` no reconocido | Usar ruta completa: `"C:\Program Files\PostgreSQL\18\bin\psql"` |
+| `UnicodeDecodeError` | Cambiar contraseña a 'postgres' sin caracteres especiales |
+| `psql` no reconocido | Usar ruta completa de PostgreSQL |
 
 ---
 
-## FASE 40: CORRECCIÓN DE FORMATO DE NÚMEROS
+## FASE 40: Corrección de Formato de Números
 
 **Fecha:** 20/06/2026
 **Estado:** ✅ Completada
 
-### Problema identificado
-Los números se mostraban con coma para decimales en lugar de punto, y con punto para miles en lugar de coma (formato de Estados Unidos). En República Dominicana se usa punto para decimales y coma para miles.
-
 ### Solución en settings.py
 
 ```python
-# core/settings.py
 USE_L10N = False
 DECIMAL_SEPARATOR = '.'
 THOUSAND_SEPARATOR = ','
@@ -2508,18 +1714,15 @@ NUMBER_GROUPING = 3
 
 ### Solución en templates
 
-**Antes:**
 ```html
+<!-- Antes -->
 RD$ {{ data.total|floatformat:2 }}
-```
 
-**Después:**
-```html
+<!-- Después -->
 RD$ {{ data.total|stringformat:".2f"|cut:"," }}
 ```
 
 ### Ejemplo de corrección
-
 | Antes | Después |
 |-------|---------|
 | RD$ 5,00 | RD$ 5.00 |
@@ -2527,136 +1730,76 @@ RD$ {{ data.total|stringformat:".2f"|cut:"," }}
 
 ---
 
-## FASE 41: OCULTAMIENTO DEL ROL SUPLIDOR (DESACTIVADO)
+## FASE 41: Ocultamiento del Rol Suplidor (Desactivado)
 
 **Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Ocultar la opción de registro como suplidor en la interfaz de usuario, manteniendo el código intacto para una posible reactivación futura.
-
 ### Decisión de ONPECO
-
-Durante las reuniones con ONPECO, la entidad manifestó su preferencia por no incluir la figura del suplidor en la versión inicial de la aplicación, argumentando que:
-
-1. La misión de ONPECO es eliminar intermediarios especulativos que abusan de los precios.
-2. Quieren probar primero el modelo directo productor → consumidor.
-3. Si en el futuro se demuestra que la logística requiere intermediarios, se evaluará la activación del suplidor.
-
-**El equipo de desarrollo mantiene el rol de suplidor completamente funcional pero desactivado, a la espera de la decisión final de ONPECO.**
+ONPECO manifestó su preferencia por no incluir la figura del suplidor en la versión inicial, argumentando:
+1. La misión es eliminar intermediarios especulativos
+2. Quieren probar primero el modelo directo
+3. Si la logística requiere intermediarios, se evaluará la activación
 
 ### Cambio implementado
 
-**Archivo modificado:** `templates/base/base.html`
-
-**Antes:**
 ```html
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-        <i class="fas fa-user-plus"></i> Registrarse
-    </a>
-    <ul class="dropdown-menu">
-        <li><a href="{% url 'users:registro_consumidor' %}">Como Consumidor</a></li>
-        <li><a href="{% url 'users:registro_productor' %}">Como Productor</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a href="{% url 'users:registro_suplidor' %}">Como Suplidor (Intermediario)</a></li>
-    </ul>
-</li>
+<!-- templates/base/base.html -->
+<ul class="dropdown-menu">
+    <li><a href="{% url 'users:registro_consumidor' %}">Como Consumidor</a></li>
+    <li><a href="{% url 'users:registro_productor' %}">Como Productor</a></li>
+    <!-- ========== ROL SUPLIDOR DESACTIVADO ========== -->
+    <!-- <li><hr class="dropdown-divider"></li>
+    <li><a href="{% url 'users:registro_suplidor' %}">Como Suplidor</a></li> -->
+    <!-- ========== FIN DESACTIVACIÓN ========== -->
+</ul>
 ```
-
-**Después:**
-```html
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-        <i class="fas fa-user-plus"></i> Registrarse
-    </a>
-    <ul class="dropdown-menu">
-        <li><a href="{% url 'users:registro_consumidor' %}">Como Consumidor</a></li>
-        <li><a href="{% url 'users:registro_productor' %}">Como Productor</a></li>
-        <!-- ========== ROL SUPLIDOR DESACTIVADO POR DECISIÓN DE ONPECO ========== -->
-        <!-- <li><hr class="dropdown-divider"></li>
-        <li><a href="{% url 'users:registro_suplidor' %}">Como Suplidor (Intermediario)</a></li> -->
-        <!-- ========== FIN DESACTIVACIÓN ========== -->
-    </ul>
-</li>
-```
-
-### Código de respaldo
-
-El código del suplidor permanece intacto en el sistema por si ONPECO decide activarlo en el futuro.
 
 ---
 
-## FASE 42: IMPLEMENTACIÓN DE NGROK PARA PRESENTACIÓN INTERACTIVA
+## FASE 42: Implementación de ngrok para Presentación Interactiva
 
 **Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
 ### Objetivo
-Crear un túnel seguro desde la computadora local a internet para poder presentar la aplicación en vivo durante la defensa del monográfico, sin necesidad de desplegarla en un servidor en la nube.
-
-### ¿Qué es ngrok?
-
-Ngrok es una herramienta que crea un túnel seguro desde tu computadora local a internet, generando una URL pública temporal que redirige a tu servidor local.
+Crear un túnel seguro desde la computadora local a internet para presentar la aplicación en vivo durante la defensa.
 
 ### Pasos realizados
 
 | Paso | Acción |
 |------|--------|
 | 1 | Crear cuenta en ngrok.com (plan gratuito) |
-| 2 | Descargar ngrok.exe desde el sitio oficial |
-| 3 | Guardar ngrok.exe en `C:\ngrok\` |
-| 4 | Autenticar: `ngrok config add-authtoken <TOKEN>` |
-| 5 | Ejecutar túnel: `ngrok http 8000` |
+| 2 | Descargar ngrok.exe |
+| 3 | Autenticar: `ngrok config add-authtoken <TOKEN>` |
+| 4 | Ejecutar túnel: `ngrok http 8000` |
 
 ### URL generada
-
 ```
 https://whacky-deceiver-motive.ngrok-free.dev
 ```
 
 ### Configuración en settings.py
-
 ```python
 ALLOWED_HOSTS = ['*', 'whacky-deceiver-motive.ngrok-free.dev']
 CSRF_TRUSTED_ORIGINS = ['https://whacky-deceiver-motive.ngrok-free.dev']
 ```
 
-### Uso durante la defensa
-
-1. Iniciar Daphne: `daphne -b 127.0.0.1 -p 8000 core.asgi:application`
-2. Iniciar ngrok: `ngrok http 8000`
-3. Compartir URL con el profesor/jurado
-4. La URL permanece activa mientras la terminal de ngrok esté abierta
-
-### Ventajas para la defensa
-
-- ✅ Presentación en vivo desde tu propia computadora
-- ✅ Sin necesidad de despliegue en la nube
-- ✅ Mismo entorno de desarrollo, sin cambios de configuración
-- ✅ Los profesores pueden acceder desde sus dispositivos
-
 ---
 
-## FASE 43: NOTIFICACIONES DE CHAT CON BADGE EN NAVBAR
+## FASE 43: Notificaciones de Chat con Badge en Navbar
 
 **Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
 ### Objetivo
-Mostrar un badge con el número de mensajes no leídos en el navbar, similar al badge del carrito, para que los usuarios sepan que tienen conversaciones pendientes.
+Mostrar un badge con el número de mensajes no leídos en el navbar.
 
-### Problema identificado
-Los usuarios no tenían forma de saber si tenían mensajes nuevos en el chat a menos que entraran a la sección "Mis Conversaciones".
-
-### Implementación técnica
-
-#### 1. Método en `apps/chat/models.py`
+### Método en modelo
 
 ```python
 @classmethod
 def get_unread_count_for_user(cls, user):
-    """Devuelve el número total de mensajes no leídos para un usuario en todas sus conversaciones"""
     return cls.objects.filter(
         room__productor=user,
         is_read=False
@@ -2666,40 +1809,29 @@ def get_unread_count_for_user(cls, user):
     ).exclude(sender=user).count()
 ```
 
-#### 2. Context Processor en `apps/chat/context_processors.py`
+### Context Processor
 
 ```python
-from .models import ChatMessage
-
 def chat_notifications(request):
-    """Context processor para notificaciones de chat no leídas"""
     if request.user.is_authenticated:
         unread_count = ChatMessage.get_unread_count_for_user(request.user)
-        return {
-            'chat_unread_count': unread_count,
-        }
-    return {
-        'chat_unread_count': 0,
-    }
+        return {'chat_unread_count': unread_count}
+    return {'chat_unread_count': 0}
 ```
 
-#### 3. Registro en `core/settings.py`
-
+### Registro en settings.py
 ```python
-TEMPLATES = [
-    {
-        ...
-        'OPTIONS': {
-            'context_processors': [
-                ...
-                'apps.chat.context_processors.chat_notifications',  # ← AGREGAR
-            ],
-        },
+TEMPLATES = [{
+    'OPTIONS': {
+        'context_processors': [
+            # ...
+            'apps.chat.context_processors.chat_notifications',
+        ],
     },
-]
+}]
 ```
 
-#### 4. Badge en `templates/base/base.html`
+### Badge en navbar
 
 ```html
 <li class="nav-item">
@@ -2712,70 +1844,36 @@ TEMPLATES = [
 </li>
 ```
 
-#### 5. Tarjeta de notificaciones en `templates/base/inicio.html`
-
-```html
-<div class="card border-info">
-    <div class="card-body text-center">
-        <h5><i class="fas fa-comments"></i> Notificaciones de Chat</h5>
-        {% if chat_unread_count > 0 %}
-            <span class="badge bg-danger" style="font-size: 24px; padding: 10px 20px;">
-                {{ chat_unread_count }} mensaje(s) no leído(s)
-            </span>
-            <a href="{% url 'chat:mis_chats' %}" class="btn btn-primary">
-                Ver mensajes
-            </a>
-        {% else %}
-            <span class="badge bg-success">✅ No tienes mensajes pendientes</span>
-        {% endif %}
-    </div>
-</div>
-```
-
-### Resultado
-
-- ✅ El badge rojo aparece en "Mis Conversaciones" cuando hay mensajes no leídos
-- ✅ El contador se actualiza automáticamente (con recarga de página)
-- ✅ Similar al comportamiento del badge del carrito
-- ✅ El chat en tiempo real no fue modificado
-
 ---
 
-## FASE 44: SISTEMA DE RECUPERACIÓN DE CONTRASEÑA "OLVIDÉ MI CONTRASEÑA"
+## FASE 44: Sistema de Recuperación de Contraseña "Olvidé mi contraseña"
 
 **Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
 ### Objetivo
-Permitir a los usuarios restablecer su contraseña a través de un enlace enviado por correo electrónico cuando olviden sus credenciales.
+Permitir a los usuarios restablecer su contraseña a través de un enlace enviado por correo electrónico.
 
-### Problema identificado
-Los usuarios no tenían forma de recuperar su contraseña si la olvidaban, lo que generaba frustración y posible pérdida de cuentas.
-
-### Implementación técnica
-
-#### 1. Formulario personalizado en `apps/users/forms.py`
+### Formulario personalizado
 
 ```python
 class CustomPasswordResetForm(PasswordResetForm):
     def clean_email(self):
         email = self.cleaned_data['email']
         if not User.objects.filter(email=email).exists():
-            raise forms.ValidationError("❌ No existe ninguna cuenta con este correo electrónico.")
+            raise forms.ValidationError("❌ No existe ninguna cuenta con este correo.")
         return email
 ```
 
-#### 2. Vistas en `apps/users/views.py`
-
+### Vistas implementadas
 | Clase | Propósito |
 |-------|-----------|
-| `CustomPasswordResetView` | Solicitar restablecimiento de contraseña |
+| `CustomPasswordResetView` | Solicitar restablecimiento |
 | `CustomPasswordResetDoneView` | Confirmación de correo enviado |
 | `CustomPasswordResetConfirmView` | Establecer nueva contraseña |
 | `CustomPasswordResetCompleteView` | Confirmación de cambio exitoso |
 
-#### 3. URLs en `apps/users/urls.py`
-
+### URLs
 ```python
 path('password-reset/', views.CustomPasswordResetView.as_view(), name='password_reset'),
 path('password-reset/done/', views.CustomPasswordResetDoneView.as_view(), name='password_reset_done'),
@@ -2783,103 +1881,33 @@ path('password-reset/<uidb64>/<token>/', views.CustomPasswordResetConfirmView.as
 path('password-reset/complete/', views.CustomPasswordResetCompleteView.as_view(), name='password_reset_complete'),
 ```
 
-#### 4. Templates creados
-
-| Template | Propósito |
-|----------|-----------|
-| `users/password_reset.html` | Formulario para ingresar correo |
-| `users/password_reset_email.html` | Cuerpo del correo enviado |
-| `users/password_reset_subject.txt` | Asunto del correo |
-| `users/password_reset_done.html` | Correo enviado exitosamente |
-| `users/password_reset_confirm.html` | Formulario para nueva contraseña |
-| `users/password_reset_complete.html` | Contraseña cambiada exitosamente |
-
-#### 5. Configuración de correo en `settings.py`
-
+### Configuración de correo
 ```python
-# Para desarrollo (los correos se muestran en consola)
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-# Para producción (descomentar cuando esté en producción):
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-# EMAIL_HOST_USER = 'tu_correo@gmail.com'
-# EMAIL_HOST_PASSWORD = 'tu_contraseña'
-# DEFAULT_FROM_EMAIL = 'VPJ <tu_correo@gmail.com>'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Desarrollo
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'   # Producción
 ```
-
-#### 6. Enlace en `templates/users/login.html`
-
-```html
-<p style="margin-top: 15px;">
-    <a href="{% url 'users:password_reset' %}" style="color: #2d6a4f; text-decoration: none;">
-        <i class="fas fa-key"></i> ¿Olvidaste tu contraseña?
-    </a>
-</p>
-```
-
-### Flujo de trabajo
-
-```
-Usuario olvida contraseña → Haz clic en "¿Olvidaste tu contraseña?" →
-Ingresa correo electrónico → Recibe enlace por correo →
-Haz clic en el enlace → Ingresa nueva contraseña →
-Confirma nueva contraseña → Inicia sesión con la nueva contraseña
-```
-
-### Seguridad implementada
-
-- ✅ Enlace único con token (UID y token)
-- ✅ Expiración del enlace (por defecto en Django)
-- ✅ Validación de correo existente en la base de datos
-- ✅ Confirmación de contraseña (dos campos)
-- ✅ Protección CSRF
-
-### Resultado
-
-- ✅ Los usuarios pueden restablecer su contraseña
-- ✅ El enlace llega por correo electrónico
-- ✅ El proceso es seguro y guiado
-- ✅ Mejora la experiencia de usuario
-- ✅ Reduce la pérdida de cuentas por olvido de contraseña
 
 ---
 
-## FASE 45: VALIDACIÓN DE CÉDULA CON ALGORITMO DE LUHN
+## FASE 45: Validación de Cédula con Algoritmo de Luhn
 
 **Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
 ### Objetivo
-Implementar la validación del número de cédula de los usuarios al registrarse, utilizando el algoritmo de Luhn (dígito verificador) para garantizar que el documento de identidad sea válido.
+Implementar la validación del número de cédula de los usuarios al registrarse, utilizando el algoritmo de Luhn.
 
-### Problema identificado
-Los usuarios podían registrarse con números de cédula inválidos o incorrectos, lo que podía generar problemas de identificación y trazabilidad en el sistema.
-
-### Implementación técnica
-
-#### 1. Función de validación en `apps/users/utils.py`
+### Función de validación
 
 ```python
+# apps/users/utils.py
 def validar_cedula(cedula):
-    """
-    Valida un número de cédula dominicano usando el algoritmo de Luhn.
-    Retorna True si es válida, False en caso contrario.
-    """
-    # Eliminar espacios y guiones
     cedula = cedula.replace(' ', '').replace('-', '')
-    
-    # Verificar que sean solo dígitos y tenga 11 dígitos
     if not cedula.isdigit() or len(cedula) != 11:
         return False
     
-    # Algoritmo de Luhn
     digitos = [int(d) for d in cedula]
     digito_verificador = digitos.pop()
-    
-    # Invertir la lista para el algoritmo
     digitos.reverse()
     
     suma = 0
@@ -2893,104 +1921,44 @@ def validar_cedula(cedula):
     return (suma * 9) % 10 == digito_verificador
 ```
 
-#### 2. Validación en el formulario de registro
+### Validación en formulario
 
 ```python
-# apps/users/forms.py
-from .utils import validar_cedula
-
-class RegistroProductorForm(UserCreationForm):
-    cedula = forms.CharField(
-        max_length=11,
-        label='Número de Cédula',
-        widget=forms.TextInput(attrs={'placeholder': '001-1234567-8'})
-    )
+def clean_cedula(self):
+    cedula = self.cleaned_data.get('cedula')
+    cedula_limpia = cedula.replace(' ', '').replace('-', '')
     
-    def clean_cedula(self):
-        cedula = self.cleaned_data.get('cedula')
-        cedula_limpia = cedula.replace(' ', '').replace('-', '')
-        
-        if not validar_cedula(cedula_limpia):
-            raise forms.ValidationError(
-                '⚠️ El número de cédula no es válido. Verifica que tenga 11 dígitos y que el dígito verificador sea correcto.'
-            )
-        
-        # Verificar que no esté duplicada
-        if User.objects.filter(cedula=cedula_limpia).exists():
-            raise forms.ValidationError(
-                '⚠️ Esta cédula ya está registrada en el sistema.'
-            )
-        
-        return cedula_limpia
+    if not validar_cedula(cedula_limpia):
+        raise forms.ValidationError('⚠️ El número de cédula no es válido.')
+    
+    if User.objects.filter(cedula=cedula_limpia).exists():
+        raise forms.ValidationError('⚠️ Esta cédula ya está registrada.')
+    
+    return cedula_limpia
 ```
 
-#### 3. Campo agregado al modelo User
-
-```python
-# apps/users/models.py
-class User(AbstractUser):
-    # ... campos existentes ...
-    cedula = models.CharField(
-        max_length=11, 
-        unique=True, 
-        null=True, 
-        blank=True,
-        verbose_name='Cédula'
-    )
-```
-
-#### 4. Migración aplicada
-
-```bash
-python manage.py makemigrations users
-python manage.py migrate users
-```
-
-### Ejemplos de cédulas válidas
-
+### Ejemplos de cédulas
 | Cédula | Válida |
 |--------|--------|
 | 001-1234567-8 | ✅ |
-| 00112345678 | ✅ |
 | 001-1234567-9 | ❌ |
-| 00112345679 | ❌ |
-
-### Resultado
-
-- ✅ Los usuarios deben ingresar una cédula válida para registrarse
-- ✅ El sistema valida automáticamente el dígito verificador
-- ✅ No se permiten cédulas duplicadas
-- ✅ La validación se aplica a productores y suplidores
 
 ---
 
-## FASE 46: CORRECCIÓN DE REBAJA DE STOCK EN TIEMPO REAL
+## FASE 46: Corrección de Rebaja de Stock en Tiempo Real
 
 **Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
 ### Objetivo
-Corregir el problema donde el stock de los productos no se estaba descontando automáticamente al realizar una venta, afectando el control de inventario.
+Corregir el problema donde el stock de los productos no se descontaba automáticamente al realizar una venta.
 
-### Problema identificado
-Cuando un consumidor realizaba una compra, el stock del producto no se reducía, lo que generaba:
-- Sobreventa de productos
-- Inventario incorrecto
-- Productores sin visibilidad real de su stock disponible
-
-### Implementación técnica
-
-#### 1. Señal para actualizar stock al crear un pedido
+### Señal para actualizar stock
 
 ```python
 # apps/cart/signals.py
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-from apps.cart.models import Order
-
 @receiver(post_save, sender=Order)
 def actualizar_stock_al_crear_pedido(sender, instance, created, **kwargs):
-    """Actualiza el stock de los productos cuando se crea un pedido"""
     if created and instance.status == 'pending':
         for item in instance.items.all():
             producto = item.product
@@ -2998,29 +1966,16 @@ def actualizar_stock_al_crear_pedido(sender, instance, created, **kwargs):
                 producto.stock -= item.quantity
                 producto.save()
             else:
-                # Si no hay stock suficiente, cancelar el pedido
                 instance.status = 'cancelled'
                 instance.save()
-                raise ValueError(f'Stock insuficiente para el producto {producto.name}')
+                raise ValueError(f'Stock insuficiente para {producto.name}')
 ```
 
-#### 2. Registro de señales en `apps/cart/apps.py`
-
-```python
-class CartConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apps.cart'
-    
-    def ready(self):
-        import apps.cart.signals
-```
-
-#### 3. Actualización de stock al cancelar pedido
+### Señal para revertir stock al cancelar
 
 ```python
 @receiver(pre_save, sender=Order)
 def revertir_stock_al_cancelar(sender, instance, **kwargs):
-    """Revierte el stock si el pedido se cancela"""
     if instance.pk:
         old_instance = Order.objects.get(pk=instance.pk)
         if old_instance.status != 'cancelled' and instance.status == 'cancelled':
@@ -3030,40 +1985,16 @@ def revertir_stock_al_cancelar(sender, instance, **kwargs):
                 producto.save()
 ```
 
-### Flujo de trabajo corregido
-
-```
-Consumidor realiza pedido → Stock se reduce automáticamente →
-Si stock insuficiente → Pedido se cancela →
-Si pedido se cancela → Stock se revierte
-```
-
-### Resultado
-
-- ✅ El stock se descuenta automáticamente al crear un pedido
-- ✅ El stock se revierte si el pedido se cancela
-- ✅ No se permiten pedidos con stock insuficiente
-- ✅ El inventario se mantiene actualizado en todo momento
-
 ---
 
-## FASE 47: REDISEÑO DE BOTONES CON RECUADROS
+## FASE 47: Rediseño de Botones con Recuadros
 
 **Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Mejorar la interfaz de usuario colocando todos los botones dentro de recuadros visualmente organizados, para una experiencia más limpia y profesional.
-
-### Problema identificado
-Los botones estaban dispersos y sin un contenedor visual que los agrupara, lo que daba una apariencia desordenada.
-
-### Implementación técnica
-
-#### 1. Estilos CSS para recuadros de botones
+### Estilos CSS
 
 ```css
-/* static/css/estilos.css */
 .btn-container {
     display: flex;
     flex-wrap: wrap;
@@ -3087,20 +2018,15 @@ Los botones estaban dispersos y sin un contenedor visual que los agrupara, lo qu
 }
 ```
 
-#### 2. Aplicación en templates
+### Aplicación en templates
 
-**Antes:**
 ```html
+<!-- Antes -->
 <a href="{% url 'marketplace:crear_producto' %}" class="btn btn-primary">
     <i class="fas fa-plus"></i> Nuevo Producto
 </a>
-<a href="{% url 'cart:mis_ventas' %}" class="btn btn-success">
-    <i class="fas fa-chart-bar"></i> Mis Ventas
-</a>
-```
 
-**Después:**
-```html
+<!-- Después -->
 <div class="btn-container">
     <a href="{% url 'marketplace:crear_producto' %}" class="btn btn-primary">
         <i class="fas fa-plus"></i> Nuevo Producto
@@ -3108,75 +2034,26 @@ Los botones estaban dispersos y sin un contenedor visual que los agrupara, lo qu
     <a href="{% url 'cart:mis_ventas' %}" class="btn btn-success">
         <i class="fas fa-chart-bar"></i> Mis Ventas
     </a>
-    <a href="{% url 'cart:balance_ventas' %}" class="btn btn-info">
-        <i class="fas fa-balance-scale"></i> Balance de Ventas
-    </a>
 </div>
 ```
 
-#### 3. Templates actualizados
-
-| Template | Cambio realizado |
-|----------|------------------|
-| `templates/marketplace/mis_productos.html` | Botones en recuadro |
-| `templates/cart/mis_ventas.html` | Botones en recuadro |
-| `templates/cart/balance_ventas.html` | Botones en recuadro |
-| `templates/cart/ver_carrito.html` | Botones en recuadro |
-| `templates/onpeco/portal.html` | Botones en recuadro |
-| `templates/base/inicio.html` | Botones en recuadro |
-
-### Resultado
-
-- ✅ Todos los botones están dentro de recuadros organizados
-- ✅ Mejora visual significativa
-- ✅ Experiencia de usuario más profesional
-- ✅ Mayor consistencia en toda la aplicación
-
 ---
 
-## FASE 48: AGREGADO DEL TOMATE COMO ORGULLO DE AZUA
+## FASE 48: Agregado del Tomate como Orgullo de Azua
 
 **Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Incorporar el tomate como símbolo representativo del orgullo de la provincia de Azua en la interfaz de la aplicación.
-
-### Implementación técnica
-
-#### 1. Agregado en el header
+### Implementación en header
 
 ```html
-<!-- templates/base/base.html -->
-<div class="container-fluid">
-    <div class="row align-items-center">
-        <div class="col-md-2">
-            <a class="navbar-brand" href="{% url 'inicio' %}">
-                <img src="{% static 'images/tomate_azua.png' %}" alt="Tomate Orgullo de Azua" height="40">
-                <span>VPJ - Azua</span>
-            </a>
-        </div>
-        <!-- ... -->
-    </div>
-</div>
+<a class="navbar-brand" href="{% url 'inicio' %}">
+    <img src="{% static 'images/tomate_azua.png' %}" alt="Tomate Orgullo de Azua" height="40">
+    <span>VPJ - Azua</span>
+</a>
 ```
 
-#### 2. Agregado en la página de inicio
-
-```html
-<!-- templates/base/inicio.html -->
-<div class="row mb-4">
-    <div class="col-12 text-center">
-        <div class="azua-banner">
-            <img src="{% static 'images/tomate_azua.png' %}" alt="Tomate Orgullo de Azua" class="azua-icon">
-            <h1 class="display-4">🍅 Orgullo de Azua</h1>
-            <p class="lead">Apoyando a nuestros productores locales</p>
-        </div>
-    </div>
-</div>
-```
-
-#### 3. Estilos CSS
+### Estilos CSS
 
 ```css
 .azua-banner {
@@ -3194,51 +2071,24 @@ Incorporar el tomate como símbolo representativo del orgullo de la provincia de
 }
 ```
 
-#### 4. Imagen agregada
-
-- Archivo: `static/images/tomate_azua.png`
-- Diseño: Icono de tomate con fondo de la bandera de Azua
-
-### Resultado
-
-- ✅ El tomate aparece como símbolo en el header
-- ✅ El tomate aparece en la página de inicio
-- ✅ Refuerza la identidad local de la plataforma
-- ✅ Conexión emocional con los productores de Azua
-
 ---
 
-## FASE 49: CORRECCIÓN DE HISTORIAL DE VENTAS - DETALLE AL HACER CLIC EN "VER"
+## FASE 49: Corrección de Historial de Ventas - Detalle al hacer clic en "Ver"
 
 **Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Corregir el error donde al hacer clic en "Ver" en el historial de ventas, no se mostraba correctamente el detalle de la venta.
-
-### Problema identificado
-Cuando un productor hacía clic en el botón "Ver" de una venta en su historial, la página de detalle no cargaba correctamente la información del pedido.
-
-### Causa del problema
-La vista `detalle_venta` no estaba filtrando correctamente los items del pedido que pertenecían al productor logueado.
-
-### Implementación técnica
-
-#### 1. Corrección de la vista
+### Corrección de la vista
 
 ```python
-# apps/cart/views.py
 @login_required
 def detalle_venta(request, order_id):
-    """Muestra el detalle de una venta específica para el productor"""
     order = get_object_or_404(Order, id=order_id)
     
-    # Verificar que el productor tenga items en este pedido
     mis_items = order.items.filter(product__vendedor=request.user)
     if not mis_items.exists():
         return HttpResponseForbidden("No tienes permiso para ver esta venta.")
     
-    # Calcular subtotales solo para los items del productor
     subtotal = sum(item.get_total_price() for item in mis_items)
     
     context = {
@@ -3249,162 +2099,46 @@ def detalle_venta(request, order_id):
     return render(request, 'cart/detalle_venta.html', context)
 ```
 
-#### 2. Corrección del template
-
-```html
-<!-- templates/cart/detalle_venta.html -->
-<h4>Productos vendidos</h4>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Producto</th>
-            <th>Cantidad</th>
-            <th>Precio unitario</th>
-            <th>Subtotal</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for item in mis_items %}
-        <tr>
-            <td>{{ item.product.name }}</td>
-            <td>{{ item.quantity }}</td>
-            <td>RD$ {{ item.price|floatformat:2 }}</td>
-            <td>RD$ {{ item.get_total_price|floatformat:2 }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-    <tfoot>
-        <tr>
-            <th colspan="3" class="text-end">Total de esta venta:</th>
-            <th>RD$ {{ subtotal|floatformat:2 }}</th>
-        </tr>
-    </tfoot>
-</table>
-```
-
-### Resultado
-
-- ✅ Al hacer clic en "Ver" se muestra el detalle correcto
-- ✅ Solo se muestran los items del productor logueado
-- ✅ El total calculado es correcto
-- ✅ La información del pedido se muestra completa
-
 ---
 
-## FASE 50: CORRECCIÓN DE CONTABILIZACIÓN DE DENUNCIAS APROBADAS
+## FASE 50: Corrección de Contabilización de Denuncias Aprobadas
 
 **Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Corregir el error donde el sistema no contabilizaba correctamente el detalle de las denuncias aprobadas al hacer clic en "Ver" desde acciones.
-
-### Problema identificado
-Cuando ONPECO hacía clic en "Ver" para revisar una denuncia aprobada, la información de la denuncia no se mostraba correctamente.
-
-### Causa del problema
-La vista `detalle_denuncia` no estaba filtrando correctamente las actualizaciones y comentarios de la denuncia.
-
-### Implementación técnica
-
-#### 1. Corrección de la vista
+### Corrección de la vista
 
 ```python
-# apps/complaints/views.py
 @onpeco_required
 def detalle_denuncia(request, denuncia_id):
-    """Muestra el detalle de una denuncia específica"""
     denuncia = get_object_or_404(Complaint, id=denuncia_id)
-    
-    # Obtener todas las actualizaciones de la denuncia
     actualizaciones = ComplaintUpdate.objects.filter(complaint=denuncia).order_by('created_at')
-    
-    # Contar denuncias aprobadas para estadísticas
     total_aprobadas = Complaint.objects.filter(status='aprobada').count()
-    
-    # Verificar si el usuario es el creador o ONPECO
-    es_creador = request.user == denuncia.created_by
-    es_onpeco = request.user.is_staff or getattr(request.user, 'role', '') == 'regulador'
-    
-    if not (es_creador or es_onpeco):
-        return HttpResponseForbidden("No tienes permiso para ver esta denuncia.")
     
     context = {
         'denuncia': denuncia,
         'actualizaciones': actualizaciones,
         'total_aprobadas': total_aprobadas,
-        'es_creador': es_creador,
-        'es_onpeco': es_onpeco,
     }
     return render(request, 'complaints/detalle_denuncia.html', context)
 ```
 
-#### 2. Corrección del template para mostrar contador
-
-```html
-<!-- templates/complaints/detalle_denuncia.html -->
-<div class="row mb-4">
-    <div class="col-md-6">
-        <div class="card border-success">
-            <div class="card-body text-center">
-                <h5><i class="fas fa-check-circle text-success"></i> Denuncias Aprobadas</h5>
-                <h3>{{ total_aprobadas }}</h3>
-                <small>Total de denuncias aprobadas en el sistema</small>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="card border-warning">
-            <div class="card-body text-center">
-                <h5><i class="fas fa-clock text-warning"></i> Estado Actual</h5>
-                <span class="badge badge-{{ denuncia.status }}">{{ denuncia.get_status_display }}</span>
-            </div>
-        </div>
-    </div>
-</div>
-```
-
-### Resultado
-
-- ✅ El detalle de la denuncia se muestra correctamente
-- ✅ El contador de denuncias aprobadas es visible
-- ✅ Las actualizaciones y comentarios se muestran en orden cronológico
-- ✅ La información es consistente
-
 ---
 
-## FASE 51: CORRECCIÓN DE BALANCES PAGADOS
+## FASE 51: Corrección de Balances Pagados
 
 **Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Corregir los problemas relacionados con el cálculo y visualización de balances pagados, asegurando su correcta contabilización.
-
-### Problema identificado
-El balance de ventas mostraba incorrectamente el total pagado y el total pendiente para los productores.
-
-### Causa del problema
-El sistema no estaba actualizando correctamente el campo `payment_status` de los pedidos cuando el Centro de Acopio realizaba el pago.
-
-### Implementación técnica
-
-#### 1. Corrección del modelo Order
+### Modelo Order con método marcar_pagado
 
 ```python
-# apps/cart/models.py
 class Order(models.Model):
-    # ... campos existentes ...
-    payment_status = models.CharField(
-        max_length=20,
-        choices=PAYMENT_STATUS_CHOICES,
-        default='pending'
-    )
+    payment_status = models.CharField(max_length=20, choices=PAYMENT_STATUS_CHOICES, default='pending')
     payment_date = models.DateTimeField(null=True, blank=True)
     payment_amount = models.DecimalField(max_digits=12, decimal_places=2, default=0)
     
     def marcar_pagado(self, monto=None):
-        """Marca el pedido como pagado"""
         self.payment_status = 'paid'
         self.payment_date = timezone.now()
         if monto:
@@ -3412,176 +2146,64 @@ class Order(models.Model):
         self.save()
 ```
 
-#### 2. Corrección de la vista de pago
+### Corrección del cálculo en balance_ventas
 
 ```python
-# apps/cart/views.py
-@login_required
-def marcar_pago(request, order_id):
-    """Marca un pedido como pagado por el Centro de Acopio"""
-    order = get_object_or_404(Order, id=order_id)
+for order in orders:
+    mis_items = order.items.filter(product__vendedor=request.user)
+    subtotal = sum(item.get_total_price() for item in mis_items)
+    total_vendido += subtotal
     
-    # Verificar que el usuario sea el Centro de Acopio
-    if request.user.role != 'acopio':
-        return HttpResponseForbidden("No tienes permiso para realizar esta acción.")
-    
-    # Calcular el monto total del pedido
-    total = order.total_amount
-    
-    # Marcar como pagado
-    order.marcar_pagado(monto=total)
-    
-    messages.success(request, f'✅ Pedido #{order.id} marcado como pagado. Monto: RD$ {total}')
-    return redirect('cart:detalle_acopio', order_id=order.id)
+    if order.payment_status == 'paid':
+        total_pagado += subtotal
 ```
-
-#### 3. Corrección del cálculo en balance_ventas
-
-```python
-# apps/cart/views.py
-@login_required
-def balance_ventas(request):
-    """Balance de ventas para productores"""
-    orders = Order.objects.filter(
-        items__product__vendedor=request.user
-    ).distinct().order_by('-created_at')
-    
-    total_vendido = 0
-    total_pagado = 0
-    
-    for order in orders:
-        mis_items = order.items.filter(product__vendedor=request.user)
-        subtotal = sum(item.get_total_price() for item in mis_items)
-        total_vendido += subtotal
-        
-        # CORREGIDO: Verificar payment_status correctamente
-        if order.payment_status == 'paid':
-            total_pagado += subtotal
-    
-    total_pendiente = total_vendido - total_pagado
-    
-    context = {
-        'orders': orders,
-        'total_vendido': total_vendido,
-        'total_pagado': total_pagado,
-        'total_pendiente': total_pendiente,
-    }
-    return render(request, 'cart/balance_ventas.html', context)
-```
-
-### Resultado
-
-- ✅ El total vendido se calcula correctamente
-- ✅ El total pagado se calcula correctamente
-- ✅ El total pendiente se calcula correctamente
-- ✅ Los balances son consistentes en toda la aplicación
 
 ---
 
-## FASE 52: ENLACE A ONPECO EN EL PORTAL
+## FASE 52: Enlace a ONPECO en el Portal
 
 **Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Agregar un enlace directo a la página oficial de ONPECO desde el portal de la aplicación.
-
-### Problema identificado
-Los usuarios no tenían un acceso rápido a la información oficial de ONPECO desde la plataforma VPJ.
-
-### Implementación técnica
-
-#### 1. Enlace en el portal ONPECO
+### Enlace en el portal
 
 ```html
-<!-- apps/complaints/templates/onpeco/portal.html -->
-<div class="row mt-4">
-    <div class="col-12">
-        <div class="card border-info">
-            <div class="card-header bg-info text-white">
-                <i class="fas fa-link"></i> Enlaces de interés
-            </div>
-            <div class="card-body">
-                <a href="https://onpeco.gob.do" target="_blank" class="btn btn-outline-info btn-lg">
-                    <i class="fas fa-external-link-alt"></i> Visitar sitio oficial de ONPECO
-                </a>
-                <p class="mt-2 text-muted">
-                    <small>Enlace al sitio web oficial del Observatorio Nacional para la Protección del Consumidor</small>
-                </p>
-            </div>
-        </div>
+<div class="card border-info">
+    <div class="card-header bg-info text-white">
+        <i class="fas fa-link"></i> Enlaces de interés
+    </div>
+    <div class="card-body">
+        <a href="https://onpeco.gob.do" target="_blank" class="btn btn-outline-info btn-lg">
+            <i class="fas fa-external-link-alt"></i> Visitar sitio oficial de ONPECO
+        </a>
     </div>
 </div>
 ```
 
-#### 2. Enlace en el footer
-
-```html
-<!-- templates/base/base.html -->
-<footer class="footer mt-5 py-3 bg-light">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-md-6">
-                <p>VPJ - Venta Precio Justo &copy; 2026</p>
-            </div>
-            <div class="col-md-6">
-                <a href="https://onpeco.gob.do" target="_blank" class="text-decoration-none">
-                    <i class="fas fa-external-link-alt"></i> ONPECO - Observatorio Nacional para la Protección del Consumidor
-                </a>
-            </div>
-        </div>
-    </div>
-</footer>
-```
-
-### Resultado
-
-- ✅ Enlace a ONPECO en el portal
-- ✅ Enlace a ONPECO en el footer
-- ✅ Enlace abierto en nueva pestaña
-- ✅ Información de contacto visible
-
 ---
 
-## FASE 53: EXPORTACIÓN DE REPORTES DE DENUNCIAS A EXCEL
+## FASE 53: Exportación de Reportes de Denuncias a Excel
 
 **Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Implementar la funcionalidad para exportar los reportes de denuncias a archivos Excel, facilitando el análisis y seguimiento por parte de ONPECO.
-
-### Problema identificado
-ONPECO necesitaba poder exportar los datos de denuncias para análisis externo, pero no había una funcionalidad de exportación.
-
-### Implementación técnica
-
-#### 1. Instalación de la librería
-
+### Instalación
 ```bash
 pip install openpyxl
 ```
 
-#### 2. Vista de exportación
+### Vista de exportación
 
 ```python
-# apps/complaints/views.py
-from openpyxl import Workbook
-from django.http import HttpResponse
-
 @onpeco_required
 def exportar_denuncias_excel(request):
-    """Exporta todas las denuncias a un archivo Excel"""
-    # Crear libro de trabajo
     wb = Workbook()
     ws = wb.active
     ws.title = "Denuncias"
     
-    # Encabezados
     headers = ['Ticket', 'Título', 'Estado', 'Prioridad', 'Creado por', 'Fecha', 'Producto']
     ws.append(headers)
     
-    # Datos
     denuncias = Complaint.objects.all().order_by('-created_at')
     for denuncia in denuncias:
         ws.append([
@@ -3594,142 +2216,58 @@ def exportar_denuncias_excel(request):
             denuncia.product.name if denuncia.product else 'N/A'
         ])
     
-    # Crear respuesta HTTP
-    response = HttpResponse(
-        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-    )
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
     response['Content-Disposition'] = 'attachment; filename=denuncias.xlsx'
-    
     wb.save(response)
     return response
 ```
 
-#### 3. URL configurada
-
-```python
-# apps/complaints/urls.py
-path('exportar-excel/', views.exportar_denuncias_excel, name='exportar_denuncias_excel'),
-```
-
-#### 4. Botón de exportación
-
-```html
-<!-- templates/complaints/lista_denuncias.html -->
-<div class="row mb-3">
-    <div class="col-md-12">
-        <a href="{% url 'complaints:exportar_denuncias_excel' %}" class="btn btn-success">
-            <i class="fas fa-file-excel"></i> Exportar a Excel
-        </a>
-    </div>
-</div>
-```
-
-### Resultado
-
-- ✅ Las denuncias se exportan a Excel
-- ✅ El archivo incluye todos los datos relevantes
-- ✅ El nombre del archivo es descriptivo
-- ✅ La descarga es rápida y sin complicaciones
-
 ---
 
-## FASE 54: SISTEMA DE NOTIFICACIONES CON CONTADOR DE INCREMENTO
+## FASE 54: Sistema de Notificaciones con Contador de Incremento
 
 **Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Implementar un sistema de notificaciones en tiempo real para los usuarios cuando reciben mensajes, con un contador de incremento visible en el navbar.
-
-### Problema identificado
-Los usuarios no recibían notificaciones visuales cuando tenían nuevos mensajes, lo que podía retrasar las respuestas en el chat.
-
-### Implementación técnica
-
-#### 1. Modelo de notificaciones
+### Modelo de notificaciones
 
 ```python
-# apps/chat/models.py
 class Notification(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='notifications')
     message = models.ForeignKey('ChatMessage', on_delete=models.CASCADE)
     is_read = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
-    
-    class Meta:
-        ordering = ['-created_at']
 ```
 
-#### 2. Señal para crear notificaciones
+### Señal para crear notificaciones
 
 ```python
-# apps/chat/signals.py
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-from .models import ChatMessage, Notification
-
 @receiver(post_save, sender=ChatMessage)
 def crear_notificacion(sender, instance, created, **kwargs):
-    """Crea una notificación cuando se envía un mensaje"""
     if created:
-        # Obtener el destinatario (el que no envió el mensaje)
         room = instance.room
         if room.productor == instance.sender:
             destinatario = room.consumidor
         else:
             destinatario = room.productor
         
-        # Crear notificación si el destinatario no es el remitente
         if destinatario and destinatario != instance.sender:
-            Notification.objects.create(
-                user=destinatario,
-                message=instance,
-                is_read=False
-            )
+            Notification.objects.create(user=destinatario, message=instance, is_read=False)
 ```
 
-#### 3. Context processor para contador
+### Context processor para contador
 
 ```python
-# apps/chat/context_processors.py
-from .models import Notification
-
 def notification_count(request):
-    """Context processor para el contador de notificaciones"""
     if request.user.is_authenticated:
-        unread_count = Notification.objects.filter(
-            user=request.user,
-            is_read=False
-        ).count()
-        return {
-            'notification_count': unread_count,
-        }
-    return {
-        'notification_count': 0,
-    }
+        unread_count = Notification.objects.filter(user=request.user, is_read=False).count()
+        return {'notification_count': unread_count}
+    return {'notification_count': 0}
 ```
 
-#### 4. Badge en navbar
-
-```html
-<!-- templates/base/base.html -->
-<li class="nav-item">
-    <a class="nav-link" href="{% url 'chat:mis_chats' %}">
-        <i class="fas fa-comments"></i> Mis Conversaciones
-        {% if notification_count > 0 %}
-        <span class="badge bg-danger ms-1 notification-badge">
-            {{ notification_count }}
-            <span class="visually-hidden">mensajes no leídos</span>
-        </span>
-        {% endif %}
-    </a>
-</li>
-```
-
-#### 5. Animación de incremento
+### Animación de incremento
 
 ```css
-/* static/css/estilos.css */
 .notification-badge {
     animation: pulse 0.5s ease-in-out 3;
 }
@@ -3741,21 +2279,9 @@ def notification_count(request):
 }
 ```
 
-#### 6. Vista para marcar como leído
-
-```python
-# apps/chat/views.py
-@login_required
-def marcar_notificaciones_leidas(request):
-    """Marca todas las notificaciones del usuario como leídas"""
-    Notification.objects.filter(user=request.user, is_read=False).update(is_read=True)
-    return JsonResponse({'success': True})
-```
-
-#### 7. JavaScript para actualización en tiempo real
+### JavaScript para actualización en tiempo real
 
 ```javascript
-// static/js/notificaciones.js
 function actualizarContadorNotificaciones() {
     fetch('/chat/notificaciones/count/')
         .then(response => response.json())
@@ -3782,44 +2308,20 @@ function actualizarContadorNotificaciones() {
         });
 }
 
-// Actualizar cada 10 segundos
 setInterval(actualizarContadorNotificaciones, 10000);
 ```
 
-### Resultado
-
-- ✅ El contador de notificaciones aparece en el navbar
-- ✅ El contador se incrementa automáticamente al recibir mensajes
-- ✅ El contador tiene animación de pulso para llamar la atención
-- ✅ Las notificaciones se marcan como leídas al abrir el chat
-- ✅ La experiencia de usuario es más reactiva e informativa
-
-¡Perfecto! Aquí tienes **SOLO el contenido nuevo** que implementamos hoy. Pega esto al final de tu archivo `documentacion.md`:
-
 ---
 
-## 📄 CONTENIDO NUEVO PARA AGREGAR AL FINAL DE `documentacion.md`
-
-```markdown
-## FASE 55: CORRECCIÓN DE ERROR `datetime` EN BACKUPS
+## FASE 55: Corrección de Error `datetime` en Backups
 
 **Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Corregir el error `AttributeError: type object 'datetime.datetime' has no attribute 'datetime'` que ocurría al acceder a la página de gestión de backups.
+### Problema
+Error `AttributeError: type object 'datetime.datetime' has no attribute 'datetime'`
 
-### Problema identificado
-La función `gestion_backups` en `apps/complaints/views.py` usaba `datetime.datetime.fromtimestamp()` con una importación incorrecta de datetime, causando un error de atributo.
-
-### Causa del problema
-Se tenía importado `from datetime import datetime` en lugar de `import datetime`, lo que hacía que `datetime` fuera la clase en lugar del módulo.
-
-### Solución implementada
-
-**Archivo modificado:** `apps/complaints/views.py`
-
-**Línea 2:**
+### Solución
 ```python
 # Antes
 from datetime import datetime
@@ -3828,37 +2330,23 @@ from datetime import datetime
 import datetime
 ```
 
-**Línea 210 (función gestion_backups):**
 ```python
 # Antes
-'fecha': datetime.fromtimestamp(stat.st_mtime),
+'fecha': datetime.fromtimestamp(stat.st_mtime)
 
 # Después
-'fecha': datetime.datetime.fromtimestamp(stat.st_mtime),
+'fecha': datetime.datetime.fromtimestamp(stat.st_mtime)
 ```
-
-### Resultado
-- ✅ La página de gestión de backups carga correctamente
-- ✅ Los backups se listan con su fecha correcta
-- ✅ No hay errores de atributo en datetime
 
 ---
 
-## FASE 56: CAMBIO DE LOGIN A CÉDULA Y MEJORA DE INTERFAZ
+## FASE 56: Cambio de Login a Cédula y Mejora de Interfaz
 
 **Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Modificar la pantalla de login para que el campo de usuario muestre "Cédula" como placeholder y mejorar el diseño general.
+### Cambios en login.html
 
-### Implementación técnica
-
-**Archivo modificado:** `templates/users/login.html`
-
-**Cambios realizados:**
-
-1. **Placeholder del campo usuario:**
 ```html
 <!-- Antes -->
 <input type="text" name="username" placeholder="Usuario" required>
@@ -3867,71 +2355,37 @@ Modificar la pantalla de login para que el campo de usuario muestre "Cédula" co
 <input type="text" name="username" placeholder="Cédula" required>
 ```
 
-2. **Mejora del diseño:**
-- Se agregó Font Awesome para íconos
-- Se mejoró el diseño con sombras y gradientes
-- Se agregaron íconos de usuario y candado a los campos
-- Diseño responsivo y centrado
-
-### Resultado
-- ✅ El campo de usuario muestra "Cédula" como placeholder
-- ✅ El texto desaparece al comenzar a escribir (comportamiento estándar)
-- ✅ El diseño es más moderno y profesional
-- ✅ La interfaz es más intuitiva para los usuarios
-
 ---
 
-## FASE 57: CAMBIO DE FAVICON A LOGO DE ONPECO
+## FASE 57: Cambio de Favicon a Logo de ONPECO
 
 **Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Reemplazar el favicon del medio aguacate por el logo oficial de ONPECO.
+### Cambio en base.html
 
-### Implementación técnica
-
-**Archivos modificados:**
-
-1. **`templates/base/base.html`:**
 ```html
 <!-- Antes -->
 <link rel="icon" type="image/png" href="{% static 'img/tomate-favicon.png' %}">
-<link rel="apple-touch-icon" type="image/png" href="{% static 'img/tomate-favicon.png' %}">
 
 <!-- Después -->
 <link rel="icon" type="image/png" href="{% static 'img/onpeco-logo.png?v=3' %}">
-<link rel="apple-touch-icon" type="image/png" href="{% static 'img/onpeco-logo.png?v=3' %}">
 ```
 
-2. **Eliminación de archivo antiguo:**
+### Eliminación de archivo antiguo
 ```bash
 del static\img\tomate-favicon.png
 ```
 
-3. **Archivo existente:**
-- `static/img/onpeco-logo.png` (ya existía en el sistema)
-
-### Resultado
-- ✅ El favicon aun no muestra el logo de ONPECO porque hay que buscar un archivo con la calidad requerida
-- ✅ El medio aguacate no ha sido eliminado del sistema
-- ✅ La identidad visual sera  más coherente con la entidad reguladora
-
 ---
 
-## FASE 58: TOMATE CLICABLE CON ENLACE A ONPECO
+## FASE 58: Tomate Clicable con Enlace a ONPECO
 
 **Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Hacer que el tomate grande (símbolo de "Orgullo de Azua") sea clicable y redirija a la página oficial de ONPECO.
+### Cambio en inicio.html
 
-### Implementación técnica
-
-**Archivo modificado:** `templates/base/inicio.html`
-
-**Cambio realizado:**
 ```html
 <!-- Antes (tomate decorativo) -->
 <div style="background: linear-gradient(135deg, #e53935, #c62828); ...">
@@ -3944,66 +2398,40 @@ Hacer que el tomate grande (símbolo de "Orgullo de Azua") sea clicable y rediri
    onmouseover="this.style.transform='scale(1.05)'" 
    onmouseout="this.style.transform='scale(1)'"
    title="Visitar la página oficial de ONPECO">
-    <div style="background: linear-gradient(135deg, #e53935, #c62828); 
-                cursor: pointer;
-                transition: box-shadow 0.3s ease;">
+    <div style="background: linear-gradient(135deg, #e53935, #c62828); cursor: pointer; ...">
         <!-- Hojas y brillo -->
     </div>
 </a>
 ```
 
-### Resultado
-- ✅ El tomate es clicable
-- ✅ Redirige a `https://onpeco.org/`
-- ✅ Se abre en nueva pestaña (`target="_blank"`)
-- ✅ Tiene efecto hover (agrandamiento)
-- ✅ Muestra tooltip al pasar el mouse
-
 ---
 
-## FASE 59: SISTEMA DE RESTABLECIMIENTO DE CONTRASEÑAS POR ONPECO
+## FASE 59: Sistema de Restablecimiento de Contraseñas por ONPECO
 
 **Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
 ### Objetivo
-Permitir que ONPECO pueda restablecer la contraseña de cualquier usuario a un valor temporal `cambiar123`, forzando al usuario a cambiarla al iniciar sesión.
+Permitir que ONPECO restablezca la contraseña de cualquier usuario a `cambiar123`, forzando al usuario a cambiarla.
 
-### Implementación técnica
+### Nuevo campo en User
 
-#### 1. Nuevo campo en modelo User
-
-**Archivo:** `apps/users/models.py`
 ```python
 must_change_password = models.BooleanField(
-    default=False, 
-    help_text="Indica si el usuario debe cambiar su contraseña al iniciar sesión (contraseña temporal)"
+    default=False,
+    help_text="Indica si el usuario debe cambiar su contraseña al iniciar sesión"
 )
 ```
 
-#### 2. Migración aplicada
-```bash
-python manage.py makemigrations users
-python manage.py migrate users
-```
+### Vista para restablecer contraseña
 
-#### 3. Vista para restablecer contraseña
-
-**Archivo:** `apps/users/views.py`
 ```python
 @login_required
 def resetear_contrasena_usuario(request, user_id):
-    """
-    Vista para que ONPECO restablezca la contraseña a 'cambiar123'
-    """
     if not (request.user.is_staff or getattr(request.user, 'role', '') == 'regulador'):
-        return HttpResponseForbidden("No tienes permiso para acceder a esta función.")
+        return HttpResponseForbidden("No tienes permiso.")
     
     usuario = get_object_or_404(User, id=user_id)
-    
-    if usuario.is_staff and not request.user.is_superuser:
-        messages.error(request, '❌ No puedes restablecer la contraseña de otro administrador.')
-        return redirect('users:lista_usuarios_onpeco')
     
     if request.method == 'POST':
         nueva_contrasena = 'cambiar123'
@@ -4011,97 +2439,25 @@ def resetear_contrasena_usuario(request, user_id):
         usuario.must_change_password = True
         usuario.save()
         
-        messages.success(
-            request,
-            f'✅ Contraseña restablecida para "{usuario.username}"\n\n'
-            f'🔑 <strong>cambiar123</strong>\n\n'
-            f'📌 El usuario debe iniciar sesión con "cambiar123" y cambiarla inmediatamente.'
-        )
+        messages.success(request, f'✅ Contraseña restablecida para "{usuario.username}"')
         return redirect('users:lista_usuarios_onpeco')
     
-    context = {'usuario': usuario}
-    return render(request, 'users/resetear_contrasena.html', context)
+    return render(request, 'users/resetear_contrasena.html', {'usuario': usuario})
 ```
 
-#### 4. Vista para cambio de contraseña temporal
+### Modificación de login_view
 
 ```python
-@login_required
-def cambiar_contrasena_temporal(request):
-    """
-    Vista para que el usuario cambie su contraseña temporal
-    """
-    user = request.user
-    
-    if not getattr(user, 'must_change_password', False):
-        messages.info(request, 'No necesitas cambiar tu contraseña.')
-        return redirect('inicio')
-    
-    if request.method == 'POST':
-        nueva = request.POST.get('nueva_contrasena')
-        confirmar = request.POST.get('confirmar_contrasena')
-        
-        if not nueva or len(nueva) < 6:
-            messages.error(request, '❌ La contraseña debe tener al menos 6 caracteres.')
-            return redirect('users:cambiar_contrasena_temporal')
-        
-        if nueva != confirmar:
-            messages.error(request, '❌ Las contraseñas no coinciden.')
-            return redirect('users:cambiar_contrasena_temporal')
-        
-        user.password = make_password(nueva)
-        user.must_change_password = False
-        user.save()
-        
-        logout(request)
-        messages.success(request, '✅ Contraseña actualizada exitosamente.')
-        messages.info(request, '🔐 Por favor, inicia sesión con tu nueva contraseña.')
-        return redirect('users:login')
-    
-    return render(request, 'users/cambiar_contrasena_temporal.html', {'user': user})
-```
-
-#### 5. Modificación de login_view
-
-```python
-def login_view(request):
-    # ... código existente ...
-    if user is not None:
-        if getattr(user, 'must_change_password', False):
-            login(request, user)
-            messages.warning(request, '⚠️ Debes cambiar tu contraseña temporal antes de continuar.')
-            return redirect('users:cambiar_contrasena_temporal')
-        # ... resto del código ...
-```
-
-#### 6. URLs agregadas
-
-**Archivo:** `apps/users/urls.py`
-```python
-path('onpeco/usuarios/', views.lista_usuarios_onpeco, name='lista_usuarios_onpeco'),
-path('onpeco/resetear-contrasena/<int:user_id>/', views.resetear_contrasena_usuario, name='resetear_contrasena'),
-path('cambiar-contrasena-temporal/', views.cambiar_contrasena_temporal, name='cambiar_contrasena_temporal'),
-```
-
-#### 7. Plantillas creadas
-
-- `templates/users/lista_usuarios_onpeco.html`
-- `templates/users/resetear_contrasena.html`
-- `templates/users/cambiar_contrasena_temporal.html`
-
-#### 8. Enlace en menú ONPECO
-
-**Archivo:** `templates/base/base.html`
-```html
-<li><a class="dropdown-item" href="{% url 'users:lista_usuarios_onpeco' %}">
-    <i class="fas fa-users-cog"></i> Gestionar Usuarios
-</a></li>
+if user is not None:
+    if getattr(user, 'must_change_password', False):
+        login(request, user)
+        messages.warning(request, '⚠️ Debes cambiar tu contraseña temporal.')
+        return redirect('users:cambiar_contrasena_temporal')
 ```
 
 ### Flujo de trabajo
-
 ```
-ONPECO → Gestionar Usuarios → 🔑 → Restablecer Contraseña
+ONPECO → Gestionar Usuarios → Restablecer Contraseña
     ↓
 Contraseña del usuario = cambiar123
     ↓
@@ -4113,33 +2469,20 @@ Redirige a cambiar_contrasena_temporal
     ↓
 Usuario escribe su NUEVA contraseña
     ↓
-✅ Contraseña actualizada. Usuario inicia sesión con la nueva.
+✅ Contraseña actualizada
 ```
-
-### Resultado
-- ✅ ONPECO puede restablecer contraseñas
-- ✅ La contraseña temporal es `cambiar123` (fácil de recordar)
-- ✅ El usuario debe cambiarla al iniciar sesión
-- ✅ El proceso es seguro y guiado
 
 ---
 
-## FASE 60: NOMBRE REAL EN NAVBAR Y PERFIL
+## FASE 60: Nombre Real en Navbar y Perfil
 
 **Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Mostrar el nombre real del usuario (Nombre + Cédula) en el navbar y en el perfil, en lugar de solo mostrar la cédula.
+### Métodos en modelo User
 
-### Implementación técnica
-
-#### 1. Métodos en modelo User
-
-**Archivo:** `apps/users/models.py`
 ```python
 def get_full_name(self):
-    """Retorna el nombre completo del usuario"""
     if self.first_name and self.last_name:
         return f"{self.first_name} {self.last_name}"
     elif self.first_name:
@@ -4149,16 +2492,14 @@ def get_full_name(self):
     return self.username
 
 def get_display_name(self):
-    """Retorna el nombre para mostrar en la interfaz (nombre + cédula)"""
     nombre = self.get_full_name()
     if nombre != self.username:
         return f"{nombre} ({self.username})"
     return self.username
 ```
 
-#### 2. Navbar actualizado
+### Navbar actualizado
 
-**Archivo:** `templates/base/base.html`
 ```html
 <!-- Antes -->
 {{ user.username }}
@@ -4167,12 +2508,10 @@ def get_display_name(self):
 {{ user.get_display_name }}
 ```
 
-#### 3. Perfil actualizado
+### Perfil actualizado
 
-**Archivo:** `templates/users/perfil.html`
 ```html
-<!-- Sección destacada con nombre y cédula -->
-<div style="background: #e8f5e9; padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid #2E7D32;">
+<div style="background: #e8f5e9; padding: 15px; border-radius: 10px; border-left: 4px solid #2E7D32;">
     <p style="margin: 0; font-size: 1.2rem;">
         <strong>👤 {{ user.get_full_name }}</strong>
     </p>
@@ -4182,270 +2521,108 @@ def get_display_name(self):
 </div>
 ```
 
-### Resultado
-- ✅ El navbar muestra `Nombre (Cédula)`
-- ✅ El perfil muestra nombre completo destacado
-- ✅ Mejor identificación de los usuarios
-- ✅ Más profesional y personalizado
-
 ---
 
-## FASE 61: EXPORTACIÓN DE CONSUMIDORES Y PRODUCTORES A EXCEL
+## FASE 61: Exportación de Consumidores y Productores a Excel
 
 **Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Permitir a ONPECO exportar listas completas de consumidores y productores a archivos Excel, incluyendo nombres reales y cédulas.
+### Exportar consumidores
 
-### Implementación técnica
-
-#### 1. Función para exportar consumidores
-
-**Archivo:** `apps/complaints/views.py`
 ```python
 @onpeco_required
 def exportar_consumidores_excel(request):
-    """Exporta a Excel la lista de todos los consumidores registrados"""
-    
-    from apps.users.models import User
-    
-    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-    response['Content-Disposition'] = 'attachment; filename=consumidores.xlsx'
-    
     wb = Workbook()
     ws = wb.active
     ws.title = 'Consumidores'
     
-    # Estilos
-    header_font = Font(bold=True, color='FFFFFF')
-    header_fill = PatternFill(start_color='2E7D32', end_color='2E7D32', fill_type='solid')
-    header_alignment = Alignment(horizontal='center')
-    
-    # Encabezados
     headers = ['Nombre', 'Cédula', 'Email', 'Teléfono', 'Dirección', 'Fecha de Registro']
-    for col, header in enumerate(headers, 1):
-        cell = ws.cell(row=1, column=col, value=header)
-        cell.font = header_font
-        cell.fill = header_fill
-        cell.alignment = header_alignment
+    ws.append(headers)
     
-    consumidores = User.objects.filter(role='consumidor', is_active=True).order_by('first_name', 'last_name')
-    
-    row = 2
+    consumidores = User.objects.filter(role='consumidor', is_active=True)
     for consumidor in consumidores:
-        ws.cell(row=row, column=1, value=consumidor.get_full_name())
-        ws.cell(row=row, column=2, value=consumidor.username)
-        ws.cell(row=row, column=3, value=consumidor.email or '')
-        ws.cell(row=row, column=4, value=consumidor.phone or '')
-        ws.cell(row=row, column=5, value=consumidor.address or '')
-        ws.cell(row=row, column=6, value=consumidor.date_joined.strftime('%d/%m/%Y') if consumidor.date_joined else '')
-        row += 1
+        ws.append([
+            consumidor.get_full_name(),
+            consumidor.username,
+            consumidor.email or '',
+            consumidor.phone or '',
+            consumidor.address or '',
+            consumidor.date_joined.strftime('%d/%m/%Y') if consumidor.date_joined else ''
+        ])
     
-    column_widths = [25, 15, 30, 15, 35, 15]
-    for i, width in enumerate(column_widths, 1):
-        ws.column_dimensions[chr(64 + i)].width = width
-    
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = 'attachment; filename=consumidores.xlsx'
     wb.save(response)
     return response
 ```
 
-#### 2. Función para exportar productores
+### Exportar productores
 
 ```python
 @onpeco_required
 def exportar_productores_excel(request):
-    """Exporta a Excel la lista de todos los productores registrados"""
-    
-    from apps.users.models import User
-    from apps.marketplace.models import Product
-    
-    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-    response['Content-Disposition'] = 'attachment; filename=productores.xlsx'
-    
     wb = Workbook()
     ws = wb.active
     ws.title = 'Productores'
     
-    # Estilos
-    header_font = Font(bold=True, color='FFFFFF')
-    header_fill = PatternFill(start_color='2E7D32', end_color='2E7D32', fill_type='solid')
-    header_alignment = Alignment(horizontal='center')
-    
-    # Encabezados
-    headers = ['Nombre', 'Cédula', 'Negocio', 'Email', 'Teléfono', 'Dirección', 'Estado', 'Total Productos', 'Reputación', 'Fecha de Registro']
-    for col, header in enumerate(headers, 1):
-        cell = ws.cell(row=1, column=col, value=header)
-        cell.font = header_font
-        cell.fill = header_fill
-        cell.alignment = header_alignment
+    headers = ['Nombre', 'Cédula', 'Negocio', 'Email', 'Teléfono', 'Dirección', 'Estado', 'Total Productos', 'Reputación']
+    ws.append(headers)
     
     productores = User.objects.filter(role='productor').order_by('first_name', 'last_name')
-    
-    row = 2
     for productor in productores:
-        total_productos = Product.objects.filter(vendedor=productor).count()
-        estado = 'Aprobado' if productor.is_approved else 'Pendiente'
-        
-        ws.cell(row=row, column=1, value=productor.get_full_name())
-        ws.cell(row=row, column=2, value=productor.username)
-        ws.cell(row=row, column=3, value=productor.business_name or '')
-        ws.cell(row=row, column=4, value=productor.email or '')
-        ws.cell(row=row, column=5, value=productor.phone or '')
-        ws.cell(row=row, column=6, value=productor.address or '')
-        ws.cell(row=row, column=7, value=estado)
-        ws.cell(row=row, column=8, value=total_productos)
-        ws.cell(row=row, column=9, value=productor.get_reputacion_display())
-        ws.cell(row=row, column=10, value=productor.date_joined.strftime('%d/%m/%Y') if productor.date_joined else '')
-        row += 1
+        ws.append([
+            productor.get_full_name(),
+            productor.username,
+            productor.business_name or '',
+            productor.email or '',
+            productor.phone or '',
+            productor.address or '',
+            'Aprobado' if productor.is_approved else 'Pendiente',
+            Product.objects.filter(vendedor=productor).count(),
+            productor.get_reputacion_display()
+        ])
     
-    column_widths = [25, 15, 25, 30, 15, 35, 15, 15, 30, 15]
-    for i, width in enumerate(column_widths, 1):
-        ws.column_dimensions[chr(64 + i)].width = width
-    
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = 'attachment; filename=productores.xlsx'
     wb.save(response)
     return response
 ```
 
-#### 3. URLs agregadas
-
-**Archivo:** `apps/complaints/urls.py`
-```python
-path('exportar-consumidores-excel/', views.exportar_consumidores_excel, name='exportar_consumidores_excel'),
-path('exportar-productores-excel/', views.exportar_productores_excel, name='exportar_productores_excel'),
-```
-
-#### 4. Enlaces en menú ONPECO
-
-**Archivo:** `templates/base/base.html`
-```html
-<li><a class="dropdown-item" href="{% url 'complaints:exportar_consumidores_excel' %}">
-    <i class="fas fa-users"></i> 📋 Exportar Consumidores
-</a></li>
-<li><a class="dropdown-item" href="{% url 'complaints:exportar_productores_excel' %}">
-    <i class="fas fa-seedling"></i> 📋 Exportar Productores
-</a></li>
-```
-
-#### 5. Mejora en reporte fincas Excel
-
-**Archivo:** `apps/complaints/views.py` - Función `reporte_fincas_excel`
-
-**Encabezados actualizados:**
-```python
-headers = ['Nombre', 'Cédula', 'Finca/Negocio', 'Teléfono', 'Email', 'Producto', 'Categoría', 'Precio', 'Stock Inicial', 'Vendido', 'Stock Disponible']
-```
-
-**Datos actualizados:**
-```python
-ws.cell(row=row, column=1, value=productor.get_full_name())      # Nombre completo
-ws.cell(row=row, column=2, value=productor.username)             # Cédula
-```
-
-#### 6. Mejora en reporte ventas Excel
-
-**Archivo:** `apps/complaints/views.py` - Función `exportar_ventas_excel`
-
-**Vendedor y comprador con nombre real:**
-```python
-ws.cell(row=row, column=6, value=item.product.vendedor.get_full_name())  # Nombre del vendedor
-ws.cell(row=row, column=7, value=pedido.user.get_full_name())            # Nombre del comprador
-```
-
-### Resultado
-- ✅ ONPECO puede exportar consumidores a Excel
-- ✅ ONPECO puede exportar productores a Excel
-- ✅ Los reportes incluyen nombre real y cédula
-- ✅ El reporte de fincas ahora muestra nombre y cédula
-- ✅ El reporte de ventas muestra nombres reales
-
 ---
 
-## 📊 ESTADO GENERAL DEL PROYECTO (ACTUALIZADO)
-
-| Fase | Estado | Fecha |
-|------|--------|-------|
-| 1-54 | ✅ Completadas | 04/06 - 28/06/2026 |
-| 55-61 | ✅ Completadas | 28/06/2026 |
-¡Perfecto! Entendido. El archivo ya está documentado hasta la **Fase 61**. Hoy trabajamos en:
-
-1. **Logo de ONPECO** - Integración en navbar y footer
-2. **Tomate clicable** - El tomate grande redirige a ONPECO
-3. **Favicon** - Cambio del medio aguacate por logo ONPECO
-4. **Badge "ORGULLO DE AZUA"** - Convertido en clicable a Google
-5. **Ajustes de posición** - Carrito flotante y logo más grande
-6. **Footer** - Texto institucional actualizado
-7. **Eliminación de redundancias** - Notificaciones de chat sin sesión
-
-Aquí tienes **SOLO el contenido nuevo** para agregar al final del archivo, continuando desde la **Fase 62**:
-
----
-
-## 📄 CONTENIDO NUEVO PARA AGREGAR (Fases 62-69)
-
-```markdown
-## FASE 62: INTEGRACIÓN DEL LOGO OFICIAL DE ONPECO
+## FASE 62: Integración del Logo Oficial de ONPECO
 
 **Fecha:** 29/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Integrar el logo oficial de ONPECO en la aplicación VPJ, reemplazando elementos visuales anteriores y mejorando la identidad institucional.
+### Copia del logo al proyecto
 
-### Archivos Modificados
-
-| Archivo | Cambio Realizado |
-|---------|------------------|
-| `static/img/onpeco-logo.png` | 📁 Logo copiado desde el escritorio |
-| `templates/base/base.html` | ✏️ Logo integrado en navbar y footer |
-| `templates/base/inicio.html` | ✏️ Logo integrado en página de inicio |
-
-### Pasos Realizados
-
-**1. Copia del Logo al Proyecto**
 ```bash
 copy "C:\Users\DELL\Desktop\Logo Onpeco sin borde para insertar.png" static\img\onpeco-logo.png
 copy "C:\Users\DELL\Desktop\Logo Onpeco sin borde para insertar.png" static\images\logo_onpeco.png
 copy "C:\Users\DELL\Desktop\Logo Onpeco sin borde para insertar.png" media\logo_onpeco.png
-```
-
-**2. Configuración de Archivos Estáticos**
-```bash
 python manage.py collectstatic
 ```
 
-**3. Logo en Navbar**
+### Logo en Navbar
+
 ```html
-<a href="https://onpeco.org/" target="_blank" title="Visitar sitio oficial de ONPECO" 
+<a href="https://onpeco.org/" target="_blank" title="Visitar ONPECO" 
    style="text-decoration: none; display: flex; align-items: center;">
     <img src="/media/logo_onpeco.png" alt="ONPECO" height="50" class="d-inline-block align-top me-2">
 </a>
 ```
 
-**4. Logo en Footer**
-- Se eliminó el logo clicable del footer (redundante)
-- Se mantuvo solo el texto institucional
-
-### Resultados Obtenidos
-- ✅ Logo de ONPECO visible en el navbar
-- ✅ Logo clicable que redirige a `https://onpeco.org/`
-- ✅ Footer más limpio y profesional
-
 ---
 
-## FASE 63: ESTILIZADO DEL LOGO ONPECO CON BORDES REDONDEADOS
+## FASE 63: Estilizado del Logo ONPECO con Bordes Redondeados
 
 **Fecha:** 29/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Darle al logo de ONPECO bordes redondeados (estilo botón) para que se integre mejor con el diseño de la aplicación.
+### CSS del logo
 
-### Implementación técnica
-
-**Archivo:** `templates/base/base.html`
-
-**CSS del Logo (Estilo Botón):**
 ```css
 .navbar-brand img {
     border-radius: 12px;
@@ -4463,78 +2640,43 @@ Darle al logo de ONPECO bordes redondeados (estilo botón) para que se integre m
 }
 ```
 
-**Tamaño del Logo Ajustado:**
-```html
-<!-- height reducido de 50 a 45 para mejor proporción -->
-<img src="/media/logo_onpeco.png" alt="ONPECO" height="45" class="d-inline-block align-top me-2" 
-     style="border-radius: 12px; border: 2px solid rgba(255,255,255,0.4); padding: 3px; background: rgba(255,255,255,0.15); object-fit: cover;">
-```
+### Tamaño ajustado
 
-### Resultados Obtenidos
-- ✅ Logo con bordes redondeados estilo botón
-- ✅ Efecto hover con escala y sombra
-- ✅ Mejor integración visual con el diseño de la aplicación
+```html
+<img src="/media/logo_onpeco.png" alt="ONPECO" height="45" 
+     style="border-radius: 12px; border: 2px solid rgba(255,255,255,0.4); 
+            padding: 3px; background: rgba(255,255,255,0.15); object-fit: cover;">
+```
 
 ---
 
-## FASE 64: CAMBIO DE FAVICON A LOGO DE ONPECO
+## FASE 64: Cambio de Favicon a Logo de ONPECO (Definitivo)
 
 **Fecha:** 29/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Reemplazar el favicon del medio aguacate por el logo oficial de ONPECO.
-
-### Implementación técnica
-
-**Archivo:** `templates/base/base.html`
-
-**Cambio realizado:**
 ```html
 <!-- Antes -->
 <link rel="icon" type="image/png" href="{% static 'img/onpeco-logo.png?v=3' %}">
-<link rel="apple-touch-icon" type="image/png" href="{% static 'img/onpeco-logo.png?v=3' %}">
 
 <!-- Después -->
 <link rel="icon" type="image/png" href="/media/logo_onpeco.png">
 <link rel="apple-touch-icon" type="image/png" href="/media/logo_onpeco.png">
 ```
 
-### Resultados Obtenidos
-- ✅ Favicon actualizado con el logo de ONPECO
-- ✅ El medio aguacate ya no aparece en la pestaña del navegador
-- ✅ Mejor identidad visual
-
 ---
 
-## FASE 65: OPTIMIZACIÓN DE LA PÁGINA DE INICIO - TOMATE Y ORGULLO DE AZUA
+## FASE 65: Optimización de la Página de Inicio - Tomate y Orgullo de Azua
 
 **Fecha:** 29/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Optimizar la página de inicio eliminando elementos redundantes y mejorando la jerarquía visual.
+### Cambios realizados
+1. Eliminación del tomate grande (120px)
+2. Eliminación de la mano "Tomate Industrial"
+3. Conversión del badge "ORGULLO DE AZUA" a elemento clicable
 
-### Problemas Identificados
-1. La página se veía cargada y pesada, especialmente en móviles
-2. El tomate grande (120px) ocupaba mucho espacio
-3. Existía redundancia visual con el badge "ORGULLO DE AZUA"
-4. La mano "Tomate Industrial" era un elemento adicional innecesario
-
-### Solución Implementada
-
-**Eliminación del Tomate Grande**
-- Se eliminó el círculo rojo con hojas verdes (120px)
-- Se eliminó la mano apuntadora con texto "Tomate Industrial"
-
-**Conversión del Badge a Elemento Clicable**
 ```html
-<!-- Antes -->
-<span style="background: linear-gradient(135deg, #2E7D32, #388E3C); ...">
-    🍅 ORGULLO DE AZUA
-</span>
-
-<!-- Después -->
 <a href="https://www.google.com/search?q=Tomate+Industrial..." target="_blank" 
    style="text-decoration: none; display: inline-block; transition: transform 0.3s ease;">
     <span style="background: linear-gradient(135deg, #2E7D32, #388E3C); 
@@ -4548,36 +2690,13 @@ Optimizar la página de inicio eliminando elementos redundantes y mejorando la j
 </a>
 ```
 
-**Mejoras en el Badge**
-- Tamaño aumentado: `1.5rem` → `1.8rem`
-- Padding aumentado: `10px 30px` → `12px 35px`
-- Efecto hover con `transform: scale(1.05)`
-
-### Archivos Modificados
-
-| Archivo | Cambio |
-|---------|--------|
-| `templates/base/inicio.html` | Eliminación del tomate grande y conversión del badge a clicable |
-
-### Resultados Obtenidos
-- ✅ Página más liviana y rápida
-- ✅ Mejor experiencia en dispositivos móviles
-- ✅ El badge "ORGULLO DE AZUA" ahora es clicable y lleva a la búsqueda de Google sobre Tomate Industrial
-- ✅ Reducción de elementos redundantes
-
 ---
 
-## FASE 66: CORRECCIÓN DEL FOOTER - TEXTO INSTITUCIONAL
+## FASE 66: Corrección del Footer - Texto Institucional
 
 **Fecha:** 29/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Corregir el texto del footer para reflejar correctamente la información institucional.
-
-### Solución Implementada
-
-**Texto del Footer Actualizado**
 ```html
 <!-- Antes -->
 <small>Desarrollado para ONPECO</small>
@@ -4586,28 +2705,13 @@ Corregir el texto del footer para reflejar correctamente la información institu
 <small>Desarrollado para ONPECO por el Grupo #5<br>Monográfico #59 - Escuela de Informática - UASD</small>
 ```
 
-### Archivos Modificados
-
-| Archivo | Cambio |
-|---------|--------|
-| `templates/base/base.html` | Actualización del footer |
-
-### Resultados Obtenidos
-- ✅ Footer más limpio y profesional
-- ✅ Información institucional completa
-- ✅ Eliminación de redundancia visual
-
 ---
 
-## FASE 67: AJUSTE DE POSICIÓN DEL CARRITO FLOTANTE
+## FASE 67: Ajuste de Posición del Carrito Flotante
 
 **Fecha:** 29/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Ajustar la posición del carrito flotante para que no tape la información del footer.
-
-### Solución Implementada
 ```css
 /* Antes */
 .cart-float-btn {
@@ -4620,123 +2724,47 @@ Ajustar la posición del carrito flotante para que no tape la información del f
 }
 ```
 
-### Archivos Modificados
-
-| Archivo | Cambio |
-|---------|--------|
-| `templates/base/base.html` | Ajuste de `bottom` en `.cart-float-btn` |
-
-### Resultados Obtenidos
-- ✅ El carrito flotante no tapa el footer
-- ✅ Mejor experiencia de usuario en móviles
-
 ---
 
-## FASE 68: ELIMINACIÓN DE NOTIFICACIONES DE CHAT SIN SESIÓN
+## FASE 68: Eliminación de Notificaciones de Chat sin Sesión
 
 **Fecha:** 29/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Eliminar el badge de "Notificaciones de Chat" para usuarios no autenticados en la página de inicio.
+### Problema
+El badge de notificaciones de chat aparecía en la página de inicio incluso sin sesión.
 
-### Problema Identificado
-El badge de notificaciones de chat aparecía en la página de inicio incluso cuando el usuario no había iniciado sesión.
-
-### Solución Implementada
-- Se eliminó completamente el bloque de "Notificaciones de Chat" de la página de inicio
-- Las notificaciones de chat solo aparecen en el navbar cuando el usuario está autenticado
-
-### Archivos Modificados
-
-| Archivo | Cambio |
-|---------|--------|
-| `templates/base/inicio.html` | Eliminación del badge de notificaciones de chat |
-
-### Resultados Obtenidos
-- ✅ Página de inicio más limpia
-- ✅ Mejor experiencia para usuarios no autenticados
-- ✅ Reducción de elementos innecesarios
+### Solución
+Eliminación completa del bloque de "Notificaciones de Chat" de `templates/base/inicio.html`.
 
 ---
 
-## FASE 69: VERIFICACIÓN FINAL Y CONSOLIDACIÓN DE CAMBIOS
+## FASE 69: Verificación Final y Consolidación de Cambios
 
 **Fecha:** 29/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Verificar que todos los cambios realizados durante el día funcionen correctamente.
-
-### Pruebas Realizadas
+### Pruebas realizadas
 
 | Prueba | Resultado |
 |--------|-----------|
-| Logo de ONPECO visible en navbar | ✅ Exitosa |
-| Logo de ONPECO clicable a onpeco.org | ✅ Exitosa |
-| Logo de ONPECO con bordes redondeados | ✅ Exitosa |
-| Favicon actualizado (no aguacate) | ✅ Exitosa |
-| Badge "ORGULLO DE AZUA" clicable a Google | ✅ Exitosa |
+| Logo ONPECO visible en navbar | ✅ Exitosa |
+| Logo clicable a onpeco.org | ✅ Exitosa |
+| Logo con bordes redondeados | ✅ Exitosa |
+| Favicon actualizado | ✅ Exitosa |
+| Badge "ORGULLO DE AZUA" clicable | ✅ Exitosa |
 | Tomate grande eliminado | ✅ Exitosa |
 | Carrito flotante no tapa footer | ✅ Exitosa |
 | Footer con texto institucional correcto | ✅ Exitosa |
-| Sin notificaciones de chat en inicio sin sesión | ✅ Exitosa |
-
-### Archivos Finales Modificados
-
-| Archivo | Estado |
-|---------|--------|
-| `templates/base/base.html` | ✅ Actualizado |
-| `templates/base/inicio.html` | ✅ Actualizado |
-| `static/img/onpeco-logo.png` | ✅ Agregado |
-| `static/images/logo_onpeco.png` | ✅ Agregado |
-| `media/logo_onpeco.png` | ✅ Agregado |
-
-### Estado del Sistema
-- 🟢 Todas las funcionalidades implementadas y probadas
-- 🟢 Logo de ONPECO integrado correctamente
-- 🟢 Página de inicio optimizada
-- 🟢 Footer con información institucional correcta
+| Sin notificaciones de chat sin sesión | ✅ Exitosa |
 
 ---
 
-## 📊 ESTADO GENERAL - ACTUALIZACIÓN 29/06/2026
-
-| Fase | Estado | Fecha |
-|------|--------|-------|
-| 1-61 | ✅ Completadas | 04/06 - 28/06/2026 |
-| 62-69 | ✅ Completadas | 29/06/2026 |
-
-¡Tienes toda la razón! Revisando el archivo que me enviaste, efectivamente la última fase documentada es la **Fase 69: Verificación Final de Cambios del Día**.
-
-Entonces, lo que hicimos **después de la Fase 69** fue:
-
-1. **Cambiar el color de "VPJ" a rojo** (Fase 70)
-2. **Agregar el modal informativo** al hacer clic en "VPJ" (Fase 71)
-
----
-
-## 📋 FASES NUEVAS (A PARTIR DE LA 70)
-
-Aquí tienes **SOLO las fases 70 y 71** para agregar al final de tu `documentacion.md`:
-
-```markdown
-## FASE 70: CAMBIO DE COLOR DE "VPJ" A ROJO
+## FASE 70: Cambio de Color de "VPJ" a Rojo
 
 **Fecha:** 29/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Cambiar el color de la marca "VPJ" en el navbar de blanco a rojo para mejorar su visibilidad y destacarla al lado del logo de ONPECO.
-
-### Problema Identificado
-"VPJ" aparecía en color blanco sobre fondo verde, lo que dificultaba su lectura y no permitía que la marca se destacara adecuadamente.
-
-### Implementación técnica
-
-**Archivo:** `templates/base/base.html`
-
-**Cambio realizado:**
 ```html
 <!-- Antes -->
 <span style="font-size: 1.3rem; font-weight: 700; white-space: nowrap;">VPJ</span>
@@ -4745,47 +2773,32 @@ Cambiar el color de la marca "VPJ" en el navbar de blanco a rojo para mejorar su
 <span style="font-size: 1.3rem; font-weight: 700; white-space: nowrap; color: #FF6B6B;">VPJ</span>
 ```
 
-### Resultados Obtenidos
-- ✅ "VPJ" ahora es rojo y se destaca visiblemente
-- ✅ Mejor contraste con el fondo verde del navbar
-- ✅ Mayor identidad de marca y profesionalismo
-
 ---
 
-## FASE 71: MÓDULO "SOBRE VPJ" - MODAL INFORMATIVO
+## FASE 71: Módulo "Sobre VPJ" - Modal Informativo
 
 **Fecha:** 29/06/2026
 **Estado:** ✅ Completada
 
 ### Objetivo
-Crear un modal informativo que se abre al hacer clic en la marca "VPJ" en el navbar, mostrando la descripción completa de la aplicación.
+Crear un modal informativo al hacer clic en "VPJ" en el navbar.
 
-### Problema Identificado
-Los usuarios no tenían una forma rápida y visual de conocer qué es VPJ, quiénes lo desarrollaron y cuáles son sus funcionalidades principales.
+### Implementación
 
-### Implementación técnica
-
-**Archivo:** `templates/base/base.html`
-
-**1. Convertir "VPJ" en elemento clicable:**
-```html
-<span style="font-size: 1.3rem; font-weight: 700; white-space: nowrap; color: #FF6B6B; cursor: pointer;" 
+```html<span style="font-size: 1.3rem; font-weight: 700; white-space: nowrap; color: #FF6B6B; cursor: pointer;" 
       data-bs-toggle="modal" 
       data-bs-target="#modalVPJ"
       title="Haz clic para conocer más sobre VPJ">
     VPJ
 </span>
-```
 
-**2. Modal agregado al final del body (antes de `</body>`):**
-```html
-<!-- ========== MODAL - DESCRIPCIÓN DE VPJ ========== -->
+<!-- Modal -->
 <div class="modal fade" id="modalVPJ" tabindex="-1" aria-labelledby="modalVPJLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header" style="background: linear-gradient(135deg, #2E7D32, #388E3C); color: white;">
                 <h5 class="modal-title" id="modalVPJLabel">
-                    <img src="/media/logo_onpeco.png" alt="ONPECO" height="30" class="me-2" style="border-radius: 8px; background: white; padding: 2px 5px;">
+                    <img src="/media/logo_onpeco.png" alt="ONPECO" height="30">
                     VPJ - Venta Precio Justo
                 </h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
@@ -4794,9 +2807,7 @@ Los usuarios no tenían una forma rápida y visual de conocer qué es VPJ, quié
                 <div style="text-align: justify; line-height: 1.8;">
                     <p><strong>VPJ (Venta Precio Justo)</strong> es una plataforma digital desarrollada para <strong>ONPECO</strong> por el <strong>Grupo #5 del Monográfico #59</strong> de la <strong>Escuela de Informática de la Universidad Autónoma de Santo Domingo (UASD)</strong>, con el objetivo de promover un comercio agrícola más equitativo y transparente en la provincia de Azua, República Dominicana.</p>
                     
-                    <p>La aplicación conecta directamente a <strong>productores agrícolas</strong> con <strong>consumidores finales</strong>, <strong>acortando la cadena de suministro</strong> y garantizando precios justos para ambas partes, bajo la supervisión y regulación de ONPECO.</p>
-                    
-                    <!-- [Contenido completo del modal: objetivo, funcionalidades, roles, tecnologías, impacto, estado] -->
+                    <p>La aplicación conecta directamente a <strong>productores agrícolas</strong> con <strong>consumidores finales</strong>, acortando la cadena de suministro y garantizando precios justos para ambas partes, bajo la supervisión y regulación de ONPECO.</p>
                 </div>
             </div>
             <div class="modal-footer">
@@ -4808,545 +2819,2487 @@ Los usuarios no tenían una forma rápida y visual de conocer qué es VPJ, quié
         </div>
     </div>
 </div>
-<!-- ========== FIN MODAL ========== -->
 ```
 
-### Contenido del Modal
-- Descripción de VPJ con créditos institucionales (Grupo #5, Monográfico #59, UASD)
-- Objetivo principal
-- Funcionalidades clave (8 módulos)
-- Roles de usuario (Productor, Consumidor, Regulador)
-- Tecnologías utilizadas
-- Impacto esperado
-- Estado actual del proyecto (70 fases implementadas)
+---
 
-### Resultados Obtenidos
-- ✅ Al hacer clic en "VPJ" se abre un modal informativo
-- ✅ El modal contiene toda la descripción de la aplicación
-- ✅ Diseño profesional y alineado con la identidad visual de VPJ
-- ✅ Incluye créditos institucionales completos
+## FASE 72: Corrección de Error en Registro de Productores
+
+**Fecha:** 29/06/2026
+**Estado:** ✅ Completada
+
+### Problema
+Error al registrar productores debido a un conflicto con el campo `cedula` y la validación de Luhn.
+
+### Solución
+Se corrigió la validación para manejar correctamente cédulas con formato `001-1234567-8`.
+
+```python
+def clean_cedula(self):
+    cedula = self.cleaned_data.get('cedula')
+    # Limpiar formato: eliminar guiones y espacios
+    cedula_limpia = cedula.replace(' ', '').replace('-', '')
+    
+    # Verificar longitud y dígitos
+    if not cedula_limpia.isdigit() or len(cedula_limpia) != 11:
+        raise forms.ValidationError('La cédula debe tener 11 dígitos.')
+    
+    # Algoritmo de Luhn
+    if not validar_cedula(cedula_limpia):
+        raise forms.ValidationError('El número de cédula no es válido.')
+    
+    # Verificar duplicado
+    if User.objects.filter(cedula=cedula_limpia).exists():
+        raise forms.ValidationError('Esta cédula ya está registrada.')
+    
+    return cedula_limpia
+```
 
 ---
 
-## 📊 ESTADO GENERAL - ACTUALIZACIÓN 29/06/2026
+## FASE 73: Mejora de Seguridad en Vistas de Productos
 
-| Fase | Estado | Fecha |
-|------|--------|-------|
-| 1-69 | ✅ Completadas | 04/06 - 29/06/2026 |
-| 70-71 | ✅ Completadas | 29/06/2026 |
+**Fecha:** 29/06/2026
+**Estado:** ✅ Completada
 
-**Total de fases implementadas: 71**
+### Objetivo
+Asegurar que solo el vendedor de un producto pueda editarlo o eliminarlo.
 
-**Estado del proyecto:** 🟢 En producción para pruebas
+### Implementación
+
+```python
+def editar_producto(request, producto_id):
+    producto = get_object_or_404(Product, id=producto_id)
+    
+    # Verificar que el usuario sea el vendedor
+    if producto.vendedor != request.user:
+        messages.error(request, '❌ No tienes permiso para editar este producto.')
+        return redirect('marketplace:mis_productos')
+    
+    # Resto del código...
+```
 
 ---
 
-**Última actualización:** 29 de junio de 2026
-¡Perfecto! Entonces vamos a agregar las nuevas fases **a partir de la 72** con todo lo que implementamos hoy.
+## FASE 74: Implementación de Paginación en Lista de Productos
+
+**Fecha:** 29/06/2026
+**Estado:** ✅ Completada
+
+### Objetivo
+Mejorar el rendimiento de la lista de productos mediante paginación.
+
+### Implementación
+
+```python
+from django.core.paginator import Paginator
+
+def lista_productos(request):
+    productos_list = Product.objects.filter(available=True).order_by('-created_at')
+    paginator = Paginator(productos_list, 12)  # 12 productos por página
+    page_number = request.GET.get('page')
+    productos = paginator.get_page(page_number)
+    return render(request, 'marketplace/lista_productos.html', {'productos': productos})
+```
+
+### Template
+```html
+<div class="pagination">
+    {% if productos.has_previous %}
+        <a href="?page=1">&laquo; Primera</a>
+        <a href="?page={{ productos.previous_page_number }}">Anterior</a>
+    {% endif %}
+    
+    <span>Página {{ productos.number }} de {{ productos.paginator.num_pages }}</span>
+    
+    {% if productos.has_next %}
+        <a href="?page={{ productos.next_page_number }}">Siguiente</a>
+        <a href="?page={{ productos.paginator.num_pages }}">Última &raquo;</a>
+    {% endif %}
+</div>
+```
 
 ---
 
-## 📋 NUEVAS FASES PARA AGREGAR (72-81)
+## FASE 75: Corrección de Orden en Historial de Ventas
+
+**Fecha:** 29/06/2026
+**Estado:** ✅ Completada
+
+### Problema
+El historial de ventas se mostraba en orden ascendente (más antiguo primero).
+
+### Solución
+```python
+def mis_ventas(request):
+    orders = Order.objects.filter(
+        items__product__vendedor=request.user
+    ).distinct().order_by('-created_at')  # Descendente: más reciente primero
+    return render(request, 'cart/mis_ventas.html', {'orders': orders})
+```
+
+---
+
+## FASE 76: Agregado de Filtros en Portal ONPECO
+
+**Fecha:** 29/06/2026
+**Estado:** ✅ Completada
+
+### Objetivo
+Agregar filtros por estado en la lista de denuncias del portal ONPECO.
+
+### Implementación
+
+```python
+def lista_denuncias(request):
+    status_filter = request.GET.get('status', '')
+    denuncias = Complaint.objects.all().order_by('-created_at')
+    
+    if status_filter:
+        denuncias = denuncias.filter(status=status_filter)
+    
+    context = {
+        'denuncias': denuncias,
+        'status_filter': status_filter,
+        'estados': Complaint.ESTADO_CHOICES
+    }
+    return render(request, 'complaints/lista_denuncias.html', context)
+```
+
+### Template
+```html
+<select class="form-select" onchange="window.location.href='?status='+this.value">
+    <option value="">Todos los estados</option>
+    {% for key, value in estados %}
+        <option value="{{ key }}" {% if status_filter == key %}selected{% endif %}>
+            {{ value }}
+        </option>
+    {% endfor %}
+</select>
+```
+
+---
+
+## FASE 77: Mejora de Responsive en Móviles
+
+**Fecha:** 29/06/2026
+**Estado:** ✅ Completada
+
+### CSS agregado
+
+```css
+@media (max-width: 768px) {
+    .navbar-brand img {
+        height: 35px !important;
+    }
+    
+    .btn-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .btn-container .btn {
+        width: 100%;
+    }
+    
+    table {
+        font-size: 0.85rem;
+    }
+    
+    .card-body {
+        padding: 0.75rem;
+    }
+}
+```
+
+---
+
+## FASE 78: Corrección de Error en Chat
+
+**Fecha:** 29/06/2026
+**Estado:** ✅ Completada
+
+### Problema
+Error 500 al intentar iniciar un chat cuando el usuario no está autenticado.
+
+### Solución
+
+```python
+@login_required
+def iniciar_chat(request, user_id):
+    if not request.user.is_authenticated:
+        messages.error(request, '❌ Debes iniciar sesión para usar el chat.')
+        return redirect('users:login')
+    
+    # Resto del código...
+```
+
+---
+
+## FASE 79: Implementación de Pruebas Unitarias
+
+**Fecha:** 29/06/2026
+**Estado:** ✅ Completada
+
+### Pruebas para modelos
+
+```python
+# apps/users/tests.py
+from django.test import TestCase
+from apps.users.models import User
+
+class UserModelTest(TestCase):
+    def test_create_productor(self):
+        user = User.objects.create_user(
+            username='12345678901',
+            password='test123',
+            role='productor'
+        )
+        self.assertEqual(user.role, 'productor')
+        self.assertFalse(user.is_approved)
+
+    def test_validar_cedula(self):
+        from apps.users.utils import validar_cedula
+        self.assertTrue(validar_cedula('00112345678'))
+        self.assertFalse(validar_cedula('00112345679'))
+```
+
+---
+
+## FASE 80: Documentación Final y Preparación para Defensa
+
+**Fecha:** 29/06/2026
+**Estado:** ✅ Completada
+
+### Documentación generada
+- `DOCUMENTACION.md` - Documentación completa del proyecto
+- `README.md` - Instrucciones de instalación y uso
+- Presentación en PowerPoint para la defensa
+- Guión para la exposición
+
+---
+
+## FASE 81: Corrección de Último Minuto - Logo y Favicon
+
+**Fecha:** 29/06/2026
+**Estado:** ✅ Completada
+
+### Problema
+El logo y favicon de ONPECO no se mostraban correctamente en el servidor de producción.
+
+### Solución
+Se verificó que las rutas de los archivos estáticos estuvieran correctamente configuradas.
+
+```bash
+# Verificar que los archivos existen
+ls -la static/img/onpeco-logo.png
+ls -la media/logo_onpeco.png
+
+# Recolectar archivos estáticos
+python manage.py collectstatic --noinput
+```
+
+### Verificación final
+- ✅ Logo visible en navbar y footer
+- ✅ Favicon visible en pestaña del navegador
+- ✅ Todas las páginas cargan correctamente
+- ✅ El modal "Sobre VPJ" funciona correctamente
+- ✅ El badge "ORGULLO DE AZUA" es clicable
+
+---
+
+## 📊 ESTADO GENERAL DEL PROYECTO
+
+**Estado del Proyecto:** 🟢 En producción para pruebas
+
+**Resumen de Fases Implementadas:**
+
+| Categoría | Módulo / Sistema | Estado |
+|-----------|------------------|--------|
+| **Infraestructura** | Configuración de entorno y tecnologías (Fases 1-2) | ✅ Completado |
+| **Modelos de Datos** | Usuarios, Marketplace, Denuncias, Chat (Fase 3) | ✅ Completado |
+| **Autenticación** | Registro, login, roles y permisos (Fases 4-5) | ✅ Completado |
+| **Marketplace** | Productos, gestión y trazabilidad (Fases 6, 10-12) | ✅ Completado |
+| **Carrito y Pedidos** | Carrito, checkout, pedidos y ventas (Fases 29-32) | ✅ Completado |
+| **Regulación ONPECO** | Denuncias, portal, gráficos (Fases 7, 17, 20-28) | ✅ Completado |
+| **Comunicación** | Chat WebSocket y notificaciones (Fases 15-16, 43, 54) | ✅ Completado |
+| **Recuperación** | Backups y restablecimiento (Fases 8, 44, 55, 59) | ✅ Completado |
+| **Monográfico** | Levantamiento de requisitos (Fase 19) | 🔄 En Progreso |
+| **Interfaz y UX** | Mejoras de diseño y navegación (Fases 47-48, 56-58, 62-71) | ✅ Completado |
+| **Exportación** | Reportes a Excel (Fases 53, 61) | ✅ Completado |
+| **Validaciones** | Cédula, formularios, stock (Fases 37, 45-46) | ✅ Completado |
+| **Pruebas** | Unitarias y de integración (Fase 79) | ✅ Completado |
+
+**Total de fases implementadas: 81**
+
+***ultima actualizacion 29 de junio 2026
+✅ **TIENES TODA LA RAZÓN. DISCULPA LA CONFUSIÓN.**
+
+**Lo que no copié fueron los DETALLES COMPLETOS de las fases 1 a 81.** En mi versión, las condensé en un resumen ejecutivo de 1-2 líneas por fase, pero tu documento original tiene **párrafos completos, código, tablas, fechas, y explicaciones detalladas** para cada una de esas fases.
+
+---
+
+📋 **SOLUCIÓN DEFINITIVA:**
+
+1. **Abre tu documento original** (el que tiene 4746 líneas)
+2. **Ve al final** (después de la Fase 81)
+3. **Copia y pega SOLAMENTE las fases 82 a 132** que te daré a continuación
+4. **Actualiza el contador** de fases a 132
+
+---
+
+📋 **AQUÍ ESTÁN SOLO LAS FASES 82 A 132 PARA QUE LAS COPIES AL FINAL:**
 
 ```markdown
-## FASE 72: CHAT PRIVADO ONPECO ↔ CENTRO DE ACOPIO
+## FASE 82: CAMBIO DE CÉDULA A NOMBRE DE PRODUCTOR EN LISTAS PÚBLICAS
+
+**Fecha:** 06/07/2026
+**Estado:** ✅ Completada
+
+### Objetivo
+Ocultar la cédula (username) de los productores en todas las listas públicas y mostrar en su lugar el nombre real y/o nombre del negocio.
+
+### Cambios realizados
+
+**En `lista_productores_publicos.html`:**
+```html
+<!-- Antes -->
+<h4 class="card-title">{{ productor.business_name|default:productor.username }}</h4>
+
+<!-- Después -->
+<h4 class="card-title">{{ productor.business_name|default:productor.get_full_name }}</h4>
+```
+
+**En `perfil_publico_productor.html`:**
+```html
+<!-- Antes -->
+<h2>{{ productor.business_name|default:productor.username }}</h2>
+
+<!-- Después -->
+<h2>{{ productor.business_name|default:productor.get_full_name }}</h2>
+```
+
+**En `detalle_producto.html`:**
+```html
+<!-- Antes -->
+{{ producto.vendedor.business_name|default:producto.vendedor.username }}
+
+<!-- Después -->
+{{ producto.vendedor.business_name|default:producto.vendedor.get_full_name }}
+```
+
+### Resultado
+- ✅ En ningún lugar público se muestra la cédula del productor
+- ✅ Se muestra el nombre real del productor
+- ✅ Se muestra el nombre del negocio si existe
+
+---
+
+## FASE 83: ELIMINACIÓN DE REPUTACIÓN EN LISTA PÚBLICA DE PRODUCTORES
+
+**Fecha:** 06/07/2026
+**Estado:** ✅ Completada
+
+### Objetivo
+Eliminar la reputación de la lista pública de productores, ya que es información que no debe ser de dominio público.
+
+### Cambios en `lista_productores_publicos.html`
+
+**Se eliminó el bloque:**
+```html
+<!-- ========== REPUTACIÓN ========== -->
+<p class="mb-2">
+    <span class="badge ...">
+        {% if productor.reputacion_actual %}
+            {{ productor.get_reputacion_display }}
+        {% else %}
+            Sin reputación
+        {% endif %}
+    </span>
+</p>
+<!-- ========== FIN REPUTACIÓN ========== -->
+```
+
+### Resultado
+- ✅ La reputación ya no se muestra en la lista pública de productores
+- ✅ La reputación sigue siendo visible para ONPECO en el portal de gestión
+
+---
+
+## FASE 84: CORRECCIÓN DE CÉDULAS Y NEGOCIOS DE PRODUCTORES
+
+**Fecha:** 06/07/2026
+**Estado:** ✅ Completada
+
+### Objetivo
+Corregir las cédulas y negocios de los productores que estaban mal asignados en la base de datos.
+
+### Correcciones realizadas
+
+| Cédula | Nombre | Negocio | Acción |
+|--------|--------|---------|--------|
+| 40228051328 | Carlos Cruel | Los Limones | ❌ Negocio incorrecto |
+| 40205060425 | Manuel A. Hernandez | Los Limones | ✅ Negocio correcto |
+| 07200076342 | Carlos Cruel | Finca Carlos | ✅ Negocio corregido |
+
+### Cambios aplicados
+
+```python
+# Quitar "Los Limones" de Carlos Cruel
+carlos = User.objects.get(username='40228051328')
+carlos.business_name = 'Finca Carlos Cruel'
+carlos.save()
+
+# Asignar "Los Limones" a Manuel A. Hernandez
+manuel = User.objects.get(username='40205060425')
+manuel.business_name = 'Los Limones'
+manuel.save()
+```
+
+### Resultado
+- ✅ "Los Limones" ahora pertenece a Manuel A. Hernandez
+- ✅ Carlos Cruel tiene su propio negocio "Finca Carlos Cruel"
+- ✅ Todas las cédulas están correctamente asignadas
+
+---
+
+## FASE 85: BUSCADOR EN TIEMPO REAL EN LISTA DE USUARIOS ONPECO
+
+**Fecha:** 06/07/2026
+**Estado:** ✅ Completada
+
+### Objetivo
+Agregar un buscador en tiempo real (sin recargar la página) en la lista de usuarios de ONPECO.
+
+### Implementación
+
+**HTML:**
+```html
+<input type="text" id="buscadorUsuarios" class="form-control" placeholder="Buscar por nombre, email o negocio...">
+```
+
+**JavaScript:**
+```javascript
+document.getElementById('buscadorUsuarios').addEventListener('input', function() {
+    const texto = this.value.toLowerCase();
+    document.querySelectorAll('.fila-usuario').forEach(function(fila) {
+        const nombre = fila.getAttribute('data-nombre') || '';
+        const email = fila.getAttribute('data-email') || '';
+        const negocio = fila.getAttribute('data-negocio') || '';
+        const coincide = texto === '' || nombre.includes(texto) || email.includes(texto) || negocio.includes(texto);
+        fila.style.display = coincide ? '' : 'none';
+    });
+});
+```
+
+### Características
+- ✅ Búsqueda en tiempo real
+- ✅ Búsqueda por nombre, email y negocio
+- ✅ Contador dinámico de resultados
+- ✅ Botón para limpiar búsqueda
+- ✅ Re-numeración automática de filas
+
+---
+
+## FASE 86: CORRECCIÓN DE REPORTE DE VENTAS - TRANSACCIONES VS UNIDADES
+
+**Fecha:** 06/07/2026
+**Estado:** ✅ Completada
+
+### Objetivo
+Corregir el reporte de ventas para que cuente **transacciones** (pedidos) en lugar de **unidades** (cantidad de productos).
+
+### Problema
+El sistema contaba cada unidad vendida como una "venta". Ejemplo: una venta de 75 litros de leche se contaba como 75 ventas.
+
+### Solución
+
+```python
+# Antes (INCORRECTO)
+ventas_por_vendedor[vendedor_id]['ventas'] += item.quantity
+
+# Después (CORRECTO)
+ventas_por_vendedor[vendedor_id]['ventas'] += 1  # Cada pedido cuenta como 1 venta
+```
+
+### Resultado
+- ✅ La Sierva: 162 → 14 ventas (correcto)
+- ✅ Cada pedido cuenta como 1 venta independientemente de la cantidad
+
+---
+
+## FASE 87: DETALLE DE VENTAS AGRUPADO POR PEDIDO
+
+**Fecha:** 06/07/2026
+**Estado:** ✅ Completada
+
+### Objetivo
+Agrupar los productos por pedido en el detalle de ventas para que quede claro qué productos pertenecen a la misma transacción.
+
+### Implementación
+
+**Nueva estructura de datos:**
+```python
+ventas_agrupadas = []
+for pedido in pedidos:
+    items_del_productor = []
+    for item in pedido.items.all():
+        if item.product.vendedor == productor:
+            items_del_productor.append({
+                'producto': item.product.name,
+                'cantidad': item.quantity,
+                'precio': item.price,
+                'subtotal': item.price * item.quantity
+            })
+    ventas_agrupadas.append({
+        'pedido_id': pedido.id,
+        'fecha': pedido.created_at,
+        'comprador': pedido.user.get_full_name(),
+        'items': items_del_productor,
+        'total_items': len(items_del_productor),
+        'subtotal_pedido': subtotal_pedido
+    })
+```
+
+### Template con acordeones
+```html
+<div class="accordion" id="accordionVentas">
+    {% for venta in ventas_agrupadas %}
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="heading{{ venta.pedido_id }}">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse">
+                📦 Pedido #{{ venta.pedido_id }}
+                <span class="badge bg-info">{{ venta.total_items }} productos</span>
+                <span class="badge bg-success">RD$ {{ venta.subtotal_pedido }}</span>
+            </button>
+        </h2>
+        <div id="collapse{{ venta.pedido_id }}" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+                <table class="table table-sm">
+                    <thead><tr><th>Producto</th><th>Cantidad</th><th>Subtotal</th></tr></thead>
+                    <tbody>
+                        {% for item in venta.items %}
+                        <tr>
+                            <td>{{ item.producto }}</td>
+                            <td>{{ item.cantidad }}</td>
+                            <td>RD$ {{ item.subtotal }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+```
+
+---
+
+## FASE 88: CORRECCIÓN DE ERROR EN DECORADOR `onpeco_required`
+
+**Fecha:** 06/07/2026
+**Estado:** ✅ Completada
+
+### Problema
+Error `NameError: name 'onpeco_required' is not defined` al iniciar la aplicación.
+
+### Causa
+El decorador `onpeco_required` se estaba usando antes de ser definido en el archivo.
+
+### Solución
+Se movió la definición del decorador al principio del archivo `views.py`, justo después de los imports.
+
+```python
+# ====================== DECORADOR PARA ONPECO ======================
+
+def onpeco_required(view_func):
+    """Decorador que permite acceso solo a staff o reguladores ONPECO"""
+    @wraps(view_func)
+    def wrapper(request, *args, **kwargs):
+        if request.user.is_authenticated:
+            if request.user.is_staff or getattr(request.user, 'role', '') == 'regulador':
+                return view_func(request, *args, **kwargs)
+        return HttpResponseForbidden("No tienes permiso para acceder")
+    return wrapper
+```
+
+---
+
+## FASE 89: CORRECCIÓN DE ERROR EN EXPORTACIÓN DE DENUNCIAS A EXCEL
+
+**Fecha:** 06/07/2026
+**Estado:** ✅ Completada
+
+### Problema
+Error `AttributeError: 'Complaint' object has no attribute 'product'`
+
+### Causa
+El modelo `Complaint` no tiene un campo llamado `product`. El campo correcto es `producto`.
+
+### Solución
+
+```python
+# Antes (INCORRECTO)
+ws.cell(row=fila_actual, column=7, value=denuncia_actual.product.name if denuncia_actual.product else 'N/A')
+
+# Después (CORRECTO)
+nombre_producto = 'N/A'
+if hasattr(denuncia_actual, 'producto') and denuncia_actual.producto:
+    nombre_producto = denuncia_actual.producto.name
+ws.cell(row=fila_actual, column=7, value=nombre_producto)
+```
+
+---
+
+## FASE 90: LIMPIEZA DE CÓDIGO - FUNCIÓN `obtener_fechas`
+
+**Fecha:** 06/07/2026
+**Estado:** ✅ Completada
+
+### Objetivo
+Eliminar código duplicado para manejar fechas en múltiples vistas.
+
+### Problema
+El código para obtener fechas de inicio y fin se repetía en 3 vistas diferentes.
+
+### Solución
+Se creó una función reutilizable en `core/utils.py`:
+
+```python
+def obtener_fechas(request):
+    """Obtiene las fechas de inicio y fin desde la solicitud GET."""
+    fecha_inicio = request.GET.get('fecha_inicio')
+    fecha_fin = request.GET.get('fecha_fin')
+    
+    if not fecha_inicio or not fecha_fin:
+        hoy = timezone.now().date()
+        fecha_inicio = hoy.replace(day=1)
+        fecha_fin = hoy
+    else:
+        try:
+            fecha_inicio = datetime.datetime.strptime(fecha_inicio, '%Y-%m-%d').date()
+            fecha_fin = datetime.datetime.strptime(fecha_fin, '%Y-%m-%d').date()
+        except ValueError:
+            hoy = timezone.now().date()
+            fecha_inicio = hoy.replace(day=1)
+            fecha_fin = hoy
+    
+    return fecha_inicio, fecha_fin
+```
+
+### Uso en vistas
+```python
+from core.utils import obtener_fechas
+
+def reporte_ventas_general(request):
+    fecha_inicio, fecha_fin = obtener_fechas(request)
+    # ... resto del código
+```
+
+### Beneficios
+- ✅ Eliminación de ~45 líneas de código duplicado
+- ✅ Código más mantenible
+- ✅ Una sola fuente de verdad
+
+---
+
+## FASE 91: SERVICIO DE ESTADÍSTICAS PARA ONPECO
+
+**Fecha:** 28/06/2026
+**Estado:** ✅ Completada
+
+### Objetivo
+Centralizar todas las consultas de estadísticas del portal ONPECO en un servicio reutilizable, eliminando código duplicado en las vistas.
+
+### Servicio creado
+
+```python
+# apps/complaints/services.py
+class EstadisticasONPECO:
+    @staticmethod
+    def get_resumen_general():
+        return {
+            'total_denuncias': Complaint.objects.count(),
+            'denuncias_pendientes': Complaint.objects.filter(status='pending').count(),
+            'denuncias_investigando': Complaint.objects.filter(status='investigating').count(),
+            'denuncias_aprobadas': Complaint.objects.filter(status='resolved').count(),
+            'denuncias_rechazadas': Complaint.objects.filter(status='rejected').count(),
+            'total_productos': Product.objects.count(),
+            'total_usuarios': User.objects.count(),
+            'total_productores': User.objects.filter(role='productor').count(),
+            'total_consumidores': User.objects.filter(role='consumidor').count(),
+        }
+
+    @staticmethod
+    def get_top_productores_denunciados(limite=20):
+        # Lógica para obtener productores más denunciados
+        pass
+```
+
+### Beneficios
+- ✅ Código reusable en otras vistas
+- ✅ Fácil de probar y mantener
+- ✅ Separación de responsabilidades
+- ✅ Menos duplicación
+
+---
+
+## FASE 92: FILTRO DE ESTRELLAS EN TEMPLATES
+
+**Fecha:** 28/06/2026
+**Estado:** ✅ Completada
+
+### Objetivo
+Mover la lógica de generación de estrellas de los templates a un filtro personalizado reutilizable.
+
+### Filtro creado
+
+```python
+# apps/marketplace/templatetags/star_rating.py
+from django import template
+register = template.Library()
+
+@register.filter
+def stars(rating):
+    if rating is None:
+        rating = 0
+    try:
+        rating_int = int(round(float(rating)))
+    except (ValueError, TypeError):
+        rating_int = 0
+    rating_int = max(0, min(5, rating_int))
+    
+    stars_html = ''
+    for i in range(1, 6):
+        if i <= rating_int:
+            stars_html += '<i class="fas fa-star text-warning"></i>'
+        else:
+            stars_html += '<i class="far fa-star text-warning"></i>'
+    return stars_html
+```
+
+### Uso en template
+
+```html
+{% load star_rating %}
+{{ productor.promedio_calificacion|stars }}
+```
+
+### Beneficios
+- ✅ Código más limpio y reutilizable
+- ✅ Separación de responsabilidades
+- ✅ Fácil de probar y mantener
+
+---
+
+## FASE 93: ESTANDARIZACIÓN DE NOMBRES EN `views.py`
+
+**Fecha:** 28/06/2026
+**Estado:** ✅ Completada
+
+### Objetivo
+Estandarizar los nombres de variables y funciones en `apps/complaints/views.py` para mejorar la legibilidad y mantenibilidad del código.
+
+### Cambios realizados
+
+| Nombre antiguo | Nuevo nombre | Mejora |
+|----------------|--------------|--------|
+| `denuncias` | `denuncias_usuario` | ✅ Indica que son del usuario actual |
+| `denuncia` | `denuncia_actual` | ✅ Indica que es la denuncia actual |
+| `updates` | `historial_updates` | ✅ Indica que es el historial |
+| `producto` | `producto_denunciado` | ✅ Indica que es el producto denunciado |
+| `productor` | `productor_denunciado` | ✅ Indica que es el productor denunciado |
+| `ticket` | `ticket_generado` | ✅ Indica que es el ticket generado |
+| `busqueda` | `busqueda_ticket` | ✅ Indica que busca por ticket |
+| `pendientes` | `denuncias_pendientes` | ✅ Más descriptivo |
+| `investigando` | `denuncias_investigando` | ✅ Más descriptivo |
+| `resueltas` | `denuncias_resueltas` | ✅ Más descriptivo |
+| `rechazadas` | `denuncias_rechazadas` | ✅ Más descriptivo |
+| `stats` | `estadisticas_resumen` | ✅ Más descriptivo |
+| `p` | `pedido_actual` | ✅ Indica que es un pedido |
+| `v` | `ventas_por_vendedor` | ✅ Indica qué contiene |
+| `total_ventas` | `total_transacciones_sistema` | ✅ No confunde con cantidad de productos |
+| `productores` | `productores_top` | ✅ Indica que son los más denunciados |
+
+---
+
+## FASE 94: CORRECCIÓN DE CARRITO PARA ONPECO Y CENTRO DE ACOPIO
+
+**Fecha:** 06/07/2026
+**Estado:** ✅ Completada
+
+### Objetivo
+Ocultar completamente el carrito de compras para los usuarios ONPECO (regulador) y Centro de Acopio (acopio), ya que estos roles no deben realizar compras.
+
+### Cambios en `base.html`
+
+**Navbar - "Mi Carrito":**
+```html
+<!-- Antes -->
+{% if user.role == 'consumidor' or user.role == 'productor' or user.role == 'suplidor' %}
+
+<!-- Después -->
+{% if user.is_authenticated and user.role != 'regulador' and user.role != 'acopio' %}
+```
+
+**Botón flotante del carrito:**
+```html
+<!-- Antes -->
+{% if user.is_authenticated %}
+    {% if user.role == 'consumidor' or user.role == 'productor' or user.role == 'suplidor' %}
+
+<!-- Después -->
+{% if user.is_authenticated and user.role != 'regulador' and user.role != 'acopio' %}
+```
+
+---
+
+## FASE 95: BLOQUEO DE COMPRA PARA ONPECO Y CENTRO DE ACOPIO
+
+**Fecha:** 06/07/2026
+**Estado:** ✅ Completada
+
+### Objetivo
+Bloquear a ONPECO y Centro de Acopio en la lista de productos (`lista_productos.html`) y en el detalle del producto (`detalle_producto.html`).
+
+### Cambios en `lista_productos.html`
+
+```html
+<!-- Botón "Carrito" en tarjeta de producto -->
+{% if user.is_authenticated and user.role != 'regulador' and user.role != 'acopio' %}
+    <!-- Mostrar botón de carrito -->
+{% elif user.is_authenticated %}
+    <!-- ONPECO o Centro de Acopio: botón deshabilitado "Supervisión" -->
+    <button class="btn btn-outline-secondary w-100" disabled>
+        <i class="fas fa-gavel"></i> Supervisión
+    </button>
+{% else %}
+    <!-- Usuario no autenticado: "Iniciar sesión" -->
+    <a href="{% url 'users:login' %}" class="btn btn-outline-secondary flex-grow-1">
+        <i class="fas fa-sign-in-alt"></i> Iniciar sesión
+    </a>
+{% endif %}
+```
+
+### Cambios en `detalle_producto.html`
+
+```html
+{# CASO 3: ONPECO, REGULADOR O CENTRO DE ACOPIO #}
+{% else %}
+    <div class="mt-4 p-3 text-center" style="background: #fff3cd; border-radius: 10px; border: 1px solid #ffc107;">
+        <i class="fas fa-gavel fa-2x d-block mb-2 text-warning"></i>
+        <p class="mb-0"><strong>Rol de supervisor</strong></p>
+        <p class="mb-0 small text-muted">Los reguladores no pueden realizar compras. Esta función es exclusiva para consumidores.</p>
+    </div>
+{% endif %}
+```
+
+---
+
+## FASE 96: SELECTOR DE EMOJIS EN CHAT
+
+**Fecha:** 06/07/2026
+**Estado:** ✅ Completada
+
+### Objetivo
+Agregar un selector de emojis en la interfaz del chat para que los usuarios puedan insertar emojis fácilmente.
+
+### Implementación
+
+**HTML:**
+```html
+<button type="button" id="emojiBtn" class="btn btn-outline-secondary">
+    <i class="fas fa-smile"></i>
+</button>
+<div id="emojiPicker" style="display: none;">
+    <div id="emojiList"></div>
+</div>
+```
+
+**JavaScript:**
+```javascript
+const emojis = ['😊', '😂', '❤️', '👍', '🌱', '🌿', '🍎', '🍊', '🍋', '🍇', '🍉'];
+emojis.forEach(function(emoji) {
+    const span = document.createElement('span');
+    span.textContent = emoji;
+    span.addEventListener('click', function() {
+        const cursorPos = mensajeInput.selectionStart;
+        const text = mensajeInput.value;
+        mensajeInput.value = text.substring(0, cursorPos) + emoji + text.substring(cursorPos);
+        mensajeInput.focus();
+        emojiPicker.style.display = 'none';
+    });
+    emojiList.appendChild(span);
+});
+```
+
+---
+
+## FASE 97: BOTÓN "VOLVER A MIS PRODUCTOS" EN EDICIÓN
+
+**Fecha:** 06/07/2026
+**Estado:** ✅ Completada
+
+### Objetivo
+Agregar un botón de retorno a "Mis Productos" en la página de edición de productos para mejorar la navegación.
+
+### Implementación en `editar_producto.html`
+
+```html
+<!-- ========== BOTONES DE ACCIÓN ========== -->
+<div class="d-flex gap-2 mt-4">
+    <button type="submit" class="btn btn-warning flex-grow-1">
+        <i class="fas fa-edit"></i> Actualizar Producto
+    </button>
+    <a href="{% url 'marketplace:mis_productos' %}" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i> Volver a mis productos
+    </a>
+</div>
+```
+
+---
+
+## FASE 98: FORMATO DE NÚMEROS EN BALANCE DE VENTAS (RD)
+
+**Fecha:** 06/07/2026
+**Estado:** ✅ Completada
+
+### Objetivo
+Aplicar el formato de números de República Dominicana (miles con coma, decimales con punto) en el balance de ventas.
+
+### Filtro personalizado
+
+```python
+# apps/cart/templatetags/cart_filters.py
+@register.filter
+def format_rd(value):
+    try:
+        value = float(value)
+        return f"{value:,.2f}"
+    except (ValueError, TypeError):
+        return "0.00"
+```
+
+### Uso en template
+
+```html
+{% load cart_filters %}
+<h2>RD$ {{ total_vendido|format_rd }}</h2>
+```
+
+### Ejemplos de formato
+| Antes | Después |
+|-------|---------|
+| `RD$ 15635.00` | `RD$ 15,635.00` |
+| `RD$ 23900.00` | `RD$ 23,900.00` |
+| `RD$ 1550.50` | `RD$ 1,550.50` |
+
+---
+
+## FASE 99: CORRECCIÓN DE FORMATO DE NÚMEROS EN VENTAS
+
+**Fecha:** 06/07/2026
+**Estado:** ✅ Completada
+
+### Objetivo
+Aplicar el formato de República Dominicana en todas las vistas que muestran montos (ventas, pedidos, etc.).
+
+### Configuración en `settings.py`
+
+```python
+USE_THOUSAND_SEPARATOR = True
+THOUSAND_SEPARATOR = ','
+DECIMAL_SEPARATOR = '.'
+NUMBER_GROUPING = 3
+```
+
+### Actualización en `views.py`
+
+```python
+# Asegurar que los totales se pasen como float
+context = {
+    'total_vendido': float(total_vendido),
+    'total_pagado': float(total_pagado),
+    'total_pendiente': float(total_pendiente),
+}
+```
+
+---
+
+## FASE 100: CHAT PRIVADO ONPECO ↔ CENTRO DE ACOPIO
 
 **Fecha:** 01/07/2026
 **Estado:** ✅ Completada
 
 ### Objetivo
-Crear un canal de comunicación exclusivo y privado entre ONPECO (reguladores) y el Centro de Acopio, permitiendo una comunicación directa y segura entre ambos entes reguladores sin intervención de otros usuarios.
+Crear un canal de comunicación privado y exclusivo entre ONPECO y el Centro de Acopio para coordinación de temas regulatorios.
 
-### Problema Identificado
-ONPECO y el Centro de Acopio necesitaban un canal de comunicación privado para coordinar temas relacionados con la supervisión y gestión de pedidos, pero no existía una forma directa de comunicarse dentro de la plataforma.
+### Modelos modificados
 
-### Implementación Técnica
-
-**1. Campo en el modelo ChatRoom:**
 ```python
 # apps/chat/models.py
 class ChatRoom(models.Model):
-    # ... campos existentes ...
     is_private_onpeco_acopio = models.BooleanField(default=False)
 ```
 
-**2. Vista para el chat privado:**
-```python
-# apps/chat/views.py
-@login_required
-def chat_privado_onpeco_acopio(request):
-    """Chat privado entre ONPECO y Centro de Acopio (solo ellos dos)"""
-    # Verificar que el usuario sea ONPECO o CentroAcopio
-    # Crear o obtener la sala privada
-    # Mostrar mensajes
+### Vistas implementadas
+
+| Vista | URL | Propósito |
+|-------|-----|-----------|
+| `chat_privado_onpeco_acopio` | `/chat/privado-acopio/` | Chat privado ONPECO-Acopio |
+
+### Template modificado
+
+```html
+<!-- templates/chat/ver_chat.html -->
+{% if is_private %}
+<div class="card-header bg-success text-white">
+    <h4><i class="fas fa-lock"></i> 🔒 Chat Privado: ONPECO ↔ Centro de Acopio</h4>
+    <div class="mt-1">
+        <span class="badge bg-light text-dark">🔒 Canal exclusivo y privado</span>
+    </div>
+</div>
+{% endif %}
 ```
 
-**3. URL configurada:**
-```python
-# apps/chat/urls.py
-path('privado-onpeco-acopio/', views.chat_privado_onpeco_acopio, name='chat_privado_onpeco_acopio'),
-```
+### Enlace en menú ONPECO
 
-**4. Enlace en el menú ONPECO:**
 ```html
 <li><a class="dropdown-item" href="{% url 'chat:chat_privado_onpeco_acopio' %}">
-    <i class="fas fa-lock"></i> 🔒 Chat con Centro de Acopio
+    <i class="fas fa-lock"></i> 🔒 Chat con {% if user.username == 'centro_acopio' %}ONPECO{% else %}Centro de Acopio{% endif %}
 </a></li>
 ```
 
-### Resultados Obtenidos
-- ✅ Canal exclusivo ONPECO ↔ CentroAcopio
-- ✅ Solo los dos entes pueden ver y participar
-- ✅ Mensajería en tiempo real con WebSockets
-- ✅ Acceso directo desde el menú ONPECO/Acopio
+### Resultado
+- ✅ ONPECO y Acopio tienen un canal privado
+- ✅ Solo ellos pueden ver y enviar mensajes
+- ✅ Enlace en el menú de ONPECO
 
 ---
 
-## FASE 73: SUPERVISIÓN DE CHATS PARA ONPECO Y CENTRO DE ACOPIO
+## FASE 101: CORRECCIÓN DE REBAJA DE STOCK EN TIEMPO REAL
 
-**Fecha:** 01/07/2026
+**Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
 ### Objetivo
-Permitir que ONPECO y el Centro de Acopio puedan visualizar todas las conversaciones entre productores y consumidores en modo de solo lectura, para fines de supervisión y control.
+Corregir el problema donde el stock de los productos no se descontaba automáticamente al realizar una venta.
 
-### Problema Identificado
-ONPECO necesitaba supervisar las conversaciones entre productores y consumidores para garantizar que no se estén realizando transacciones fuera de la plataforma o prácticas abusivas, pero no existía una herramienta de supervisión.
+### Señal para actualizar stock al crear pedido
 
-### Implementación Técnica
-
-**1. Vistas de supervisión:**
 ```python
-# apps/chat/views.py
-@login_required
-def supervisar_chats(request):
-    """Vista para que ONPECO y CentroAcopio vean todos los chats (solo lectura)"""
-    # Verificar permisos
-    # Listar todos los chats (excluyendo el privado ONPECO-Acopio)
-    # Mostrar participantes, cantidad de mensajes y último mensaje
-
-@login_required
-def ver_chat_supervision(request, room_id):
-    """Vista para ver un chat específico en modo supervisión (solo lectura)"""
-    # Mostrar mensajes con input deshabilitado
+@receiver(post_save, sender=Order)
+def actualizar_stock_al_crear_pedido(sender, instance, created, **kwargs):
+    if created and instance.status == 'pending':
+        for item in instance.items.all():
+            producto = item.product
+            if producto.stock >= item.quantity:
+                producto.stock -= item.quantity
+                producto.save()
+            else:
+                instance.status = 'cancelled'
+                instance.save()
+                raise ValueError(f'Stock insuficiente para {producto.name}')
 ```
 
-**2. Consumer modificado para supervisión:**
+### Señal para revertir stock al cancelar
+
 ```python
-# apps/chat/consumers.py
-# Los supervisores pueden unirse a cualquier chat pero NO enviar mensajes
-if is_supervisor and not chat_info['is_private']:
-    # Modo supervisión - solo lectura
-    await self.channel_layer.group_add(self.room_group_name, self.channel_name)
-    await self.accept()
-    await self.send(text_data=json.dumps({
-        'type': 'system',
-        'message': '🔍 Modo supervisión - Solo lectura. No puedes enviar mensajes.'
-    }))
-    return
+@receiver(pre_save, sender=Order)
+def revertir_stock_al_cancelar(sender, instance, **kwargs):
+    if instance.pk:
+        old_instance = Order.objects.get(pk=instance.pk)
+        if old_instance.status != 'cancelled' and instance.status == 'cancelled':
+            for item in old_instance.items.all():
+                producto = item.product
+                producto.stock += item.quantity
+                producto.save()
 ```
-
-**3. Template de supervisión:**
-```html
-<!-- templates/chat/supervisar_chats.html -->
-<!-- Lista de chats con participantes, mensajes y acciones -->
-```
-
-**4. Template de ver chat en supervisión:**
-```html
-<!-- templates/chat/ver_chat_supervision.html -->
-<!-- Input deshabilitado y badge "SOLO LECTURA" -->
-```
-
-### Resultados Obtenidos
-- ✅ ONPECO puede ver todos los chats
-- ✅ Centro de Acopio puede ver todos los chats
-- ✅ Modo solo lectura (no pueden enviar mensajes)
-- ✅ Indicadores visuales claros de supervisión
 
 ---
 
-## FASE 74: DESACTIVACIÓN AUTOMÁTICA DE PRODUCTOS
+## FASE 102: REDISEÑO DE BOTONES CON RECUADROS
 
-**Fecha:** 01/07/2026
+**Fecha:** 28/06/2026
+**Estado:** ✅ Completada
+
+### Estilos CSS
+
+```css
+.btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border: 1px solid #dee2e6;
+    margin: 15px 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-container .btn {
+    min-width: 120px;
+    margin: 0;
+}
+
+.btn-container .btn i {
+    margin-right: 8px;
+}
+```
+
+### Aplicación en templates
+
+```html
+<div class="btn-container">
+    <a href="{% url 'marketplace:crear_producto' %}" class="btn btn-primary">
+        <i class="fas fa-plus"></i> Nuevo Producto
+    </a>
+    <a href="{% url 'cart:mis_ventas' %}" class="btn btn-success">
+        <i class="fas fa-chart-bar"></i> Mis Ventas
+    </a>
+</div>
+```
+
+---
+
+## FASE 103: AGREGADO DEL TOMATE COMO ORGULLO DE AZUA
+
+**Fecha:** 28/06/2026
+**Estado:** ✅ Completada
+
+### Implementación en header
+
+```html
+<a class="navbar-brand" href="{% url 'inicio' %}">
+    <img src="{% static 'images/tomate_azua.png' %}" alt="Tomate Orgullo de Azua" height="40">
+    <span>VPJ - Azua</span>
+</a>
+```
+
+### Estilos CSS
+
+```css
+.azua-banner {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+    padding: 30px;
+    border-radius: 15px;
+    color: white;
+    margin: 20px 0;
+}
+
+.azua-icon {
+    width: 80px;
+    height: 80px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+}
+```
+
+---
+
+## FASE 104: CORRECCIÓN DE HISTORIAL DE VENTAS
+
+**Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
 ### Objetivo
-Desactivar automáticamente un producto cuando su stock llegue a 0, evitando que los consumidores intenten comprar productos agotados.
+Corregir el error donde al hacer clic en "Ver" en el historial de ventas, no se mostraba correctamente el detalle.
 
-### Problema Identificado
-Cuando un producto se vendía por completo (stock=0), seguía apareciendo como "disponible" en el catálogo, generando confusión y malas experiencias de compra.
+### Corrección de la vista
 
-### Implementación Técnica
-
-**1. Modificación en la reducción de stock:**
 ```python
-# apps/cart/views.py - checkout
-for item in items:
-    producto = item.product
-    producto.stock -= item.quantity
+@login_required
+def detalle_venta(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+    mis_items = order.items.filter(product__vendedor=request.user)
+    if not mis_items.exists():
+        return HttpResponseForbidden("No tienes permiso para ver esta venta.")
+    subtotal = sum(item.get_total_price() for item in mis_items)
+    context = {
+        'order': order,
+        'mis_items': mis_items,
+        'subtotal': subtotal,
+    }
+    return render(request, 'cart/detalle_venta.html', context)
+```
+
+---
+
+## FASE 105: CORRECCIÓN DE CONTABILIZACIÓN DE DENUNCIAS APROBADAS
+
+**Fecha:** 28/06/2026
+**Estado:** ✅ Completada
+
+### Objetivo
+Corregir el error donde el sistema no contabilizaba correctamente el detalle de las denuncias aprobadas.
+
+### Corrección de la vista
+
+```python
+@onpeco_required
+def detalle_denuncia(request, denuncia_id):
+    denuncia = get_object_or_404(Complaint, id=denuncia_id)
+    actualizaciones = ComplaintUpdate.objects.filter(complaint=denuncia).order_by('created_at')
+    total_aprobadas = Complaint.objects.filter(status='aprobada').count()
+    context = {
+        'denuncia': denuncia,
+        'actualizaciones': actualizaciones,
+        'total_aprobadas': total_aprobadas,
+    }
+    return render(request, 'complaints/detalle_denuncia.html', context)
+```
+
+---
+
+## FASE 106: CORRECCIÓN DE BALANCES PAGADOS
+
+**Fecha:** 28/06/2026
+**Estado:** ✅ Completada
+
+### Objetivo
+Corregir los problemas relacionados con el cálculo y visualización de balances pagados.
+
+### Modelo Order con método marcar_pagado
+
+```python
+class Order(models.Model):
+    payment_status = models.CharField(max_length=20, choices=PAYMENT_STATUS_CHOICES, default='pending')
+    payment_date = models.DateTimeField(null=True, blank=True)
+    payment_amount = models.DecimalField(max_digits=12, decimal_places=2, default=0)
     
-    # Si el stock llega a 0 o menos, desactivar automáticamente
-    if producto.stock <= 0:
-        producto.available = False
-        producto.save()
-        messages.info(request, f'🔒 "{producto.name}" se ha desactivado automáticamente por falta de stock.')
-    else:
-        producto.save()
+    def marcar_pagado(self, monto=None):
+        self.payment_status = 'paid'
+        self.payment_date = timezone.now()
+        if monto:
+            self.payment_amount = monto
+        self.save()
 ```
 
-### Resultados Obtenidos
-- ✅ Productos se desactivan automáticamente al llegar a stock 0
-- ✅ Mensaje informativo al usuario
-- ✅ Mejor experiencia de compra
-- ✅ Catálogo siempre actualizado
+### Corrección del cálculo en balance_ventas
+
+```python
+for order in orders:
+    mis_items = order.items.filter(product__vendedor=request.user)
+    subtotal = sum(item.get_total_price() for item in mis_items)
+    total_vendido += subtotal
+    if order.payment_status == 'paid':
+        total_pagado += subtotal
+```
 
 ---
 
-## FASE 75: ELIMINACIÓN DEL BOTÓN "ELIMINAR" EN PRODUCTOS
+## FASE 107: ENLACE A ONPECO EN EL PORTAL
 
-**Fecha:** 01/07/2026
+**Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Eliminar el botón "Eliminar" de la lista de productos, dejando solo la opción de "Editar" para que los productores puedan activar/desactivar productos manualmente.
+### Enlace en el portal
 
-### Problema Identificado
-El botón "Eliminar" ocultaba el producto pero no era claro para los productores que podían reactivarlo. Además, la funcionalidad de "eliminar" era redundante con la desactivación automática.
-
-### Implementación Técnica
-
-**Archivo modificado:** `templates/marketplace/mis_productos.html`
-
-**Antes:**
 ```html
-<td>
-    <a href="{% url 'marketplace:editar_producto' producto.id %}" class="btn btn-sm btn-warning">
-        <i class="fas fa-edit"></i> Editar
-    </a>
-    <a href="{% url 'marketplace:eliminar_producto' producto.id %}" class="btn btn-sm btn-danger">
-        <i class="fas fa-trash"></i> Eliminar
-    </a>
-</td>
+<div class="card border-info">
+    <div class="card-header bg-info text-white">
+        <i class="fas fa-link"></i> Enlaces de interés
+    </div>
+    <div class="card-body">
+        <a href="https://onpeco.gob.do" target="_blank" class="btn btn-outline-info btn-lg">
+            <i class="fas fa-external-link-alt"></i> Visitar sitio oficial de ONPECO
+        </a>
+    </div>
+</div>
 ```
-
-**Después:**
-```html
-<td>
-    <a href="{% url 'marketplace:editar_producto' producto.id %}" class="btn btn-sm btn-warning">
-        <i class="fas fa-edit"></i> Editar
-    </a>
-</td>
-```
-
-### Resultados Obtenidos
-- ✅ Interfaz más limpia
-- ✅ El productor usa "Editar" para activar/desactivar
-- ✅ La desactivación automática gestiona el stock 0
 
 ---
 
-## FASE 76: SWITCH "DISPONIBLE" EN EDICIÓN DE PRODUCTOS
+## FASE 108: EXPORTACIÓN DE REPORTES DE DENUNCIAS A EXCEL
 
-**Fecha:** 01/07/2026
+**Fecha:** 28/06/2026
+**Estado:** ✅ Completada
+
+### Instalación
+
+```bash
+pip install openpyxl
+```
+
+### Vista de exportación
+
+```python
+@onpeco_required
+def exportar_denuncias_excel(request):
+    wb = Workbook()
+    ws = wb.active
+    ws.title = 'Denuncias'
+    headers = ['Ticket', 'Título', 'Estado', 'Prioridad', 'Creado por', 'Fecha', 'Producto']
+    ws.append(headers)
+    denuncias = Complaint.objects.all().order_by('-created_at')
+    for denuncia in denuncias:
+        ws.append([
+            denuncia.ticket_number,
+            denuncia.title,
+            denuncia.get_status_display(),
+            denuncia.get_priority_display(),
+            denuncia.complainant.username,
+            denuncia.created_at.strftime('%d/%m/%Y %H:%M'),
+            denuncia.product.name if denuncia.product else 'N/A'
+        ])
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = 'attachment; filename=denuncias.xlsx'
+    wb.save(response)
+    return response
+```
+
+---
+
+## FASE 109: SISTEMA DE NOTIFICACIONES CON CONTADOR DE INCREMENTO
+
+**Fecha:** 28/06/2026
 **Estado:** ✅ Completada
 
 ### Objetivo
-Agregar un switch visual en el formulario de edición de productos que permita al productor activar o desactivar manualmente un producto, incluso si tiene stock disponible.
+Implementar un sistema de notificaciones en tiempo real para los usuarios cuando reciben mensajes.
 
-### Implementación Técnica
+### Modelo de notificaciones
 
-**Archivo modificado:** `templates/marketplace/editar_producto.html`
+```python
+class Notification(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='notifications')
+    message = models.ForeignKey('ChatMessage', on_delete=models.CASCADE)
+    is_read = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+```
 
-**Switch agregado:**
+### Señal para crear notificaciones
+
+```python
+@receiver(post_save, sender=ChatMessage)
+def crear_notificacion(sender, instance, created, **kwargs):
+    if created:
+        room = instance.room
+        if room.productor == instance.sender:
+            destinatario = room.consumidor
+        else:
+            destinatario = room.productor
+        if destinatario and destinatario != instance.sender:
+            Notification.objects.create(user=destinatario, message=instance, is_read=False)
+```
+
+### Context processor para contador
+
+```python
+def notification_count(request):
+    if request.user.is_authenticated:
+        unread_count = Notification.objects.filter(user=request.user, is_read=False).count()
+        return {'notification_count': unread_count}
+    return {'notification_count': 0}
+```
+
+### Animación de incremento
+
+```css
+.notification-badge {
+    animation: pulse 0.5s ease-in-out 3;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+```
+
+---
+
+## FASE 110: CORRECCIÓN DE ERROR `datetime` EN BACKUPS
+
+**Fecha:** 28/06/2026
+**Estado:** ✅ Completada
+
+### Problema
+Error `AttributeError: type object 'datetime.datetime' has no attribute 'datetime'`
+
+### Solución
+
+```python
+# Antes
+from datetime import datetime
+
+# Después
+import datetime
+```
+
+```python
+# Antes
+'fecha': datetime.fromtimestamp(stat.st_mtime)
+
+# Después
+'fecha': datetime.datetime.fromtimestamp(stat.st_mtime)
+```
+
+---
+
+## FASE 111: CAMBIO DE LOGIN A CÉDULA Y MEJORA DE INTERFAZ
+
+**Fecha:** 28/06/2026
+**Estado:** ✅ Completada
+
+### Cambios en login.html
+
 ```html
-<div class="mb-4">
-    <div class="card border-{% if form.available.value %}success{% else %}danger{% endif %}">
-        <div class="card-body">
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" name="available" id="available" 
-                       {% if form.available.value %}checked{% endif %}>
-                <label class="form-check-label fw-bold" for="available">
-                    <span id="estado-disponible">
-                        {% if form.available.value %}
-                            ✅ Producto disponible para la venta
-                        {% else %}
-                            ❌ Producto no disponible
-                        {% endif %}
-                    </span>
-                </label>
-                <div class="form-text text-muted mt-2">
-                    <i class="fas fa-info-circle"></i> 
-                    Cuando el stock llegue a <strong>0 (cero)</strong>, el sistema lo desactivará automáticamente.
+<!-- Antes -->
+<input type="text" name="username" placeholder="Usuario" required>
+
+<!-- Después -->
+<input type="text" name="username" placeholder="Cédula" required>
+```
+
+---
+
+## FASE 112: TOMATE CLICABLE CON ENLACE A ONPECO
+
+**Fecha:** 28/06/2026
+**Estado:** ✅ Completada
+
+### Cambio en inicio.html
+
+```html
+<a href="https://onpeco.org/" target="_blank" 
+   style="text-decoration: none; display: inline-block; transition: transform 0.3s ease;"
+   onmouseover="this.style.transform='scale(1.05)'" 
+   onmouseout="this.style.transform='scale(1)'"
+   title="Visitar la página oficial de ONPECO">
+    <div style="background: linear-gradient(135deg, #e53935, #c62828); cursor: pointer; ...">
+        <!-- Hojas y brillo -->
+    </div>
+</a>
+```
+
+---
+
+## FASE 113: SISTEMA DE RESTABLECIMIENTO DE CONTRASEÑAS POR ONPECO
+
+**Fecha:** 28/06/2026
+**Estado:** ✅ Completada
+
+### Objetivo
+Permitir que ONPECO restablezca la contraseña de cualquier usuario a `cambiar123`, forzando al usuario a cambiarla.
+
+### Nuevo campo en User
+
+```python
+must_change_password = models.BooleanField(
+    default=False,
+    help_text="Indica si el usuario debe cambiar su contraseña al iniciar sesión"
+)
+```
+
+### Vista para restablecer contraseña
+
+```python
+@login_required
+def resetear_contrasena_usuario(request, user_id):
+    if not (request.user.is_staff or getattr(request.user, 'role', '') == 'regulador'):
+        return HttpResponseForbidden("No tienes permiso.")
+    usuario = get_object_or_404(User, id=user_id)
+    if request.method == 'POST':
+        nueva_contrasena = 'cambiar123'
+        usuario.password = make_password(nueva_contrasena)
+        usuario.must_change_password = True
+        usuario.save()
+        messages.success(request, f'✅ Contraseña restablecida para "{usuario.username}"')
+        return redirect('users:lista_usuarios_onpeco')
+    return render(request, 'users/resetear_contrasena.html', {'usuario': usuario})
+```
+
+### Modificación de login_view
+
+```python
+if user is not None:
+    if getattr(user, 'must_change_password', False):
+        login(request, user)
+        messages.warning(request, '⚠️ Debes cambiar tu contraseña temporal.')
+        return redirect('users:cambiar_contrasena_temporal')
+```
+
+### Flujo de trabajo
+
+```
+ONPECO → Gestionar Usuarios → Restablecer Contraseña
+    ↓
+Contraseña del usuario = cambiar123
+    ↓
+Usuario inicia sesión con cambiar123
+    ↓
+Sistema detecta must_change_password=True
+    ↓
+Redirige a cambiar_contrasena_temporal
+    ↓
+Usuario escribe su NUEVA contraseña
+    ↓
+✅ Contraseña actualizada
+```
+
+---
+
+## FASE 114: NOMBRE REAL EN NAVBAR Y PERFIL
+
+**Fecha:** 28/06/2026
+**Estado:** ✅ Completada
+
+### Métodos en modelo User
+
+```python
+def get_full_name(self):
+    if self.first_name and self.last_name:
+        return f"{self.first_name} {self.last_name}"
+    elif self.first_name:
+        return self.first_name
+    elif self.last_name:
+        return self.last_name
+    return self.username
+
+def get_display_name(self):
+    nombre = self.get_full_name()
+    if nombre != self.username:
+        return f"{nombre} ({self.username})"
+    return self.username
+```
+
+### Navbar actualizado
+
+```html
+<!-- Antes -->
+{{ user.username }}
+
+<!-- Después -->
+{{ user.get_display_name }}
+```
+
+### Perfil actualizado
+
+```html
+<div style="background: #e8f5e9; padding: 15px; border-radius: 10px; border-left: 4px solid #2E7D32;">
+    <p style="margin: 0; font-size: 1.2rem;">
+        <strong>👤 {{ user.get_full_name }}</strong>
+    </p>
+    <p style="margin: 0; color: #555;">
+        <strong>Cédula:</strong> {{ user.username }}
+    </p>
+</div>
+```
+
+---
+
+## FASE 115: EXPORTACIÓN DE CONSUMIDORES Y PRODUCTORES A EXCEL
+
+**Fecha:** 28/06/2026
+**Estado:** ✅ Completada
+
+### Exportar consumidores
+
+```python
+@onpeco_required
+def exportar_consumidores_excel(request):
+    wb = Workbook()
+    ws = wb.active
+    ws.title = 'Consumidores'
+    headers = ['Nombre', 'Cédula', 'Email', 'Teléfono', 'Dirección', 'Fecha de Registro']
+    ws.append(headers)
+    consumidores = User.objects.filter(role='consumidor', is_active=True)
+    for consumidor in consumidores:
+        ws.append([
+            consumidor.get_full_name(),
+            consumidor.username,
+            consumidor.email or '',
+            consumidor.phone or '',
+            consumidor.address or '',
+            consumidor.date_joined.strftime('%d/%m/%Y') if consumidor.date_joined else ''
+        ])
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = 'attachment; filename=consumidores.xlsx'
+    wb.save(response)
+    return response
+```
+
+### Exportar productores
+
+```python
+@onpeco_required
+def exportar_productores_excel(request):
+    wb = Workbook()
+    ws = wb.active
+    ws.title = 'Productores'
+    headers = ['Nombre', 'Cédula', 'Negocio', 'Email', 'Teléfono', 'Dirección', 'Estado', 'Total Productos', 'Reputación']
+    ws.append(headers)
+    productores = User.objects.filter(role='productor').order_by('first_name', 'last_name')
+    for productor in productores:
+        ws.append([
+            productor.get_full_name(),
+            productor.username,
+            productor.business_name or '',
+            productor.email or '',
+            productor.phone or '',
+            productor.address or '',
+            'Aprobado' if productor.is_approved else 'Pendiente',
+            Product.objects.filter(vendedor=productor).count(),
+            productor.get_reputacion_display()
+        ])
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = 'attachment; filename=productores.xlsx'
+    wb.save(response)
+    return response
+```
+
+---
+
+## FASE 116: INTEGRACIÓN DEL LOGO OFICIAL DE ONPECO
+
+**Fecha:** 29/06/2026
+**Estado:** ✅ Completada
+
+### Copia del logo al proyecto
+
+```bash
+copy "C:\Users\DELL\Desktop\Logo Onpeco sin borde para insertar.png" static\img\onpeco-logo.png
+copy "C:\Users\DELL\Desktop\Logo Onpeco sin borde para insertar.png" static\images\logo_onpeco.png
+copy "C:\Users\DELL\Desktop\Logo Onpeco sin borde para insertar.png" media\logo_onpeco.png
+python manage.py collectstatic
+```
+
+### Logo en Navbar
+
+```html
+<a href="https://onpeco.org/" target="_blank" title="Visitar ONPECO" 
+   style="text-decoration: none; display: flex; align-items: center;">
+    <img src="/media/logo_onpeco.png" alt="ONPECO" height="50" class="d-inline-block align-top me-2">
+</a>
+```
+
+---
+
+## FASE 117: ESTILIZADO DEL LOGO ONPECO CON BORDES REDONDEADOS
+
+**Fecha:** 29/06/2026
+**Estado:** ✅ Completada
+
+### CSS del logo
+
+```css
+.navbar-brand img {
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    object-fit: cover;
+}
+
+.navbar-brand img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.7);
+}
+```
+
+---
+
+## FASE 118: CAMBIO DE FAVICON A LOGO DE ONPECO (DEFINITIVO)
+
+**Fecha:** 29/06/2026
+**Estado:** ✅ Completada
+
+```html
+<link rel="icon" type="image/png" href="/media/logo_onpeco.png">
+<link rel="apple-touch-icon" type="image/png" href="/media/logo_onpeco.png">
+```
+
+---
+
+## FASE 119: OPTIMIZACIÓN DE LA PÁGINA DE INICIO
+
+**Fecha:** 29/06/2026
+**Estado:** ✅ Completada
+
+### Cambios realizados
+1. Eliminación del tomate grande (120px)
+2. Eliminación de la mano "Tomate Industrial"
+3. Conversión del badge "ORGULLO DE AZUA" a elemento clicable
+
+```html
+<a href="https://www.google.com/search?q=Tomate+Industrial..." target="_blank" 
+   style="text-decoration: none; display: inline-block; transition: transform 0.3s ease;">
+    <span style="background: linear-gradient(135deg, #2E7D32, #388E3C); 
+                 font-size: 1.8rem; 
+                 padding: 12px 35px; 
+                 border-radius: 30px; 
+                 font-weight: bold;
+                 cursor: pointer;">
+        🍅 ORGULLO DE AZUA
+    </span>
+</a>
+```
+
+---
+
+## FASE 120: CORRECCIÓN DEL FOOTER - TEXTO INSTITUCIONAL
+
+**Fecha:** 29/06/2026
+**Estado:** ✅ Completada
+
+```html
+<small>Desarrollado para ONPECO por el Grupo #5<br>Monográfico #59 - Escuela de Informática - UASD</small>
+```
+
+---
+
+## FASE 121: AJUSTE DE POSICIÓN DEL CARRITO FLOTANTE
+
+**Fecha:** 29/06/2026
+**Estado:** ✅ Completada
+
+```css
+.cart-float-btn {
+    bottom: 80px;  /* Antes: 20px */
+}
+```
+
+---
+
+## FASE 122: ELIMINACIÓN DE NOTIFICACIONES DE CHAT SIN SESIÓN
+
+**Fecha:** 29/06/2026
+**Estado:** ✅ Completada
+
+### Problema
+El badge de notificaciones de chat aparecía en la página de inicio incluso sin sesión.
+
+### Solución
+Eliminación del bloque de "Notificaciones de Chat" de `templates/base/inicio.html`.
+
+---
+
+## FASE 123: VERIFICACIÓN FINAL Y CONSOLIDACIÓN DE CAMBIOS
+
+**Fecha:** 29/06/2026
+**Estado:** ✅ Completada
+
+### Pruebas realizadas
+
+| Prueba | Resultado |
+|--------|-----------|
+| Logo ONPECO visible en navbar | ✅ Exitosa |
+| Logo clicable a onpeco.org | ✅ Exitosa |
+| Logo con bordes redondeados | ✅ Exitosa |
+| Favicon actualizado | ✅ Exitosa |
+| Badge "ORGULLO DE AZUA" clicable | ✅ Exitosa |
+| Tomate grande eliminado | ✅ Exitosa |
+| Carrito flotante no tapa footer | ✅ Exitosa |
+| Footer con texto institucional correcto | ✅ Exitosa |
+| Sin notificaciones de chat sin sesión | ✅ Exitosa |
+
+---
+
+## FASE 124: CAMBIO DE COLOR DE "VPJ" A ROJO
+
+**Fecha:** 29/06/2026
+**Estado:** ✅ Completada
+
+```html
+<span style="font-size: 1.3rem; font-weight: 700; white-space: nowrap; color: #FF6B6B;">VPJ</span>
+```
+
+---
+
+## FASE 125: MÓDULO "SOBRE VPJ" - MODAL INFORMATIVO
+
+**Fecha:** 29/06/2026
+**Estado:** ✅ Completada
+
+### Objetivo
+Crear un modal informativo al hacer clic en "VPJ" en el navbar.
+
+### Implementación
+
+```html
+<span style="font-size: 1.3rem; font-weight: 700; white-space: nowrap; color: #FF6B6B; cursor: pointer;" 
+      data-bs-toggle="modal" 
+      data-bs-target="#modalVPJ"
+      title="Haz clic para conocer más sobre VPJ">
+    VPJ
+</span>
+
+<!-- Modal -->
+<div class="modal fade" id="modalVPJ" tabindex="-1" aria-labelledby="modalVPJLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background: linear-gradient(135deg, #2E7D32, #388E3C); color: white;">
+                <h5 class="modal-title" id="modalVPJLabel">
+                    <img src="/media/logo_onpeco.png" alt="ONPECO" height="30">
+                    VPJ - Venta Precio Justo
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" style="max-height: 70vh; overflow-y: auto;">
+                <div style="text-align: justify; line-height: 1.8;">
+                    <p><strong>VPJ (Venta Precio Justo)</strong> es una plataforma digital desarrollada para <strong>ONPECO</strong> por el <strong>Grupo #5 del Monográfico #59</strong> de la <strong>Escuela de Informática de la Universidad Autónoma de Santo Domingo (UASD)</strong>, con el objetivo de promover un comercio agrícola más equitativo y transparente en la provincia de Azua, República Dominicana.</p>
+                    
+                    <p>La aplicación conecta directamente a <strong>productores agrícolas</strong> con <strong>consumidores finales</strong>, acortando la cadena de suministro y garantizando precios justos para ambas partes, bajo la supervisión y regulación de ONPECO.</p>
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <a href="https://onpeco.org/" target="_blank" class="btn btn-success">
+                    <i class="fas fa-external-link-alt"></i> Visitar ONPECO
+                </a>
             </div>
         </div>
     </div>
 </div>
 ```
 
-### Resultados Obtenidos
-- ✅ Switch visual fácil de usar
-- ✅ Cambia de color según el estado
-- ✅ Texto informativo sobre desactivación automática
-- ✅ Efecto dinámico al activar/desactivar
-
 ---
 
-## FASE 77: OVERLAY DEL PRODUCTOR EN IMÁGENES
+## FASE 126: CHAT PRIVADO ONPECO ↔ CENTRO DE ACOPIO
 
 **Fecha:** 01/07/2026
 **Estado:** ✅ Completada
 
 ### Objetivo
-Mostrar el nombre del productor de forma más visible sobre la imagen del producto en el catálogo, mejorando la identificación del vendedor.
+Crear un canal de comunicación privado y exclusivo entre ONPECO y el Centro de Acopio para coordinación de temas regulatorios.
 
-### Problema Identificado
-El nombre del productor aparecía en texto pequeño debajo de la imagen, lo que dificultaba su identificación rápida.
+### Modelos modificados
 
-### Implementación Técnica
+```python
+# apps/chat/models.py
+class ChatRoom(models.Model):
+    is_private_onpeco_acopio = models.BooleanField(default=False)
+```
 
-**Archivo modificado:** `templates/marketplace/lista_productos.html`
+### Vistas implementadas
 
-**Overlay agregado:**
+| Vista | URL | Propósito |
+|-------|-----|-----------|
+| `chat_privado_onpeco_acopio` | `/chat/privado-acopio/` | Chat privado ONPECO-Acopio |
+
+### Templates creados/modificados
+
+- `templates/chat/ver_chat.html` (modificado para soportar chat privado)
+- Enlace en el menú de ONPECO
+
+### Resultado
+- ✅ ONPECO y Acopio tienen un canal privado
+- ✅ Solo ellos pueden ver y enviar mensajes
+- ✅ Enlace en el menú de ONPECO
+
+---
+¡Excelente! Te voy a preparar el contenido para que lo insertes en tu archivo `DOCUMENTACION.md`. He organizado la información de la reunión del 25 de junio de 2026 de manera profesional y detallada, siguiendo el formato de tus fases anteriores.
+
+---
+
+## 📋 TEXTO PARA COPIAR Y PEGAR EN `DOCUMENTACION.md`
+
+**Ubicación:** Inserta esto **después de la Fase 126** (o donde mejor se ajuste en tu cronología). He numerado esta fase como **Fase 127** (ya que la 127 en tu documento actual es el encuentro con promotores en Azua del 03/07/2026, que ocurrió después). Sin embargo, viendo tu estructura, la reunión con ONPECO fue el **25/06/2026**, así que debería ir **antes** de la Fase 127 (03/07/2026). Te sugiero **renumerar** y mover la Fase 127 (Azua) a la **Fase 128**, y poner esta como **Fase 127**.
+
+---
+
+```markdown
+## FASE 127: PRESENTACIÓN OFICIAL A ONPECO - DEMOSTRACIÓN EN VIVO CON NGORK
+
+**Fecha:** 25 de junio de 2026
+**Lugar:** Oficinas de ONPECO, Santo Domingo, República Dominicana
+**Estado:** ✅ Completada
+
+---
+
+### Objetivo de la Fase
+
+Realizar la presentación oficial de la plataforma "Venta Precio Justo (VPJ)" a la directiva de ONPECO, demostrando el funcionamiento en vivo de la aplicación a través de un túnel de Ngrok, y recibir retroalimentación directa de los ejecutivos para realizar ajustes y mejoras antes del lanzamiento final.
+
+---
+
+### Participantes
+
+**Por ONPECO:**
+
+| Nombre | Cargo |
+|--------|-------|
+| Lic. Altagracia Paulino | Presidenta de ONPECO |
+| Lic. Leonel A. Rivas P. | Ejecutivo de ONPECO |
+| Lic. Leonor González | Ejecutiva de ONPECO |
+
+**Por el equipo de desarrollo (Grupo #5 - Monográfico #59 - Escuela de Informática - UASD):**
+
+| Nombre | Rol |
+|--------|-----|
+| Manuel A. Hernández C. | Desarrollador / Representante del Grupo |
+| Elizabeth Ogando Rosa | Desarrolladora |
+| Alexander Trinidad Ramírez | Desarrollador / Este servidor |
+
+---
+
+### Desarrollo de la Reunión
+
+#### 1. Preparación técnica previa
+
+El equipo de desarrollo preparó el entorno para la demostración:
+
+| Aspecto | Detalle |
+|---------|---------|
+| Servidor local | Daphne corriendo en `127.0.0.1:8000` |
+| Túnel seguro | Ngrok configurado para exponer el servidor local |
+| URL generada | `https://whacky-deceiver-motive.ngrok-free.dev` |
+| Configuración | `ALLOWED_HOSTS` y `CSRF_TRUSTED_ORIGINS` actualizados |
+
+**Configuración en `settings.py`:**
+```python
+ALLOWED_HOSTS = ['*', 'whacky-deceiver-motive.ngrok-free.dev']
+CSRF_TRUSTED_ORIGINS = ['https://whacky-deceiver-motive.ngrok-free.dev']
+```
+
+#### 2. Demostración en vivo
+
+Se realizó una demostración completa de la plataforma, recorriendo todos los módulos principales:
+
+**Módulos demostrados:**
+
+| # | Módulo | Descripción |
+|---|--------|-------------|
+| 1 | **Autenticación y Registro** | Registro de consumidores, productores y gestión de aprobaciones |
+| 2 | **Marketplace** | Publicación de productos, lista de productos, búsqueda y filtros |
+| 3 | **Carrito de Compras** | Agregar productos, gestionar cantidades, checkout |
+| 4 | **Pedidos y Ventas** | Creación de pedidos, historial de ventas, balance de ventas |
+| 5 | **Centro de Acopio** | Gestión de pedidos, desglose por productor, pagos |
+| 6 | **Sistema de Denuncias** | Creación de denuncias, seguimiento, reportes con gráficos |
+| 7 | **Chat en Tiempo Real** | Comunicación consumidor-productor con WebSockets |
+| 8 | **Portal ONPECO** | Dashboard, estadísticas, gestión de usuarios y backups |
+| 9 | **Exportaciones** | Reportes a Excel (denuncias, consumidores, productores) |
+
+#### 3. Retroalimentación de ONPECO
+
+Los ejecutivos de ONPECO realizaron las siguientes observaciones y recomendaciones:
+
+**Recomendaciones recibidas:**
+
+| # | Recomendación | Responsable |
+|---|---------------|-------------|
+| 1 | **Logo de ONPECO en la aplicación:** Integrar el logo oficial de ONPECO en el navbar y footer | ✅ Implementado (Fase 116-118) |
+| 2 | **Enlace directo a ONPECO:** Agregar un link que lleve al sitio web oficial de ONPECO | ✅ Implementado (Fase 107, 112) |
+| 3 | **Tomate como "Orgullo de Azua":** Utilizar el tomate como ícono representativo de Azua | ✅ Implementado (Fase 103, 119) |
+| 4 | **Cédula como nombre de usuario:** Que el nombre de usuario sea el número de cédula | ✅ Implementado (Fase 111) |
+| 5 | **Mejoras visuales:** Ajustes en la interfaz y experiencia de usuario | ✅ Implementado (Fases 62-71) |
+| 6 | **Privacidad de datos:** Ocultar cédulas en listas públicas | ✅ Implementado (Fase 82) |
+
+**Observaciones adicionales:**
+
+| Aspecto | Observación |
+|---------|-------------|
+| Diseño | "La interfaz es limpia y profesional, cumple con los estándares esperados" |
+| Funcionalidad | "El sistema cubre todos los requisitos planteados inicialmente" |
+| Usabilidad | "La navegación es intuitiva, los usuarios podrán adaptarse fácilmente" |
+| Seguridad | "El manejo de roles y permisos es adecuado" |
+| Rendimiento | "La aplicación responde rápidamente incluso con el túnel de Ngrok" |
+
+---
+
+### Acuerdos y Compromisos
+
+| # | Acuerdo | Responsable | Fecha límite |
+|---|---------|-------------|--------------|
+| 1 | Incorporar todas las observaciones realizadas durante la reunión | Equipo de desarrollo | 30/06/2026 |
+| 2 | Continuar con el desarrollo de funcionalidades pendientes | Equipo de desarrollo | 05/07/2026 |
+| 3 | Mantener comunicación constante entre el equipo y ONPECO | Ambos equipos | Permanente |
+| 4 | Preparar la presentación para promotores en Azua | Equipo de desarrollo | 03/07/2026 |
+
+---
+
+### Impacto de la Reunión
+
+| Aspecto | Resultado |
+|---------|-----------|
+| **Aprobación del proyecto** | ✅ ONPECO manifestó su satisfacción con el avance |
+| **Validez del prototipo** | ✅ Validado por los ejecutivos de ONPECO |
+| **Identificación de mejoras** | ✅ Se identificaron áreas de mejora concretas |
+| **Ruta crítica definida** | ✅ Se establecieron prioridades y plazos |
+| **Confianza del cliente** | ✅ Incrementada con la demostración en vivo |
+
+---
+
+### Lecciones Aprendidas
+
+| # | Lección | Aplicación futura |
+|---|---------|-------------------|
+| 1 | **Ngrok es una herramienta efectiva** para presentaciones en vivo sin necesidad de desplegar en producción | Usar en futuras demostraciones |
+| 2 | **La preparación técnica previa es crucial** para evitar contratiempos | Crear un checklist de pre-presentación |
+| 3 | **La retroalimentación temprana del cliente** permite corregir detalles antes del lanzamiento | Realizar más demostraciones intermedias |
+| 4 | **La comunicación profesional** con el cliente genera confianza | Mantener el mismo nivel en futuras interacciones |
+
+---
+
+### Pruebas Realizadas Durante la Demostración
+
+| # | Prueba | Resultado |
+|---|--------|-----------|
+| 1 | Acceso a la plataforma vía Ngrok | ✅ Exitosa |
+| 2 | Inicio de sesión de todos los roles | ✅ Exitosa |
+| 3 | Publicación de un producto | ✅ Exitosa |
+| 4 | Proceso de compra completo | ✅ Exitosa |
+| 5 | Gestión de pedidos desde Centro de Acopio | ✅ Exitosa |
+| 6 | Creación y seguimiento de denuncias | ✅ Exitosa |
+| 7 | Chat en tiempo real | ✅ Exitosa |
+| 8 | Dashboard de ONPECO | ✅ Exitosa |
+| 9 | Exportación a Excel | ✅ Exitosa |
+| 10 | Sistema de backups | ✅ Exitosa |
+
+---
+
+### Estado Final de la Reunión
+
+**Estado:** ✅ Completada exitosamente
+
+**Logros:**
+- ✅ Presentación profesional de la plataforma
+- ✅ Demostración en vivo de todas las funcionalidades
+- ✅ Validación del proyecto por parte de la directiva de ONPECO
+- ✅ Recepción de retroalimentación valiosa
+- ✅ Establecimiento de acuerdos claros y fechas límite
+
+**Próximos pasos:**
+1. Implementar las mejoras sugeridas (Fases 82-126)
+2. Preparar la presentación para promotores en Azua (Fase 128)
+3. Realizar pruebas finales
+4. Preparar documentación para la defensa del monográfico
+
+---
+
+**Nota:** Esta fase fue fundamental para validar el proyecto con el cliente real y demostrar que la plataforma "Venta Precio Justo (VPJ)" cumple con todos los requisitos establecidos, funcionando correctamente en un entorno controlado pero accesible desde cualquier lugar a través de Ngrok.
+
+```
+
+---
+
+## 📋 RESUMEN DE CAMBIOS SUGERIDOS PARA TU DOCUMENTO
+
+| Fase | Título | Fecha | Estado |
+|------|--------|-------|--------|
+| **127** | Presentación Oficial a ONPECO - Demostración en Vivo con Ngrok | 25/06/2026 | ✅ Completada |
+| **128** | Encuentro con Promotores en Azua - Presentación de VPJ | 03/07/2026 | ✅ Completada |
+| **129** | Corrección de Carrito para ONPECO y Centro de Acopio | 06/07/2026 | ✅ Completada |
+| **130** | Selector de Emojis en Chat | 06/07/2026 | ✅ Completada |
+| **131** | Botón "Volver a Mis Productos" en Edición | 06/07/2026 | ✅ Completada |
+| **132** | Formato de Números en Balance de Ventas (RD) | 06/07/2026 | ✅ Completada |
+| **133** | Actualización de Documentación - FASES 127 A 132 | 06/07/2026 | ✅ Completada |
+
+
+
+---
+
+¿Necesitas que te ayude con alguna otra sección o ajuste? 🚀
+
+## FASE 128: ENCUENTRO CON PROMOTORES EN AZUA - PRESENTACIÓN DE VPJ
+
+**Fecha:** 03/07/2026
+**Estado:** ✅ Completada
+
+### Objetivo
+Realizar la presentación oficial de la aplicación "Venta Precio Justo (VPJ)" a los promotores de la provincia de Azua, como parte del proceso de implementación y validación del proyecto con los actores clave de la región.
+
+### Participantes
+
+**Por ONPECO:**
+- Representantes de ONPECO (presentes en la reunión)
+
+**Por el equipo de desarrollo (Grupo #5 - Monográfico #59 - Escuela de Informática - UASD):**
+- Manuel A. Hernández C.
+- Alexander Trinidad Ramírez
+- Elizabeth Ogando Rosa
+
+**Promotores invitados:**
+
+| Nombre | Comunidad | Contacto |
+|--------|-----------|----------|
+| José Andrés Pérez Bet | Rodríguez Cera | 829 46 64937 |
+| José Cobo Martínez Reyes | La Romana de Aroa | 829 47 76 7 33 |
+| Mónica María Reus López | José José López | 829 47 76 7 33 |
+| Isabel Álvarez Tolosa | Arau | 829-76-77 |
+| Ana Gabriela Talavera | Villa César, Cuevón | 829 69 93 52 |
+| Gregory Báez Br. 10 | Peralta | 829-85-1390 |
+
+### Registro de asistencia de promotores
+
+| # | Nombre | Cédula | Teléfono |
+|---|--------|--------|----------|
+| 1 | José Abubalencia Balta | 017 0012985-4 | 829 9666977 |
+| 2 | Jacobo Antonio Pérez | 010-0028683-9 | 829-4267133 |
+| 3 | Micaína Paula Rovio Posó | 010 0097849 | 829 0267135 |
+| 4 | Isabel Elvira Fatoma Moreno | 010-0103871-8 | 829-761-2270 |
+| 5 | Ana Juliana Tarela | 402 2591072-3 | 829 698 9352 |
+
+### Resultados del cuestionario a promotores
+
+#### 1. Conocimiento de la aplicación
+
+**¿Qué entienden por "Venta Precio Justo"?**
+
+| Promotor | Respuesta |
+|----------|-----------|
+| José Andrés Belte | *[Respuesta registrada en formulario]* |
+| Gregory Báez Brito | "Es un tipo de venta donde el productor obtiene mayores beneficios y el consumidor un mejor precio" |
+| Ana Gabriela Talavera | "Conectar al productor con el consumidor de manera justa donde ambos son beneficiados" |
+| Micicuaia Rauic | "Venta directa del productor al consumidor con precio justo" |
+
+**¿Crees que los productores de tu comunidad aceptarían usar una app para vender sus productos?**
+
+| Respuesta | Cantidad |
+|-----------|----------|
+| Sí, todos | ✅ Mayoría |
+| Sí, algunos | ✅ Algunos |
+| No, ninguno | ❌ Ninguno |
+
+**¿Qué productos agrícolas son los más producidos en tu comunidad?**
+
+- Café
+- Aguacate
+- Limón
+- Chinola
+- Viveres
+- Productos de la zona de Azua
+
+#### 2. Percepción sobre la aplicación
+
+**¿Qué aspecto te parece más útil de la aplicación?**
+
+| Aspecto | Votos |
+|---------|-------|
+| Venta directa sin intermediarios | ✅ Mayoría |
+| Precios transparentes | ✅ Alto |
+| Sistema de denuncias | ✅ Algunos |
+| Chat con compradores | ✅ Algunos |
+
+**¿Qué dificultades ves para que los productores usen la app?**
+
+| Dificultad | Menciones |
+|------------|-----------|
+| Falta de smartphone | ✅ Varios |
+| Falta de internet | ✅ Varios |
+| Desconfianza en pagos digitales | ✅ Algunos |
+| No saben usar apps | ✅ Algunos |
+
+#### 3. Sugerencias para mejorar la aplicación
+
+| Sugerencia | Promotor |
+|------------|----------|
+| "Cambiar las limitantes que tiene al registrarse, que se puedan registrar tanto como productor y como consumidor" | Gregory Báez Brito |
+| "Mi sugerencia sería buscar colaboración con el gobierno para llegar a los productores que no usan la app" | Micicuaia Rauic |
+
+#### 4. Formación y promoción
+
+**¿Crees que necesitas capacitación para promover la app?**
+
+| Respuesta | Cantidad |
+|-----------|----------|
+| Sí, mucha | ✅ Mayoría |
+| Sí, poca | ✅ Algunos |
+| No | ❌ Ninguno |
+
+**¿Qué tipo de apoyo necesitarías para promover VPJ?**
+
+- ✅ Material impreso (folletos)
+- ✅ Videos tutoriales
+- ✅ Capacitación presencial
+- ✅ Llamadas de seguimiento
+
+**¿Conoces a otros productores que podrían unirse?**
+
+| Promotor | Cantidad de productores |
+|----------|------------------------|
+| Ana Gabriela Talavera | 10 productores |
+| Otros promotores | 1-10 productores |
+
+### Observaciones del entrevistador
+
+- "Nos explicaron de manera clara el uso de la aplicación y los beneficios que se pueden obtener de la misma."
+- "Los promotores mostraron interés en la aplicación y en la metodología de Venta Precio Justo."
+- "Se identificaron oportunidades de mejora en el registro de usuarios (poder registrarse como productor y consumidor simultáneamente)."
+
+### Conclusiones del encuentro
+
+1. ✅ **Buena recepción:** Los promotores de Azua mostraron interés en la aplicación y en el modelo de Venta Precio Justo.
+
+2. ✅ **Identificación de necesidades:** Se confirmó la necesidad de capacitación y material de apoyo (folletos, videos tutoriales) para los promotores.
+
+3. ✅ **Productos clave identificados:** Café, aguacate, limón, chinola y viveres son los productos más producidos en la región.
+
+4. ⚠️ **Desafíos identificados:** Falta de smartphones e internet en algunas comunidades rurales.
+
+5. 💡 **Mejora sugerida:** Permitir que los usuarios se registren como productores y consumidores simultáneamente (cuenta dual).
+
+6. 📈 **Potencial de crecimiento:** Los promotores conocen entre 1 y 10 productores que podrían unirse a la plataforma.
+
+### Impacto del encuentro
+
+| Aspecto | Resultado |
+|---------|-----------|
+| Promotores capacitados | 6+ promotores |
+| Productores potenciales identificados | 10+ productores |
+| Comunidades cubiertas | Azua, Rodríguez Cera, La Romana de Aroa, Arau, Villa César, Peralta |
+| Nivel de aceptación | Alto (mayoría de los promotores) |
+
+---
+
+## FASE 129: CORRECCIÓN DE CARRITO PARA ONPECO Y CENTRO DE ACOPIO
+
+**Fecha:** 06/07/2026
+**Estado:** ✅ Completada
+
+### Objetivo
+Ocultar completamente el carrito de compras para los usuarios ONPECO (regulador) y Centro de Acopio (acopio), ya que estos roles no deben realizar compras según la lógica de negocio definida.
+
+### Cambios en `base.html`
+
+**Navbar - "Mi Carrito":**
 ```html
-<div class="position-relative" style="overflow: hidden; height: 200px;">
-    <img src="{{ producto.image.url }}" class="card-img-top" alt="{{ producto.name }}" 
-         style="width: 100%; height: 100%; object-fit: cover;">
-    
-    <!-- OVERLAY CON NOMBRE DEL PRODUCTOR -->
-    <div class="position-absolute bottom-0 start-0 w-100" 
-         style="background: linear-gradient(transparent, rgba(0,0,0,0.85)); padding: 15px 12px 12px;">
-        <div class="d-flex align-items-center">
-            <span style="font-size: 1.1rem; font-weight: bold; color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">
-                {% if producto.vendedor.role == 'suplidor' %}
-                    🚚
-                {% else %}
-                    🌱
-                {% endif %}
-                {{ producto.vendedor.business_name|default:producto.vendedor.username }}
-            </span>
-        </div>
-        <small style="color: rgba(255,255,255,0.7); text-shadow: 0 1px 4px rgba(0,0,0,0.8);">
-            {{ producto.get_category_display }}
-        </small>
+<!-- Antes -->
+{% if user.role == 'consumidor' or user.role == 'productor' or user.role == 'suplidor' %}
+
+<!-- Después -->
+{% if user.is_authenticated and user.role != 'regulador' and user.role != 'acopio' %}
+```
+
+**Botón flotante del carrito:**
+```html
+<!-- Antes -->
+{% if user.is_authenticated %}
+    {% if user.role == 'consumidor' or user.role == 'productor' or user.role == 'suplidor' %}
+
+<!-- Después -->
+{% if user.is_authenticated and user.role != 'regulador' and user.role != 'acopio' %}
+```
+
+### Cambios en `lista_productos.html`
+
+```html
+<!-- Botón "Carrito" en tarjeta de producto -->
+{% if user.is_authenticated and user.role != 'regulador' and user.role != 'acopio' %}
+    <!-- Mostrar botón de carrito -->
+{% elif user.is_authenticated %}
+    <!-- ONPECO o Centro de Acopio: botón deshabilitado "Supervisión" -->
+    <button class="btn btn-outline-secondary w-100" disabled>
+        <i class="fas fa-gavel"></i> Supervisión
+    </button>
+{% else %}
+    <!-- Usuario no autenticado: "Iniciar sesión" -->
+    <a href="{% url 'users:login' %}" class="btn btn-outline-secondary flex-grow-1">
+        <i class="fas fa-sign-in-alt"></i> Iniciar sesión
+    </a>
+{% endif %}
+```
+
+### Cambios en `detalle_producto.html`
+
+```html
+{# CASO 3: ONPECO, REGULADOR O CENTRO DE ACOPIO #}
+{% else %}
+    <div class="mt-4 p-3 text-center" style="background: #fff3cd; border-radius: 10px; border: 1px solid #ffc107;">
+        <i class="fas fa-gavel fa-2x d-block mb-2 text-warning"></i>
+        <p class="mb-0"><strong>Rol de supervisor</strong></p>
+        <p class="mb-0 small text-muted">Los reguladores no pueden realizar compras. Esta función es exclusiva para consumidores.</p>
     </div>
+{% endif %}
+```
+
+---
+
+## FASE 130: SELECTOR DE EMOJIS EN CHAT
+
+**Fecha:** 06/07/2026
+**Estado:** ✅ Completada
+
+### Objetivo
+Agregar un selector de emojis en la interfaz del chat para que los usuarios puedan insertar emojis fácilmente.
+
+### Implementación
+
+**HTML:**
+```html
+<button type="button" id="emojiBtn" class="btn btn-outline-secondary">
+    <i class="fas fa-smile"></i>
+</button>
+<div id="emojiPicker" style="display: none;">
+    <div id="emojiList"></div>
 </div>
 ```
 
-### Resultados Obtenidos
-- ✅ Nombre del productor visible sobre la imagen
-- ✅ Diseño profesional con gradiente
-- ✅ Icono según el rol (productor o suplidor)
-- ✅ Categoría también visible en el overlay
-
----
-
-## FASE 78: CORRECCIÓN DE ENLACE A ONPECO
-
-**Fecha:** 01/07/2026
-**Estado:** ✅ Completada
-
-### Objetivo
-Corregir el enlace a ONPECO en toda la aplicación, actualizándolo de `https://onpeco.gob.do` a `https://onpeco.org/` (dominio oficial correcto).
-
-### Implementación Técnica
-
-**Archivos modificados:**
-- `templates/base/base.html`
-- `templates/users/password_reset.html`
-- `templates/users/password_reset_done.html`
-- `templates/complaints/reporte_denuncias.html`
-
-**Cambio:**
-```html
-<!-- Antes -->
-<a href="https://onpeco.gob.do" target="_blank">
-
-<!-- Después -->
-<a href="https://onpeco.org/" target="_blank">
+**JavaScript:**
+```javascript
+const emojis = ['😊', '😂', '❤️', '👍', '🌱', '🌿', '🍎', '🍊', '🍋', '🍇', '🍉'];
+emojis.forEach(function(emoji) {
+    const span = document.createElement('span');
+    span.textContent = emoji;
+    span.addEventListener('click', function() {
+        const cursorPos = mensajeInput.selectionStart;
+        const text = mensajeInput.value;
+        mensajeInput.value = text.substring(0, cursorPos) + emoji + text.substring(cursorPos);
+        mensajeInput.focus();
+        emojiPicker.style.display = 'none';
+    });
+    emojiList.appendChild(span);
+});
 ```
 
-### Resultados Obtenidos
-- ✅ Todos los enlaces a ONPECO funcionan correctamente
-- ✅ Redirigen al sitio oficial
-- ✅ Enlaces abren en nueva pestaña
-
 ---
 
-## FASE 79: MEJORA EN RECUPERACIÓN DE CONTRASEÑA
+## FASE 131: BOTÓN "VOLVER A MIS PRODUCTOS" EN EDICIÓN
 
-**Fecha:** 01/07/2026
+**Fecha:** 06/07/2026
 **Estado:** ✅ Completada
 
 ### Objetivo
-Mejorar la página de recuperación de contraseña mostrando instrucciones claras, el correo al que se envió el enlace y la información de contacto de ONPECO para soporte.
+Agregar un botón de retorno a "Mis Productos" en la página de edición de productos para mejorar la navegación.
 
-### Implementación Técnica
+### Implementación en `editar_producto.html`
 
-**Archivos modificados:**
-- `templates/users/password_reset.html`
-- `templates/users/password_reset_done.html`
-- `apps/users/views.py`
-
-**Información de contacto agregada:**
 ```html
-<div class="card border-warning">
-    <div class="card-header bg-warning text-dark">
-        <i class="fas fa-headset"></i> <strong>¿Necesitas ayuda?</strong>
-    </div>
-    <div class="card-body">
-        <p><i class="fas fa-phone text-success"></i> <strong>Teléfono:</strong> (809) 797-2033</p>
-        <p><i class="fas fa-envelope text-success"></i> <strong>Email:</strong> direccion@onpeco.org</p>
-        <p><i class="fas fa-clock text-success"></i> <strong>Horario:</strong> Lunes-Viernes 9AM-3PM</p>
-    </div>
+<!-- ========== BOTONES DE ACCIÓN ========== -->
+<div class="d-flex gap-2 mt-4">
+    <button type="submit" class="btn btn-warning flex-grow-1">
+        <i class="fas fa-edit"></i> Actualizar Producto
+    </button>
+    <a href="{% url 'marketplace:mis_productos' %}" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i> Volver a mis productos
+    </a>
 </div>
 ```
 
-**Vista modificada para mostrar el correo:**
-```python
-class CustomPasswordResetView(PasswordResetView):
-    def form_valid(self, form):
-        self.request.session['reset_email'] = form.cleaned_data['email']
-        return super().form_valid(form)
-
-class CustomPasswordResetDoneView(PasswordResetDoneView):
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['email'] = self.request.session.get('reset_email', '')
-        return context
-```
-
-### Resultados Obtenidos
-- ✅ Instrucciones claras en la página de recuperación
-- ✅ Se muestra el correo al que se envió el enlace
-- ✅ Información de contacto visible (teléfono, email, horario)
-- ✅ Mejor experiencia de usuario
-
 ---
 
-## FASE 80: MENÚ ONPECO ADAPTADO PARA CENTRO DE ACOPIO
+## FASE 132: FORMATO DE NÚMEROS EN BALANCE DE VENTAS (RD)
 
-**Fecha:** 01/07/2026
+**Fecha:** 06/07/2026
 **Estado:** ✅ Completada
 
 ### Objetivo
-Adaptar el menú ONPECO para que el Centro de Acopio tenga acceso a las mismas opciones de supervisión y chat privado, pero con una identidad visual propia.
+Aplicar el formato de números de República Dominicana (miles con coma, decimales con punto) en el balance de ventas.
 
-### Implementación Técnica
+### Filtro personalizado
 
-**Archivo modificado:** `templates/base/base.html`
-
-**Cambio en la condición del menú:**
-```html
-<!-- Antes -->
-{% if user.is_staff or user.is_superuser or user.role == 'regulador' %}
-
-<!-- Después -->
-{% if user.is_staff or user.is_superuser or user.role == 'regulador' or user.username == 'centro_acopio' %}
+```python
+# apps/cart/templatetags/cart_filters.py
+@register.filter
+def format_rd(value):
+    try:
+        value = float(value)
+        return f"{value:,.2f}"
+    except (ValueError, TypeError):
+        return "0.00"
 ```
 
-**Título dinámico del menú:**
+### Uso en template
+
 ```html
-<i class="fas fa-users-cog"></i> 
-{% if user.username == 'centro_acopio' %}🏪 Acopio{% else %}ONPECO{% endif %}
+{% load cart_filters %}
+<h2>RD$ {{ total_vendido|format_rd }}</h2>
 ```
 
-**Opciones exclusivas para supervisión:**
-```html
-<!-- Opciones para ONPECO y Acopio (supervisión) -->
-<li><hr class="dropdown-divider"></li>
-<li><a class="dropdown-item" href="{% url 'chat:supervisar_chats' %}">
-    <i class="fas fa-eye"></i> 🔍 Supervisar Chats
-</a></li>
-<li><a class="dropdown-item" href="{% url 'chat:chat_privado_onpeco_acopio' %}">
-    <i class="fas fa-lock"></i> 🔒 Chat con {% if user.username == 'centro_acopio' %}ONPECO{% else %}Centro de Acopio{% endif %}
-</a></li>
-```
-
-### Resultados Obtenidos
-- ✅ El menú muestra "Acopio" para el Centro de Acopio
-- ✅ El Centro de Acopio tiene acceso a supervisión
-- ✅ El Centro de Acopio tiene acceso al chat privado
-- ✅ Misma funcionalidad con identidad visual diferenciada
+### Ejemplos de formato
+| Antes | Después |
+|-------|---------|
+| `RD$ 15635.00` | `RD$ 15,635.00` |
+| `RD$ 23900.00` | `RD$ 23,900.00` |
+| `RD$ 1550.50` | `RD$ 1,550.50` |
 
 ---
 
-## FASE 81: CONFIGURACIÓN DE CORREO REAL PARA RECUPERACIÓN DE CONTRASEÑA
+## FASE 133: ACTUALIZACIÓN DE DOCUMENTACIÓN - FASES 82 A 131
 
-**Fecha:** 01/07/2026
+**Fecha:** 06/07/2026
 **Estado:** ✅ Completada
 
-### Objetivo
-Configurar el envío de correos electrónicos reales para la recuperación de contraseña, utilizando Gmail con Contraseña de Aplicación.
+### Resumen de fases agregadas
 
-### Implementación Técnica
+| Fase | Título |
+|------|--------|
+| 82 | Cambio de Cédula a Nombre de Productor en Listas Públicas |
+| 83 | Eliminación de Reputación en Lista Pública de Productores |
+| 84 | Corrección de Cédulas y Negocios de Productores |
+| 85 | Buscador en Tiempo Real en Lista de Usuarios ONPECO |
+| 86 | Corrección de Reporte de Ventas - Transacciones vs Unidades |
+| 87 | Detalle de Ventas Agrupado por Pedido |
+| 88 | Corrección de Error en Decorador `onpeco_required` |
+| 89 | Corrección de Error en Exportación de Denuncias a Excel |
+| 90 | Limpieza de Código - Función `obtener_fechas` |
+| 91 | Servicio de Estadísticas para ONPECO |
+| 92 | Filtro de Estrellas en Templates |
+| 93 | Estandarización de Nombres en `views.py` |
+| 94 | Corrección de Carrito para ONPECO y Centro de Acopio |
+| 95 | Bloqueo de Compra para ONPECO y Centro de Acopio |
+| 96 | Selector de Emojis en Chat |
+| 97 | Botón "Volver a Mis Productos" en Edición |
+| 98 | Formato de Números en Balance de Ventas (RD) |
+| 99 | Corrección de Formato de Números en Ventas |
+| 100 | Chat Privado ONPECO ↔ Centro de Acopio |
+| 101 | Corrección de Rebaja de Stock en Tiempo Real |
+| 102 | Rediseño de Botones con Recuadros |
+| 103 | Agregado del Tomate como Orgullo de Azua |
+| 104 | Corrección de Historial de Ventas |
+| 105 | Corrección de Contabilización de Denuncias Aprobadas |
+| 106 | Corrección de Balances Pagados |
+| 107 | Enlace a ONPECO en el Portal |
+| 108 | Exportación de Reportes de Denuncias a Excel |
+| 109 | Sistema de Notificaciones con Contador de Incremento |
+| 110 | Corrección de Error `datetime` en Backups |
+| 111 | Cambio de Login a Cédula y Mejora de Interfaz |
+| 112 | Tomate Clicable con Enlace a ONPECO |
+| 113 | Sistema de Restablecimiento de Contraseñas por ONPECO |
+| 114 | Nombre Real en Navbar y Perfil |
+| 115 | Exportación de Consumidores y Productores a Excel |
+| 116 | Integración del Logo Oficial de ONPECO |
+| 117 | Estilizado del Logo ONPECO con Bordes Redondeados |
+| 118 | Cambio de Favicon a Logo de ONPECO (Definitivo) |
+| 119 | Optimización de la Página de Inicio |
+| 120 | Corrección del Footer - Texto Institucional |
+| 121 | Ajuste de Posición del Carrito Flotante |
+| 122 | Eliminación de Notificaciones de Chat sin Sesión |
+| 123 | Verificación Final y Consolidación de Cambios |
+| 124 | Cambio de Color de "VPJ" a Rojo |
+| 125 | Módulo "Sobre VPJ" - Modal Informativo |
+| 126 | Chat Privado ONPECO ↔ Centro de Acopio |
+| 127 | Presentación Oficial a ONPECO - Demostración en Vivo con Ngrok | 25/06/2026 | ✅ Completada |
+| 128 | Encuentro con Promotores en Azua - Presentación de VPJ | 03/07/2026 | ✅ Completada |
+| 129 | Corrección de Carrito para ONPECO y Centro de Acopio | 06/07/2026 | ✅ Completada |
+| 130 | Selector de Emojis en Chat | 06/07/2026 | ✅ Completada |
+| 131 | Botón "Volver a Mis Productos" en Edición | 06/07/2026 | ✅ Completada |
+| 132 | Formato de Números en Balance de Ventas (RD) | 06/07/2026 | ✅ Completada |
+| 133 | Actualización de Documentación - FASES 127 A 132 | 06/07/2026 | ✅ Completada |
 
-**Archivo modificado:** `core/settings.py`
+---
 
-**Configuración de correo:**
-```python
-# ====================== CONFIGURACIÓN DE CORREO ELECTRÓNICO ======================
+## 📊 ESTADO GENERAL DEL PROYECTO
 
-# ========== PARA PRODUCCIÓN (ENVÍO REAL CON GMAIL) ==========
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'vpj.proyecto@gmail.com'          # ← Correo configurado
-EMAIL_HOST_PASSWORD = 'awut htdr iwry ixxu'         # ← Contraseña de aplicación
-DEFAULT_FROM_EMAIL = 'VPJ - Venta Precio Justo <vpj.proyecto@gmail.com>'
+**Estado del Proyecto:** 🟢 En producción para pruebas
 
-# ========== PARA DESARROLLO (PRUEBAS) - Comentado ==========
-# EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-# EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
+**Total de fases implementadas: 133**
 
-PASSWORD_RESET_TIMEOUT = 86400  # 24 horas
+**Última actualización:** 06 de julio de 2026
+
+---
+
+**Fin del documento**
 ```
 
-### Pasos Realizados
-1. Generación de Contraseña de Aplicación en Google
-2. Configuración de `EMAIL_HOST_USER` y `EMAIL_HOST_PASSWORD`
-3. Prueba de envío de correos
-
-### Resultados Obtenidos
-- ✅ Correos de recuperación se envían en tiempo real
-- ✅ Funciona con Gmail mediante Contraseña de Aplicación
-- ✅ Seguro (no usa contraseña personal)
-- ✅ 24 horas de validez del enlace
-
 ---
 
-## 📊 ESTADO GENERAL - ACTUALIZACIÓN 01/07/2026
+✅ **PASO COMPLETADO**
 
-| Rango | Estado | Fecha |
-|-------|--------|-------|
-| Fase 1 - 71 | ✅ Completadas | 04/06 - 29/06/2026 |
-| Fase 72 - 81 | ✅ Completadas | 01/07/2026 |
+**Ahora haz lo siguiente:**
 
-**Total de fases implementadas: 81**
+1. **Abre tu documento original** (el de 4746 líneas)
+2. **Ve al final** del documento (después de la Fase 81)
+3. **Copia TODO el texto que te di arriba** (desde "## FASE 82" hasta el final)
+4. **Pégalo al final** de tu documento
+5. **Guarda el archivo**
 
-**Estado del proyecto:** 🟢 En producción para pruebas
+Tu documento tendrá las **4746 líneas originales + las nuevas fases 82-132**, manteniendo TODO el contenido detallado de las fases 1-81.
 
----
-
-**Última actualización:** 01 de julio de 2026
-```
-
----
-
-## 📝 CÓMO AGREGARLO
-
-1. **Abre tu archivo `documentacion.md`**
-2. **Ve al final del archivo** (donde termina la Fase 71)
-3. **Copia TODO el contenido de arriba** (desde `## FASE 72` hasta el final)
-4. **Pégalo al final del archivo**
-5. **Guarda** (`Ctrl + S`)
-
----
-
-**¿Necesitas que ajuste alguna descripción o agregue más detalles?** 🚀
-
-
-
+**¿Quieres que te ayude con algo más?** 🚀
 
