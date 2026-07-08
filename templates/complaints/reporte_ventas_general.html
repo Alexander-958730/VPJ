@@ -1,0 +1,207 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Reporte General de Ventas - ONPECO{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h4><i class="fas fa-chart-line"></i> Reporte General de Ventas</h4>
+                </div>
+                <div class="card-body">
+                    <!-- Filtro de fechas -->
+                    <form method="get" class="row g-3 mb-4">
+                        <div class="col-md-4">
+                            <label>Fecha Inicio</label>
+                            <input type="date" name="fecha_inicio" class="form-control" value="{{ fecha_inicio|date:'Y-m-d' }}">
+                        </div>
+                        <div class="col-md-4">
+                            <label>Fecha Fin</label>
+                            <input type="date" name="fecha_fin" class="form-control" value="{{ fecha_fin|date:'Y-m-d' }}">
+                        </div>
+                        <div class="col-md-4 d-flex align-items-end">
+                            <button type="submit" class="btn btn-success w-100">
+                                <i class="fas fa-search"></i> Filtrar
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- ========== RESUMEN ACTUALIZADO ========== -->
+                    <div class="row mb-4">
+                        <div class="col-md-3">
+                            <div class="card bg-primary text-white">
+                                <div class="card-body text-center">
+                                    <h5>Total Ventas</h5>
+                                    <h2 id="total-ventas">{{ total_ventas }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card bg-success text-white">
+                                <div class="card-body text-center">
+                                    <h5>Total Ingresos</h5>
+                                    <h2>RD$ <span id="total-ingresos">{{ total_ingresos|floatformat:2 }}</span></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card bg-info text-white">
+                                <div class="card-body text-center">
+                                    <h5>Productores</h5>
+                                    <h2 id="total-productores">{{ total_productores }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card bg-warning text-white">
+                                <div class="card-body text-center">
+                                    <h5>Suplidores</h5>
+                                    <h2 id="total-suplidores">{{ total_suplidores }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ========== FIN RESUMEN ========== -->
+
+                    <!-- ========== VENTAS POR VENDEDOR (INCLUYE PRODUCTORES Y SUPLIDORES) ========== -->
+                    <h5>Ventas por Vendedor</h5>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Vendedor</th>
+                                    <th>Rol</th>
+                                    <th>Ventas</th>
+                                    <th>Ingresos</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for id, data in ventas_ordenadas %}
+                                <tr>
+                                    <td>{{ data.nombre }}</td>
+                                    <td>
+                                        {% if data.rol == 'productor' %}
+                                            <span class="badge bg-success">🌱 Productor</span>
+                                        {% elif data.rol == 'suplidor' %}
+                                            <span class="badge bg-warning">🚚 Suplidor</span>
+                                        {% else %}
+                                            <span class="badge bg-secondary">{{ data.rol }}</span>
+                                        {% endif %}
+                                    </td>
+                                    <td class="ventas">{{ data.ventas }}</td>
+                                    <td>RD$ <span class="ingreso">{{ data.ingresos|floatformat:2 }}</span></td>
+                                    <td>
+                                        <a href="{% url 'complaints:reporte_ventas_productor' id %}?fecha_inicio={{ fecha_inicio|date:'Y-m-d' }}&fecha_fin={{ fecha_fin|date:'Y-m-d' }}" 
+                                           class="btn btn-sm btn-info">
+                                            <i class="fas fa-eye"></i> Ver detalle
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="5" class="text-center">No hay ventas en este período</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- ========== FIN VENTAS POR VENDEDOR ========== -->
+
+                    <!-- Botones de exportación -->
+                    <div class="mt-3 d-flex gap-2 flex-wrap">
+                        <a href="{% url 'complaints:reporte_fincas_excel' %}" class="btn btn-success">
+                            <i class="fas fa-file-excel"></i> Exportar Fincas a Excel
+                        </a>
+                        <a href="{% url 'complaints:exportar_ventas_excel' %}?fecha_inicio={{ fecha_inicio|date:'Y-m-d' }}&fecha_fin={{ fecha_fin|date:'Y-m-d' }}" 
+                           class="btn btn-success">
+                            <i class="fas fa-file-excel"></i> Exportar Ventas a Excel
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function formatNumberRD(number) {
+        // Convierte a string y separa parte entera y decimal
+        let str = number.toString();
+        let parts = str.split('.');
+        let integerPart = parts[0];
+        let decimalPart = parts.length > 1 ? parts[1] : '';
+        
+        // Formatear la parte entera con comas (miles)
+        let formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        
+        // Asegurar 2 decimales
+        if (decimalPart.length === 0) {
+            decimalPart = '00';
+        } else if (decimalPart.length === 1) {
+            decimalPart = decimalPart + '0';
+        }
+        
+        return formattedInteger + '.' + decimalPart;
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Formatear Total Ventas
+        const totalVentas = document.getElementById('total-ventas');
+        if (totalVentas) {
+            const value = parseInt(totalVentas.textContent);
+            if (!isNaN(value)) {
+                totalVentas.textContent = formatNumberRD(value);
+            }
+        }
+        
+        // Formatear Total Ingresos
+        const totalIngresos = document.getElementById('total-ingresos');
+        if (totalIngresos) {
+            const value = parseFloat(totalIngresos.textContent);
+            if (!isNaN(value)) {
+                totalIngresos.textContent = formatNumberRD(value);
+            }
+        }
+        
+        // Formatear Total Productores
+        const totalProductores = document.getElementById('total-productores');
+        if (totalProductores) {
+            const value = parseInt(totalProductores.textContent);
+            if (!isNaN(value)) {
+                totalProductores.textContent = formatNumberRD(value);
+            }
+        }
+        
+        // Formatear Total Suplidores
+        const totalSuplidores = document.getElementById('total-suplidores');
+        if (totalSuplidores) {
+            const value = parseInt(totalSuplidores.textContent);
+            if (!isNaN(value)) {
+                totalSuplidores.textContent = formatNumberRD(value);
+            }
+        }
+        
+        // Formatear Ventas por Vendedor
+        const ventas = document.querySelectorAll('.ventas');
+        ventas.forEach(function(element) {
+            const value = parseInt(element.textContent);
+            if (!isNaN(value)) {
+                element.textContent = formatNumberRD(value);
+            }
+        });
+        
+        // Formatear Ingresos por Vendedor
+        const ingresos = document.querySelectorAll('.ingreso');
+        ingresos.forEach(function(element) {
+            const value = parseFloat(element.textContent);
+            if (!isNaN(value)) {
+                element.textContent = formatNumberRD(value);
+            }
+        });
+    });
+</script>
+{% endblock %}

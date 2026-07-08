@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VPJ - {% block title %}Comercio Justo en Azua{% endblock %}</title>
+    
+    <!-- ========== FAVICON - ONPECO 🛡️ ========== -->
+    {% load static %}
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.ico' %}">
+    <link rel="apple-touch-icon" type="image/png" href="{% static 'img/favicon.ico' %}">
+    <!-- ========== FIN FAVICON ========== -->
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome (iconos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    <!-- ========== ESTILOS MODERNOS MEJORADOS ========== -->
+    <style>
+        /* Contenedor de mensajes del chat */
+        #chat-messages {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 12px !important;
+            padding: 20px !important;
+            height: 500px !important;
+            overflow-y: auto !important;
+            background-color: #f0f2f5 !important;
+        }
+        /* Cada burbuja */
+        .message-bubble {
+            display: flex !important;
+            margin-bottom: 8px !important;
+            max-width: 70% !important;
+        }
+        /* Contenido interno de la burbuja */
+        .message-content {
+            padding: 10px 14px !important;
+            border-radius: 18px !important;
+            word-wrap: break-word !important;
+        }
+        /* Nombre del usuario */
+        .message-username {
+            font-size: 12px !important;
+            font-weight: bold !important;
+            display: block !important;
+            margin-bottom: 4px !important;
+        }
+        /* Texto del mensaje */
+        .message-text {
+            margin: 0 !important;
+            font-size: 14px !important;
+        }
+        /* Hora del mensaje */
+        .message-timestamp {
+            font-size: 10px !important;
+            display: block !important;
+            margin-top: 4px !important;
+            opacity: 0.7 !important;
+        }
+        /* Burbuja del PRODUCTOR (azul, derecha) */
+        .message-bubble-productor {
+            justify-content: flex-end !important;
+        }
+        .message-bubble-productor .message-content {
+            background-color: #007bff !important;
+            color: white !important;
+            border-bottom-right-radius: 4px !important;
+        }
+        /* Burbuja del CONSUMIDOR (verde, izquierda) */
+        .message-bubble-consumidor {
+            justify-content: flex-start !important;
+        }
+        .message-bubble-consumidor .message-content {
+            background-color: #28a745 !important;
+            color: white !important;
+            border-bottom-left-radius: 4px !important;
+        }
+        
+        /* Botón flotante del carrito - SOLO PARA CONSUMIDORES Y PRODUCTORES */
+        .cart-float-btn {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #28a745;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .cart-float-btn:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+            color: white;
+        }
+        
+        /* ========== ESTILOS MODERNOS MEJORADOS PARA NAVBAR ========== */
+        
+        /* Todos los botones del navbar (incluyendo Cerrar Sesión) */
+        .navbar-nav .nav-link,
+        .navbar-nav .btn-link.nav-link {
+            border-radius: 25px;
+            padding: 8px 18px;
+            margin: 0 3px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.95) !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+            cursor: pointer;
+        }
+        
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .btn-link.nav-link:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+            color: #ffffff !important;
+        }
+        
+        .navbar-nav .nav-link i,
+        .navbar-nav .btn-link.nav-link i {
+            margin-right: 5px;
+        }
+        
+        /* ========== ESTILO ESPECIAL PARA CERRAR SESIÓN (ROJO) ========== */
+        .navbar-nav .btn-link.nav-link {
+            background: rgba(255, 50, 50, 0.15) !important;
+            border-color: rgba(255, 50, 50, 0.25) !important;
+        }
+        
+        .navbar-nav .btn-link.nav-link:hover {
+            background: rgba(255, 50, 50, 0.35) !important;
+            border-color: rgba(255, 50, 50, 0.6) !important;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3) !important;
+        }
+        
+        /* ========== BOTÓN DE REGISTRO DESTACADO ========== */
+        .nav-item.dropdown .dropdown-toggle {
+            border-radius: 25px !important;
+            background: rgba(255, 215, 0, 0.2) !important;
+            border: 1px solid rgba(255, 215, 0, 0.3) !important;
+            color: rgba(255, 255, 255, 0.95) !important;
+        }
+        
+        .nav-item.dropdown .dropdown-toggle:hover {
+            background: rgba(255, 215, 0, 0.35) !important;
+        }
+        
+        /* ========== DROPDOWN MENÚ ========== */
+        .dropdown-menu {
+            border-radius: 16px;
+            border: none;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 8px;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.98);
+        }
+        
+        .dropdown-item {
+            border-radius: 10px;
+            padding: 8px 16px;
+            transition: all 0.2s ease;
+        }
+        
+        .dropdown-item:hover {
+            background: #e8f5e9;
+            transform: translateX(5px);
+        }
+        
+        /* Botones de acción en tarjetas */
+        .card .btn {
+            border-radius: 30px;
+            padding: 12px 28px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .card .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Tarjetas con sombras suaves */
+        .card {
+            border-radius: 20px;
+            border: none;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Encabezado de la aplicación */
+        .card-header {
+            border-radius: 20px 20px 0 0 !important;
+            background: linear-gradient(135deg, #2e7d32, #1b5e20) !important;
+        }
+        
+        /* Badges con bordes redondeados */
+        .badge {
+            border-radius: 30px;
+            padding: 6px 16px;
+        }
+        
+        /* Efecto hover en enlaces del footer */
+        .footer a {
+            transition: all 0.3s ease;
+        }
+        
+        .footer a:hover {
+            color: #ffd700 !important;
+            transform: translateX(5px);
+        }
+        
+        /* Navbar brand más elegante */
+        .navbar-brand {
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Estilo para el logo en el navbar - BORDES REDONDEADOS ESTILO BOTÓN */
+        .navbar-brand img {
+            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            object-fit: cover;
+        }
+        
+        .navbar-brand img:hover {
+            transform: scale(1.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container">
+            <!-- ========== NAVBAR - CON LOGO ONPECO REDONDEADO Y "VPJ" EN ROJO CLICABLE ========== -->
+            <a class="navbar-brand" href="{% url 'inicio' %}">
+                <a href="https://onpeco.org/" target="_blank" title="Visitar sitio oficial de ONPECO" style="text-decoration: none; display: flex; align-items: center;">
+                    <img src="/media/logo_onpeco.png" alt="ONPECO" height="45" class="d-inline-block align-top me-2" style="border-radius: 12px; border: 2px solid rgba(255,255,255,0.4); padding: 3px; background: rgba(255,255,255,0.15); object-fit: cover;">
+                </a>
+                <span style="font-size: 1.3rem; font-weight: 700; white-space: nowrap; color: #FF6B6B; cursor: pointer;" 
+                      data-bs-toggle="modal" 
+                      data-bs-target="#modalVPJ"
+                      title="Haz clic para conocer más sobre VPJ">
+                    VPJ
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <!-- ========== BOTÓN DE INICIO AGREGADO ========== -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'inicio' %}">
+                            <i class="fas fa-home"></i> Inicio
+                        </a>
+                    </li>
+                    
+                    <!-- ========== ENLACE A PRODUCTORES (SIEMPRE VISIBLE) ========== -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:lista_productores_publicos' %}">
+                            <i class="fas fa-seedling"></i> Productores
+                        </a>
+                    </li>
+                    
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'marketplace:lista_productos' %}">
+                                <i class="fas fa-store"></i> Productos
+                            </a>
+                        </li>
+                        
+                        <!-- ========== ENLACE AL CARRITO - EXCLUYE ONPECO Y ACOPIO ========== -->
+                        {% if user.is_authenticated and user.role != 'regulador' and user.role != 'acopio' %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'cart:ver_carrito' %}">
+                                <i class="fas fa-shopping-cart"></i> Mi Carrito
+                                {% if user.cart.get_total_items > 0 %}
+                                <span class="badge bg-danger ms-1">{{ user.cart.get_total_items }}</span>
+                                {% endif %}
+                            </a>
+                        </li>
+                        {% endif %}
+                        <!-- ========== FIN ENLACE AL CARRITO ========== -->
+                        
+                        <!-- ========== ENLACE MIS PEDIDOS - SOLO PARA CONSUMIDORES ========== -->
+                        {% if user.role == 'consumidor' %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'cart:mis_pedidos' %}">
+                                <i class="fas fa-receipt"></i> Mis Pedidos
+                            </a>
+                        </li>
+                        {% endif %}
+                        
+                        <!-- ========== ENLACE MIS VENTAS - SOLO PARA PRODUCTORES Y SUPLIDORES ========== -->
+                        {% if user.role == 'productor' or user.role == 'suplidor' %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'cart:mis_ventas' %}">
+                                <i class="fas fa-box"></i> Mis Ventas
+                            </a>
+                        </li>
+                        {% endif %}
+                        
+                        <!-- ========== ENLACE BALANCE DE VENTAS - SOLO PARA PRODUCTORES Y SUPLIDORES ========== -->
+                        {% if user.role == 'productor' or user.role == 'suplidor' %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'cart:balance_ventas' %}">
+                                <i class="fas fa-chart-line"></i> Balance de Ventas
+                            </a>
+                        </li>
+                        {% endif %}
+                        
+                        <!-- ========== ENLACE PARA CENTRO DE ACOPIO ========== -->
+                        {% if user.role == 'acopio' or user.username == 'centro_acopio' %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'cart:pedidos_acopio' %}">
+                                <i class="fas fa-warehouse"></i> Centro de Acopio
+                            </a>
+                        </li>
+                        {% endif %}
+                        
+                        <!-- ========== MIS PRODUCTOS - AHORA PARA PRODUCTORES Y SUPLIDORES ========== -->
+                        {% if user.role == 'productor' or user.role == 'suplidor' %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'marketplace:mis_productos' %}">
+                                <i class="fas fa-box"></i> Mis Productos
+                            </a>
+                        </li>
+                        {% endif %}
+                        
+                        {% if user.role == 'consumidor' %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'complaints:mis_denuncias' %}">
+                                <i class="fas fa-file-alt"></i> Mis Denuncias
+                            </a>
+                        </li>
+                        {% endif %}
+                        
+                        <!-- ========== MIS CONVERSACIONES CON BADGE DE NOTIFICACIONES ========== -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'chat:mis_chats' %}">
+                                <i class="fas fa-comments"></i> Mis Conversaciones
+                                {% if chat_unread_count > 0 %}
+                                <span class="badge bg-danger ms-1">{{ chat_unread_count }}</span>
+                                {% endif %}
+                            </a>
+                        </li>
+                        <!-- ========== FIN MIS CONVERSACIONES ========== -->
+                        
+                        <!-- ========== MENÚ ONPECO MEJORADO CON SUPERVISIÓN ========== -->
+                        {% if user.is_staff or user.is_superuser or user.role == 'regulador' or user.username == 'centro_acopio' %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-users-cog"></i> {% if user.username == 'centro_acopio' %}🏪 Acopio{% else %}ONPECO{% endif %}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- ========== OPCIONES PARA ONPECO (REGULADOR) ========== -->
+                                {% if user.role == 'regulador' or user.is_superuser or user.is_staff %}
+                                <li><a class="dropdown-item" href="{% url 'users:lista_productores_pendientes' %}">
+                                    <i class="fas fa-user-check"></i> Aprobar Productores
+                                </a></li>
+                                <li><a class="dropdown-item" href="{% url 'users:lista_suplidores_pendientes' %}">
+                                    <i class="fas fa-truck"></i> Aprobar Suplidores
+                                </a></li>
+                                <li><a class="dropdown-item" href="{% url 'complaints:lista_denuncias' %}">
+                                    <i class="fas fa-gavel"></i> Gestionar Denuncias
+                                </a></li>
+                                <li><a class="dropdown-item" href="{% url 'complaints:gestion_reputacion' %}">
+                                    <i class="fas fa-star-of-life"></i> 🌟 Gestión de Reputación
+                                </a></li>
+                                <li><a class="dropdown-item" href="{% url 'users:lista_usuarios_onpeco' %}">
+                                    <i class="fas fa-users-cog"></i> Gestionar Usuarios
+                                </a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-success fw-bold" href="{% url 'complaints:portal_onpeco' %}">
+                                    <i class="fas fa-chart-line"></i> 🎛️ Portal ONPECO (Dashboard)
+                                </a></li>
+                                <li><a class="dropdown-item" href="/productos/top-vistos/">
+                                    <i class="fas fa-chart-line"></i> 📊 Productos Más Consultados
+                                </a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{% url 'complaints:reporte_ventas_general' %}">
+                                    <i class="fas fa-chart-line"></i> 📊 Reporte de Ventas
+                                </a></li>
+                                <li><a class="dropdown-item" href="{% url 'complaints:reporte_fincas_excel' %}">
+                                    <i class="fas fa-file-excel"></i> 📋 Exportar Fincas a Excel
+                                </a></li>
+                                <li><a class="dropdown-item" href="{% url 'complaints:exportar_consumidores_excel' %}">
+                                    <i class="fas fa-users"></i> 📋 Exportar Consumidores
+                                </a></li>
+                                <li><a class="dropdown-item" href="{% url 'complaints:exportar_productores_excel' %}">
+                                    <i class="fas fa-seedling"></i> 📋 Exportar Productores
+                                </a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{% url 'complaints:gestion_backups' %}">
+                                    <i class="fas fa-undo-alt"></i> Restaurar Sistema
+                                </a></li>
+                                <!-- ========== NUEVO ENLACE: GESTIÓN DE CATEGORÍAS ========== -->
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{% url 'marketplace:gestion_categorias' %}">
+                                    <i class="fas fa-tags"></i> 📂 Gestionar Categorías
+                                </a></li>
+                                <!-- ========== FIN NUEVO ENLACE ========== -->
+                                {% endif %}
+                                
+                                <!-- ========== OPCIONES DE SUPERVISIÓN PARA ONPECO Y ACOPIO ========== -->
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{% url 'chat:supervisar_chats' %}">
+                                    <i class="fas fa-eye"></i> 🔍 Supervisar Chats
+                                </a></li>
+                                <li><a class="dropdown-item" href="{% url 'chat:chat_privado_onpeco_acopio' %}">
+                                    <i class="fas fa-lock"></i> 🔒 Chat con {% if user.username == 'centro_acopio' %}ONPECO{% else %}Centro de Acopio{% endif %}
+                                </a></li>
+                            </ul>
+                        </li>
+                        {% endif %}
+                        <!-- ========== FIN MENÚ ONPECO ========== -->
+                        
+                        <!-- ========== PERFIL / USUARIO (ACTUALIZADO) ========== -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'users:perfil' %}">
+                                <i class="fas fa-user-circle"></i> 
+                                {% if user.role == 'regulador' %}
+                                    Regulador
+                                {% else %}
+                                    {{ user.get_display_name }}
+                                {% endif %}
+                            </a>
+                        </li>
+                        <!-- ========== FIN PERFIL / USUARIO ========== -->
+                        
+                        <!-- ========== CERRAR SESIÓN MODIFICADO (USANDO POST) ========== -->
+                        <li class="nav-item">
+                            <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-link nav-link" style="border: none; background: none; color: white; text-decoration: none; border-radius: 25px; padding: 8px 18px; margin: 0; cursor: pointer; width: auto;">
+                                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                                </button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'marketplace:lista_productos' %}">
+                                <i class="fas fa-store"></i> Productos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'users:login' %}">
+                                <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-user-plus"></i> Registrarse
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'users:registro_consumidor' %}">Como Consumidor</a></li>
+                                <li><a class="dropdown-item" href="{% url 'users:registro_productor' %}">Como Productor</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <!-- ========== REGISTRO DE SUPLIDOR DESACTIVADO ========== -->
+                                <!-- 
+                                <li><a class="dropdown-item" href="{% url 'users:registro_suplidor' %}">Como Suplidor (Intermediario)</a></li>
+                                -->
+                            </ul>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mensajes de alerta -->
+    {% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Contenido principal -->
+    <main class="container my-4">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center text-md-start">
+                    <span>VPJ - Venta Precio Justo</span>
+                </div>
+                <div class="col-md-4 text-center">
+                    <p class="mb-0">Comercio justo para los productores de Azua</p>
+                </div>
+                <div class="col-md-4 text-center text-md-end">
+                    <small>Desarrollado para ONPECO por el Grupo #5<br>Monográfico #59 - Escuela de Informática - UASD</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== BOTÓN FLOTANTE DEL CARRITO - EXCLUYE ONPECO Y ACOPIO ========== -->
+    {% if user.is_authenticated and user.role != 'regulador' and user.role != 'acopio' %}
+        <a href="{% url 'cart:ver_carrito' %}" class="cart-float-btn" title="Ver mi carrito">
+            <i class="fas fa-shopping-cart fa-2x"></i>
+            {% if user.cart.get_total_items > 0 %}
+            <span class="badge bg-danger rounded-pill" style="position: absolute; top: -5px; right: -5px; font-size: 11px;">
+                {{ user.cart.get_total_items }}
+            </span>
+            {% endif %}
+        </a>
+    {% endif %}
+    <!-- ========== FIN BOTÓN FLOTANTE DEL CARRITO ========== -->
+
+    <!-- ========== MODAL - DESCRIPCIÓN DE VPJ ========== -->
+    <div class="modal fade" id="modalVPJ" tabindex="-1" aria-labelledby="modalVPJLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(135deg, #2E7D32, #388E3C); color: white;">
+                    <h5 class="modal-title" id="modalVPJLabel">
+                        <img src="/media/logo_onpeco.png" alt="ONPECO" height="30" class="me-2" style="border-radius: 8px; background: white; padding: 2px 5px;">
+                        VPJ - Venta Precio Justo
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" style="max-height: 70vh; overflow-y: auto;">
+                    <div style="text-align: justify; line-height: 1.8;">
+                        <p><strong>VPJ (Venta Precio Justo)</strong> es una plataforma digital desarrollada para <strong>ONPECO</strong> por el <strong>Grupo #5 del Monográfico #59</strong> de la <strong>Escuela de Informática de la Universidad Autónoma de Santo Domingo (UASD)</strong>, con el objetivo de promover un comercio agrícola más equitativo y transparente en la provincia de Azua, República Dominicana.</p>
+                        
+                        <p>La aplicación conecta directamente a <strong>productores agrícolas</strong> con <strong>consumidores finales</strong>, <strong>acortando la cadena de suministro</strong> y garantizando precios justos para ambas partes, bajo la supervisión y regulación de ONPECO.</p>
+                        
+                        <hr>
+                        
+                        <h6 style="color: #2E7D32; font-weight: bold;">🎯 Objetivo Principal</h6>
+                        <p>Crear un ecosistema de comercio directo donde los productores de Azua puedan vender sus productos a precios justos, los consumidores accedan a alimentos frescos sin sobrecostos, y <strong>ONPECO</strong> supervise toda la cadena de valor para asegurar el cumplimiento de prácticas comerciales éticas.</p>
+                        
+                        <hr>
+                        
+                        <h6 style="color: #2E7D32; font-weight: bold;">🚀 Funcionalidades Clave</h6>
+                        <ul>
+                            <li><strong>Registro y Autenticación:</strong> Usuarios se registran como productores, consumidores o reguladores. Validación de cédula con algoritmo de Luhn.</li>
+                            <li><strong>Marketplace:</strong> Publicación, edición y gestión de productos agrícolas con control de stock en tiempo real.</li>
+                            <li><strong>Carrito de Compras:</strong> Los consumidores seleccionan productos de múltiples productores y realizan pedidos unificados.</li>
+                            <li><strong>Centro de Acopio:</strong> Intermediario regulado que centraliza pagos y distribución, garantizando que los productores reciban su pago.</li>
+                            <li><strong>Sistema de Denuncias:</strong> Consumidores pueden reportar abusos de precios o malas prácticas; ONPECO da seguimiento y resolución.</li>
+                            <li><strong>Chat en Tiempo Real:</strong> Comunicación directa entre consumidores y productores mediante WebSockets.</li>
+                            <li><strong>Portal ONPECO:</strong> Dashboard exclusivo para reguladores con gráficos, estadísticas, gestión de denuncias y exportación de reportes a Excel.</li>
+                            <li><strong>Balance de Ventas:</strong> Productores visualizan sus ventas, pagos recibidos y montos pendientes.</li>
+                        </ul>
+                        
+                        <hr>
+                        
+                        <h6 style="color: #2E7D32; font-weight: bold;">👥 Roles de Usuario</h6>
+                        <ul>
+                            <li><strong>Productor:</strong> Agricultor de Azua que publica sus productos, gestiona inventario y recibe pagos a través del Centro de Acopio.</li>
+                            <li><strong>Consumidor:</strong> Comprador final que adquiere productos frescos directamente de los productores.</li>
+                            <li><strong>Regulador (ONPECO):</strong> Supervisor que aprueba productores, gestiona denuncias, genera reportes y garantiza precios justos.</li>
+                        </ul>
+                        
+                        <hr>
+                        
+                        <h6 style="color: #2E7D32; font-weight: bold;">🛠️ Tecnologías Utilizadas</h6>
+                        <ul>
+                            <li><strong>Django 4.2.7:</strong> Framework web backend</li>
+                            <li><strong>PostgreSQL:</strong> Base de datos relacional</li>
+                            <li><strong>Daphne + WebSockets:</strong> Comunicación en tiempo real (chat)</li>
+                            <li><strong>Bootstrap 5:</strong> Interfaz responsiva</li>
+                            <li><strong>Chart.js:</strong> Visualización de gráficos</li>
+                            <li><strong>OpenPyXL:</strong> Exportación de reportes a Excel</li>
+                        </ul>
+                        
+                        <hr>
+                        
+                        <h6 style="color: #2E7D32; font-weight: bold;">🌱 Impacto Esperado</h6>
+                        <ul>
+                            <li><strong>Para los productores:</strong> Mayor control sobre sus precios, visibilidad directa al consumidor y pagos asegurados.</li>
+                            <li><strong>Para los consumidores:</strong> Acceso a productos frescos a precios justos, con trazabilidad y mecanismos de denuncia.</li>
+                            <li><strong>Para ONPECO:</strong> Capacidad de supervisar toda la cadena de valor, detectar abusos y garantizar el cumplimiento de precios justos.</li>
+                        </ul>
+                        
+                        <hr>
+                        
+                        <h6 style="color: #2E7D32; font-weight: bold;">📊 Estado Actual</h6>
+                        <p>El proyecto cuenta con <strong>70 fases implementadas</strong>, incluyendo autenticación, marketplace, carrito de compras, centro de acopio, sistema de denuncias, chat en tiempo real, portal ONPECO y exportación de reportes. Se encuentra en <strong>fase de pruebas para producción</strong>.</p>
+                        
+                        <hr>
+                        
+                        <div style="background: #e8f5e9; padding: 15px; border-radius: 10px; border-left: 4px solid #2E7D32;">
+                            <p style="margin: 0; font-style: italic;">
+                                <strong>En resumen:</strong> VPJ es más que una aplicación de comercio electrónico; es una herramienta de <strong>justicia social y económica</strong> que empodera a los productores de Azua, protege a los consumidores y fortalece la labor reguladora de ONPECO, todo ello desarrollado como parte del proceso formativo de la Escuela de Informática de la UASD.
+                            </p>
+                        </div>
+                        
+                        <div class="text-center mt-3">
+                            <small style="color: #888;">Desarrollado para ONPECO por el Grupo #5 - Monográfico #59 - Escuela de Informática - UASD</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <a href="https://onpeco.org/" target="_blank" class="btn btn-success">
+                        <i class="fas fa-external-link-alt"></i> Visitar ONPECO
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ========== FIN MODAL ========== -->
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

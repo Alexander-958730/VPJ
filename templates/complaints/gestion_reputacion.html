@@ -1,0 +1,97 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Gestión de Reputación - ONPECO{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1><i class="fas fa-star-of-life"></i> Gestión de Reputación</h1>
+        <a href="{% url 'complaints:portal_onpeco' %}" class="btn btn-success">
+            ← Volver al Portal ONPECO
+        </a>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0"><i class="fas fa-users"></i> Productores y Suplidores</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Negocio</th>
+                            <th>Tipo</th>
+                            <th>⭐ Calificación</th>
+                            <th>📋 Denuncias</th>
+                            <th>🏆 Reputación Actual</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for usuario in usuarios %}
+                        <tr>
+                            <td>{{ usuario.business_name|default:usuario.username }}</td>
+                            <td>
+                                {% if usuario.role == 'productor' %}
+                                    <span class="badge bg-success">🌱 Productor</span>
+                                {% else %}
+                                    <span class="badge bg-info">🚚 Suplidor</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if usuario.promedio_calificacion > 0 %}
+                                    {{ usuario.promedio_calificacion }} ⭐
+                                {% else %}
+                                    Sin reseñas
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if usuario.total_denuncias > 0 %}
+                                    <span class="badge bg-danger">{{ usuario.total_denuncias }}</span>
+                                {% else %}
+                                    <span class="badge bg-success">0</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if usuario.reputacion_actual == 'excelente' %}
+                                    <span class="badge bg-success">🌟 Excelente</span>
+                                {% elif usuario.reputacion_actual == 'bueno' %}
+                                    <span class="badge bg-primary">👍 Bueno</span>
+                                {% elif usuario.reputacion_actual == 'regular' %}
+                                    <span class="badge bg-warning">⚠️ Regular</span>
+                                {% elif usuario.reputacion_actual == 'malo' %}
+                                    <span class="badge bg-danger">👎 Malo</span>
+                                {% elif usuario.reputacion_actual == 'critico' %}
+                                    <span class="badge bg-dark">🚨 Crítico</span>
+                                {% else %}
+                                    <span class="badge bg-secondary">Sin asignar</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a href="{% url 'complaints:asignar_reputacion' usuario.id %}" class="btn btn-sm btn-warning">
+                                        <i class="fas fa-edit"></i> Asignar
+                                    </a>
+                                    <a href="{% url 'complaints:historial_reputacion' usuario.id %}" class="btn btn-sm btn-info">
+                                        <i class="fas fa-history"></i> Historial
+                                    </a>
+                                    <a href="{% url 'users:perfil_publico_productor' usuario.id %}" class="btn btn-sm btn-success">
+                                        <i class="fas fa-eye"></i> Ver
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="6" class="text-center">No hay productores o suplidores registrados</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

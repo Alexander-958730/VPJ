@@ -1,0 +1,49 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Calificar a {{ productor.business_name }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white text-center">
+                    <h3 class="mb-0">⭐ Calificar a {{ productor.business_name }}</h3>
+                </div>
+                <div class="card-body text-center">
+                    <div class="rounded-circle bg-success d-inline-flex align-items-center justify-content-center mb-3" style="width: 100px; height: 100px;">
+                        <span style="font-size: 45px; color: white;">🌾</span>
+                    </div>
+                    
+                    {% if review_existente %}
+                        <div class="alert alert-info">
+                            <i class="fas fa-edit"></i> Ya calificaste a este productor. Puedes actualizar tu calificación.
+                        </div>
+                    {% endif %}
+                    
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Tu calificación</label>
+                            {{ form.rating }}
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Tu experiencia</label>
+                            {{ form.comment }}
+                        </div>
+                        <button type="submit" class="btn btn-success w-100 py-2">
+                            {% if review_existente %}Actualizar Calificación{% else %}Enviar Calificación{% endif %}
+                        </button>
+                        <a href="{% url 'users:perfil_publico_productor' productor.id %}" class="btn btn-outline-secondary w-100 mt-2">
+                            Cancelar
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+{% endblock %}

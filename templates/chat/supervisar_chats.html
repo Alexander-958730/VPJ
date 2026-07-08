@@ -1,0 +1,89 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Supervisar Chats - VPJ{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">🔍 Supervisión de Chats</h1>
+    
+    <div class="alert alert-info">
+        <i class="fas fa-info-circle"></i> 
+        <strong>Modo supervisión:</strong> Puedes ver todas las conversaciones entre productores y consumidores, 
+        pero <strong>no puedes participar</strong> en ellas. Este es un modo de solo lectura.
+    </div>
+    
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">📋 Conversaciones activas ({{ total_chats }})</h5>
+        </div>
+        <div class="card-body">
+            {% if chats %}
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Participantes</th>
+                            <th>Mensajes</th>
+                            <th>Último mensaje</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for chat in chats %}
+                        <tr>
+                            <td>
+                                <i class="fas fa-users"></i> 
+                                <strong>{{ chat.participant_names }}</strong>
+                            </td>
+                            <td>
+                                <span class="badge bg-info">{{ chat.message_count }}</span>
+                            </td>
+                            <td>
+                                {% if chat.last_message %}
+                                    <small>{{ chat.last_message.message|truncatechars:50 }}</small><br>
+                                    <small class="text-muted">{{ chat.last_message.created_at|timesince }} atrás</small>
+                                {% else %}
+                                    <span class="text-muted">Sin mensajes</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{% url 'chat:ver_chat_supervision' chat.id %}" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-eye"></i> Ver (solo lectura)
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="alert alert-info text-center">
+                <i class="fas fa-inbox fa-3x mb-3"></i>
+                <h4>No hay conversaciones activas</h4>
+                <p>Los productores y consumidores aún no han iniciado chats.</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <!-- ========== ENLACE AL CHAT PRIVADO ONPECO-ACOPIO ========== -->
+    <div class="card mt-3 border-success">
+        <div class="card-header bg-success text-white">
+            <h5 class="mb-0"><i class="fas fa-lock"></i> Chat Privado</h5>
+        </div>
+        <div class="card-body">
+            <p>Este es tu chat privado con el otro ente regulador.</p>
+            <a href="{% url 'chat:chat_privado_onpeco_acopio' %}" class="btn btn-success">
+                <i class="fas fa-comment-dots"></i> Ir a chat privado
+            </a>
+        </div>
+    </div>
+    <!-- ========== FIN ENLACE ========== -->
+    
+    <div class="mt-3">
+        <a href="{% url 'inicio' %}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Volver al inicio
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,240 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Reporte de Ventas: {{ productor.get_full_name }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-chart-line"></i> Reporte de Ventas: {{ productor.get_full_name }}
+                    </h4>
+                    <small>{{ productor.business_name|default:"Sin negocio" }}</small>
+                </div>
+                <div class="card-body">
+                    
+                    <!-- ========== FILTRO DE FECHAS ========== -->
+                    <form method="GET" class="row g-3 mb-4">
+                        <div class="col-md-4">
+                            <label class="form-label">Fecha Inicio</label>
+                            <input type="date" name="fecha_inicio" class="form-control" value="{{ fecha_inicio|date:'Y-m-d' }}">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Fecha Fin</label>
+                            <input type="date" name="fecha_fin" class="form-control" value="{{ fecha_fin|date:'Y-m-d' }}">
+                        </div>
+                        <div class="col-md-4 d-flex align-items-end">
+                            <button type="submit" class="btn btn-success w-100">
+                                <i class="fas fa-filter"></i> Filtrar
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <!-- ========== RESUMEN ========== -->
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <h5 class="text-muted">Total Ventas</h5>
+                                    <h2 class="text-success" id="total-ventas">{{ total_ventas|floatformat:0 }}</h2>
+                                    <small class="text-muted">Pedidos completos</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <h5 class="text-muted">Total Ingresos</h5>
+                                    <h2 class="text-success">RD$ <span id="total-ingresos">{{ total_ingresos|floatformat:2 }}</span></h2>
+                                    <small class="text-muted">Suma de todos los productos</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ========== DETALLE AGRUPADO POR PEDIDO ========== -->
+                    <h5 class="mb-3"><i class="fas fa-list"></i> Detalle de Ventas (agrupado por pedido)</h5>
+                    
+                    {% if ventas_agrupadas %}
+                        <div class="accordion" id="accordionVentas">
+                            {% for venta in ventas_agrupadas %}
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading{{ venta.pedido_id }}">
+                                    <button class="accordion-button {% if not forloop.first %}collapsed{% endif %}" 
+                                            type="button" 
+                                            data-bs-toggle="collapse" 
+                                            data-bs-target="#collapse{{ venta.pedido_id }}" 
+                                            aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" 
+                                            aria-controls="collapse{{ venta.pedido_id }}">
+                                        <div class="d-flex w-100 justify-content-between align-items-center">
+                                            <div>
+                                                <strong>📦 Pedido #{{ venta.pedido_id }}</strong>
+                                                <span class="text-muted ms-3">
+                                                    <i class="fas fa-calendar-alt"></i> {{ venta.fecha|date:"d/m/Y H:i" }}
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <span class="badge bg-info me-2">{{ venta.total_items }} productos</span>
+                                                <span class="badge bg-success">RD$ {{ venta.subtotal_pedido|floatformat:2 }}</span>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </h2>
+                                <div id="collapse{{ venta.pedido_id }}" 
+                                     class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" 
+                                     aria-labelledby="heading{{ venta.pedido_id }}" 
+                                     data-bs-parent="#accordionVentas">
+                                    <div class="accordion-body">
+                                        <p class="mb-2">
+                                            <strong>👤 Comprador:</strong> {{ venta.comprador }}
+                                        </p>
+                                        <div class="table-responsive">
+                                            <table class="table table-sm table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Producto</th>
+                                                        <th class="text-center">Cantidad</th>
+                                                        <th class="text-end">Precio Unitario</th>
+                                                        <th class="text-end">Subtotal</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for item in venta.items %}
+                                                    <tr>
+                                                        <td>{{ item.producto }}</td>
+                                                        <td class="text-center cantidad">{{ item.cantidad|floatformat:0 }}</td>
+                                                        <td class="text-end precio">RD$ {{ item.precio|floatformat:2 }}</td>
+                                                        <td class="text-end subtotal">RD$ {{ item.subtotal|floatformat:2 }}</td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr class="table-success">
+                                                        <th colspan="3" class="text-end">Total del pedido:</th>
+                                                        <th class="text-end">RD$ <span class="subtotal-pedido">{{ venta.subtotal_pedido|floatformat:2 }}</span></th>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="alert alert-info text-center">
+                            <i class="fas fa-info-circle"></i> No hay ventas en este período.
+                        </div>
+                    {% endif %}
+                    
+                    <!-- ========== BOTÓN VOLVER ========== -->
+                    <div class="mt-4 text-center">
+                        <a href="{% url 'complaints:reporte_ventas_general' %}?fecha_inicio={{ fecha_inicio|date:'Y-m-d' }}&fecha_fin={{ fecha_fin|date:'Y-m-d' }}" 
+                           class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Volver al Reporte General
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<style>
+.accordion-button:not(.collapsed) {
+    background-color: #e8f5e9;
+    color: #1b5e20;
+}
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: #2e7d32;
+}
+</style>
+
+<script>
+    function formatNumberRD(number) {
+        // Convierte a string y separa parte entera y decimal
+        let str = number.toString();
+        let parts = str.split('.');
+        let integerPart = parts[0];
+        let decimalPart = parts.length > 1 ? parts[1] : '';
+        
+        // Formatear la parte entera con comas (miles)
+        let formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        
+        // Asegurar 2 decimales
+        if (decimalPart.length === 0) {
+            decimalPart = '00';
+        } else if (decimalPart.length === 1) {
+            decimalPart = decimalPart + '0';
+        }
+        
+        return formattedInteger + '.' + decimalPart;
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Formatear Total Ventas
+        const totalVentas = document.getElementById('total-ventas');
+        if (totalVentas) {
+            const value = parseInt(totalVentas.textContent);
+            if (!isNaN(value)) {
+                totalVentas.textContent = formatNumberRD(value);
+            }
+        }
+        
+        // Formatear Total Ingresos
+        const totalIngresos = document.getElementById('total-ingresos');
+        if (totalIngresos) {
+            const value = parseFloat(totalIngresos.textContent);
+            if (!isNaN(value)) {
+                totalIngresos.textContent = formatNumberRD(value);
+            }
+        }
+        
+        // Formatear Cantidades
+        const cantidades = document.querySelectorAll('.cantidad');
+        cantidades.forEach(function(element) {
+            const value = parseInt(element.textContent);
+            if (!isNaN(value)) {
+                element.textContent = formatNumberRD(value);
+            }
+        });
+        
+        // Formatear Precios
+        const precios = document.querySelectorAll('.precio');
+        precios.forEach(function(element) {
+            const text = element.textContent.replace('RD$ ', '');
+            const value = parseFloat(text);
+            if (!isNaN(value)) {
+                element.textContent = 'RD$ ' + formatNumberRD(value);
+            }
+        });
+        
+        // Formatear Subtotal
+        const subtotales = document.querySelectorAll('.subtotal');
+        subtotales.forEach(function(element) {
+            const text = element.textContent.replace('RD$ ', '');
+            const value = parseFloat(text);
+            if (!isNaN(value)) {
+                element.textContent = 'RD$ ' + formatNumberRD(value);
+            }
+        });
+        
+        // Formatear Subtotal Pedido
+        const subtotalesPedido = document.querySelectorAll('.subtotal-pedido');
+        subtotalesPedido.forEach(function(element) {
+            const value = parseFloat(element.textContent);
+            if (!isNaN(value)) {
+                element.textContent = formatNumberRD(value);
+            }
+        });
+    });
+</script>
+{% endblock %}

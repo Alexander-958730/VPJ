@@ -1,0 +1,246 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Productos - VPJ - Venta Precio Justo{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">🌾 Productos Frescos de Azua</h1>
+
+<!-- ========== BARRA DE BÚSQUEDA ========== -->
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <form method="GET" action="{% url 'marketplace:lista_productos' %}" class="row g-3">
+            <div class="col-md-12">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-text bg-success text-white">
+                        <i class="fas fa-search"></i>
+                    </span>
+                    <input type="text" name="q" class="form-control" 
+                           placeholder="🔍 Buscar productos por nombre... Ej: aguacate, plátanos, leche..." 
+                           value="{{ query }}">
+                    <button class="btn btn-success" type="submit">
+                        <i class="fas fa-search"></i> Buscar
+                    </button>
+                    {% if query or categoria_seleccionada %}
+                    <a href="{% url 'marketplace:lista_productos' %}" class="btn btn-outline-secondary">
+                        <i class="fas fa-times"></i> Limpiar
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </form>
+        
+        <!-- Resultados de búsqueda -->
+        {% if query or categoria_seleccionada %}
+        <div class="alert alert-info mt-3 mb-0">
+            <i class="fas fa-search"></i> 
+            Resultados para: 
+            {% if query %}<strong>"{{ query }}"</strong>{% endif %}
+            {% if categoria_seleccionada %} | Categoría: <strong>{{ categoria_seleccionada }}</strong>{% endif %}
+            - <strong>{{ productos|length }}</strong> producto(s) encontrado(s)
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- ========== FILTRO POR CATEGORÍA ========== -->
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <label class="form-label fw-bold">
+                    <i class="fas fa-tag"></i> Filtrar por categoría:
+                </label>
+                <form method="GET" action="{% url 'marketplace:lista_productos' %}" class="row g-2">
+                    {% if query %}
+                    <input type="hidden" name="q" value="{{ query }}">
+                    {% endif %}
+                    <div class="col-md-10">
+                        <select name="categoria" class="form-select" onchange="this.form.submit()">
+                            <option value="todos" {% if not categoria_seleccionada or categoria_seleccionada == 'todos' %}selected{% endif %}>
+                                📂 Todas las categorías
+                            </option>
+                            <option value="frutas" {% if categoria_seleccionada == 'frutas' %}selected{% endif %}>🍎 Frutas</option>
+                            <option value="verduras" {% if categoria_seleccionada == 'verduras' %}selected{% endif %}>🥬 Verduras</option>
+                            <option value="granos" {% if categoria_seleccionada == 'granos' %}selected{% endif %}>🌾 Granos</option>
+                            <option value="tuberculos" {% if categoria_seleccionada == 'tuberculos' %}selected{% endif %}>🥔 Tubérculos</option>
+                            <option value="legumbres" {% if categoria_seleccionada == 'legumbres' %}selected{% endif %}>🫘 Legumbres</option>
+                            <option value="cereal" {% if categoria_seleccionada == 'cereal' %}selected{% endif %}>🌾 Cereal</option>
+                            <option value="lacteos" {% if categoria_seleccionada == 'lacteos' %}selected{% endif %}>🧀 Lácteos</option>
+                            <option value="viveres" {% if categoria_seleccionada == 'viveres' %}selected{% endif %}>🍌 Viveres</option>
+                            <option value="viandas" {% if categoria_seleccionada == 'viandas' %}selected{% endif %}>🍠 Viandas</option>
+                            <option value="bebidas" {% if categoria_seleccionada == 'bebidas' %}selected{% endif %}>🧃 Bebidas</option>
+                            <option value="condimentos" {% if categoria_seleccionada == 'condimentos' %}selected{% endif %}>🌶️ Condimentos</option>
+                            <option value="especias" {% if categoria_seleccionada == 'especias' %}selected{% endif %}>🌿 Especias</option>
+                            <option value="hierbas_aromaticas" {% if categoria_seleccionada == 'hierbas_aromaticas' %}selected{% endif %}>🌱 Hierbas aromáticas</option>
+                            <option value="mariscos" {% if categoria_seleccionada == 'mariscos' %}selected{% endif %}>🦐 Mariscos</option>
+                            <option value="moluscos" {% if categoria_seleccionada == 'moluscos' %}selected{% endif %}>🐚 Moluscos</option>
+                            <option value="embutidos_carnes" {% if categoria_seleccionada == 'embutidos_carnes' %}selected{% endif %}>🥩 Embutidos y Carnes</option>
+                            <option value="panaderia" {% if categoria_seleccionada == 'panaderia' %}selected{% endif %}>🍞 Panadería y Repostería</option>
+                            <option value="abarrotes" {% if categoria_seleccionada == 'abarrotes' %}selected{% endif %}>🥫 Abarrotes</option>
+                            <option value="cafe_te" {% if categoria_seleccionada == 'cafe_te' %}selected{% endif %}>☕ Café y Té</option>
+                            <option value="cacao_chocolate" {% if categoria_seleccionada == 'cacao_chocolate' %}selected{% endif %}>🍫 Cacao y Chocolate</option>
+                            <option value="hongos_setas" {% if categoria_seleccionada == 'hongos_setas' %}selected{% endif %}>🍄 Hongos y Setas</option>
+                            <option value="pescados" {% if categoria_seleccionada == 'pescados' %}selected{% endif %}>🐟 Pescados</option>
+                            <option value="aceites_grasas" {% if categoria_seleccionada == 'aceites_grasas' %}selected{% endif %}>🫒 Aceites y Grasas</option>
+                            <option value="endulzantes" {% if categoria_seleccionada == 'endulzantes' %}selected{% endif %}>🍯 Endulzantes</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="{% url 'marketplace:lista_productos' %}" class="btn btn-outline-secondary w-100">
+                            <i class="fas fa-undo"></i> Reset
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ========== LISTA DE PRODUCTOS ========== -->
+<div class="row">
+    {% for producto in productos %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+            <!-- ========== IMAGEN CON OVERLAY DEL PRODUCTOR ========== -->
+            <div class="position-relative" style="overflow: hidden; height: 200px;">
+                {% if producto.image %}
+                <img src="{{ producto.image.url }}" class="card-img-top" alt="{{ producto.name }}" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                {% else %}
+                <div class="card-img-top bg-light text-center py-4" style="height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <i class="fas fa-image fa-3x text-muted"></i>
+                    <p class="text-muted small">Sin imagen</p>
+                </div>
+                {% endif %}
+                
+                <!-- ========== OVERLAY CON NOMBRE DEL PRODUCTOR ========== -->
+                <div class="position-absolute bottom-0 start-0 w-100" 
+                     style="background: linear-gradient(transparent, rgba(0,0,0,0.85)); padding: 15px 12px 12px;">
+                    <div class="d-flex align-items-center">
+                        <span style="font-size: 1.1rem; font-weight: bold; color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">
+                            {% if producto.vendedor.role == 'suplidor' %}
+                                🚚
+                            {% else %}
+                                🌱
+                            {% endif %}
+                            {{ producto.vendedor.business_name|default:producto.vendedor.username }}
+                        </span>
+                    </div>
+                    <small style="color: rgba(255,255,255,0.7); text-shadow: 0 1px 4px rgba(0,0,0,0.8);">
+                        {{ producto.get_category_display }}
+                    </small>
+                </div>
+                <!-- ========== FIN OVERLAY ========== -->
+            </div>
+            <!-- ========== FIN IMAGEN ========== -->
+            
+            <div class="card-body">
+                <h5 class="card-title">{{ producto.name }}</h5>
+                
+                <!-- ========== CATEGORÍA, SUBCATEGORÍA Y UNIDAD ========== -->
+                <div class="mb-2">
+                    <span class="badge bg-primary">{{ producto.get_category_display }}</span>
+                    {% if producto.subcategory %}
+                    <span class="badge bg-secondary">{{ producto.get_subcategory_display }}</span>
+                    {% endif %}
+                    <span class="badge bg-info text-dark">{{ producto.get_unit_display }}</span>
+                </div>
+                <!-- ========== FIN CATEGORÍA, SUBCATEGORÍA Y UNIDAD ========== -->
+                
+                <p class="card-text text-muted">{{ producto.description|truncatechars:80 }}</p>
+                <p class="card-text">
+                    <strong>Precio:</strong> RD$ {{ producto.price|floatformat:2 }} / {{ producto.get_unit_display }}
+                </p>
+                
+                <!-- ========== STOCK DISPONIBLE VISIBLE ========== -->
+                <p class="card-text">
+                    <strong>Stock:</strong> 
+                    {% if producto.stock > 0 %}
+                        <span class="badge {% if producto.stock < 5 %}bg-warning{% else %}bg-success{% endif %}">
+                            {{ producto.stock }} disponibles
+                        </span>
+                    {% else %}
+                        <span class="badge bg-danger">AGOTADO</span>
+                    {% endif %}
+                </p>
+                <!-- ========== FIN STOCK ========== -->
+                
+                <!-- Botones de acción -->
+                <div class="d-flex gap-2 mt-2">
+                    <a href="{% url 'marketplace:detalle_producto' producto.id %}" class="btn btn-success flex-grow-1">
+                        <i class="fas fa-eye"></i> Ver detalles
+                    </a>
+                    
+                    <!-- ========== BOTÓN AGREGAR AL CARRITO - CON VALIDACIÓN Y EXCLUSIÓN DE ONPECO/ACOPIO ========== -->
+                    {% if user.is_authenticated and user.role != 'regulador' and user.role != 'acopio' %}
+                        {# Verificar si el usuario es productor/suplidor y el vendedor tiene productos en común #}
+                        {% if user.role == 'productor' or user.role == 'suplidor' %}
+                            {# Productor/Suplidor: Verificar si el vendedor es compatible #}
+                            {% if user.tiene_productos_comunes_con.producto.vendedor %}
+                                {# Tiene productos en común → NO puede comprar #}
+                                <button class="btn btn-outline-secondary w-100" disabled>
+                                    <i class="fas fa-ban"></i> Productos en común
+                                </button>
+                            {% else %}
+                                {# Compatible → puede comprar #}
+                                {% if producto.stock > 0 %}
+                                    <form method="post" action="{% url 'cart:agregar_al_carrito' producto.id %}" class="flex-grow-1">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                                        <button type="submit" class="btn btn-primary w-100">
+                                            <i class="fas fa-cart-plus"></i> Carrito
+                                        </button>
+                                    </form>
+                                {% else %}
+                                    <button class="btn btn-secondary w-100" disabled>
+                                        <i class="fas fa-times"></i> Agotado
+                                    </button>
+                                {% endif %}
+                            {% endif %}
+                        {% else %}
+                            {# Consumidor: puede comprar cualquier producto #}
+                            {% if producto.stock > 0 %}
+                                <form method="post" action="{% url 'cart:agregar_al_carrito' producto.id %}" class="flex-grow-1">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                                    <button type="submit" class="btn btn-primary w-100">
+                                        <i class="fas fa-cart-plus"></i> Carrito
+                                    </button>
+                                </form>
+                            {% else %}
+                                <button class="btn btn-secondary w-100" disabled>
+                                    <i class="fas fa-times"></i> Agotado
+                                </button>
+                            {% endif %}
+                        {% endif %}
+                    {% elif user.is_authenticated %}
+                        {# ONPECO o Centro de Acopio: NO pueden comprar #}
+                        <button class="btn btn-outline-secondary w-100" disabled>
+                            <i class="fas fa-gavel"></i> Supervisión
+                        </button>
+                    {% else %}
+                        {# Usuario no autenticado: mostrar botón de iniciar sesión #}
+                        <a href="{% url 'users:login' %}" class="btn btn-outline-secondary flex-grow-1">
+                            <i class="fas fa-sign-in-alt"></i> Iniciar sesión
+                        </a>
+                    {% endif %}
+                    <!-- ========== FIN BOTÓN AGREGAR AL CARRITO ========== -->
+                </div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <i class="fas fa-search fa-3x mb-3"></i>
+            <h4>No hay productos disponibles</h4>
+            <p>Intenta con otros términos de búsqueda o selecciona otra categoría.</p>
+            <a href="{% url 'marketplace:lista_productos' %}" class="btn btn-outline-success">
+                Ver todos los productos
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

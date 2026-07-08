@@ -1,0 +1,57 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Cambiar Contraseña - VPJ{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-warning">
+                <div class="card-header bg-warning text-dark">
+                    <h4 class="mb-0"><i class="fas fa-exclamation-triangle"></i> Cambiar Contraseña</h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i>
+                        <strong>Bienvenido, {{ user.username }}</strong><br>
+                        Tu contraseña ha sido restablecida por ONPECO.
+                        <strong>Debes cambiarla para continuar.</strong>
+                    </div>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label for="nueva_contrasena" class="form-label fw-bold">Nueva Contraseña</label>
+                            <input type="password" 
+                                   name="nueva_contrasena" 
+                                   id="nueva_contrasena" 
+                                   class="form-control form-control-lg" 
+                                   placeholder="Escribe tu nueva contraseña" 
+                                   required minlength="6"
+                                   autofocus>
+                            <small class="text-muted">Mínimo 6 caracteres.</small>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="confirmar_contrasena" class="form-label fw-bold">Confirmar Contraseña</label>
+                            <input type="password" 
+                                   name="confirmar_contrasena" 
+                                   id="confirmar_contrasena" 
+                                   class="form-control form-control-lg" 
+                                   placeholder="Vuelve a escribir tu nueva contraseña" 
+                                   required>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <i class="fas fa-save"></i> Cambiar Contraseña
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Reporte de Denuncias - ONPECO{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2><i class="fas fa-chart-line"></i> Reporte de Denuncias</h2>
+        <!-- ========== BOTÓN DE RETORNO (NUEVO) ========== -->
+        <a href="{% url 'complaints:portal_onpeco' %}" class="btn btn-success">
+            <i class="fas fa-arrow-left"></i> Volver al Portal ONPECO
+        </a>
+        <!-- ========== FIN BOTÓN ========== -->
+    </div>
+
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0"><i class="fas fa-chart-bar"></i> Denuncias por Mes</h4>
+        </div>
+        <div class="card-body">
+            <canvas id="graficoDenuncias" width="400" height="200"></canvas>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    fetch('/denuncias/api/denuncias-por-mes/')
+        .then(response => response.json())
+        .then(data => {
+            const ctx = document.getElementById('graficoDenuncias').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data.labels,
+                    datasets: [{
+                        label: 'Cantidad de denuncias',
+                        data: data.datos,
+                        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Número de denuncias' }
+                        },
+                        x: {
+                            title: { display: true, text: 'Mes' }
+                        }
+                    }
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('graficoDenuncias').innerHTML = '<p class="text-danger">Error al cargar los datos. Asegúrate de tener denuncias registradas.</p>';
+        });
+</script>
+{% endblock %}

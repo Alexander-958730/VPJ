@@ -1,0 +1,112 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load cart_filters %}
+
+{% block title %}Balance de Ventas - VPJ - Venta Precio Justo{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">💰 Balance de Ventas</h1>
+    
+    <!-- Tarjetas de resumen -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card shadow text-center bg-success text-white">
+                <div class="card-body">
+                    <h5><i class="fas fa-chart-line"></i> Total Vendido</h5>
+                    <h2 class="display-6">RD$ {{ total_vendido|format_rd }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow text-center bg-info text-white">
+                <div class="card-body">
+                    <h5><i class="fas fa-check-circle"></i> Total Pagado</h5>
+                    <h2 class="display-6">RD$ {{ total_pagado|format_rd }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow text-center {% if total_pendiente > 0 %}bg-warning{% else %}bg-secondary{% endif %} text-dark">
+                <div class="card-body">
+                    <h5><i class="fas fa-clock"></i> Pendiente de Pago</h5>
+                    <h2 class="display-6">RD$ {{ total_pendiente|format_rd }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Tabla de ventas -->
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+            <h5 class="mb-0"><i class="fas fa-list"></i> Historial de Ventas</h5>
+        </div>
+        <div class="card-body">
+            {% if ventas_detalle %}
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Pedido #</th>
+                            <th>Fecha</th>
+                            <th>Productos</th>
+                            <th>Total</th>
+                            <th>Estado Pedido</th>
+                            <th>Estado Pago</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for venta in ventas_detalle %}
+                        <tr>
+                            <td><strong>#{{ venta.order_id }}</strong></td>
+                            <td>{{ venta.fecha|date:"d/m/Y" }}</td>
+                            <td>
+                                {% for prod in venta.productos %}
+                                <small>{{ prod.cantidad }} x {{ prod.nombre|truncatechars:20 }}</small><br>
+                                {% endfor %}
+                            </td>
+                            <td><strong>RD$ {{ venta.subtotal|format_rd }}</strong></td>
+                            <td>
+                                {% if venta.status == 'pending' %}
+                                    <span class="badge bg-warning">⏳ Pendiente</span>
+                                {% elif venta.status == 'confirmed' %}
+                                    <span class="badge bg-info">✅ Confirmado</span>
+                                {% elif venta.status == 'preparing' %}
+                                    <span class="badge bg-primary">📦 Preparando</span>
+                                {% elif venta.status == 'delivered' %}
+                                    <span class="badge bg-success">🏠 Entregado</span>
+                                {% elif venta.status == 'cancelled' %}
+                                    <span class="badge bg-danger">❌ Cancelado</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if venta.payment_status == 'pending' %}
+                                    <span class="badge bg-warning">⏳ Pendiente</span>
+                                {% elif venta.payment_status == 'paid' %}
+                                    <span class="badge bg-success">✅ Pagado</span>
+                                {% else %}
+                                    <span class="badge bg-secondary">{{ venta.payment_status }}</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{% url 'cart:detalle_venta' venta.order_id %}" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-eye"></i> Ver
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="alert alert-info text-center">
+                <i class="fas fa-chart-line fa-3x mb-3"></i>
+                <h4>No hay ventas registradas aún</h4>
+                <p>Cuando el Centro de Acopio venda productos de tu finca, aparecerán aquí.</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

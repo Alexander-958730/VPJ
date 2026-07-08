@@ -1,0 +1,216 @@
+{% extends "admin/index.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}
+{{ block.super }}
+<style>
+    .dashboard-module {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-left: 4px solid #007bff;
+    }
+    .dashboard-module h2 {
+        margin-top: 0;
+        color: #333;
+        font-size: 16px;
+    }
+    .dashboard-link {
+        background: #007bff;
+        color: white;
+        padding: 8px 15px;
+        text-decoration: none;
+        border-radius: 4px;
+        display: inline-block;
+        margin-top: 10px;
+    }
+    .dashboard-link:hover {
+        background: #0056b3;
+    }
+    .stats-grid {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+    }
+    .stat-card {
+        background: white;
+        padding: 10px 15px;
+        border-radius: 6px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        flex: 1;
+        min-width: 120px;
+        text-align: center;
+    }
+    .stat-number {
+        font-size: 24px;
+        font-weight: bold;
+        color: #007bff;
+        display: block;
+    }
+    .stat-label {
+        font-size: 12px;
+        color: #666;
+    }
+    .grafico-container {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .grafico-container h3 {
+        margin-top: 0;
+        color: #333;
+        font-size: 16px;
+    }
+    canvas {
+        max-height: 300px;
+        width: 100%;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+    <!-- Panel de Estadísticas - Solo visible para staff -->
+    {% if user.is_staff %}
+    <div class="dashboard-module">
+        <h2>📊 Panel de Estadísticas</h2>
+        <div class="stats-grid" id="stats-preview">
+            <div class="stat-card">
+                <span class="stat-number" id="total-complaints">-</span>
+                <span class="stat-label">Total Denuncias</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="pending-complaints">-</span>
+                <span class="stat-label">Pendientes</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="resolved-complaints">-</span>
+                <span class="stat-label">Resueltas</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="total-products">-</span>
+                <span class="stat-label">Productos</span>
+            </div>
+        </div>
+        <div style="margin-top: 15px;">
+            <a href="/admin/complaints/complaint/grafico-denuncias/" class="dashboard-link">
+                📈 Ver Gráfico Completo de Denuncias
+            </a>
+            <a href="/admin/marketplace/product/estadisticas/" class="dashboard-link" style="background: #28a745; margin-left: 10px;">
+                📊 Estadísticas de Productos
+            </a>
+            <a href="/admin/marketplace/product/" class="dashboard-link" style="background: #17a2b8; margin-left: 10px;">
+                🛒 Gestionar Productos
+            </a>
+            <a href="/admin/users/user/" class="dashboard-link" style="background: #6c757d; margin-left: 10px;">
+                👥 Gestionar Usuarios
+            </a>
+        </div>
+    </div>
+
+    <!-- Gráfico de denuncias por mes -->
+    <div class="grafico-container">
+        <h3>📈 Denuncias por mes (último año)</h3>
+        <canvas id="graficoDenunciasPanel"></canvas>
+    </div>
+    {% endif %}
+    
+    <!-- Apps originales del admin -->
+    {{ block.super }}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// Cargar estadísticas rápidas para el dashboard
+if (document.getElementById('stats-preview')) {
+    // Obtener total de denuncias
+    fetch('/admin/complaints/complaint/datos-denuncias/')
+        .then(response => response.json())
+        .then(data => {
+            const total = data.status_counts ? data.status_counts.reduce((a, b) => a + b, 0) : 0;
+            document.getElementById('total-complaints').innerText = total;
+            
+            // Buscar estado pendiente
+            const pendingIndex = data.status_labels ? data.status_labels.findIndex(s => s.toLowerCase().includes('pend') || s.toLowerCase().includes('abiert')) : -1;
+            const resolvedIndex = data.status_labels ? data.status_labels.findIndex(s => s.toLowerCase().includes('resuel') || s.toLowerCase().includes('cerr')) : -1;
+            
+            if (pendingIndex !== -1 && data.status_counts) {
+                document.getElementById('pending-complaints').innerText = data.status_counts[pendingIndex];
+            }
+            if (resolvedIndex !== -1 && data.status_counts) {
+                document.getElementById('resolved-complaints').innerText = data.status_counts[resolvedIndex];
+            }
+        })
+        .catch(err => console.log('Error cargando estadísticas de denuncias:', err));
+    
+    // Obtener total de productos
+    fetch('/admin/marketplace/product/datos-productos/')
+        .then(response => response.json())
+        .then(data => {
+            if (data && data.total) {
+                document.getElementById('total-products').innerText = data.total;
+            }
+        })
+        .catch(err => console.log('Error cargando estadísticas de productos:', err));
+}
+
+// Cargar el gráfico de denuncias por mes
+fetch('/denuncias/api/denuncias-por-mes/')
+    .then(response => response.json())
+    .then(data => {
+        console.log('Datos del gráfico:', data);
+        const ctx = document.getElementById('graficoDenunciasPanel').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: data.labels,
+                datasets: [{
+                    label: 'Cantidad de denuncias',
+                    data: data.datos,
+                    backgroundColor: 'rgba(231, 76, 60, 0.7)',
+                    borderColor: '#e74c3c',
+                    borderWidth: 1,
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1,
+                            precision: 0
+                        },
+                        title: {
+                            display: true,
+                            text: 'Número de denuncias'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Mes'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                }
+            }
+        });
+    })
+    .catch(error => {
+        console.error('Error al cargar el gráfico:', error);
+        document.querySelector('.grafico-container').innerHTML += 
+            '<p style="color: red;">⚠️ Error al cargar el gráfico. Verifica la conexión.</p>';
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,287 @@
+{% extends 'base/base.html' %}
+
+{% block title %}{{ producto.name }} - VPJ - Venta Precio Justo{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+                <h4>{{ producto.name }}</h4>
+                <!-- ========== NOMBRE DEL PROPIETARIO EN GRANDE ========== -->
+                <div class="mt-2">
+                    <span style="font-size: 1.4rem; font-weight: bold; display: block;">
+                        {% if producto.vendedor.role == 'suplidor' %}
+                            🚚 
+                        {% else %}
+                            🌱 
+                        {% endif %}
+                        {{ producto.vendedor.business_name|default:producto.vendedor.get_full_name }}
+                    </span>
+                    {% if producto.vendedor.business_name %}
+                        <span style="font-size: 1rem; opacity: 0.9;">
+                            {{ producto.vendedor.get_full_name }}
+                        </span>
+                    {% endif %}
+                </div>
+                <!-- ========== FIN NOMBRE DEL PROPIETARIO ========== -->
+            </div>
+            {% if producto.image %}
+            <div class="text-center p-3">
+                <img src="{{ producto.image.url }}" alt="{{ producto.name }}" style="max-width: 100%; max-height: 300px; object-fit: cover;">
+            </div>
+            {% else %}
+            <div class="text-center p-3 bg-light">
+                <i class="fas fa-image fa-4x text-muted"></i>
+                <p class="text-muted">Sin imagen disponible</p>
+            </div>
+            {% endif %}
+            <div class="card-body">
+                <p><strong>Descripción:</strong></p>
+                <p>{{ producto.description|default:"Sin descripción" }}</p>
+                <hr>
+                <p><strong>Precio:</strong> RD$ {{ producto.price|floatformat:2 }} / {{ producto.get_unit_display }}</p>
+                
+                <!-- ========== CATEGORÍA, SUBCATEGORÍA Y UNIDAD ========== -->
+                <div class="mb-3">
+                    <p>
+                        <strong>Categoría:</strong> {{ producto.get_category_display }}
+                        {% if producto.subcategory %}
+                            <br><strong>Subcategoría:</strong> {{ producto.get_subcategory_display }}
+                        {% endif %}
+                        <br><strong>Unidad:</strong> {{ producto.get_unit_display }}
+                    </p>
+                </div>
+                <!-- ========== FIN CATEGORÍA, SUBCATEGORÍA Y UNIDAD ========== -->
+                
+                <!-- ========== STOCK DISPONIBLE CON VALIDACIÓN ========== -->
+                <div class="alert {% if producto.stock == 0 %}alert-danger{% elif producto.stock < 5 %}alert-warning{% else %}alert-info{% endif %}">
+                    <p class="mb-0">
+                        <strong>Stock disponible:</strong> 
+                        {{ producto.stock }} {{ producto.get_unit_display }}(s)
+                        {% if producto.stock == 0 %}
+                            <span class="badge bg-danger ms-2">AGOTADO</span>
+                        {% elif producto.stock < 5 %}
+                            <span class="badge bg-warning ms-2">¡Últimas unidades!</span>
+                        {% endif %}
+                    </p>
+                </div>
+                <!-- ========== FIN STOCK ========== -->
+                
+                <!-- ========== INFORMACIÓN DEL VENDEDOR (SIN CÉDULA) ========== -->
+                <p>
+                    <strong>Vendedor:</strong> 
+                    {% if producto.vendedor.role == 'suplidor' %}
+                        🚚 
+                    {% else %}
+                        🌱 
+                    {% endif %}
+                    {{ producto.vendedor.business_name|default:producto.vendedor.get_full_name }}
+                    <small class="text-muted">
+                        ({% if producto.vendedor.role == 'suplidor' %}Suplidor{% else %}Productor{% endif %})
+                    </small>
+                    <!-- ========== NOMBRE REAL (SI HAY NEGOCIO) ========== -->
+                    {% if producto.vendedor.business_name %}
+                        <br><small class="text-muted">{{ producto.vendedor.get_full_name }}</small>
+                    {% endif %}
+                    <!-- ========== FIN NOMBRE REAL ========== -->
+                </p>
+                <!-- ========== FIN INFORMACIÓN DEL VENDEDOR ========== -->
+                
+                <!-- Trazabilidad para productos de suplidores -->
+                {% if mostrar_trazabilidad and producto.vendedor.role == 'suplidor' %}
+                <div class="alert alert-info mt-3">
+                    <i class="fas fa-chart-line"></i>
+                    <strong>Información de precio justo:</strong>
+                    <ul class="mb-0 mt-2">
+                        <li>Precio de compra al productor: <strong>RD$ {{ producto.precio_compra_productor|floatformat:2 }}</strong></li>
+                        <li>Precio de venta: <strong>RD$ {{ producto.price|floatformat:2 }}</strong></li>
+                        <li>Margen del suplidor: 
+                            <strong class="{% if producto.margen_suplidor.porcentaje > 40 %}text-danger{% elif producto.margen_suplidor.porcentaje > 25 %}text-warning{% else %}text-success{% endif %}">
+                                +RD$ {{ producto.margen_suplidor.margen|floatformat:2 }} ({{ producto.margen_suplidor.porcentaje|floatformat:0 }}%)
+                            </strong>
+                        </li>
+                    </ul>
+                    {% if producto.margen_suplidor.porcentaje > 40 %}
+                    <div class="text-danger mt-2">
+                        ⚠️ Este margen supera el límite recomendado por ONPECO.
+                    </div>
+                    {% endif %}
+                </div>
+                {% endif %}
+                
+                <p><strong>Publicado:</strong> {{ producto.created_at|date:"d/m/Y" }}</p>
+                
+                <!-- ========== BOTÓN AGREGAR AL CARRITO CON VALIDACIÓN ========== -->
+                {% if user.is_authenticated %}
+                    {# CASO 1: USUARIO ES PRODUCTOR O SUPLIDOR #}
+                    {% if user.role == 'productor' or user.role == 'suplidor' %}
+                        {# Verificar si el vendedor es compatible #}
+                        {% if user.tiene_productos_comunes_con.producto.vendedor %}
+                            {# Tiene productos en común → NO puede comprar #}
+                            <div class="alert alert-warning text-center mt-4">
+                                <i class="fas fa-ban fa-2x d-block mb-2"></i>
+                                <strong>No puedes comprar este producto</strong>
+                                <p class="mb-0 small">Tú y el vendedor tienen productos en común. No puedes comprar a productores con los que compartes productos.</p>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-secondary" disabled>
+                                    <i class="fas fa-ban"></i> Productos en común
+                                </button>
+                            </div>
+                        {% else %}
+                            {# Compatible → puede comprar #}
+                            {% if producto.stock > 0 %}
+                                <div class="mt-4 p-3" style="background: #f8f9fa; border-radius: 10px; border: 1px solid #dee2e6;">
+                                    <h5><i class="fas fa-shopping-cart"></i> Agregar al carrito</h5>
+                                    <form action="{% url 'cart:agregar_al_carrito' producto.id %}" method="post" class="row g-3 align-items-center">
+                                        {% csrf_token %}
+                                        <div class="col-auto">
+                                            <label for="cantidad" class="col-form-label">Cantidad:</label>
+                                        </div>
+                                        <div class="col-auto">
+                                            <input type="number" 
+                                                   name="cantidad" 
+                                                   id="cantidad" 
+                                                   value="1" 
+                                                   min="1" 
+                                                   max="{{ producto.stock }}"
+                                                   class="form-control" 
+                                                   style="width: 80px;"
+                                                   onchange="validarCantidad(this, {{ producto.stock }})">
+                                        </div>
+                                        <div class="col-auto">
+                                            <span class="text-muted">/ {{ producto.stock }} disponibles</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <button type="submit" class="btn btn-success">
+                                                <i class="fas fa-cart-plus"></i> Agregar al carrito
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <small class="text-muted">Máximo {{ producto.stock }} unidades disponibles</small>
+                                </div>
+                            {% else %}
+                                <div class="mt-4 p-3" style="background: #f8d7da; border-radius: 10px; border: 1px solid #f5c6cb;">
+                                    <h5 class="text-danger"><i class="fas fa-exclamation-circle"></i> Producto agotado</h5>
+                                    <p class="mb-0 text-danger">Este producto no tiene stock disponible. Vuelve a consultar más tarde.</p>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                        
+                    {# CASO 2: USUARIO ES CONSUMIDOR #}
+                    {% elif user.role == 'consumidor' %}
+                        {% if producto.stock > 0 %}
+                            <div class="mt-4 p-3" style="background: #f8f9fa; border-radius: 10px; border: 1px solid #dee2e6;">
+                                <h5><i class="fas fa-shopping-cart"></i> Agregar al carrito</h5>
+                                <form action="{% url 'cart:agregar_al_carrito' producto.id %}" method="post" class="row g-3 align-items-center">
+                                    {% csrf_token %}
+                                    <div class="col-auto">
+                                        <label for="cantidad" class="col-form-label">Cantidad:</label>
+                                    </div>
+                                    <div class="col-auto">
+                                        <input type="number" 
+                                               name="cantidad" 
+                                               id="cantidad" 
+                                               value="1" 
+                                               min="1" 
+                                               max="{{ producto.stock }}"
+                                               class="form-control" 
+                                               style="width: 80px;"
+                                               onchange="validarCantidad(this, {{ producto.stock }})">
+                                    </div>
+                                    <div class="col-auto">
+                                        <span class="text-muted">/ {{ producto.stock }} disponibles</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="submit" class="btn btn-success">
+                                            <i class="fas fa-cart-plus"></i> Agregar al carrito
+                                        </button>
+                                    </div>
+                                </form>
+                                <small class="text-muted">Máximo {{ producto.stock }} unidades disponibles</small>
+                            </div>
+                        {% else %}
+                            <div class="mt-4 p-3" style="background: #f8d7da; border-radius: 10px; border: 1px solid #f5c6cb;">
+                                <h5 class="text-danger"><i class="fas fa-exclamation-circle"></i> Producto agotado</h5>
+                                <p class="mb-0 text-danger">Este producto no tiene stock disponible. Vuelve a consultar más tarde.</p>
+                            </div>
+                        {% endif %}
+                        
+                    {# CASO 3: ONPECO, REGULADOR O CENTRO DE ACOPIO #}
+                    {% else %}
+                        {# Reguladores NO pueden comprar #}
+                        <div class="mt-4 p-3 text-center" style="background: #fff3cd; border-radius: 10px; border: 1px solid #ffc107;">
+                            <i class="fas fa-gavel fa-2x d-block mb-2 text-warning"></i>
+                            <p class="mb-0"><strong>Rol de supervisor</strong></p>
+                            <p class="mb-0 small text-muted">Los reguladores no pueden realizar compras. Esta función es exclusiva para consumidores.</p>
+                        </div>
+                    {% endif %}
+                {% else %}
+                    {# Usuario no autenticado #}
+                    <div class="mt-4 p-3 text-center" style="background: #f8f9fa; border-radius: 10px; border: 1px solid #dee2e6;">
+                        <p class="mb-2">🔒 Inicia sesión para comprar este producto</p>
+                        <a href="{% url 'users:login' %}" class="btn btn-primary">
+                            <i class="fas fa-sign-in-alt"></i> Iniciar sesión
+                        </a>
+                    </div>
+                {% endif %}
+                <!-- ========== FIN BOTÓN AGREGAR AL CARRITO ========== -->
+            </div>
+            <div class="card-footer text-center">
+                <a href="{% url 'marketplace:lista_productos' %}" class="btn btn-secondary">← Volver a productos</a>
+                
+                <!-- ========== BOTÓN CONTACTAR AL VENDEDOR ========== -->
+                {% if user.is_authenticated %}
+                    {# Verificar si el usuario es productor/suplidor y el vendedor tiene productos en común #}
+                    {% if user.role == 'productor' or user.role == 'suplidor' %}
+                        {% if user.tiene_productos_comunes_con.producto.vendedor %}
+                            {# Tiene productos en común → NO puede chatear #}
+                            <button class="btn btn-outline-info" disabled>
+                                <i class="fas fa-ban"></i> No disponible
+                            </button>
+                            <small class="d-block text-muted mt-1">No puedes contactar a este vendedor porque comparten productos en común.</small>
+                        {% else %}
+                            {# Compatible → puede chatear #}
+                            <a href="{% url 'chat:iniciar_chat_producto' producto.vendedor.id producto.id %}" class="btn btn-info">
+                                <i class="fas fa-comment"></i> Contactar al vendedor
+                            </a>
+                        {% endif %}
+                    {% else %}
+                        {# Consumidor o regulador: pueden chatear con cualquier vendedor #}
+                        <a href="{% url 'chat:iniciar_chat_producto' producto.vendedor.id producto.id %}" class="btn btn-info">
+                            <i class="fas fa-comment"></i> Contactar al vendedor
+                        </a>
+                    {% endif %}
+                {% endif %}
+                <!-- ========== FIN BOTÓN CONTACTAR AL VENDEDOR ========== -->
+                
+                <!-- ========== BOTÓN DENUNCIAR ========== -->
+                {% if user.is_authenticated %}
+                <a href="{% url 'complaints:crear_denuncia_producto' producto.id %}" class="btn btn-outline-danger">
+                    <i class="fas fa-flag"></i> Denunciar este producto
+                </a>
+                {% endif %}
+                <!-- ========== FIN BOTÓN DENUNCIAR ========== -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ========== SCRIPT DE VALIDACIÓN EN TIEMPO REAL ========== -->
+<script>
+function validarCantidad(input, stock) {
+    var valor = parseInt(input.value);
+    if (valor > stock) {
+        input.value = stock;
+        alert('⚠️ Solo hay ' + stock + ' unidades disponibles.');
+    }
+    if (valor < 1) {
+        input.value = 1;
+        alert('⚠️ La cantidad mínima es 1.');
+    }
+}
+</script>
+<!-- ========== FIN SCRIPT ========== -->
+
+{% endblock %}

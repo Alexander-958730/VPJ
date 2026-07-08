@@ -1,0 +1,101 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Mi Carrito - VPJ - Venta Precio Justo{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">🛒 Mi Carrito de Compras</h1>
+    
+    {% if items %}
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">Productos</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Precio</th>
+                                    <th>Cantidad</th>
+                                    <th>Subtotal</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in items %}
+                                <tr>
+                                    <td>
+                                        <strong>{{ item.product.name }}</strong><br>
+                                        <small class="text-muted">Vendedor: {{ item.product.vendedor.business_name|default:item.product.vendedor.username }}</small>
+                                    </a>
+                                    <td>RD$ {{ item.product.price|floatformat:2 }}</a>
+                                    <td>
+                                        <form method="post" action="{% url 'cart:actualizar_cantidad' item.id %}" class="d-inline">
+                                            {% csrf_token %}
+                                            <input type="number" name="cantidad" value="{{ item.quantity }}" min="0" max="{{ item.product.stock }}" class="form-control" style="width: 80px; display: inline-block;">
+                                            <button type="submit" class="btn btn-sm btn-primary">Actualizar</button>
+                                        </form>
+                                    </a>
+                                    <td><strong>RD$ {{ item.get_total_price|floatformat:2 }}</strong></a>
+                                    <td>
+                                        <a href="{% url 'cart:eliminar_del_carrito' item.id %}" class="btn btn-sm btn-danger" onclick="return confirm('¿Eliminar {{ item.product.name }} del carrito?')">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </a>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-header bg-info text-white">
+                    <h4 class="mb-0">Resumen del Pedido</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <tr>
+                            <td>Total items:</a>
+                            <td class="text-end"><strong>{{ total_items }}</strong></a>
+                        </tr>
+                        <tr>
+                            <td>Total a pagar:</a>
+                            <td class="text-end"><h4 class="text-success">RD$ {{ total_price|floatformat:2 }}</h4></a>
+                        </tr>
+                    </table>
+                    <hr>
+                    <a href="{% url 'marketplace:lista_productos' %}" class="btn btn-secondary w-100 mb-2">
+                        <i class="fas fa-shopping-bag"></i> Seguir comprando
+                    </a>
+                    <!-- Botón PROCEDER AL PAGO - CORREGIDO -->
+                    <a href="{% url 'cart:checkout' %}" class="btn btn-success w-100">
+                        <i class="fas fa-truck"></i> Proceder al pago (Contra entrega)
+                    </a>
+                    <a href="{% url 'cart:vaciar_carrito' %}" class="btn btn-outline-danger w-100 mt-2" onclick="return confirm('¿Vaciar todo el carrito?')">
+                        <i class="fas fa-trash-alt"></i> Vaciar carrito
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-info text-center">
+        <i class="fas fa-shopping-cart fa-3x mb-3"></i>
+        <h4>Tu carrito está vacío</h4>
+        <p>Explora nuestros productos y agrega los que más te gusten.</p>
+        <a href="{% url 'marketplace:lista_productos' %}" class="btn btn-success">
+            <i class="fas fa-store"></i> Ver productos
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

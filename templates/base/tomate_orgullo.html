@@ -1,0 +1,89 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Orgullo de Azua - El Tomate{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="card border-success">
+            <div class="card-header bg-success text-white text-center">
+                <h2>🍅 El Tomate - Orgullo de Azua</h2>
+            </div>
+            <div class="card-body">
+                <!-- Tomate grande -->
+                <div class="text-center mb-4">
+                    <div style="background: linear-gradient(135deg, #e53935, #c62828); 
+                                border-radius: 50%; 
+                                padding: 30px; 
+                                box-shadow: 0 8px 30px rgba(220, 53, 69, 0.4);
+                                display: inline-flex;
+                                align-items: center;
+                                justify-content: center;
+                                position: relative;
+                                width: 150px;
+                                height: 150px;
+                                margin-bottom: 10px;">
+                        <i class="fas fa-leaf" style="font-size: 4.5rem; color: #2E7D32; transform: rotate(-10deg);"></i>
+                        <i class="fas fa-leaf" style="font-size: 3rem; color: #388E3C; position: absolute; top: -8px; right: -5px; transform: rotate(45deg);"></i>
+                        <i class="fas fa-leaf" style="font-size: 2.5rem; color: #43A047; position: absolute; bottom: -5px; left: -5px; transform: rotate(-30deg);"></i>
+                        <div style="position: absolute; top: 12px; left: 20px; width: 25px; height: 15px; background: rgba(255,255,255,0.25); border-radius: 50%; transform: rotate(-30deg);"></div>
+                    </div>
+                    <span class="badge bg-success" style="font-size: 1.2rem; padding: 10px 30px;">
+                        🍅 ORGULLO DE AZUA
+                    </span>
+                </div>
+
+                <hr>
+
+                <h4>🌱 ¿Por qué el tomate es el orgullo de Azua?</h4>
+                
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5>📊 Producción Líder</h5>
+                                <p>Azua es la provincia con mayor producción de tomate en la República Dominicana, abasteciendo gran parte del mercado nacional.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5>👨‍🌾 Sustento de Familias</h5>
+                                <p>Más de 3,000 familias dependen del cultivo de tomate en Azua, generando empleo y desarrollo económico en la región.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5>🏆 Calidad Reconocida</h5>
+                                <p>El tomate de Azua es reconocido por su sabor, calidad y tamaño, posicionándose como uno de los mejores del país.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5>🚀 Innovación Agrícola</h5>
+                                <p>Los productores de Azua han adoptado tecnologías modernas para mejorar la producción y calidad del tomate.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-success mt-3">
+                    <strong>💚 VPJ apoya a los productores de tomate de Azua</strong>
+                    <p class="mb-0">Comprando directamente a los productores, garantizamos precios justos y fortalecemos la economía local.</p>
+                </div>
+
+                <div class="text-center mt-4">
+                    <a href="{% url 'inicio' %}" class="btn btn-success">
+                        <i class="fas fa-arrow-left"></i> Volver al inicio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

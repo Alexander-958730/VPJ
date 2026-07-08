@@ -1,0 +1,118 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Aprobar Suplidores - ONPECO{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">🚚 Gestión de Suplidores</h1>
+    
+    <!-- ========== AVISO: ROL DESACTIVADO ========== -->
+    <div class="alert alert-warning mb-4">
+        <i class="fas fa-info-circle"></i> 
+        <strong>Rol desactivado:</strong> El rol de Suplidor está actualmente desactivado por decisión de ONPECO. 
+        Este panel está disponible para cuando se decida reactivarlo en el futuro.
+    </div>
+    <!-- ========== FIN AVISO ========== -->
+    
+    <!-- Suplidores Pendientes -->
+    <div class="card shadow mb-4">
+        <div class="card-header bg-warning">
+            <h4 class="mb-0">⏳ Suplidores Pendientes de Aprobación</h4>
+        </div>
+        <div class="card-body">
+            {% if pendientes %}
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Negocio</th>
+                            <th>Teléfono</th>
+                            <th>Dirección</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for suplidor in pendientes %}
+                        <tr>
+                            <td>
+                                <strong>{{ suplidor.get_full_name }}</strong>
+                                {% if suplidor.business_name %}
+                                    <br><small class="text-muted">{{ suplidor.business_name }}</small>
+                                {% endif %}
+                            </td>
+                            <td>{{ suplidor.email }}</td>
+                            <td>{{ suplidor.business_name|default:"-" }}</td>
+                            <td>{{ suplidor.phone|default:"-" }}</td>
+                            <td>{{ suplidor.address|truncatechars:30|default:"-" }}</td>
+                            <td>
+                                <a href="{% url 'users:aprobar_suplidor' suplidor.id %}" class="btn btn-success btn-sm" onclick="return confirm('¿Aprobar a {{ suplidor.get_full_name }}?')">
+                                    <i class="fas fa-check"></i> Aprobar
+                                </a>
+                                <a href="{% url 'users:rechazar_suplidor' suplidor.id %}" class="btn btn-danger btn-sm" onclick="return confirm('¿Rechazar a {{ suplidor.get_full_name }}?')">
+                                    <i class="fas fa-times"></i> Rechazar
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="alert alert-success text-center">
+                <i class="fas fa-check-circle"></i> No hay suplidores pendientes de aprobación.
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <!-- Suplidores Aprobados -->
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0">✅ Suplidores Aprobados</h4>
+        </div>
+        <div class="card-body">
+            {% if aprobados %}
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Negocio</th>
+                            <th>Teléfono</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for suplidor in aprobados %}
+                        <tr>
+                            <td>
+                                <strong>{{ suplidor.get_full_name }}</strong>
+                                {% if suplidor.business_name %}
+                                    <br><small class="text-muted">{{ suplidor.business_name }}</small>
+                                {% endif %}
+                            </td>
+                            <td>{{ suplidor.email }}</td>
+                            <td>{{ suplidor.business_name|default:"-" }}</td>
+                            <td>{{ suplidor.phone|default:"-" }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="alert alert-info text-center">
+                No hay suplidores aprobados aún.
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <div class="mt-3 text-center">
+        <a href="{% url 'inicio' %}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Volver al inicio
+        </a>
+    </div>
+</div>
+{% endblock %}

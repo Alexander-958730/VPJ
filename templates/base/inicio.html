@@ -1,0 +1,269 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Inicio - VPJ{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto text-center">
+        <div class="card border-success mb-4">
+            <div class="card-body">
+                <!-- ========== ORGULLO DE AZUA (CLICABLE A GOOGLE) ========== -->
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 10px;">
+                    
+                    <!-- Orgullo de Azua - Badge clicable -->
+                    <a href="https://www.google.com/search?q=Tomate+Industrial%3A+La+regi%C3%B3n+es+l%C3%ADder+indiscutible%2C+generando+la+gran+mayor%C3%ADa+de+la+producci%C3%B3n+nacional+y+miles+de+empleos&sca_esv=c5931a817e678147&sxsrf=APpeQnvgXxLqsxd19G3Up43KdK4eUoYwtg%3A1782751296317&ei=QKBCauTzEqvFp84P-rjo-A4&biw=1517&bih=712&ved=0ahUKEwjkk_WN8qyVAxWr4skDHXocGu8Q4dUDCBI&uact=5&oq=Tomate+Industrial%3A+La+regi%C3%B3n+es+l%C3%ADder+indiscutible%2C+generando+la+gran+mayor%C3%ADa+de+la+producci%C3%B3n+nacional+y+miles+de+empleos&gs_lp=Egxnd3Mtd2l6LXNlcnAiflRvbWF0ZSBJbmR1c3RyaWFsOiBMYSByZWdpw7NuIGVzIGzDrWRlciBpbmRpc2N1dGlibGUsIGdlbmVyYW5kbyBsYSBncmFuIG1heW9yw61hIGRlIGxhIHByb2R1Y2Npw7NuIG5hY2lvbmFsIHkgbWlsZXMgZGUgZW1wbGVvczIHECMY6gIYJzIHECMY6gIYJzIHECMY6gIYJzIHECMY6gIYJzIHECMY6gIYJzIHECMY6gIYJzINECMY8AUYyQIY6gIYJzINECMYngYY8AUY6gIYJzIHECMY6gIYJzIQEAAYAxiPARjqAhi0AtgBATIQEAAYAxiPARjqAhi0AtgBATIQEAAYAxiPARjqAhi0AtgBATIQEC4YAxiPARjqAhi0AtgBATIQEC4YAxiPARjqAhi0AtgBATIQEC4YAxiPARjqAhi0AtgBATIQEC4YAxiPARjqAhi0AtgBATIQEAAYAxiPARjqAhi0AtgBATIQEC4YAxiPARjqAhi0AtgBATIQEAAYAxiPARjqAhi0AtgBAUjMI1DUD1ieIHAEeACQAQOYAX2gAc8IqgEDNy40uAEDyAEA-AEB-AECmAIFoAKfAagCFMICCxAAGIkFGKIEGLADwgIIEAAY7wUYsAPCAgQQIxgnwgIFEAAYgATCAgUQLhiABJgDFvEFoG90Qr7NZQqIBgGQBgW6BgYIARABGAqSBwM0LjGgB6FasgcDMC4xuAd1wgcHMi0zLjAuMsgHOYAIAQ&sclient=gws-wiz-serp" 
+                       target="_blank" 
+                       style="text-decoration: none; display: inline-block; transition: transform 0.3s ease;"
+                       onmouseover="this.style.transform='scale(1.05)'" 
+                       onmouseout="this.style.transform='scale(1)'"
+                       title="Ver información sobre el Tomate Industrial en Azua">
+                        <span style="background: linear-gradient(135deg, #2E7D32, #388E3C); 
+                                     color: white; 
+                                     font-size: 1.8rem; 
+                                     letter-spacing: 2px; 
+                                     padding: 12px 35px; 
+                                     border-radius: 30px; 
+                                     font-weight: bold;
+                                     box-shadow: 0 3px 15px rgba(46, 125, 50, 0.35);
+                                     margin-top: 5px;
+                                     display: inline-block;
+                                     cursor: pointer;">
+                            🍅 ORGULLO DE AZUA
+                        </span>
+                    </a>
+                    
+                    <!-- Título -->
+                    <h1 class="display-4 text-success" style="font-weight: 700; margin-top: 15px;">
+                        Bienvenido a Venta Precio Justo (VPJ)
+                    </h1>
+                </div>
+
+                <p class="lead">
+                    Conectamos directamente a <strong>productores de Azua</strong> con <strong>consumidores</strong>,
+                    acortando la cadena de suministro y garantizando precios justos.
+                </p>
+                <hr>
+                <p>🌱 Compra directo del campo a tu mesa</p>
+                <p>💰 Precios justos para productores y consumidores</p>
+                <p>🔍 Sistema de denuncias para garantizar el comercio ético</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ========== BOTÓN ONPECO Y CENTRO DE ACOPIO ========== -->
+{% if user.is_authenticated %}
+    {% if user.is_staff or user.role == 'regulador' %}
+    <div class="row mt-2 mb-4">
+        <div class="col-lg-8 mx-auto text-center">
+            <a href="/denuncias/portal/" class="btn btn-warning btn-lg" style="background-color: #ff9800; border-color: #ff9800; color: white; font-weight: bold;">
+                🎛️ Ir al Portal ONPECO
+            </a>
+        </div>
+    </div>
+    {% endif %}
+    
+    <!-- ========== BOTÓN PARA CENTRO DE ACOPIO ========== -->
+    {% if user.role == 'acopio' or user.username == 'centro_acopio' %}
+    <div class="row mt-2 mb-4">
+        <div class="col-lg-8 mx-auto text-center">
+            <a href="{% url 'cart:pedidos_acopio' %}" class="btn btn-warning btn-lg" style="background-color: #ff9800; border-color: #ff9800; color: white; font-weight: bold;">
+                🏪 Ir al Centro de Acopio
+            </a>
+        </div>
+    </div>
+    {% endif %}
+{% endif %}
+<!-- ========== FIN BOTONES ========== -->
+
+{% if not user.is_authenticated %}
+<div class="row mt-4">
+    <div class="col-md-6 text-center">
+        <div class="card h-100">
+            <div class="card-body">
+                <i class="fas fa-shopping-basket fa-3x text-success mb-3"></i>
+                <h3>¿Eres Consumidor?</h3>
+                <p>Compra productos frescos directamente de los productores de Azua</p>
+                <a href="{% url 'users:registro_consumidor' %}" class="btn btn-success">Regístrate como Consumidor</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 text-center">
+        <div class="card h-100">
+            <div class="card-body">
+                <i class="fas fa-tractor fa-3x text-success mb-3"></i>
+                <h3>¿Eres Productor?</h3>
+                <p>Vende tus productos directamente y obtén mejores precios</p>
+                <a href="{% url 'users:registro_productor' %}" class="btn btn-outline-success">Regístrate como Productor</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- ========== BUSCADOR EN TIEMPO REAL FUNCIONAL ========== -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0"><i class="fas fa-search"></i> Buscar Productos</h4>
+                    <small>Escribe el nombre del producto que buscas</small>
+                </div>
+                <div class="card-body">
+                    <input type="search" 
+                           id="buscar-producto-inicio" 
+                           class="form-control form-control-lg" 
+                           placeholder="Ejemplo: aguacate, tomate, cebolla..."
+                           autocomplete="off"
+                           autofill="off"
+                           spellcheck="false"
+                           style="font-size: 16px;">
+                    <div id="resultados-inicio" class="mt-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .resultado-item-inicio {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 12px;
+        margin-bottom: 10px;
+        transition: all 0.2s;
+    }
+    .resultado-item-inicio:hover {
+        background: #e9ecef;
+        transform: translateX(5px);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .resultado-nombre-inicio {
+        font-weight: bold;
+        font-size: 16px;
+        color: #2d6a4f;
+    }
+    .loading-inicio {
+        text-align: center;
+        padding: 20px;
+        color: #2d6a4f;
+    }
+    .mensaje-inicial {
+        background: #e8f5e9;
+        border-radius: 10px;
+        padding: 25px;
+        text-align: center;
+        color: #2d6a4f;
+    }
+    #buscar-producto-inicio:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.2);
+        border-color: #2d6a4f;
+    }
+
+    /* ========== RESPONSIVE PARA MÓVILES ========== */
+    @media (max-width: 768px) {
+        .card-body {
+            padding: 1rem !important;
+        }
+        .display-4 {
+            font-size: 1.8rem !important;
+        }
+        .lead {
+            font-size: 0.95rem !important;
+        }
+        /* Badge Orgullo de Azua más pequeño en móviles */
+        .badge-orgullo {
+            font-size: 1.2rem !important;
+            padding: 8px 20px !important;
+        }
+        /* Ajuste de márgenes */
+        .card-body .display-4 {
+            margin-top: 10px !important;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let timeoutInicio = null;
+        const inputInicio = document.getElementById('buscar-producto-inicio');
+        const resultadosInicio = document.getElementById('resultados-inicio');
+
+        if (inputInicio) {
+            // Mensaje inicial
+            resultadosInicio.innerHTML = '<div class="mensaje-inicial"><i class="fas fa-search fa-2x mb-2"></i><br>🔍 Escribe al menos 2 caracteres para buscar productos</div>';
+            
+            inputInicio.addEventListener('input', function() {
+                clearTimeout(timeoutInicio);
+                const query = this.value.trim();
+                
+                if (query.length < 2) {
+                    resultadosInicio.innerHTML = '<div class="mensaje-inicial"><i class="fas fa-search fa-2x mb-2"></i><br>🔍 Escribe al menos 2 caracteres para buscar productos</div>';
+                    return;
+                }
+                
+                resultadosInicio.innerHTML = '<div class="loading-inicio"><i class="fas fa-spinner fa-spin"></i> Buscando productos...</div>';
+                
+                timeoutInicio = setTimeout(() => {
+                    fetch(`/productos/api/buscar-productos/?q=${encodeURIComponent(query)}`)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Error en el servidor');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            console.log('Productos encontrados:', data.productos.length);
+                            
+                            if (data.productos.length === 0) {
+                                resultadosInicio.innerHTML = `<div class="alert alert-warning text-center">⚠️ No se encontraron productos para "<strong>${escapeHtml(data.query)}</strong>"</div>`;
+                                return;
+                            }
+                            
+                            let html = `<div class="mb-2"><strong>📦 ${data.total} producto(s) encontrado(s):</strong></div>`;
+                            data.productos.forEach(p => {
+                                html += `
+                                    <div class="resultado-item-inicio d-flex justify-content-between align-items-center flex-wrap">
+                                        <div class="flex-grow-1">
+                                            <div class="resultado-nombre-inicio">
+                                                <i class="fas fa-box"></i> ${escapeHtml(p.name)}
+                                            </div>
+                                            <div class="mt-1">
+                                                <small class="text-muted">
+                                                    <i class="fas fa-tag"></i> ${escapeHtml(p.category)} | 
+                                                    <i class="fas fa-dollar-sign"></i> $${p.price} | 
+                                                    <i class="fas fa-boxes"></i> Stock: ${p.stock}
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <a href="/productos/producto/${p.id}/" class="btn btn-sm btn-success mt-2 mt-sm-0">
+                                            <i class="fas fa-eye"></i> Ver
+                                        </a>
+                                    </div>
+                                `;
+                            });
+                            resultadosInicio.innerHTML = html;
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            resultadosInicio.innerHTML = '<div class="alert alert-danger text-center">❌ Error al buscar productos. Intenta de nuevo.</div>';
+                        });
+                }, 400);
+            });
+        }
+        
+        // Función para evitar XSS
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    });
+</script>
+<!-- ========== FIN BUSCADOR EN TIEMPO REAL ========== -->
+
+{% endblock %}

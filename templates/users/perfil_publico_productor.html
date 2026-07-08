@@ -1,0 +1,183 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}{{ productor.business_name|default:productor.get_full_name }} - Productor en VPJ - Venta Precio Justo{% endblock %}
+
+{% block content %}
+<div class="container mt-4 mb-5">
+    <!-- Botón volver -->
+    <div class="mb-4">
+        <a href="/" class="btn btn-outline-success">
+            ← Volver al Inicio
+        </a>
+        <a href="{% url 'users:lista_productores_publicos' %}" class="btn btn-outline-secondary">
+            ← Ver todos los productores
+        </a>
+    </div>
+
+    <!-- Tarjeta principal del productor -->
+    <div class="card shadow mb-4">
+        <div class="card-body text-center">
+            <!-- Avatar -->
+            <div class="rounded-circle bg-success d-inline-flex align-items-center justify-content-center" style="width: 150px; height: 150px;">
+                <span style="font-size: 60px; color: white;">🌾</span>
+            </div>
+            
+            <!-- ========== NOMBRE DEL NEGOCIO (PRINCIPAL) ========== -->
+            <h2 class="mt-3">{{ productor.business_name|default:productor.get_full_name }}</h2>
+            <!-- ========== FIN NOMBRE DEL NEGOCIO ========== -->
+            
+            <!-- ========== NOMBRE REAL DEL PRODUCTOR (SECUNDARIO) ========== -->
+            <p class="text-muted">
+                {% if productor.business_name %}
+                    {{ productor.get_full_name }}
+                {% endif %}
+            </p>
+            <!-- ========== FIN NOMBRE REAL ========== -->
+            
+            <!-- ========== REPUTACIÓN ELIMINADA ========== -->
+            <!-- La reputación ya no se muestra en el perfil público -->
+            <!-- ========== FIN REPUTACIÓN ELIMINADA ========== -->
+            
+            <!-- Calificación con estrellas -->
+            <div class="mt-2">
+                <div class="d-inline-block">
+                    {% for i in "12345"|make_list %}
+                        {% if forloop.counter <= promedio_calificacion %}
+                            <i class="fas fa-star text-warning"></i>
+                        {% else %}
+                            <i class="far fa-star text-warning"></i>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <span class="ms-2">{{ promedio_calificacion|floatformat:1 }} / 5</span>
+                <span class="text-muted">({{ total_reseñas }} reseñas)</span>
+            </div>
+            
+            <!-- Información de contacto -->
+            <div class="mt-3">
+                {% if productor.phone %}
+                    <p><i class="fas fa-phone"></i> {{ productor.phone }}</p>
+                {% endif %}
+                {% if productor.email %}
+                    <p><i class="fas fa-envelope"></i> {{ productor.email }}</p>
+                {% endif %}
+            </div>
+            
+            <!-- ========== BOTÓN DE CALIFICAR (SOLO CONSUMIDORES) ========== -->
+            {% if user.is_authenticated and user.role == 'consumidor' and user != productor %}
+            <div class="mt-4">
+                <a href="{% url 'reviews:calificar_productor' productor.id %}" class="btn btn-warning btn-lg">
+                    <i class="fas fa-star"></i> ⭐ Calificar a este productor
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Datos de la Finca -->
+    <div class="card shadow mb-4">
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0"><i class="fas fa-tractor"></i> Mi Finca</h4>
+        </div>
+        <div class="card-body">
+            {% if productor.business_name %}
+                <h5>{{ productor.business_name }}</h5>
+            {% endif %}
+            {% if productor.address %}
+                <p><i class="fas fa-map-marker-alt"></i> <strong>Ubicación:</strong> {{ productor.address }}</p>
+            {% else %}
+                <p class="text-muted"><i class="fas fa-map-marker-alt"></i> Ubicación no especificada</p>
+            {% endif %}
+            <p><i class="fas fa-check-circle"></i> <strong>Estado:</strong> 
+                {% if productor.is_approved %}
+                    <span class="badge bg-success">✅ Productor Verificado</span>
+                {% else %}
+                    <span class="badge bg-warning">⏳ Pendiente de verificación</span>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+
+    <!-- Productos del productor -->
+    <div class="card shadow mb-4">
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0"><i class="fas fa-apple-alt"></i> Productos</h4>
+        </div>
+        <div class="card-body">
+            {% if productos %}
+                <div class="row">
+                    {% for producto in productos %}
+                        <div class="col-md-3 col-sm-6 mb-3">
+                            <div class="card h-100">
+                                {% if producto.image %}
+                                    <img src="{{ producto.image.url }}" class="card-img-top" style="height: 150px; object-fit: cover;">
+                                {% else %}
+                                    <div class="card-img-top bg-light text-center py-5">
+                                        <i class="fas fa-carrot" style="font-size: 40px; color: #2d6a4f;"></i>
+                                    </div>
+                                {% endif %}
+                                <div class="card-body">
+                                    <h6 class="card-title">{{ producto.name }}</h6>
+                                    <p class="card-text text-success fw-bold">${{ producto.price }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="text-muted text-center py-4">
+                    <i class="fas fa-box-open fa-2x"></i><br>
+                    Este productor no tiene productos publicados aún.
+                </p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- ========== RESEÑAS DE CLIENTES ========== -->
+    <div class="card shadow mb-4">
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0"><i class="fas fa-comments"></i> Reseñas de Clientes</h4>
+        </div>
+        <div class="card-body">
+            {% if productor.reviews_recibidas.all %}
+                {% for review in productor.reviews_recibidas.all %}
+                    <div class="border-bottom pb-3 mb-3">
+                        <div class="d-flex justify-content-between">
+                            <strong>{{ review.consumidor.get_full_name|default:review.consumidor.username }}</strong>
+                            <small class="text-muted">{{ review.created_at|date:"d/m/Y" }}</small>
+                        </div>
+                        <div class="mb-1">
+                            {% for i in "12345"|make_list %}
+                                {% if forloop.counter <= review.rating %}
+                                    <i class="fas fa-star text-warning small"></i>
+                                {% else %}
+                                    <i class="far fa-star text-warning small"></i>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <p class="mb-0">{{ review.comment }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="text-muted text-center py-4">
+                    <i class="fas fa-star-half-alt fa-2x mb-2"></i><br>
+                    Este productor aún no tiene reseñas. ¡Sé el primero en calificarlo!
+                </p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- ========== BOTÓN DE CONTACTO (FUNCIONAL) ========== -->
+    {% if user.is_authenticated and user != productor %}
+    <div class="text-center mt-3">
+        <a href="{% url 'chat:iniciar_chat' productor.id %}" class="btn btn-success btn-lg">
+            <i class="fas fa-comment-dots"></i> 💬 Contactar al Productor
+        </a>
+    </div>
+    {% endif %}
+</div>
+
+<!-- FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+{% endblock %}

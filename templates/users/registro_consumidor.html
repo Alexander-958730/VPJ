@@ -1,0 +1,158 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Registro de Consumidor - VPJ - Venta Precio Justo{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-success text-white text-center">
+                <h4><i class="fas fa-user-plus"></i> Registro de Consumidor</h4>
+            </div>
+            <div class="card-body">
+                
+                <!-- Mensajes de éxito o error -->
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if 'success' in message.tags %}
+                            <div class="alert alert-success text-center p-4" style="border: 3px solid #28a745; border-radius: 10px; background-color: #d4edda;">
+                                <i class="fas fa-check-circle fa-3x d-block mb-3" style="color: #28a745;"></i>
+                                <h3 style="color: #155724;">{{ message }}</h3>
+                                <p style="color: #155724;">Ya puedes iniciar sesión con tus credenciales.</p>
+                                <a href="{% url 'users:login' %}" class="btn btn-success mt-3">
+                                    <i class="fas fa-sign-in-alt"></i> Iniciar sesión ahora
+                                </a>
+                            </div>
+                        {% elif 'error' in message.tags %}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <i class="fas fa-exclamation-circle"></i> {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <!-- ========== NÚMERO DE CÉDULA (username) ========== -->
+                    <div class="mb-3">
+                        <label for="id_username" class="form-label">Número de Cédula *</label>
+                        <input type="text" 
+                               name="username" 
+                               class="form-control {% if form.username.errors %}is-invalid{% endif %}" 
+                               id="id_username" 
+                               value="{{ form.username.value|default:'' }}" 
+                               placeholder="00112345678"
+                               pattern="[0-9]{11}"
+                               title="Ingresa 11 dígitos (ej: 00112345678)"
+                               maxlength="11"
+                               oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                               required>
+                        <small class="form-text text-muted">Ingresa 11 dígitos (ej: 00112345678) - El sistema agregará los guiones automáticamente</small>
+                        {% if form.username.errors %}
+                            <div class="text-danger small mt-1">
+                                {% for error in form.username.errors %}
+                                    <i class="fas fa-exclamation-circle"></i> {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- ========== CORREO ELECTRÓNICO ========== -->
+                    <div class="mb-3">
+                        <label for="id_email" class="form-label">Correo Electrónico *</label>
+                        <input type="email" name="email" class="form-control {% if form.email.errors %}is-invalid{% endif %}" id="id_email" value="{{ form.email.value|default:'' }}" placeholder="ejemplo@correo.com" required>
+                        {% if form.email.errors %}
+                            <div class="text-danger small mt-1">
+                                {% for error in form.email.errors %}
+                                    <i class="fas fa-exclamation-circle"></i> {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- ========== CONTRASEÑA ========== -->
+                    <div class="mb-3">
+                        <label for="id_password1" class="form-label">Contraseña *</label>
+                        <input type="password" name="password1" class="form-control {% if form.password1.errors %}is-invalid{% endif %}" id="id_password1" placeholder="Mínimo 8 caracteres" required>
+                        <small class="text-muted">Mínimo 8 caracteres</small>
+                        {% if form.password1.errors %}
+                            <div class="text-danger small mt-1">
+                                {% for error in form.password1.errors %}
+                                    <i class="fas fa-exclamation-circle"></i> {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- ========== CONFIRMAR CONTRASEÑA ========== -->
+                    <div class="mb-3">
+                        <label for="id_password2" class="form-label">Confirmar Contraseña *</label>
+                        <input type="password" name="password2" class="form-control {% if form.password2.errors %}is-invalid{% endif %}" id="id_password2" placeholder="Repite la contraseña" required>
+                        {% if form.password2.errors %}
+                            <div class="text-danger small mt-1">
+                                {% for error in form.password2.errors %}
+                                    <i class="fas fa-exclamation-circle"></i> {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- ========== TELÉFONO ========== -->
+                    <div class="mb-3">
+                        <label for="id_phone" class="form-label">Teléfono</label>
+                        <input type="text" name="phone" class="form-control {% if form.phone.errors %}is-invalid{% endif %}" id="id_phone" value="{{ form.phone.value|default:'' }}" placeholder="809-555-1234">
+                        {% if form.phone.errors %}
+                            <div class="text-danger small mt-1">
+                                {% for error in form.phone.errors %}
+                                    <i class="fas fa-exclamation-circle"></i> {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- ========== DIRECCIÓN ========== -->
+                    <div class="mb-3">
+                        <label for="id_address" class="form-label">Dirección</label>
+                        <textarea name="address" class="form-control {% if form.address.errors %}is-invalid{% endif %}" id="id_address" rows="2" placeholder="Calle, número, sector">{{ form.address.value|default:'' }}</textarea>
+                        {% if form.address.errors %}
+                            <div class="text-danger small mt-1">
+                                {% for error in form.address.errors %}
+                                    <i class="fas fa-exclamation-circle"></i> {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success w-100">
+                        <i class="fas fa-check-circle"></i> Registrarme como Consumidor
+                    </button>
+                </form>
+                <hr>
+                <p class="text-center">
+                    ¿Ya tienes cuenta? <a href="{% url 'users:login' %}">Iniciar Sesión</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cedulaInput = document.getElementById('id_username');
+        if (cedulaInput) {
+            cedulaInput.addEventListener('input', function() {
+                // Solo permitir números
+                this.value = this.value.replace(/[^0-9]/g, '');
+                
+                // Limitar a 11 dígitos
+                if (this.value.length > 11) {
+                    this.value = this.value.slice(0, 11);
+                }
+            });
+        }
+    });
+</script>
+{% endblock %}

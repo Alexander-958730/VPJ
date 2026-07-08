@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Iniciar Sesión - VPJ - Venta Precio Justo</title>
+    
+    <!-- Font Awesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .login-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            color: #2E7D32;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+        
+        .input-group {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+        
+        .input-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .input-group .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background: #f9f9f9;
+        }
+        
+        .input-group .input-wrapper:focus-within {
+            border-color: #2E7D32;
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
+            background: white;
+        }
+        
+        .input-group .input-wrapper i {
+            position: absolute;
+            left: 12px;
+            color: #999;
+            font-size: 1rem;
+        }
+        
+        .input-group .input-wrapper input {
+            width: 100%;
+            padding: 12px 12px 12px 40px;
+            border: none;
+            background: transparent;
+            font-size: 1rem;
+            outline: none;
+            border-radius: 10px;
+        }
+        
+        .input-group .input-wrapper input::placeholder {
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+        
+        .input-group .input-wrapper input:focus::placeholder {
+            color: #ccc;
+        }
+        
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #2E7D32, #1b5e20);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 5px;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(46, 125, 50, 0.3);
+        }
+        
+        .links {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .links a {
+            color: #2E7D32;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .links a:hover {
+            color: #1b5e20;
+            text-decoration: underline;
+        }
+        
+        .error {
+            color: #d32f2f;
+            background: #ffebee;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .success {
+            color: #2E7D32;
+            background: #e8f5e9;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .footer {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #999;
+        }
+        
+        /* Efecto de animación al cargar */
+        .login-container {
+            animation: fadeIn 0.6s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <!-- Logo -->
+        <div class="logo">🍅</div>
+        <h1>🔐 Iniciar Sesión</h1>
+        <p class="subtitle">Venta Precio Justo (VPJ)</p>
+        
+        <!-- Mensajes -->
+        {% if messages %}
+            {% for message in messages %}
+                <p class="{% if message.tags == 'error' %}error{% else %}success{% endif %}">
+                    {{ message }}
+                </p>
+            {% endfor %}
+        {% endif %}
+        
+        <!-- Formulario -->
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="input-group">
+                <label for="username">Cédula</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-user"></i>
+                    <input type="text" 
+                           name="username" 
+                           id="username" 
+                           placeholder="Cédula" 
+                           required>
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <label for="password">Contraseña</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" 
+                           name="password" 
+                           id="password" 
+                           placeholder="Contraseña" 
+                           required>
+                </div>
+            </div>
+            
+            <button type="submit">
+                <i class="fas fa-sign-in-alt"></i> Ingresar
+            </button>
+        </form>
+        
+        <!-- Enlaces -->
+        <div class="links">
+            <a href="{% url 'users:password_reset' %}">
+                <i class="fas fa-key"></i> ¿Olvidaste tu contraseña?
+            </a>
+            <a href="/">
+                <i class="fas fa-arrow-left"></i> Volver al inicio
+            </a>
+        </div>
+        
+        <div class="footer">
+            <small>VPJ - Comercio Justo para Azua</small>
+        </div>
+    </div>
+</body>
+</html>

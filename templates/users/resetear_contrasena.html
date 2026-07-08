@@ -1,0 +1,43 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Restablecer Contraseña - ONPECO{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-warning text-dark">
+                    <h4 class="mb-0"><i class="fas fa-key"></i> Restablecer Contraseña</h4>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">
+                        Vas a restablecer la contraseña de:
+                        <strong>{{ usuario.username }}</strong>
+                        ({{ usuario.get_role_display|default:usuario.role }})
+                    </p>
+                    
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i>
+                        <strong>Contraseña temporal:</strong> <code>cambiar123</code>
+                        <br>
+                        <small>El usuario deberá cambiarla al iniciar sesión.</small>
+                    </div>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-warning btn-lg">
+                                <i class="fas fa-sync-alt"></i> Restablecer Contraseña
+                            </button>
+                            <a href="{% url 'users:lista_usuarios_onpeco' %}" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i> Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

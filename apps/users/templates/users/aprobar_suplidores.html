@@ -1,0 +1,95 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Aprobar Suplidores - ONPECO{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-warning text-dark">
+            <h3 class="mb-0">📋 Gestión de Suplidores - ONPECO</h3>
+        </div>
+        <div class="card-body">
+            
+            <!-- Suplidores Pendientes -->
+            <h4 class="text-warning">⏳ Suplidores Pendientes de Aprobación</h4>
+            {% if pendientes %}
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Empresa/Negocio</th>
+                                <th>Email</th>
+                                <th>Teléfono</th>
+                                <th>Dirección</th>
+                                <th>Fecha Registro</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for suplidor in pendientes %}
+                            <tr>
+                                <td>{{ suplidor.username }}</td>
+                                <td>{{ suplidor.business_name|default:"-" }}</td>
+                                <td>{{ suplidor.email }}</td>
+                                <td>{{ suplidor.phone }}</td>
+                                <td>{{ suplidor.address|truncatechars:30 }}</td>
+                                <td>{{ suplidor.date_joined|date:"d/m/Y" }}</td>
+                                <td>
+                                    <a href="{% url 'users:aprobar_suplidor' suplidor.id %}" class="btn btn-success btn-sm" onclick="return confirm('¿Aprobar a {{ suplidor.username }}?')">
+                                        ✅ Aprobar
+                                    </a>
+                                    <a href="{% url 'users:rechazar_suplidor' suplidor.id %}" class="btn btn-danger btn-sm" onclick="return confirm('¿Rechazar a {{ suplidor.username }}?')">
+                                        ❌ Rechazar
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="alert alert-success">✅ No hay suplidores pendientes de aprobación.</div>
+            {% endif %}
+            
+            <hr>
+            
+            <!-- Suplidores Aprobados -->
+            <h4 class="text-success">✅ Suplidores Aprobados</h4>
+            {% if aprobados %}
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Empresa/Negocio</th>
+                                <th>Email</th>
+                                <th>Teléfono</th>
+                                <th>Aprobado desde</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for suplidor in aprobados %}
+                            <tr>
+                                <td>{{ suplidor.username }}</td>
+                                <td>{{ suplidor.business_name|default:"-" }}</td>
+                                <td>{{ suplidor.email }}</td>
+                                <td>{{ suplidor.phone }}</td>
+                                <td>{{ suplidor.date_joined|date:"d/m/Y" }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="alert alert-info">ℹ️ No hay suplidores aprobados aún.</div>
+            {% endif %}
+            
+            <div class="mt-3">
+                <a href="{% url 'users:lista_productores_pendientes' %}" class="btn btn-outline-primary">📦 Gestionar Productores</a>
+                <a href="{% url 'inicio' %}" class="btn btn-outline-secondary">🏠 Volver al Inicio</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

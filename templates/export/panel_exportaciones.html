@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Panel de Exportaciones - ONPECO{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/denuncias/portal/">Portal ONPECO</a></li>
+                    <li class="breadcrumb-item active">Exportaciones</li>
+                </ol>
+            </nav>
+            
+            <div class="card shadow mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0"><i class="fas fa-file-export"></i> Panel de Exportaciones</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12 mb-4">
+                            <div class="alert alert-info">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <strong>📊 Total Denuncias:</strong> {{ total_denuncias }}
+                                    </div>
+                                    <div class="col-md-4">
+                                        <strong>👨‍🌾 Total Productores:</strong> {{ total_productores }}
+                                    </div>
+                                    <div class="col-md-4">
+                                        <strong>📅 Fecha:</strong> {% now "d/m/Y H:i" %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100 border-success">
+                                <div class="card-header bg-success text-white">
+                                    <h4><i class="fas fa-file-excel"></i> Exportar Denuncias a Excel</h4>
+                                </div>
+                                <div class="card-body">
+                                    <form method="get" action="{% url 'export:denuncias-excel' %}">
+                                        <div class="row">
+                                            <div class="col-md-12 mb-2">
+                                                <label>Estado de Denuncia</label>
+                                                <select name="estado" class="form-control">
+                                                    <option value="">Todos</option>
+                                                    {% for value, label in estados_denuncia %}
+                                                        <option value="{{ value }}">{{ label }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6 mb-2">
+                                                <label>Fecha Desde</label>
+                                                <input type="date" name="fecha_desde" class="form-control">
+                                            </div>
+                                            <div class="col-md-6 mb-2">
+                                                <label>Fecha Hasta</label>
+                                                <input type="date" name="fecha_hasta" class="form-control">
+                                            </div>
+                                            <div class="col-md-12 mb-2">
+                                                <label>Productor</label>
+                                                <select name="productor_id" class="form-control">
+                                                    <option value="">Todos</option>
+                                                    {% for p in productores %}
+                                                        <option value="{{ p.id }}">{{ p.get_full_name|default:p.username }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-success w-100 mt-2">
+                                            <i class="fas fa-download"></i> Exportar a Excel
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100 border-danger">
+                                <div class="card-header bg-danger text-white">
+                                    <h4><i class="fas fa-file-pdf"></i> Exportar Denuncias a PDF</h4>
+                                </div>
+                                <div class="card-body">
+                                    <form method="get" action="{% url 'export:denuncias-pdf' %}">
+                                        <div class="row">
+                                            <div class="col-md-12 mb-2">
+                                                <label>Estado de Denuncia</label>
+                                                <select name="estado" class="form-control">
+                                                    <option value="">Todos</option>
+                                                    {% for value, label in estados_denuncia %}
+                                                        <option value="{{ value }}">{{ label }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-danger w-100 mt-2">
+                                            <i class="fas fa-download"></i> Exportar a PDF
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12 mb-4">
+                            <div class="card border-info">
+                                <div class="card-header bg-info text-white">
+                                    <h4><i class="fas fa-users"></i> Exportar Lista de Productores a PDF</h4>
+                                </div>
+                                <div class="card-body">
+                                    <form method="get" action="{% url 'export:productores-pdf' %}">
+                                        <div class="alert alert-info">
+                                            <i class="fas fa-info-circle"></i> Exportará todos los productores registrados con su información: nombre, email, calificación y número de denuncias.
+                                        </div>
+                                        <button type="submit" class="btn btn-info w-100">
+                                            <i class="fas fa-download"></i> Exportar Productores a PDF
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <a href="/denuncias/portal/" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i> Volver al Portal ONPECO
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

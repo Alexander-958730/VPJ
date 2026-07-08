@@ -1,0 +1,109 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Menú lateral del portal ONPECO -->
+        <div class="col-md-2 p-3" style="min-height: 80vh; border-right: 1px solid #ddd; background-color: #f8f9fa;">
+            <h5 class="text-success mb-3">📊 ONPECO</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'complaints:portal_onpeco' %}">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'complaints:lista_denuncias' %}">
+                        <i class="fas fa-gavel"></i> Denuncias
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'complaints:reporte_denuncias' %}">
+                        <i class="fas fa-chart-line"></i> Reportes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'complaints:gestion_backups' %}">
+                        <i class="fas fa-undo-alt"></i> Backups
+                    </a>
+                </li>
+                <!-- ========== PRODUCTOS TOP ========== -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/productos/top-vistos/">
+                        <i class="fas fa-chart-line"></i> Productos Top
+                    </a>
+                </li>
+                <!-- ========== FIN PRODUCTOS TOP ========== -->
+                
+                <!-- ========== PRODUCTORES MÁS DENUNCIADOS ========== -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'complaints:productores_mas_denunciados' %}">
+                        <i class="fas fa-exclamation-triangle text-danger"></i> 🚨 Productores Más Denunciados
+                    </a>
+                </li>
+                <!-- ========== FIN PRODUCTORES MÁS DENUNCIADOS ========== -->
+                
+                <li><hr class="my-3"></li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="/">
+                        <i class="fas fa-home"></i> ← Volver al Inicio
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Contenido principal -->
+        <div class="col-md-10 p-4">
+            {% block onpeco_content %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Mejorar contraste y visibilidad del menú lateral */
+    .nav-link {
+        color: #2c3e50 !important;
+        font-weight: 500;
+        border-radius: 8px;
+        margin: 4px 0;
+        padding: 10px 15px;
+        transition: all 0.2s ease;
+    }
+    
+    .nav-link:hover {
+        background-color: #d4edda !important;
+        color: #155724 !important;
+    }
+    
+    .nav-link i {
+        margin-right: 10px;
+        width: 22px;
+        text-align: center;
+        font-size: 1.1rem;
+    }
+    
+    /* Enlace de volver al inicio */
+    .text-secondary {
+        color: #6c757d !important;
+    }
+    
+    .text-secondary:hover {
+        background-color: transparent !important;
+        color: #495057 !important;
+    }
+    
+    /* Separador */
+    hr {
+        margin: 15px 0;
+        border-color: #dee2e6;
+    }
+    
+    /* Título ONPECO */
+    .text-success {
+        color: #28a745 !important;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,201 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Detalle Pedido #{{ order.id }} - Centro de Acopio{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+            <h3 class="mb-0">📦 Pedido #{{ order.id }} - Centro de Acopio</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Información del comprador</h5>
+                    <p><strong>👤 Comprador:</strong> {{ order.user.username }}</p>
+                    <p><strong>📞 Teléfono:</strong> {{ order.phone_number }}</p>
+                    <p><strong>📅 Fecha:</strong> {{ order.created_at|date:"d/m/Y H:i" }}</p>
+                    <p><strong>💰 Total:</strong> RD$ {{ order.total_amount|floatformat:2 }}</p>
+                    <p><strong>📊 Estado de Pago:</strong>
+                        {% if order.payment_status == 'paid' %}
+                            <span class="badge bg-success">✅ Pagado</span>
+                        {% elif order.payment_status == 'partial' %}
+                            <span class="badge bg-warning text-dark">⏳ Pago Parcial</span>
+                        {% else %}
+                            <span class="badge bg-danger">❌ Pendiente</span>
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Actualizar Estado</h5>
+                    <form method="post" action="{% url 'cart:actualizar_estado_pedido' order.id %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label class="form-label">Estado actual:</label>
+                            <select name="status" class="form-select">
+                                <option value="pending" {% if order.status == 'pending' %}selected{% endif %}>⏳ Pendiente</option>
+                                <option value="confirmed" {% if order.status == 'confirmed' %}selected{% endif %}>✅ Confirmar pedido</option>
+                                <option value="preparing" {% if order.status == 'preparing' %}selected{% endif %}>📦 En preparación</option>
+                                <option value="delivered" {% if order.status == 'delivered' %}selected{% endif %}>🏠 Entregado</option>
+                                <option value="cancelled" {% if order.status == 'cancelled' %}selected{% endif %}>❌ Cancelar</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Actualizar Estado</button>
+                    </form>
+                    <small class="text-muted">⚠️ Solo se pueden registrar pagos cuando el pedido está <strong>"Entregado"</strong>.</small>
+                </div>
+            </div>
+            
+            <hr>
+            
+            <h5>📍 Detalles de entrega</h5>
+            <p><strong>🚚 Tipo de entrega:</strong> 
+                {% if order.delivery_type == 'delivery' %}
+                    🚚 Entrega a domicilio
+                {% else %}
+                    🏪 Paso a recoger
+                {% endif %}
+            </p>
+            {% if order.delivery_type == 'delivery' %}
+            <p><strong>📍 Dirección:</strong> {{ order.shipping_address }}</p>
+            {% else %}
+            <p><strong>📍 Punto de recogida:</strong> {{ order.pickup_location }}</p>
+            {% endif %}
+            
+            {% if order.delivery_instructions %}
+            <h5>📝 Instrucciones</h5>
+            <p>{{ order.delivery_instructions }}</p>
+            {% endif %}
+            
+            <hr>
+            
+            <h5>🌾 Desglose por Productor</h5>
+            <div class="table-responsive mb-4">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Productor</th>
+                            <th>Productos</th>
+                            <th>Total a pagar</th>
+                            <th>Pagado</th>
+                            <th>Pendiente</th>
+                            <th>Estado</th>
+                            <th>Registrar Pago</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for id, data in productores.items %}
+                        <tr>
+                            <td><strong>{{ data.nombre }}</strong></td>
+                            <td>
+                                <ul class="mb-0">
+                                {% for item in data.items %}
+                                    <li>{{ item.cantidad }} x {{ item.producto }} - RD$ {{ item.subtotal|stringformat:".2f"|cut:"," }}</li>
+                                {% endfor %}
+                                </ul>
+                            </td>
+                            <td><strong>RD$ {{ data.total|stringformat:".2f"|cut:"," }}</strong></td>
+                            <td>RD$ {{ data.pagado|default:0|stringformat:".2f"|cut:"," }}</td>
+                            <td>
+                                <strong class="{% if data.pendiente <= 0 %}text-success{% else %}text-danger{% endif %}">
+                                    RD$ {{ data.pendiente|stringformat:".2f"|cut:"," }}
+                                </strong>
+                            </td>
+                            <td>
+                                {% with pagado=data.pagado|default:0 %}
+                                {% if pagado >= data.total %}
+                                    <span class="badge bg-success">✅ Pagado</span>
+                                {% elif pagado > 0 %}
+                                    <span class="badge bg-warning text-dark">⏳ Parcial</span>
+                                {% else %}
+                                    <span class="badge bg-danger">❌ Pendiente</span>
+                                {% endif %}
+                                {% endwith %}
+                            </td>
+                            <td>
+                                {% if order.status == 'delivered' %}
+                                    {% if data.pendiente <= 0 %}
+                                        <span class="badge bg-success">✅ Pagado</span>
+                                    {% else %}
+                                    <form method="POST" action="{% url 'cart:registrar_pago_productor' order.id id %}" class="row g-1">
+                                        {% csrf_token %}
+                                        <div class="col-12">
+                                            <!-- ========== CORRECCIÓN: CAMPO DE MONTO NO EDITABLE ========== -->
+                                            <div class="form-group">
+                                                <input type="text" 
+                                                       name="monto_display" 
+                                                       class="form-control form-control-sm" 
+                                                       value="RD$ {{ data.pendiente|stringformat:'.2f'|cut:',' }}" 
+                                                       readonly 
+                                                       disabled 
+                                                       style="background-color: #f0f0f0; cursor: not-allowed; font-weight: bold; text-align: center;">
+                                                <input type="hidden" name="monto" value="{{ data.pendiente|stringformat:'.2f'|cut:',' }}">
+                                                <small class="text-muted d-block text-center">🔒 Monto fijo (no editable)</small>
+                                            </div>
+                                            <!-- ========== FIN CORRECCIÓN ========== -->
+                                        </div>
+                                        <div class="col-12 mt-1">
+                                            <button type="submit" class="btn btn-sm btn-success w-100">
+                                                <i class="fas fa-check-circle"></i> Pagar Total (RD$ {{ data.pendiente|stringformat:'.2f'|cut:',' }})
+                                            </button>
+                                        </div>
+                                    </form>
+                                    {% endif %}
+                                {% else %}
+                                    <span class="text-muted small">⏳ Esperar entrega</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="6" class="text-end"><strong>Total del pedido:</strong></td>
+                            <td><strong class="text-success">RD$ {{ order.total_amount|stringformat:".2f"|cut:"," }}</strong></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            
+            <hr>
+            
+            <h5>🛒 Productos del pedido</h5>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio unitario</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in items %}
+                        <tr>
+                            <td>{{ item.product.name }}<br><small class="text-muted">Vendedor: {{ item.product.vendedor.business_name|default:item.product.vendedor.username }}</small></td>
+                            <td>{{ item.quantity }}</td>
+                            <td>RD$ {{ item.price|stringformat:".2f"|cut:"," }}</td>
+                            <td><strong>RD$ {{ item.get_total_price|stringformat:".2f"|cut:"," }}</strong></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="text-end"><strong>Total:</strong></td>
+                            <td><strong class="text-success">RD$ {{ order.total_amount|stringformat:".2f"|cut:"," }}</strong></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            
+            <div class="mt-4 text-center">
+                <a href="{% url 'cart:pedidos_acopio' %}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Volver a pedidos
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

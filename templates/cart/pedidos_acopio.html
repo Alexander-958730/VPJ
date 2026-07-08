@@ -1,0 +1,119 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Pedidos Recibidos - Centro de Acopio{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">📦 Pedidos Recibidos - Centro de Acopio</h1>
+    
+    <!-- ========== BUSCADOR DE PEDIDOS ========== -->
+    <div class="card mb-4">
+        <div class="card-header bg-info text-white">
+            <h5 class="mb-0"><i class="fas fa-search"></i> Buscar Pedidos</h5>
+        </div>
+        <div class="card-body">
+            <form method="get" class="row g-3">
+                <div class="col-md-9">
+                    <div class="input-group">
+                        <span class="input-group-text bg-success text-white">
+                            <i class="fas fa-search"></i>
+                        </span>
+                        <input type="text" 
+                               name="search" 
+                               class="form-control" 
+                               placeholder="🔍 Buscar por número de pedido (ej: 123) o nombre del comprador..." 
+                               value="{{ search_query }}">
+                        <button class="btn btn-success" type="submit">
+                            <i class="fas fa-search"></i> Buscar
+                        </button>
+                        {% if search_query %}
+                        <a href="{% url 'cart:pedidos_acopio' %}" class="btn btn-outline-secondary">
+                            <i class="fas fa-times"></i> Limpiar
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-3 text-end">
+                    <span class="badge bg-info text-white p-2" style="font-size: 1rem;">
+                        <i class="fas fa-box"></i> {{ total_pedidos }} pedido(s)
+                    </span>
+                </div>
+            </form>
+            {% if search_query %}
+            <div class="alert alert-info mt-3 mb-0">
+                <i class="fas fa-search"></i> 
+                Resultados para: <strong>"{{ search_query }}"</strong> - 
+                <strong>{{ orders|length }}</strong> pedido(s) encontrado(s)
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <!-- ========== FIN BUSCADOR ========== -->
+    
+    {% if orders %}
+    <div class="row">
+        {% for order in orders %}
+        <div class="col-md-6 mb-3">
+            <div class="card shadow">
+                <div class="card-header {% if order.status == 'delivered' %}bg-success{% elif order.status == 'pending' %}bg-warning{% elif order.status == 'cancelled' %}bg-danger{% else %}bg-info{% endif %} text-white d-flex justify-content-between align-items-center">
+                    <strong>Pedido #{{ order.id }}</strong>
+                    <span>
+                        {% if order.status == 'pending' %}
+                            <span class="badge bg-warning text-dark">⏳ Pendiente</span>
+                        {% elif order.status == 'confirmed' %}
+                            <span class="badge bg-light text-dark">✅ Confirmado</span>
+                        {% elif order.status == 'preparing' %}
+                            <span class="badge bg-primary">📦 En preparación</span>
+                        {% elif order.status == 'delivered' %}
+                            <span class="badge bg-light text-dark">🏠 Entregado</span>
+                        {% elif order.status == 'cancelled' %}
+                            <span class="badge bg-light text-dark">❌ Cancelado</span>
+                        {% endif %}
+                    </span>
+                </div>
+                <div class="card-body">
+                    <p><strong>👤 Comprador:</strong> {{ order.user.get_full_name|default:order.user.username }}</p>
+                    <p><strong>📞 Teléfono:</strong> {{ order.phone_number }}</p>
+                    <p><strong>📅 Fecha:</strong> {{ order.created_at|date:"d/m/Y H:i" }}</p>
+                    <p><strong>💰 Total:</strong> RD$ {{ order.total_amount|floatformat:2 }}</p>
+                    <p><strong>🚚 Entrega:</strong> 
+                        {% if order.delivery_type == 'delivery' %}
+                            🚚 Domicilio: {{ order.shipping_address|truncatechars:30 }}
+                        {% else %}
+                            🏪 Recoger en: {{ order.pickup_location }}
+                        {% endif %}
+                    </p>
+                    <p><strong>📊 Pago:</strong>
+                        {% if order.payment_status == 'paid' %}
+                            <span class="badge bg-success">✅ Pagado</span>
+                        {% elif order.payment_status == 'partial' %}
+                            <span class="badge bg-warning text-dark">⏳ Parcial</span>
+                        {% else %}
+                            <span class="badge bg-danger">❌ Pendiente</span>
+                        {% endif %}
+                    </p>
+                    <a href="{% url 'cart:detalle_acopio' order.id %}" class="btn btn-sm btn-primary">
+                        <i class="fas fa-eye"></i> Ver detalles
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-info text-center">
+        <i class="fas fa-box-open fa-3x mb-3"></i>
+        <h4>No hay pedidos recibidos aún</h4>
+        {% if search_query %}
+        <p>No se encontraron pedidos con el criterio de búsqueda <strong>"{{ search_query }}"</strong>.</p>
+        <a href="{% url 'cart:pedidos_acopio' %}" class="btn btn-outline-success">
+            <i class="fas fa-undo"></i> Ver todos los pedidos
+        </a>
+        {% else %}
+        <p>Cuando los consumidores hagan pedidos, aparecerán aquí.</p>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

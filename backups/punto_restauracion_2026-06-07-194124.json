@@ -1,0 +1,255 @@
+{
+  "version": "1.0",
+  "fecha": "2026-06-07-194124",
+  "fecha_legible": "07/06/2026 19:41:24",
+  "tipo": "punto_restauracion_completo",
+  "creado_por": "prueba",
+  "creado_por_id": 2,
+  "descripcion": "",
+  "estadisticas": {
+    "total_productos": 8,
+    "total_usuarios": 8,
+    "total_denuncias": 1,
+    "total_actualizaciones": 1
+  },
+  "datos": {
+    "productos": [
+      {
+        "id": 1,
+        "productor_id": 2,
+        "name": "Pedro Rodriguez",
+        "description": "Finca la bendicion, nos dedicamos a la produccion de platanos",
+        "category": "otros",
+        "price": "5.00",
+        "unit": "unidad",
+        "stock": 100,
+        "stock_minimo": 5,
+        "image": "",
+        "available": true,
+        "created_at": "2026-06-05 15:43:59.325523+00:00",
+        "updated_at": "2026-06-05 15:43:59.325523+00:00"
+      },
+      {
+        "id": 2,
+        "productor_id": 7,
+        "name": "aguacates",
+        "description": "Aguacates criollos",
+        "category": "frutas",
+        "price": "15.00",
+        "unit": "unidad",
+        "stock": 1000,
+        "stock_minimo": 5,
+        "image": "",
+        "available": true,
+        "created_at": "2026-06-05 16:55:30.807964+00:00",
+        "updated_at": "2026-06-05 18:45:25.407660+00:00"
+      },
+      {
+        "id": 3,
+        "productor_id": 7,
+        "name": "Zanahorias",
+        "description": "Zanahorias de buena calidad",
+        "category": "verduras",
+        "price": "15.00",
+        "unit": "lb",
+        "stock": 1000,
+        "stock_minimo": 100,
+        "image": "",
+        "available": true,
+        "created_at": "2026-06-05 17:08:15.805755+00:00",
+        "updated_at": "2026-06-05 17:08:15.805755+00:00"
+      },
+      {
+        "id": 4,
+        "productor_id": 7,
+        "name": "Repollo",
+        "description": "Repollo fresco",
+        "category": "verduras",
+        "price": "100.00",
+        "unit": "lb",
+        "stock": 1000,
+        "stock_minimo": 100,
+        "image": "",
+        "available": true,
+        "created_at": "2026-06-05 17:09:35.807125+00:00",
+        "updated_at": "2026-06-05 17:09:35.807125+00:00"
+      },
+      {
+        "id": 5,
+        "productor_id": 7,
+        "name": "Yuca",
+        "description": "Yucas de calidad",
+        "category": "tubérculos",
+        "price": "15.00",
+        "unit": "lb",
+        "stock": 2000,
+        "stock_minimo": 100,
+        "image": "",
+        "available": true,
+        "created_at": "2026-06-05 17:15:59.452843+00:00",
+        "updated_at": "2026-06-05 17:15:59.452843+00:00"
+      },
+      {
+        "id": 6,
+        "productor_id": 7,
+        "name": "Yautia amarilla",
+        "description": "Yautia de calidad",
+        "category": "tubérculos",
+        "price": "25.00",
+        "unit": "lb",
+        "stock": 100,
+        "stock_minimo": 10,
+        "image": "",
+        "available": true,
+        "created_at": "2026-06-05 18:15:36.865992+00:00",
+        "updated_at": "2026-06-05 18:15:36.865992+00:00"
+      },
+      {
+        "id": 7,
+        "productor_id": 7,
+        "name": "arroz selecto",
+        "description": "Arroz premiun",
+        "category": "granos",
+        "price": "25.00",
+        "unit": "lb",
+        "stock": 1000,
+        "stock_minimo": 100,
+        "image": "products/Arroz_selecto.jpg",
+        "available": true,
+        "created_at": "2026-06-05 18:26:23.092851+00:00",
+        "updated_at": "2026-06-05 18:26:23.092851+00:00"
+      },
+      {
+        "id": 8,
+        "productor_id": 7,
+        "name": "Zapote",
+        "description": "Zapote de calidad",
+        "category": "frutas",
+        "price": "20.00",
+        "unit": "unidad",
+        "stock": 1000,
+        "stock_minimo": 100,
+        "image": "products/Zapotes.jpe",
+        "available": true,
+        "created_at": "2026-06-05 18:36:00.946685+00:00",
+        "updated_at": "2026-06-05 18:36:00.946685+00:00"
+      }
+    ],
+    "usuarios": [
+      {
+        "id": 2,
+        "username": "prueba",
+        "email": "prueba@test.com",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-06-05 02:02:19.191680+00:00",
+        "last_login": "2026-06-07 18:29:43.197366+00:00"
+      },
+      {
+        "id": 3,
+        "username": "consumidor1",
+        "email": "consumidor1@test.com",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-05 02:02:39.027998+00:00",
+        "last_login": null
+      },
+      {
+        "id": 4,
+        "username": "atrinidad",
+        "email": "atrinidaddr0469@gmail.com",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-06-05 15:39:36.209477+00:00",
+        "last_login": null
+      },
+      {
+        "id": 5,
+        "username": "Elizabeth",
+        "email": "eogando26@gmail.com",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-05 15:55:06.829499+00:00",
+        "last_login": "2026-06-05 15:55:07.731306+00:00"
+      },
+      {
+        "id": 6,
+        "username": "Dany",
+        "email": "dany@gmail.com",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-05 15:58:51.858196+00:00",
+        "last_login": "2026-06-05 15:58:53.271339+00:00"
+      },
+      {
+        "id": 7,
+        "username": "productor_test",
+        "email": "productor@test.com",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-05 16:43:52.831958+00:00",
+        "last_login": "2026-06-07 02:07:33.536954+00:00"
+      },
+      {
+        "id": 8,
+        "username": "Samuel",
+        "email": "samuel@gmail.com",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-05 17:50:43.219480+00:00",
+        "last_login": "2026-06-05 17:50:44.116221+00:00"
+      },
+      {
+        "id": 9,
+        "username": "consumidor_test",
+        "email": "consumidor@test.com",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-05 18:47:29.377942+00:00",
+        "last_login": "2026-06-07 01:00:44.919150+00:00"
+      }
+    ],
+    "denuncias": [
+      {
+        "id": 1,
+        "complainant_id": 9,
+        "complained_against_id": 2,
+        "ticket_number": "CD-000001",
+        "title": "Precio muy alto",
+        "complaint_type": "price",
+        "description": "Este producto esta por encima de su precio real",
+        "status": "rejected",
+        "priority": "low",
+        "created_at": "2026-06-05 18:51:12.913337+00:00",
+        "updated_at": "2026-06-05 19:02:33.199435+00:00"
+      }
+    ],
+    "denuncias_updates": [
+      {
+        "id": 1,
+        "complaint_id": 1,
+        "comment": "",
+        "old_status": "pending",
+        "new_status": "rejected",
+        "created_by_id": 2,
+        "created_at": "2026-06-05 19:02:33.186034+00:00"
+      }
+    ]
+  }
+}

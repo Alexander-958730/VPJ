@@ -1,0 +1,39 @@
+{% extends "admin/base_site.html" %}
+
+{% block extrahead %}
+{{ block.super }}
+<style>
+    .btn-volver-inicio {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #2d6a4f;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        z-index: 9999;
+        font-family: Arial, sans-serif;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
+    }
+    .btn-volver-inicio:hover {
+        background: #1a472a;
+        transform: scale(1.05);
+        color: white;
+    }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (!document.getElementById('btn-volver-inicio')) {
+            var btn = document.createElement('a');
+            btn.id = 'btn-volver-inicio';
+            btn.className = 'btn-volver-inicio';
+            btn.href = '/';
+            btn.innerHTML = '🏠 Volver al Inicio';
+            document.body.appendChild(btn);
+        }
+    });
+</script>
+{% endblock %}

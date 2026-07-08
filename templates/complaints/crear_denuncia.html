@@ -1,0 +1,85 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Crear Denuncia - VPJ - Venta Precio Justo{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-header bg-danger text-white">
+                <h4><i class="fas fa-exclamation-triangle"></i> Crear Denuncia</h4>
+            </div>
+            <div class="card-body">
+                {% if producto %}
+                <div class="alert alert-info">
+                    <strong>Producto:</strong> {{ producto.name }}
+                    <br>
+                    <strong>Vendedor:</strong> 
+                    {% if producto.vendedor %}
+                        {{ producto.vendedor.business_name|default:producto.vendedor.username }}
+                    {% elif producto.productor %}
+                        {{ producto.productor.business_name|default:producto.productor.username }}
+                    {% else %}
+                        No especificado
+                    {% endif %}
+                </div>
+                {% endif %}
+                
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    {% if not producto %}
+                    <div class="mb-3">
+                        <label class="form-label">Productor denunciado *</label>
+                        <select name="productor_id" class="form-control" required>
+                            <option value="">Seleccione un productor</option>
+                            {% for p in productores %}
+                            <option value="{{ p.id }}">{{ p.business_name|default:p.username }} - {{ p.email }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    {% endif %}
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Título de la denuncia *</label>
+                        <input type="text" name="titulo" class="form-control" placeholder="Ej: Precio abusivo en aguacates" required>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Tipo de denuncia *</label>
+                            <select name="tipo" class="form-control" required>
+                                <option value="price">💰 Precio abusivo</option>
+                                <option value="quality">🥬 Calidad del producto</option>
+                                <option value="delivery">🚚 Problema con entrega</option>
+                                <option value="other">📝 Otro</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Prioridad *</label>
+                            <select name="prioridad" class="form-control" required>
+                                <option value="low">🟢 Baja</option>
+                                <option value="medium">🟡 Media</option>
+                                <option value="high">🔴 Alta</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Descripción detallada *</label>
+                        <textarea name="descripcion" class="form-control" rows="5" placeholder="Describe detalladamente el problema..." required></textarea>
+                    </div>
+                    
+                    <div class="alert alert-warning">
+                        <i class="fas fa-info-circle"></i> Al enviar esta denuncia, recibirás un número de seguimiento único. ONPECO investigará el caso y te mantendrá informado.
+                    </div>
+                    
+                    <button type="submit" class="btn btn-danger w-100">
+                        <i class="fas fa-paper-plane"></i> Enviar Denuncia
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

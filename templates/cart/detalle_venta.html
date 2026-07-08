@@ -1,0 +1,100 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Detalle Venta #{{ order.id }} - VPJ - Venta Precio Justo{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+            <h3 class="mb-0">📦 Pedido #{{ order.id }}</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Información del comprador</h5>
+                    <p><strong>👤 Comprador:</strong> {{ order.user.username }}</p>
+                    <p><strong>📞 Teléfono:</strong> {{ order.phone_number }}</p>
+                    <p><strong>📅 Fecha:</strong> {{ order.created_at|date:"d/m/Y H:i" }}</p>
+                    <p><strong>💰 Total:</strong> RD$ {{ order.total_amount|floatformat:2 }}</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Actualizar Estado</h5>
+                    <form method="post" action="{% url 'cart:actualizar_estado_pedido' order.id %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label class="form-label">Estado actual:</label>
+                            <select name="status" class="form-select">
+                                <option value="confirmed" {% if order.status == 'confirmed' %}selected{% endif %}>✅ Confirmar pedido</option>
+                                <option value="preparing" {% if order.status == 'preparing' %}selected{% endif %}>📦 En preparación</option>
+                                <option value="delivered" {% if order.status == 'delivered' %}selected{% endif %}>🏠 Entregado</option>
+                                <option value="cancelled" {% if order.status == 'cancelled' %}selected{% endif %}>❌ Cancelar</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Actualizar Estado</button>
+                    </form>
+                </div>
+            </div>
+            
+            <hr>
+            
+            <h5>📍 Detalles de entrega</h5>
+            <p><strong>🚚 Tipo de entrega:</strong> 
+                {% if order.delivery_type == 'delivery' %}
+                    🚚 Entrega a domicilio
+                {% else %}
+                    🏪 Paso a recoger
+                {% endif %}
+            </p>
+            {% if order.delivery_type == 'delivery' %}
+            <p><strong>📍 Dirección:</strong> {{ order.shipping_address }}</p>
+            {% else %}
+            <p><strong>📍 Punto de recogida:</strong> {{ order.pickup_location }}</p>
+            {% endif %}
+            
+            {% if order.delivery_instructions %}
+            <h5>📝 Instrucciones</h5>
+            <p>{{ order.delivery_instructions }}</p>
+            {% endif %}
+            
+            <hr>
+            
+            <h5>🛒 Productos solicitados</h5>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio unitario</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in items %}
+                        <tr>
+                            <td>{{ item.product.name }}<br><small class="text-muted">Vendedor: {{ item.product.vendedor.business_name|default:item.product.vendedor.username }}</small></a>
+                            <td>{{ item.quantity }}</a>
+                            <td>RD$ {{ item.price|floatformat:2 }}</a>
+                            <td><strong>RD$ {{ item.get_total_price|floatformat:2 }}</strong></a>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="text-end"><strong>Total:</strong></a>
+                            <td><strong class="text-success">RD$ {{ order.total_amount|floatformat:2 }}</strong></a>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            
+            <div class="mt-4 text-center">
+                <a href="{% url 'cart:mis_ventas' %}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Volver a mis ventas
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

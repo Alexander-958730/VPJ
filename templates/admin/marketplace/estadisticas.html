@@ -1,0 +1,179 @@
+{% extends "admin/base_site.html" %}
+
+{% block extrastyle %}
+<style>
+    .graph-container {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+    .graph-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #333;
+    }
+    .chart-row {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    .chart-box {
+        flex: 1;
+        min-width: 300px;
+    }
+    canvas {
+        max-height: 350px;
+        width: 100%;
+    }
+    .stats-summary {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+    .stat-number {
+        font-size: 24px;
+        font-weight: bold;
+        color: #28a745;
+    }
+    .stat-card {
+        display: inline-block;
+        margin-right: 30px;
+    }
+    .back-button {
+        margin-top: 20px;
+        display: inline-block;
+        background: #79aec8;
+        color: white;
+        padding: 10px 15px;
+        text-decoration: none;
+        border-radius: 4px;
+    }
+    .back-button:hover {
+        background: #609ab6;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="graph-container">
+    <div class="graph-title">📊 Panel de Estadísticas de Productos</div>
+    
+    <div class="chart-row">
+        <div class="chart-box">
+            <canvas id="categoriaChart"></canvas>
+        </div>
+        <div class="chart-box">
+            <canvas id="vendedorChart"></canvas>
+        </div>
+    </div>
+    
+    <div class="stats-summary" id="statsSummary">
+        Cargando estadísticas...
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+<script>
+fetch('/admin/marketplace/product/datos-productos/')
+.then(response => response.json())
+.then(data => {
+    // Gráfico de productos por categoría
+    const ctx1 = document.getElementById('categoriaChart').getContext('2d');
+    const categorias = data.por_categoria.map(item => {
+        const catMap = {
+            'frutas': '🍎 Frutas',
+            'verduras': '🥬 Verduras',
+            'granos': '🌾 Granos',
+            'tuberculos': '🥔 Tubérculos',
+            'otros': '📦 Otros'
+        };
+        return catMap[item.category] || item.category;
+    });
+    const cantidades = data.por_categoria.map(item => item.count);
+    
+    new Chart(ctx1, {
+        type: 'bar',
+        data: {
+            labels: categorias,
+            datasets: [{
+                label: 'Productos por Categoría',
+                data: cantidades,
+                backgroundColor: 'rgba(40, 167, 69, 0.5)',
+                borderColor: 'rgba(40, 167, 69, 1)',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: '📦 Productos por Categoría',
+                    font: { size: 14 }
+                }
+            },
+            scales: {
+                y: { 
+                    beginAtZero: true, 
+                    title: { display: true, text: 'Cantidad de Productos' },
+                    ticks: { stepSize: 1, precision: 0 }
+                }
+            }
+        }
+    });
+    
+    // Gráfico de productos por tipo de vendedor
+    const ctx2 = document.getElementById('vendedorChart').getContext('2d');
+    const roles = data.por_tipo_vendedor.map(item => {
+        const roleMap = {
+            'productor': '🌾 Productor',
+            'consumidor': '🛒 Consumidor',
+            'suplidor': '📦 Suplidor',
+            'regulador': '⚖️ Regulador'
+        };
+        return roleMap[item.vendedor__role] || item.vendedor__role;
+    });
+    const cantidadesRoles = data.por_tipo_vendedor.map(item => item.count);
+    
+    new Chart(ctx2, {
+        type: 'pie',
+        data: {
+            labels: roles,
+            datasets: [{
+                data: cantidadesRoles,
+                backgroundColor: ['#28a745', '#007bff', '#ffc107', '#dc3545', '#17a2b8']
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: '👥 Productos por Tipo de Vendedor',
+                    font: { size: 14 }
+                },
+                legend: { position: 'right' }
+            }
+        }
+    });
+    
+    // Mostrar resumen estadístico
+    const statsHtml = `
+        <strong>📋 Resumen General del Marketplace:</strong><br>
+        <div class="stat-card">📝 Total de productos: <span class="stat-number">${data.total}</span></div>
+        <div class="stat-card">✅ Productos disponibles: <span class="stat-number">${data.disponibles}</span></div>
+        <div class="stat-card">❌ Productos no disponibles: <span class="stat-number">${data.no_disponibles}</span></div>
+        <div class="stat-card">💰 Precio promedio: <span class="stat-number">$${data.precio_promedio}</span></div>
+    `;
+    document.getElementById('statsSummary').innerHTML = statsHtml;
+});
+</script>
+
+<a href="/admin/marketplace/product/" class="back-button">← Volver a Productos</a>
+{% endblock %}

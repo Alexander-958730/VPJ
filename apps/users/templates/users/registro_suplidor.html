@@ -1,0 +1,92 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Registro de Suplidor - VPJ - Venta Precio Justo{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <h3 class="mb-0">📦 Registro de Suplidor</h3>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Regístrate como suplidor para publicar productos y conectar con consumidores.</p>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label for="id_username" class="form-label">Nombre de usuario *</label>
+                            {{ form.username }}
+                            {% if form.username.errors %}
+                                <div class="text-danger small">{{ form.username.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="id_email" class="form-label">Correo electrónico *</label>
+                            {{ form.email }}
+                            {% if form.email.errors %}
+                                <div class="text-danger small">{{ form.email.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="id_phone" class="form-label">Teléfono *</label>
+                            {{ form.phone }}
+                            {% if form.phone.errors %}
+                                <div class="text-danger small">{{ form.phone.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="id_address" class="form-label">Dirección *</label>
+                            {{ form.address }}
+                            {% if form.address.errors %}
+                                <div class="text-danger small">{{ form.address.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="id_business_name" class="form-label">Nombre de la empresa o negocio *</label>
+                            {{ form.business_name }}
+                            {% if form.business_name.errors %}
+                                <div class="text-danger small">{{ form.business_name.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="id_password1" class="form-label">Contraseña *</label>
+                            {{ form.password1 }}
+                            <small class="text-muted">Mínimo 8 caracteres</small>
+                            {% if form.password1.errors %}
+                                <div class="text-danger small">{{ form.password1.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="id_password2" class="form-label">Confirmar contraseña *</label>
+                            {{ form.password2 }}
+                            {% if form.password2.errors %}
+                                <div class="text-danger small">{{ form.password2.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <button type="submit" class="btn btn-success w-100">Registrarse como Suplidor</button>
+                    </form>
+                    
+                    <hr>
+                    <p class="text-center mb-0">
+                        ¿Ya tienes cuenta? <a href="{% url 'users:login' %}">Inicia sesión aquí</a>
+                    </p>
+                    <p class="text-center mt-2">
+                        <a href="{% url 'users:registro_consumidor' %}">Registrarse como Consumidor</a> |
+                        <a href="{% url 'users:registro_productor' %}">Registrarse como Productor</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

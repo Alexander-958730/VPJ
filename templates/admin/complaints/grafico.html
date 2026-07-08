@@ -1,0 +1,197 @@
+{% extends "admin/base_site.html" %}
+
+{% block extrastyle %}
+<style>
+    .graph-container {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+    .graph-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #333;
+    }
+    .chart-row {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    .chart-box {
+        flex: 1;
+        min-width: 300px;
+    }
+    canvas {
+        max-height: 350px;
+        width: 100%;
+    }
+    .stats-summary {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+    .stat-number {
+        font-size: 24px;
+        font-weight: bold;
+        color: #007bff;
+    }
+    .stat-card {
+        display: inline-block;
+        margin-right: 30px;
+    }
+    .back-button {
+        margin-top: 20px;
+        display: inline-block;
+        background: #79aec8;
+        color: white;
+        padding: 10px 15px;
+        text-decoration: none;
+        border-radius: 4px;
+    }
+    .back-button:hover {
+        background: #609ab6;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="graph-container">
+    <div class="graph-title">📊 Panel de Estadísticas de Denuncias</div>
+    
+    <div class="chart-row">
+        <div class="chart-box">
+            <canvas id="complaintsChart"></canvas>
+        </div>
+        <div class="chart-box">
+            <canvas id="statusChart"></canvas>
+        </div>
+    </div>
+    
+    <div class="chart-row" style="margin-top: 20px;">
+        <div class="chart-box">
+            <canvas id="priorityChart"></canvas>
+        </div>
+    </div>
+    
+    <div class="stats-summary" id="statsSummary">
+        Cargando estadísticas...
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+<script>
+fetch('/admin/complaints/complaint/datos-denuncias/')
+.then(response => response.json())
+.then(data => {
+    // Gráfico de denuncias por mes (línea)
+    const ctx1 = document.getElementById('complaintsChart').getContext('2d');
+    new Chart(ctx1, {
+        type: 'line',
+        data: {
+            labels: data.labels,
+            datasets: data.datasets
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: '📈 Denuncias por Mes',
+                    font: { size: 14 }
+                },
+                legend: { position: 'top' }
+            },
+            scales: {
+                y: { 
+                    beginAtZero: true, 
+                    title: { display: true, text: 'Cantidad de Denuncias' },
+                    ticks: { stepSize: 1, precision: 0 }
+                },
+                x: { title: { display: true, text: 'Mes' } }
+            }
+        }
+    });
+    
+    // Gráfico de denuncias por estado (pastel)
+    const ctx2 = document.getElementById('statusChart').getContext('2d');
+    new Chart(ctx2, {
+        type: 'pie',
+        data: {
+            labels: data.status_labels,
+            datasets: [{
+                label: 'Denuncias por Estado',
+                data: data.status_counts,
+                backgroundColor: [
+                    '#ff6384', '#36a2eb', '#ffce56', '#4bc0c0', '#9966ff', '#ff9f40'
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: '📊 Denuncias por Estado',
+                    font: { size: 14 }
+                },
+                legend: { position: 'right' }
+            }
+        }
+    });
+    
+    // Gráfico de denuncias por prioridad (barra)
+    if (data.priority_labels && data.priority_labels.length > 0) {
+        const ctx3 = document.getElementById('priorityChart').getContext('2d');
+        new Chart(ctx3, {
+            type: 'bar',
+            data: {
+                labels: data.priority_labels,
+                datasets: [{
+                    label: 'Denuncias por Prioridad',
+                    data: data.priority_counts,
+                    backgroundColor: '#ff9f40',
+                    borderColor: '#cc7a00',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '⚠️ Denuncias por Prioridad',
+                        font: { size: 14 }
+                    }
+                },
+                scales: {
+                    y: { 
+                        beginAtZero: true, 
+                        title: { display: true, text: 'Cantidad' },
+                        ticks: { stepSize: 1, precision: 0 }
+                    }
+                }
+            }
+        });
+    }
+    
+    // Mostrar resumen estadístico
+    const total = data.status_counts.reduce((a, b) => a + b, 0);
+    const statsHtml = `
+        <strong>📋 Resumen General:</strong><br>
+        <div class="stat-card">📝 Total de denuncias: <span class="stat-number">${total}</span></div>
+        <div class="stat-card">📅 Período: ${data.labels.length > 0 ? data.labels[0] + ' - ' + data.labels[data.labels.length-1] : 'Sin datos'}</div>
+        <div class="stat-card">📊 Promedio mensual: ${data.labels.length > 0 ? (total / data.labels.length).toFixed(1) : 0}</div>
+    `;
+    document.getElementById('statsSummary').innerHTML = statsHtml;
+});
+</script>
+
+<a href="/admin/complaints/complaint/" class="back-button">← Volver a Denuncias</a>
+{% endblock %}

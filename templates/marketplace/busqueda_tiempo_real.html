@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Búsqueda en Tiempo Real - VPJ - Venta Precio Justo{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4">🔍 Búsqueda en Tiempo Real</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Buscador de Productos -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h4><i class="fas fa-box"></i> Buscar Productos</h4>
+                </div>
+                <div class="card-body">
+                    <input type="text" 
+                           id="buscar-producto" 
+                           class="form-control form-control-lg mb-3" 
+                           placeholder="Escribe el nombre del producto..."
+                           autocomplete="off">
+                    
+                    <div id="resultados-productos" class="mt-3">
+                        <div class="alert alert-info text-center">
+                            Escribe al menos 2 caracteres para comenzar la búsqueda
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buscador de Suplidores -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h4><i class="fas fa-truck"></i> Buscar Suplidores</h4>
+                </div>
+                <div class="card-body">
+                    <input type="text" 
+                           id="buscar-suplidor" 
+                           class="form-control form-control-lg mb-3" 
+                           placeholder="Escribe el nombre del suplidor..."
+                           autocomplete="off">
+                    
+                    <div id="resultados-suplidores" class="mt-3">
+                        <div class="alert alert-info text-center">
+                            Escribe al menos 2 caracteres para comenzar la búsqueda
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .resultado-item {
+        background: white;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        padding: 12px;
+        margin-bottom: 10px;
+        transition: all 0.2s;
+    }
+    .resultado-item:hover {
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transform: translateX(5px);
+    }
+    .resultado-nombre {
+        font-weight: bold;
+        font-size: 16px;
+        color: #2d6a4f;
+    }
+    .resultado-detalle {
+        font-size: 12px;
+        color: #666;
+    }
+    .loading {
+        text-align: center;
+        padding: 20px;
+        color: #2d6a4f;
+    }
+</style>
+
+<script>
+    // Variables para controlar timeouts
+    let timeoutProductos = null;
+    let timeoutSuplidores = null;
+
+    // Buscador de Productos
+    const inputProducto = document.getElementById('buscar-producto');
+    const resultadosProductos = document.getElementById('resultados-productos');
+
+    inputProducto.addEventListener('input', function() {
+        clearTimeout(timeoutProductos);
+        const query = this.value.trim();
+        
+        if (query.length < 2) {
+            resultadosProductos.innerHTML = '<div class="alert alert-info text-center">Escribe al menos 2 caracteres para comenzar la búsqueda</div>';
+            return;
+        }
+        
+        // Mostrar loading
+        resultadosProductos.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i> Buscando...</div>';
+        
+        timeoutProductos = setTimeout(() => {
+            fetch(`/productos/api/buscar-productos/?q=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.productos.length === 0) {
+                        resultadosProductos.innerHTML = `<div class="alert alert-warning text-center">No se encontraron productos para "${data.query}"</div>`;
+                        return;
+                    }
+                    
+                    let html = '';
+                    data.productos.forEach(p => {
+                        html += `
+                            <div class="resultado-item">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <div class="resultado-nombre">
+                                            <i class="fas fa-box"></i> ${p.name}
+                                        </div>
+                                        <div class="resultado-detalle">
+                                            <i class="fas fa-tag"></i> ${p.category} | 
+                                            <i class="fas fa-dollar-sign"></i> $${p.price} |
+                                            <i class="fas fa-boxes"></i> Stock: ${p.stock}
+                                            ${p.productor ? `<br><i class="fas fa-user"></i> Productor: ${p.productor}` : ''}
+                                        </div>
+                                    </div>
+                                    <a href="/productos/producto/${p.id}/" class="btn btn-sm btn-success">Ver</a>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    resultadosProductos.innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    resultadosProductos.innerHTML = '<div class="alert alert-danger text-center">Error al buscar productos</div>';
+                });
+        }, 300);
+    });
+
+    // Buscador de Suplidores
+    const inputSuplidor = document.getElementById('buscar-suplidor');
+    const resultadosSuplidores = document.getElementById('resultados-suplidores');
+
+    inputSuplidor.addEventListener('input', function() {
+        clearTimeout(timeoutSuplidores);
+        const query = this.value.trim();
+        
+        if (query.length < 2) {
+            resultadosSuplidores.innerHTML = '<div class="alert alert-info text-center">Escribe al menos 2 caracteres para comenzar la búsqueda</div>';
+            return;
+        }
+        
+        // Mostrar loading
+        resultadosSuplidores.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i> Buscando...</div>';
+        
+        timeoutSuplidores = setTimeout(() => {
+            fetch(`/productos/api/buscar-suplidores/?q=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.suplidores.length === 0) {
+                        resultadosSuplidores.innerHTML = `<div class="alert alert-warning text-center">No se encontraron suplidores para "${data.query}"</div>`;
+                        return;
+                    }
+                    
+                    let html = '';
+                    data.suplidores.forEach(s => {
+                        html += `
+                            <div class="resultado-item">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <div class="resultado-nombre">
+                                            <i class="fas fa-user"></i> ${s.nombre}
+                                        </div>
+                                        <div class="resultado-detalle">
+                                            ${s.business_name ? `<i class="fas fa-building"></i> ${s.business_name}<br>` : ''}
+                                            <i class="fas fa-envelope"></i> ${s.email}
+                                            ${s.telefono ? `<br><i class="fas fa-phone"></i> ${s.telefono}` : ''}
+                                        </div>
+                                    </div>
+                                    <a href="${s.url}" class="btn btn-sm btn-info">Ver Perfil</a>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    resultadosSuplidores.innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    resultadosSuplidores.innerHTML = '<div class="alert alert-danger text-center">Error al buscar suplidores</div>';
+                });
+        }, 300);
+    });
+</script>
+{% endblock %}

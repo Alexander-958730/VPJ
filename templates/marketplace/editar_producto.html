@@ -1,0 +1,391 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Editar Producto - VPJ - Venta Precio Justo{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-header bg-warning text-dark">
+                <h4>
+                    {% if user.role == 'productor' %}
+                        ✏️ Editar Producto (Productor)
+                    {% else %}
+                        ✏️ Editar Producto (Suplidor)
+                    {% endif %}
+                </h4>
+            </div>
+            <div class="card-body">
+                {% if user.role == 'suplidor' %}
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle"></i> 
+                    <strong>Trazabilidad de precio justo:</strong> Recuerda que el precio de venta debe ser mayor al precio de compra al productor.
+                </div>
+                {% endif %}
+                
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    <!-- ========== NOMBRE Y DESCRIPCIÓN ========== -->
+                    <div class="mb-3">
+                        <label class="form-label">Nombre del producto *</label>
+                        {{ form.name }}
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Descripción</label>
+                        {{ form.description }}
+                    </div>
+                    
+                    <!-- ========== CAMPOS PARA SUPLIDORES ========== -->
+                    {% if user.role == 'suplidor' %}
+                    <div class="mb-3">
+                        <label class="form-label">Productor original *</label>
+                        {{ form.productor_origen }}
+                        <small class="text-muted">{{ form.productor_origen.help_text }}</small>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Precio de compra al productor (RD$) *</label>
+                        {{ form.precio_compra_productor }}
+                        <small class="text-muted">{{ form.precio_compra_productor.help_text }}</small>
+                    </div>
+                    {% endif %}
+                    
+                    <!-- ========== CATEGORÍA Y SUBCATEGORÍA ========== -->
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Categoría *</label>
+                            {{ form.category }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Subcategoría</label>
+                            {{ form.subcategory }}
+                            <small class="text-muted">Selecciona primero una categoría</small>
+                        </div>
+                    </div>
+                    <!-- ========== FIN CATEGORÍA Y SUBCATEGORÍA ========== -->
+                    
+                    <!-- ========== PRECIO Y UNIDAD ========== -->
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Precio (RD$) *</label>
+                            {{ form.price }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Unidad de medida *</label>
+                            {{ form.unit }}
+                        </div>
+                    </div>
+                    <!-- ========== FIN PRECIO Y UNIDAD ========== -->
+                    
+                    <!-- ========== STOCK ========== -->
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Stock disponible *</label>
+                            {{ form.stock }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Stock mínimo *</label>
+                            {{ form.stock_minimo }}
+                            <small class="text-muted">Alerta cuando el stock baje de este número</small>
+                        </div>
+                    </div>
+                    <!-- ========== FIN STOCK ========== -->
+                    
+                    <!-- ========== IMAGEN ========== -->
+                    <div class="mb-3">
+                        <label class="form-label">Imagen del producto</label>
+                        {{ form.image }}
+                        {% if producto.image %}
+                        <div class="mt-2">
+                            <img src="{{ producto.image.url }}" alt="{{ producto.name }}" style="max-height: 100px;">
+                        </div>
+                        {% endif %}
+                    </div>
+                    <!-- ========== FIN IMAGEN ========== -->
+                    
+                    <!-- ========== SWITCH DISPONIBLE ========== -->
+                    <div class="mb-4">
+                        <div class="card border-{% if form.available.value %}success{% else %}danger{% endif %}">
+                            <div class="card-body">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="available" id="available" 
+                                           {% if form.available.value %}checked{% endif %} 
+                                           style="width: 3rem; height: 1.5rem; cursor: pointer;">
+                                    <label class="form-check-label fw-bold" for="available" style="font-size: 1.1rem;">
+                                        <i class="fas fa-toggle-on"></i> 
+                                        <span id="estado-disponible" class="{% if form.available.value %}text-success{% else %}text-danger{% endif %}">
+                                            {% if form.available.value %}
+                                                ✅ Producto disponible para la venta
+                                            {% else %}
+                                                ❌ Producto no disponible
+                                            {% endif %}
+                                        </span>
+                                    </label>
+                                    <div class="form-text text-muted mt-2">
+                                        <i class="fas fa-info-circle"></i> 
+                                        <strong>¿Qué significa esto?</strong><br>
+                                        ✅ <strong>Disponible:</strong> El producto aparecerá en el catálogo y los consumidores podrán comprarlo.<br>
+                                        ❌ <strong>No disponible:</strong> El producto NO aparecerá en el catálogo (se oculta de la vista de los consumidores).<br>
+                                        <br>
+                                        <i class="fas fa-lock text-warning"></i> 
+                                        <strong>Nota:</strong> Cuando el stock llegue a <strong>0 (cero)</strong>, el sistema lo desactivará automáticamente.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ========== FIN SWITCH DISPONIBLE ========== -->
+                    
+                    <!-- ========== BOTONES DE ACCIÓN ========== -->
+                    <div class="d-flex gap-2 mt-4">
+                        <button type="submit" class="btn btn-warning flex-grow-1">
+                            <i class="fas fa-edit"></i> Actualizar Producto
+                        </button>
+                        <a href="{% url 'marketplace:mis_productos' %}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Volver a mis productos
+                        </a>
+                    </div>
+                    <!-- ========== FIN BOTONES DE ACCIÓN ========== -->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ========== SCRIPT PARA CAMBIAR EL TEXTO DEL ESTADO ==========
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggle = document.getElementById('available');
+        const estado = document.getElementById('estado-disponible');
+        
+        if (toggle) {
+            toggle.addEventListener('change', function() {
+                if (this.checked) {
+                    estado.textContent = '✅ Producto disponible para la venta';
+                    estado.className = 'text-success';
+                    this.closest('.card').className = 'card border-success';
+                } else {
+                    estado.textContent = '❌ Producto no disponible';
+                    estado.className = 'text-danger';
+                    this.closest('.card').className = 'card border-danger';
+                }
+            });
+        }
+        
+        // ========== SUB categorías dinámicas ==========
+        const categorySelect = document.querySelector('#id_category');
+        const subcategorySelect = document.querySelector('#id_subcategory');
+        
+        if (categorySelect && subcategorySelect) {
+            // ========== SUBCATEGORÍAS COMPLETAS ==========
+            const subcategoriasPorCategoria = {
+                'frutas': [
+                    {'value': 'citricos', 'label': '🍊 Cítricos'},
+                    {'value': 'tropicales', 'label': '🥭 Tropicales'},
+                    {'value': 'bayas', 'label': '🍓 Bayas'},
+                    {'value': 'otras_frutas', 'label': '🍇 Otras frutas'},
+                ],
+                'verduras': [
+                    {'value': 'hojas_verdes', 'label': '🥬 Hojas verdes'},
+                    {'value': 'raices', 'label': '🥕 Raíces'},
+                    {'value': 'flores', 'label': '🥦 Flores'},
+                    {'value': 'otras_verduras', 'label': '🌽 Otras verduras'},
+                ],
+                'granos': [
+                    {'value': 'arroz', 'label': '🍚 Arroz'},
+                    {'value': 'maiz', 'label': '🌽 Maíz'},
+                    {'value': 'trigo', 'label': '🌾 Trigo'},
+                    {'value': 'avena', 'label': '🌾 Avena'},
+                    {'value': 'otros_granos', 'label': '📦 Otros granos'},
+                ],
+                'tuberculos': [
+                    {'value': 'papa', 'label': '🥔 Papa'},
+                    {'value': 'yuca', 'label': '🌱 Yuca'},
+                    {'value': 'batata', 'label': '🍠 Batata'},
+                    {'value': 'name', 'label': '🌿 Ñame'},
+                    {'value': 'malanga', 'label': '🌿 Malanga'},
+                    {'value': 'otros_tuberculos', 'label': '📦 Otros tubérculos'},
+                ],
+                'legumbres': [
+                    {'value': 'frijoles', 'label': '🫘 Frijoles'},
+                    {'value': 'lentejas', 'label': '🫘 Lentejas'},
+                    {'value': 'garbanzos', 'label': '🫘 Garbanzos'},
+                    {'value': 'habichuelas', 'label': '🫘 Habichuelas'},
+                    {'value': 'guandules', 'label': '🫘 Guandules'},
+                    {'value': 'otras_legumbres', 'label': '📦 Otras legumbres'},
+                ],
+                'cereal': [
+                    {'value': 'arroz', 'label': '🍚 Arroz'},
+                    {'value': 'maiz', 'label': '🌽 Maíz'},
+                    {'value': 'trigo', 'label': '🌾 Trigo'},
+                    {'value': 'avena', 'label': '🌾 Avena'},
+                    {'value': 'cebada', 'label': '🌾 Cebada'},
+                    {'value': 'otros_cereales', 'label': '📦 Otros cereales'},
+                ],
+                'lacteos': [
+                    {'value': 'leche', 'label': '🥛 Leche'},
+                    {'value': 'queso', 'label': '🧀 Queso'},
+                    {'value': 'yogurt', 'label': '🫙 Yogurt'},
+                    {'value': 'mantequilla', 'label': '🧈 Mantequilla'},
+                    {'value': 'boruga', 'label': '🧀 Boruga'},
+                    {'value': 'nata', 'label': '🥛 Nata'},
+                    {'value': 'otros_lacteos', 'label': '📦 Otros lácteos'},
+                ],
+                'viveres': [
+                    {'value': 'platano', 'label': '🍌 Plátano'},
+                    {'value': 'guineo', 'label': '🍌 Guineo'},
+                    {'value': 'relleno', 'label': '🍌 Relleno'},
+                    {'value': 'topocho', 'label': '🍌 Topocho'},
+                    {'value': 'otros_viveres', 'label': '📦 Otros viveres'},
+                ],
+                'viandas': [
+                    {'value': 'name', 'label': '🌿 Ñame'},
+                    {'value': 'malanga', 'label': '🌿 Malanga'},
+                    {'value': 'yautia', 'label': '🌿 Yautía'},
+                    {'value': 'batata', 'label': '🍠 Batata'},
+                    {'value': 'otras_viandas', 'label': '📦 Otras viandas'},
+                ],
+                'bebidas': [
+                    {'value': 'jugos_naturales', 'label': '🧃 Jugos naturales'},
+                    {'value': 'refrescos', 'label': '🥤 Refrescos'},
+                    {'value': 'agua', 'label': '💧 Agua'},
+                    {'value': 'bebidas_lacteas', 'label': '🥛 Bebidas lácteas'},
+                    {'value': 'otras_bebidas', 'label': '🧃 Otras bebidas'},
+                ],
+                'condimentos': [
+                    {'value': 'sal', 'label': '🧂 Sal'},
+                    {'value': 'pimienta', 'label': '🌶️ Pimienta'},
+                    {'value': 'comino', 'label': '🌶️ Comino'},
+                    {'value': 'oregano_seco', 'label': '🌿 Orégano seco'},
+                    {'value': 'aji', 'label': '🌶️ Ají'},
+                    {'value': 'otros_condimentos', 'label': '📦 Otros condimentos'},
+                ],
+                'especias': [
+                    {'value': 'canela', 'label': '🌿 Canela'},
+                    {'value': 'clavo', 'label': '🌿 Clavo'},
+                    {'value': 'nuez_moscada', 'label': '🌿 Nuez moscada'},
+                    {'value': 'jengibre', 'label': '🌿 Jengibre'},
+                    {'value': 'curcuma', 'label': '🌿 Cúrcuma'},
+                    {'value': 'otras_especias', 'label': '📦 Otras especias'},
+                ],
+                'hierbas_aromaticas': [
+                    {'value': 'cilantro', 'label': '🌿 Cilantro'},
+                    {'value': 'perejil', 'label': '🌿 Perejil'},
+                    {'value': 'oregano', 'label': '🌿 Orégano'},
+                    {'value': 'menta', 'label': '🌿 Menta'},
+                    {'value': 'romero', 'label': '🌿 Romero'},
+                    {'value': 'albahaca', 'label': '🌿 Albahaca'},
+                    {'value': 'otras_hierbas', 'label': '🌿 Otras hierbas'},
+                ],
+                'mariscos': [
+                    {'value': 'camarones', 'label': '🦐 Camarones'},
+                    {'value': 'langosta', 'label': '🦞 Langosta'},
+                    {'value': 'cangrejo', 'label': '🦀 Cangrejo'},
+                    {'value': 'calamar', 'label': '🦑 Calamar'},
+                    {'value': 'pulpo', 'label': '🐙 Pulpo'},
+                    {'value': 'lambi', 'label': '🐚 Lambi'},
+                    {'value': 'vacalao', 'label': '🐟 Vacalao'},
+                    {'value': 'otros_mariscos', 'label': '📦 Otros mariscos'},
+                ],
+                'moluscos': [
+                    {'value': 'ostras', 'label': '🦪 Ostras'},
+                    {'value': 'mejillones', 'label': '🐚 Mejillones'},
+                    {'value': 'almejas', 'label': '🐚 Almejas'},
+                    {'value': 'caracoles', 'label': '🐚 Caracoles'},
+                    {'value': 'otros_moluscos', 'label': '📦 Otros moluscos'},
+                ],
+                'embutidos_carnes': [
+                    {'value': 'salami', 'label': '🥩 Salami'},
+                    {'value': 'jamon', 'label': '🥩 Jamón'},
+                    {'value': 'chuletas_con_hueso', 'label': '🍖 Chuletas con hueso'},
+                    {'value': 'chuletas_sin_hueso', 'label': '🥩 Chuleta sin hueso'},
+                    {'value': 'longaniza', 'label': '🌭 Longaniza'},
+                    {'value': 'molida', 'label': '🥩 Molida'},
+                    {'value': 'salchichas', 'label': '🌭 Salchichas'},
+                    {'value': 'costillitas', 'label': '🍖 Costillitas'},
+                    {'value': 'arenque', 'label': '🐟 Arenque'},
+                    {'value': 'res', 'label': '🥩 Res'},
+                    {'value': 'pollo', 'label': '🍗 Pollo'},
+                    {'value': 'cerdo', 'label': '🥩 Cerdo'},
+                    {'value': 'pavo', 'label': '🦃 Pavo'},
+                    {'value': 'chivo', 'label': '🐐 Chivo'},
+                    {'value': 'guineas', 'label': '🦃 Guineas'},
+                    {'value': 'otros_embutidos', 'label': '📦 Otros embutidos'},
+                ],
+                'panaderia': [
+                    {'value': 'pan', 'label': '🍞 Pan'},
+                    {'value': 'bizcochos', 'label': '🎂 Bizcochos'},
+                    {'value': 'pasteles', 'label': '🧁 Pasteles'},
+                    {'value': 'reposteria', 'label': '🍰 Repostería'},
+                    {'value': 'otros_panaderia', 'label': '📦 Otros productos de panadería'},
+                ],
+                'abarrotes': [
+                    {'value': 'pastas', 'label': '🍝 Pastas'},
+                    {'value': 'enlatados', 'label': '🥫 Enlatados'},
+                    {'value': 'salsas', 'label': '🥫 Salsas'},
+                    {'value': 'vinagres', 'label': '🧪 Vinagres'},
+                    {'value': 'otros_abarrotes', 'label': '📦 Otros abarrotes'},
+                ],
+                'cafe_te': [
+                    {'value': 'cafe_grano', 'label': '☕ Café en grano'},
+                    {'value': 'cafe_molido', 'label': '☕ Café molido'},
+                    {'value': 'te', 'label': '🍵 Té'},
+                    {'value': 'infusiones', 'label': '🌿 Infusiones'},
+                    {'value': 'otros_cafe_te', 'label': '📦 Otros cafés y tés'},
+                ],
+                'cacao_chocolate': [
+                    {'value': 'cacao_grano', 'label': '🍫 Cacao en grano'},
+                    {'value': 'cacao_pasta', 'label': '🍫 Pasta de cacao'},
+                    {'value': 'chocolate_artesanal', 'label': '🍫 Chocolate artesanal'},
+                    {'value': 'otros_cacao', 'label': '📦 Otros productos de cacao'},
+                ],
+                'hongos_setas': [
+                    {'value': 'champiñones', 'label': '🍄 Champiñones'},
+                    {'value': 'portobello', 'label': '🍄 Portobello'},
+                    {'value': 'shiitake', 'label': '🍄 Shiitake'},
+                    {'value': 'otros_hongos', 'label': '📦 Otros hongos'},
+                ],
+                'pescados': [
+                    {'value': 'pescado_fresco', 'label': '🐟 Pescado fresco'},
+                    {'value': 'pescado_salado', 'label': '🐟 Pescado salado'},
+                    {'value': 'pescado_ahumado', 'label': '🐟 Pescado ahumado'},
+                    {'value': 'otros_pescados', 'label': '📦 Otros pescados'},
+                ],
+                'aceites_grasas': [
+                    {'value': 'aceite_vegetal', 'label': '🫒 Aceite vegetal'},
+                    {'value': 'aceite_oliva', 'label': '🫒 Aceite de oliva'},
+                    {'value': 'manteca', 'label': '🧈 Manteca'},
+                    {'value': 'grasa_cerdo', 'label': '🥓 Grasa de cerdo'},
+                    {'value': 'otros_aceites', 'label': '📦 Otros aceites y grasas'},
+                ],
+                'endulzantes': [
+                    {'value': 'azucar', 'label': '🍬 Azúcar'},
+                    {'value': 'panela', 'label': '🍯 Panela'},
+                    {'value': 'miel', 'label': '🍯 Miel de abeja'},
+                    {'value': 'otros_endulzantes', 'label': '📦 Otros endulzantes'},
+                ],
+            };
+            
+            function actualizarSubcategorias() {
+                const categoriaSeleccionada = categorySelect.value;
+                const subcategorias = subcategoriasPorCategoria[categoriaSeleccionada] || [];
+                
+                subcategorySelect.innerHTML = '<option value="">--- Selecciona una subcategoría ---</option>';
+                
+                subcategorias.forEach(function(sub) {
+                    const option = document.createElement('option');
+                    option.value = sub.value;
+                    option.textContent = sub.label;
+                    subcategorySelect.appendChild(option);
+                });
+                
+                subcategorySelect.disabled = (subcategorias.length === 0);
+            }
+            
+            categorySelect.addEventListener('change', actualizarSubcategorias);
+            actualizarSubcategorias();
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,220 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Confirmar Pedido - VPJ - Venta Precio Justo{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4 text-center">📝 Confirmar tu Pedido</h1>
+    
+    <div class="row">
+        <!-- Columna de productos -->
+        <div class="col-md-6">
+            <div class="card shadow mb-4">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0"><i class="fas fa-box"></i> Tus Productos</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in items %}
+                                <tr>
+                                    <td>
+                                        <strong>{{ item.product.name }}</strong><br>
+                                        <small class="text-muted">Vendedor: {{ item.product.vendedor.business_name|default:item.product.vendedor.username }}</small>
+                                    </a>
+                                    <td>{{ item.quantity }}</a>
+                                    <td><strong>RD$ {{ item.get_total_price|floatformat:2 }}</strong></a>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            <tfoot class="table-light">
+                                <tr>
+                                    <td colspan="2" class="text-end"><strong>Total:</strong></a>
+                                    <td><strong class="text-success">RD$ {{ total_price|floatformat:2 }}</strong></a>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Columna del formulario -->
+        <div class="col-md-6">
+            <!-- Desglose por productor -->
+            <div class="card mb-3">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0"><i class="fas fa-store"></i> Productores</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>📦 Productos de {{ total_productores }} productor(es):</strong></p>
+                    {% for id, data in productores.items %}
+                    <div class="alert alert-light">
+                        <strong>🌾 {{ data.nombre }}:</strong> RD$ {{ data.total|floatformat:2 }}
+                        <small class="text-muted">({{ data.items|length }} producto(s))</small>
+                    </div>
+                    {% endfor %}
+                    <hr>
+                    <h5 class="text-success">Total a pagar: RD$ {{ total_price|floatformat:2 }}</h5>
+                    <p class="text-muted small">💵 Pagas un solo pago al Centro de Acopio. Ellos se encargan de distribuir a cada productor.</p>
+                </div>
+            </div>
+            
+            <div class="card shadow">
+                <div class="card-header bg-info text-white">
+                    <h4 class="mb-0"><i class="fas fa-truck"></i> Información de Entrega</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        <!-- Método de pago (fijo en contra entrega) -->
+                        <div class="alert alert-success mb-3 text-center">
+                            <i class="fas fa-money-bill-wave fa-2x"></i>
+                            <h5 class="mb-0">💵 Pagas al recibir tu pedido</h5>
+                            <small>Solo efectivo contra entrega</small>
+                        </div>
+                        
+                        <!-- Tipo de entrega -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-truck"></i> ¿Cómo quieres recibir tu pedido?
+                            </label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card text-center p-2 mb-2" onclick="seleccionarEntrega('delivery')" id="card-delivery" style="cursor: pointer; border: 2px solid #28a745;">
+                                        <i class="fas fa-truck fa-2x text-success"></i>
+                                        <strong>🚚 Entrega a domicilio</strong>
+                                        <small>Te lo llevamos a casa</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card text-center p-2 mb-2" onclick="seleccionarEntrega('pickup')" id="card-pickup" style="cursor: pointer; border: 2px solid #ccc;">
+                                        <i class="fas fa-store fa-2x text-info"></i>
+                                        <strong>🏪 Paso a recoger</strong>
+                                        <small>Retiro en punto de venta</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" name="delivery_type" id="delivery_type" value="delivery">
+                        </div>
+                        
+                        <!-- Campos para ENTREGA A DOMICILIO -->
+                        <div id="delivery-fields" class="mb-3">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-map-marker-alt text-danger"></i> Dirección de entrega
+                            </label>
+                            <textarea name="shipping_address" class="form-control" rows="2" 
+                                      placeholder="Ej: Calle Principal #123, Barrio Bonito, Azua"></textarea>
+                            <small class="text-muted">Escribe una dirección clara y fácil de encontrar</small>
+                        </div>
+                        
+                        <!-- Campos para PASAR A RECOGER -->
+                        <div id="pickup-fields" class="mb-3" style="display: none;">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-store text-info"></i> ¿Dónde pasarás a recoger?
+                            </label>
+                            <select name="pickup_location" class="form-select">
+                                <option value="">Selecciona un punto de recogida</option>
+                                <option value="finca_productor">🌱 Recoger en la finca del productor</option>
+                                <option value="mercado_azua">🏪 Mercado Municipal de Azua</option>
+                                <option value="oficina_onpeco">🏢 Oficina ONPECO - Centro Azua</option>
+                                <option value="punto_acopio">📦 Punto de Acopio - Los Negros</option>
+                            </select>
+                            <small class="text-muted">Selecciona el lugar donde pasarás a recoger tu pedido</small>
+                        </div>
+                        
+                        <!-- Teléfono -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-phone text-success"></i> Teléfono de contacto
+                            </label>
+                            <input type="tel" name="phone_number" class="form-control" 
+                                   value="{{ user_phone }}"
+                                   placeholder="Ej: 809-555-1234" required>
+                            <small class="text-muted">El productor te contactará para coordinar</small>
+                        </div>
+                        
+                        <!-- Instrucciones adicionales -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-info-circle text-info"></i> Instrucciones (opcional)
+                            </label>
+                            <textarea name="delivery_instructions" class="form-control" rows="2" 
+                                      placeholder="Ej: Llamar antes de llegar, tocar el timbre"></textarea>
+                        </div>
+                        
+                        <hr>
+                        
+                        <!-- Resumen -->
+                        <div class="mb-3">
+                            <p><strong>📦 Total de productos:</strong> {{ total_items }}</p>
+                            <h4 class="text-success">💰 Total a pagar: RD$ {{ total_price|floatformat:2 }}</h4>
+                            <p class="text-muted small">💵 Pagas en efectivo al momento de recibir tu pedido</p>
+                        </div>
+                        
+                        <!-- Botones -->
+                        <button type="submit" class="btn btn-success w-100 btn-lg">
+                            <i class="fas fa-check-circle"></i> Confirmar Pedido
+                        </button>
+                        <a href="{% url 'cart:ver_carrito' %}" class="btn btn-secondary w-100 mt-2">
+                            <i class="fas fa-arrow-left"></i> Volver al carrito
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Instrucciones claras -->
+    <div class="alert alert-info mt-4 text-center">
+        <i class="fas fa-info-circle fa-2x mb-2"></i>
+        <h5>¿Cómo funciona?</h5>
+        <p class="mb-0">
+            <strong>🚚 Entrega a domicilio:</strong> El Centro de Acopio te lleva el pedido a tu casa. Pagas al recibir.<br>
+            <strong>🏪 Paso a recoger:</strong> Tú pasas por el punto de recogida. Pagas al retirar.<br>
+            <strong>💵 Pagas un solo pago al Centro de Acopio.</strong> Ellos se encargan de distribuir el pago a cada productor.
+        </p>
+    </div>
+</div>
+
+<script>
+function seleccionarEntrega(tipo) {
+    // Actualizar el valor del campo oculto
+    document.getElementById('delivery_type').value = tipo;
+    
+    // Cambiar estilos de las tarjetas
+    const cardDelivery = document.getElementById('card-delivery');
+    const cardPickup = document.getElementById('card-pickup');
+    const deliveryFields = document.getElementById('delivery-fields');
+    const pickupFields = document.getElementById('pickup-fields');
+    
+    if (tipo === 'delivery') {
+        cardDelivery.style.border = '2px solid #28a745';
+        cardPickup.style.border = '2px solid #ccc';
+        deliveryFields.style.display = 'block';
+        pickupFields.style.display = 'none';
+        // Hacer requerido el campo de dirección
+        document.querySelector('textarea[name="shipping_address"]').required = true;
+        document.querySelector('select[name="pickup_location"]').required = false;
+    } else {
+        cardDelivery.style.border = '2px solid #ccc';
+        cardPickup.style.border = '2px solid #28a745';
+        deliveryFields.style.display = 'none';
+        pickupFields.style.display = 'block';
+        // Hacer requerido el campo de recogida
+        document.querySelector('textarea[name="shipping_address"]').required = false;
+        document.querySelector('select[name="pickup_location"]').required = true;
+    }
+}
+</script>
+{% endblock %}

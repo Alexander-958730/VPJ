@@ -1,0 +1,78 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Gestión de Respaldos - ONPECO{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header bg-warning">
+            <h3><i class="fas fa-undo-alt"></i> Gestión de Respaldos - ONPECO</h3>
+            <p class="mb-0">Crea puntos de restauración o restaura el sistema a un estado anterior</p>
+        </div>
+        <div class="card-body">
+            
+            <!-- Consejo -->
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i> <strong>Consejo:</strong> Crea un punto de restauración antes de hacer cambios importantes en el sistema.
+            </div>
+            
+            <!-- Formulario para crear punto de restauración con descripción -->
+            <form method="POST" action="{% url 'complaints:crear_punto_restauracion' %}" class="mb-4 p-3 border rounded">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-8">
+                        <label for="descripcion" class="form-label">Descripción del punto de restauración:</label>
+                        <input type="text" name="descripcion" id="descripcion" placeholder="Ej: Antes de actualizar productos" class="form-control">
+                    </div>
+                    <div class="col-md-4 d-flex align-items-end">
+                        <button type="submit" class="btn btn-success w-100">
+                            <i class="fas fa-plus-circle"></i> Crear punto de restauración
+                        </button>
+                    </div>
+                </div>
+            </form>
+            
+            <hr>
+            
+            <h4>Puntos de restauración disponibles</h4>
+            
+            {% if backups %}
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Archivo</th>
+                            <th>Tamaño (MB)</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for backup in backups %}
+                        <tr>
+                            <td>{{ backup.fecha|date:"Y-m-d H:i:s" }}</td>
+                            <td><code>{{ backup.nombre }}</code></td>
+                            <td>{{ backup.tamano }}</td>
+                            <td>
+                                <form method="POST" action="{% url 'complaints:restaurar_backup' backup.nombre %}" style="display: inline;" onsubmit="return confirm('¿Estás seguro? Esta acción restaurará el sistema a este punto.')">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-warning btn-sm">
+                                        <i class="fas fa-trash-restore"></i> Restaurar
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="alert alert-warning">
+                <i class="fas fa-exclamation-triangle"></i> No hay puntos de restauración disponibles. Usa el botón "Crear punto de restauración" para crear tu primer respaldo.
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

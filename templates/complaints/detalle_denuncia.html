@@ -1,0 +1,133 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Denuncia {{ denuncia.ticket_number }} - VPJ - Venta Precio Justo{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card shadow">
+            <div class="card-header bg-danger text-white">
+                <h4>🎫 Denuncia: {{ denuncia.ticket_number }}</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <strong>Fecha:</strong> {{ denuncia.created_at|date:"d/m/Y H:i" }}
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Última actualización:</strong> {{ denuncia.updated_at|date:"d/m/Y H:i" }}
+                    </div>
+                </div>
+                
+                <div class="alert alert-secondary">
+                    <strong>Título:</strong> {{ denuncia.title }}
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-4">
+                        <strong>Tipo:</strong> {{ denuncia.get_complaint_type_display }}
+                    </div>
+                    <div class="col-md-4">
+                        <strong>Prioridad:</strong>
+                        {% if denuncia.priority == 'high' %}
+                            <span class="badge bg-danger">Alta</span>
+                        {% elif denuncia.priority == 'medium' %}
+                            <span class="badge bg-warning">Media</span>
+                        {% else %}
+                            <span class="badge bg-success">Baja</span>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-4">
+                        <strong>Estado actual:</strong>
+                        {% if denuncia.status == 'pending' %}
+                            <span class="badge bg-warning">Pendiente</span>
+                        {% elif denuncia.status == 'investigating' %}
+                            <span class="badge bg-info">En investigación</span>
+                        {% elif denuncia.status == 'resolved' %}
+                            <span class="badge bg-success">Resuelto</span>
+                        {% else %}
+                            <span class="badge bg-danger">Rechazado</span>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <hr>
+                
+                <div class="mb-3">
+                    <strong>Denunciante:</strong> {{ denuncia.complainant.username }}
+                </div>
+                <div class="mb-3">
+                    <strong>Productor denunciado:</strong> {{ denuncia.complained_against.business_name|default:denuncia.complained_against.username }}
+                </div>
+                
+                <div class="mb-3">
+                    <strong>Descripción:</strong>
+                    <p class="mt-2">{{ denuncia.description|linebreaks }}</p>
+                </div>
+                
+                <hr>
+                
+                <!-- FORMULARIO PARA ADMINISTRADORES - CAMBIAR ESTADO -->
+                {% if user.is_staff or user.role == 'regulador' %}
+                <div class="card bg-light mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">🔧 Actualizar Estado de la Denuncia</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Nuevo Estado</label>
+                                    <select name="status" class="form-control">
+                                        <option value="pending" {% if denuncia.status == 'pending' %}selected{% endif %}>Pendiente</option>
+                                        <option value="investigating" {% if denuncia.status == 'investigating' %}selected{% endif %}>En investigación</option>
+                                        <option value="resolved" {% if denuncia.status == 'resolved' %}selected{% endif %}>Resuelto</option>
+                                        <option value="rejected" {% if denuncia.status == 'rejected' %}selected{% endif %}>Rechazado</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Comentario (opcional)</label>
+                                    <input type="text" name="comentario" class="form-control" placeholder="Ej: Se contactó al productor">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Actualizar Estado
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <h5>📝 Historial de seguimiento</h5>
+                
+                {% for update in updates %}
+                <div class="card mb-2">
+                    <div class="card-body py-2">
+                        <small class="text-muted">{{ update.created_at|date:"d/m/Y H:i" }} - por {{ update.created_by.username|default:"Sistema" }}</small>
+                        <p class="mb-0">
+                            Estado cambiado de 
+                            <span class="badge bg-secondary">{{ update.previous_status }}</span>
+                            a 
+                            <span class="badge bg-primary">{{ update.new_status }}</span>
+                        </p>
+                        {% if update.comment %}
+                        <p class="mt-2 mb-0"><strong>Comentario:</strong> {{ update.comment }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% empty %}
+                <p class="text-muted">No hay actualizaciones de seguimiento aún.</p>
+                {% endfor %}
+                
+                <div class="mt-4 text-center">
+                    <a href="{% url 'complaints:mis_denuncias' %}" class="btn btn-secondary">Volver a mis denuncias</a>
+                    {% if user.is_staff or user.role == 'regulador' %}
+                    <a href="{% url 'complaints:lista_denuncias' %}" class="btn btn-info">Volver a gestión de denuncias</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

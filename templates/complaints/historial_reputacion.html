@@ -1,0 +1,61 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Historial de Reputación - ONPECO{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1><i class="fas fa-history"></i> Historial de Reputación</h1>
+        <a href="{% url 'complaints:gestion_reputacion' %}" class="btn btn-success">
+            ← Volver a Gestión
+        </a>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0">{{ usuario.business_name|default:usuario.username }}</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Reputación</th>
+                            <th>Comentario</th>
+                            <th>Asignado por</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for registro in historial %}
+                        <tr>
+                            <td>{{ registro.created_at|date:"d/m/Y H:i" }}</td>
+                            <td>
+                                {% if registro.nivel == 'excelente' %}
+                                    <span class="badge bg-success">🌟 Excelente</span>
+                                {% elif registro.nivel == 'bueno' %}
+                                    <span class="badge bg-primary">👍 Bueno</span>
+                                {% elif registro.nivel == 'regular' %}
+                                    <span class="badge bg-warning">⚠️ Regular</span>
+                                {% elif registro.nivel == 'malo' %}
+                                    <span class="badge bg-danger">👎 Malo</span>
+                                {% elif registro.nivel == 'critico' %}
+                                    <span class="badge bg-dark">🚨 Crítico</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ registro.comentario }}</td>
+                            <td>{{ registro.creado_por.username }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4" class="text-center">No hay registros de reputación</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

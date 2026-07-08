@@ -1,0 +1,110 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Aprobar Productores - ONPECO{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">👨‍🌾 Gestión de Productores</h1>
+    
+    <!-- Productores Pendientes -->
+    <div class="card shadow mb-4">
+        <div class="card-header bg-warning">
+            <h4 class="mb-0">⏳ Productores Pendientes de Aprobación</h4>
+        </div>
+        <div class="card-body">
+            {% if pendientes %}
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Negocio/Finca</th>
+                            <th>Teléfono</th>
+                            <th>Dirección</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for productor in pendientes %}
+                        <tr>
+                            <td>
+                                <strong>{{ productor.get_full_name }}</strong>
+                                {% if productor.business_name %}
+                                    <br><small class="text-muted">{{ productor.business_name }}</small>
+                                {% endif %}
+                            </td>
+                            <td>{{ productor.email }}</td>
+                            <td>{{ productor.business_name|default:"-" }}</td>
+                            <td>{{ productor.phone|default:"-" }}</td>
+                            <td>{{ productor.address|truncatechars:30|default:"-" }}</td>
+                            <td>
+                                <a href="{% url 'users:aprobar_productor' productor.id %}" class="btn btn-success btn-sm" onclick="return confirm('¿Aprobar a {{ productor.get_full_name }}?')">
+                                    <i class="fas fa-check"></i> Aprobar
+                                </a>
+                                <a href="{% url 'users:rechazar_productor' productor.id %}" class="btn btn-danger btn-sm" onclick="return confirm('¿Rechazar a {{ productor.get_full_name }}?')">
+                                    <i class="fas fa-times"></i> Rechazar
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="alert alert-success text-center">
+                <i class="fas fa-check-circle"></i> No hay productores pendientes de aprobación.
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <!-- Productores Aprobados -->
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0">✅ Productores Aprobados</h4>
+        </div>
+        <div class="card-body">
+            {% if aprobados %}
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Negocio/Finca</th>
+                            <th>Teléfono</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for productor in aprobados %}
+                        <tr>
+                            <td>
+                                <strong>{{ productor.get_full_name }}</strong>
+                                {% if productor.business_name %}
+                                    <br><small class="text-muted">{{ productor.business_name }}</small>
+                                {% endif %}
+                            </td>
+                            <td>{{ productor.email }}</td>
+                            <td>{{ productor.business_name|default:"-" }}</td>
+                            <td>{{ productor.phone|default:"-" }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="alert alert-info text-center">
+                No hay productores aprobados aún.
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <div class="mt-3 text-center">
+        <a href="{% url 'inicio' %}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Volver al inicio
+        </a>
+    </div>
+</div>
+{% endblock %}

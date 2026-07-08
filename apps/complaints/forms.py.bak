@@ -1,0 +1,18 @@
+from django import forms
+from .models import Complaint, ComplaintUpdate
+
+class ComplaintForm(forms.ModelForm):
+    class Meta:
+        model = Complaint
+        fields = ['titulo', 'descripcion', 'categoria', 'archivo_adjunto']
+        widgets = {
+            'descripcion': forms.Textarea(attrs={'rows': 5}),
+        }
+
+class ComplaintUpdateForm(forms.ModelForm):
+    class Meta:
+        model = ComplaintUpdate
+        fields = ['comentario', 'nuevo_estado']
+        widgets = {
+            'comentario': forms.Textarea(attrs={'rows': 3}),
+        }
