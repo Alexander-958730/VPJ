@@ -134,7 +134,7 @@
 |---|---------------|--------|
 | 65 | Productor ve: Total Vendido | ✅ Finalizada |
 | 66 | Productor ve: Total Pagado | ✅ Finalizada |
-| 67 | Productor ve: Pendiente de Pago | ✅ Finalizada |
+| 67 | Registro de pagos a productores (se eliminó el pago parcial) | ✅ Finalizada |
 | 68 | Historial de ventas con detalle de productos | ✅ Finalizada |
 | 69 | Estado de pago por pedido | ✅ Finalizada |
 | 70 | Formato de números RD en balance de ventas | ✅ Finalizada |
