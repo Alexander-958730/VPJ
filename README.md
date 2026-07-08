@@ -42,7 +42,7 @@ La aplicación conecta directamente a **productores agrícolas de la provincia d
 
 | Documento | Descripción |
 |-----------|-------------|
-| [DOCUMENTACION.md](DOCUMENTACION.md) | Documentación técnica completa (132 fases) |
+| [DOCUMENTACION.md](DOCUMENTACION.md) | Documentación técnica completa (133 fases) |
 | [Manual del Usuario.md](Manual%20del%20Usuario.md) | Manual de usuario para los 4 roles |
 | [MANUAL_INSTALACION.md](MANUAL_INSTALACION.md) | Manual de instalación paso a paso |
 
