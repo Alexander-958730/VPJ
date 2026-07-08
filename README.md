@@ -51,6 +51,7 @@ La aplicación conecta directamente a **productores agrícolas de la provincia d
 | [MANUAL_INSTALACION.md](MANUAL_INSTALACION.md) | Manual de instalación paso a paso |
 | [ALCANCES.md](ALCANCES.md) | Documento de alcances del proyecto por módulo |
 | [AVANCES.md](AVANCES.md) | Resumen de avances del proyecto (144 funcionalidades) |
+| [Documentacion plantilla universidad.docx](Documentacion%20plantilla%20universidad.docx) | Plantilla de documentación universitaria (formato APA 7) |
 
 ---
 
