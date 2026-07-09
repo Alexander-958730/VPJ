@@ -4,8 +4,7 @@
 # 📄 DOCUMENTACIÓN COMPLETA DEL PROYECTO
 
 ## "VENTA PRECIO JUSTO (VPJ)"
-
-**Desarrolladores:** [Tus nombres]
+**Desarrolladores:** Alexander Trinidad Ramírez | Manuel A. Hernández C. | Elizabeth Ogando Rosa
 **Carrera:** Licenciatura en Informática
 **Fecha de inicio:** 04/06/2026
 **Última actualización:** 06 de julio de 2026
