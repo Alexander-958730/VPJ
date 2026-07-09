@@ -52,6 +52,7 @@ La aplicación conecta directamente a **productores agrícolas de la provincia d
 | [ALCANCES.md](ALCANCES.md) | Documento de alcances del proyecto por módulo |
 | [AVANCES.md](AVANCES.md) | Resumen de avances del proyecto (144 funcionalidades) |
 | [Documentacion plantilla universidad.docx](Documentacion%20plantilla%20universidad.docx) | Plantilla de documentación universitaria (formato APA 7) |
+| [FUNCIONALIDADES_FUTURAS.md](FUNCIONALIDADES_FUTURAS.md) | Funcionalidades futuras y fuera del alcance (54 funcionalidades) |
 
 ---
 
